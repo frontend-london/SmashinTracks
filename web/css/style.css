@@ -938,7 +938,7 @@ a.track-player img {
 div.track-row1 { width:386px; height:21px; float:left;}
 div.track-artist { font-size:14px; float:left; padding-top:2px;}
 div.track-artist-num { font-size:9px; font-weight:bold; float:left; padding-top:5px; padding-left:6px; }
-div.track-brand { font-size:9px; font-family:Arial; float:left; padding-top:5px; padding-left:7px;}
+div.track-brand { font-size:9px; font-family:Arial; float:left; padding-top:5px; padding-left:7px; text-transform: uppercase;}
 div.track-brand a {color:#818181;}
 div.track-brand a:hover {color:#00b9e1; text-decoration:none;}
 div.track-new { background:url(../images/icons/leftmenu-new.gif) no-repeat; width:9px; height:9px; float:left; margin-left:6px; margin-top:6px;}

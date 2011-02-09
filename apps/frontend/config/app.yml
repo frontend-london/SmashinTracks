@@ -2,4 +2,8 @@
 # http://www.symfony-project.org/reference/1_4/en/11-App
 
 # default values
-#all:
+all:
+  # liczba gatunków do wygenerowania na podstonie z gatunkiem pod listą z trackami - See also
+  genres_see_also_rand: 7
+  # maksymalna długość nazwy tracka by się mieściła data dodania
+  tracklist_max_name_length: 36

@@ -18,6 +18,17 @@
  */
 class Genres extends BaseGenres {
 
+    public function getTracksGenressJoinTracksDescending($criteria = null, $con = null, $join_behavior = Criteria::LEFT_JOIN) {
 
+        if ($criteria === null) {
+                $criteria = new Criteria(GenresPeer::DATABASE_NAME);
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+        $criteria->addDescendingOrderByColumn(TracksPeer::TRACKS_DATE);
+        return parent::getTracksGenressJoinTracks($criteria, $con, $join_behavior);
+    }
 
 } // Genres

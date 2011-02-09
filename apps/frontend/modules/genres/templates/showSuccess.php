@@ -22,7 +22,7 @@
                                         <span class="track-prize">£1.50</span>
                                     </a>
                                     <div class="track-row2">
-                                        <div class="track-name"><a href="#"><?=$track->getTracks()->getTracksTitle(); ?></a></div>
+                                        <div class="track-name"><a href="#"><?=$track->getTracks()->getTracksTitleShorted(); ?></a></div>
                                         <div class="track-time"><?=$track->getTracks()->getTracksTimeFormatted(); ?></div>
                                         <a href="#" class="track-star"></a>
                                         <div class="track-added">Added: <?=$track->getTracks()->getTracksDate('Y-m-d'); ?></div>
