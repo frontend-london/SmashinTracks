@@ -1,0 +1,20 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/13-View
+
+default:
+  http_metas:
+    content-type: text/html
+
+  metas:
+    title:        SmashinTracks.com - Tracks you won't find anywhere else
+    description:  SmashinTracks.com - Tracks you won't find anywhere else
+    keywords:     SmashinTracks.com, SmashinTracks
+    language:     en
+    robots:       index, follow
+
+  stylesheets:    [style.css]
+
+  javascripts:    [jquery/jquery.js, common.js]
+
+  has_layout:     true
+  layout:         layout
