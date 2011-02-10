@@ -6,12 +6,11 @@
                     </div>                
                     
                         <div class="bw-tracks">
-                            <?//print_r($tracks);?>
                             <?foreach ($tracks as $track):?>
                                 <div class="track">
-                                    <a href="#" class="track-player tp-new"><img src="images/profiles/<?=$track->getTracks()->getProfiles()->getProfilesPhotoPath(); ?>" alt="" /></a>
+                                    <a href="#" class="track-player tp-new"><img src="images/profiles/<?=$track->getTracks()->getProfiles()->getProfilesPath(); ?>.jpg" alt="" /></a>
                                     <div class="track-row1">
-                                        <div class="track-artist"><a href="#"><?=$track->getTracks()->getTracksArtistUppercase(); ?></a></div>
+                                        <div class="track-artist"><a href="<?=url_for('profile', $track->getTracks()->getProfiles())?>"><?=$track->getTracks()->getTracksArtistUppercase(); ?></a></div>
                                         <div class="track-brand">
                                             <?$counter=0; foreach($track->getTracks()->getTracksGenressJoinGenres() as $trackgenre):?><?if($counter>0):?>, <?endif;?><a href="<?=url_for('genres', $trackgenre->getGenres())?>"><?echo $trackgenre->getGenres()->getGenresName();?></a><?$counter++; endforeach;?>
                                         </div>
@@ -30,13 +29,8 @@
                                     </div>
                                     <div class="clear"></div>
                                 </div>
-
                             <?endforeach;?>
                                 
-
-                            
-                        
-                            
                             <div class="clear"></div>
                             
                         </div>                

@@ -986,7 +986,7 @@ div.box-white { padding-top:31px; padding-left:16px;}
 div.box-white div.bw-div1 {font-size:13px; line-height:17px; padding-top:15px; font-weight:bold; padding-right:20px; }
 div.box-white div.bw-tracks { padding-left:2px; padding-top:25px;}
 div.box-white div.bw-div2 { padding-top:8px; padding-left:14px; width:518px; padding-bottom:13px; border:solid #cecece; border-width:0px 0px 1px 0px;}
-div.box-white div.bw-div2-text {font-size:9px; float:left; padding-top:6px;}
+div.box-white div.bw-div2-text {font-size:9px; float:left; padding-top:6px; text-transform: uppercase;}
 div.box-white div.bw-div2-button { float:right;}
 div.box-white div.bw-div2-text a { font-family:Arial; color:#818181;}
 
