@@ -1,14 +1,14 @@
 <?php
 
 /**
- * genres actions.
+ * track actions.
  *
  * @package    smashintracks
- * @subpackage genres
+ * @subpackage track
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class genresActions extends sfActions
+class trackActions extends sfActions
 {
  /**
   * Executes index action
@@ -19,16 +19,15 @@ class genresActions extends sfActions
   {
     $this->forward('default', 'module');
   }
-  
+
   public function executeShow(sfWebRequest $request)
   {
-    $this->genres = $this->getRoute()->getObject();
-    $this->seeAlsoGenres = GenresPeer::getRandomGenres($this->genres);
-    //$this->tracks = $this->genres->getTracksGenressJoinTracksDescending(); // wersja bez stronicowania
+    $this->track = $this->getRoute()->getObject();
+    $this->profile = $this->track->getProfiles();
+
     $this->pager = new sfPropelPager('Tracks',sfConfig::get('app_max_tracks_on_list'));
-    $this->pager->setCriteria($this->genres->getActiveTracksCriteriaOrderByDate());
+    $this->pager->setCriteria($this->profile->getActiveTracksCriteriaOrderByDate());
     $this->pager->setPage($request->getParameter('page', 1)); // 1 = domyślna wartość
     $this->pager->init();
-//    $this->forward404Unless($this->genres); // niepotrzebne bo route pilnuje
-  }  
+  }
 }

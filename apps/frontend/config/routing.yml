@@ -1,11 +1,11 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
-genres:
-  url:     /genres/:genres_path
+genre:
+  url:     /genre/:genres_path
   class:   sfPropelRoute
   options: { model: Genres, type: object }
-  param:   { module: genres, action: show }
+  param:   { module: genre, action: show }
   requirements:
     sf_method: [get]
 
@@ -17,6 +17,14 @@ profile:
   requirements:
     sf_method: [get]
 
+track:
+  url:     /track/:tracks_path
+  class:   sfPropelRoute
+  options: { model: Tracks, type: object }
+  param:   { module: track, action: show }
+  requirements:
+    sf_method: [get]
+
 # default rules
 homepage:
   url:   /
@@ -24,9 +32,9 @@ homepage:
 
 # generic rules
 # please, remove them by adding more specific rules
-default_index:
-  url:   /:module
-  param: { action: index }
+#default_index:
+#  url:   /:module
+#  param: { action: index }
 
-default:
-  url:   /:module/:action/*
+#default:
+#  url:   /:module/:action/*

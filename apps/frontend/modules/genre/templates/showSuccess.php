@@ -14,11 +14,11 @@
                     <div class="bw-div2">
                         <div class="bw-div2-text">
                             <strong>See also:</strong>
-                            <?$counter=0; foreach ($seeAlsoGenres as $seeAlsoGenre):?><?if($counter>0):?>, <?endif;?><a href="<?=url_for('genres', $seeAlsoGenre)?>"><?=$seeAlsoGenre->getGenresName(); ?></a><?$counter++; endforeach;?>
+                            <?$counter=0; foreach ($seeAlsoGenres as $seeAlsoGenre):?><?if($counter>0):?>, <?endif;?><a href="<?=url_for('genre', $seeAlsoGenre)?>"><?=$seeAlsoGenre->getGenresName(); ?></a><?$counter++; endforeach;?>
                         </div>
                         <div class="clear"></div>
                     </div>
-                    <?php include_partial('metadata/paging', array('pager' => $pager, 'route_object' => $genres, 'route_name' => 'genres')) ?>
+                    <?php include_partial('metadata/paging', array('pager' => $pager, 'route_object' => $genres, 'route_name' => 'genre')) ?>
                 </div>
 
                 <?php include_partial('metadata/footer') ?>
