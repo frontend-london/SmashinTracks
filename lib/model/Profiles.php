@@ -48,4 +48,9 @@ class Profiles extends BaseProfiles {
             return $this->getActiveTracksCriteria($criteria);
         }
 
+        public function isContent() {
+            $urls = $this->getProfilesUrlss();
+            if($this->getProfilesText() || !empty($urls) || $this->getProfilesPhoto()) return true; else return false;
+        }
+
 } // Profiles

@@ -1,18 +1,30 @@
-
-                <div id="artistpage-top">
-                    <h1><?=$profile->getProfilesName();?></h1><br />
-					<div id="at-left">
-                    	<img src="images/tmp/artist1.gif" alt="" />
-                    </div>
-					<div id="at-right">
-                        <?=html_entity_decode($profile->getProfilesText());?><br />
-                        <?foreach($profile->getProfilesUrlss() as $profileurl):?><a class="at-url" href="<?=$profileurl->getProfilesUrlsUrl();?>"><?echo $profileurl->getProfilesUrlsUrl();?></a><?endforeach;?>
-                    </div>
+                <div id="artistpage-top<?if(!$profile->isContent()):?>-nocontent<?endif;?>">
+                    <h1><?=$profile->getProfilesName();?></h1><?if($profile->isContent()):?><br /><?endif;?>
+                    <?if($profile->getProfilesPhoto()):?>
+                        <div id="at-left">
+                            <img src="images/profiles/big/<?=$profile->getProfilesPath(); ?>.jpg" alt="<?=$profile->getProfilesName();?>" />
+                        </div>
+                        <div id="at-right">
+                            <?if($profile->getProfilesText()):?>
+                                <?=html_entity_decode($profile->getProfilesText());?><br />
+                            <?endif;?>
+                            <?foreach($profile->getProfilesUrlss() as $profileurl):?><a class="at-url" href="<?=$profileurl->getProfilesUrlsUrl();?>"><?echo $profileurl->getProfilesUrlsUrl();?></a><?endforeach;?>
+                        </div>
+                    <?else:?>
+                        <div id="at-both">
+                            <?if($profile->getProfilesText()):?>
+                                <?=html_entity_decode($profile->getProfilesText());?><br />
+                            <?endif;?>
+                            <?foreach($profile->getProfilesUrlss() as $profileurl):?><a class="at-url" href="<?=$profileurl->getProfilesUrlsUrl();?>"><?echo $profileurl->getProfilesUrlsUrl();?></a><?endforeach;?>
+                        </div>
+                    <?endif;?>
                     <div class="clear"></div>
                 </div>
 
                 <div class="box-white" id="box-mymusic">
-                    <img src="images/texts/my-music.gif" alt="My Music" />
+                    <?if($pager->getResults()->count()):?>
+                        <img src="images/texts/my-music.gif" alt="My Music" />
+                    <?endif;?>
                     <div class="bw-tracks">
                         <?foreach ($pager->getResults() as $track):?>
                             <?php include_partial('metadata/record', array('track' => $track)) ?>

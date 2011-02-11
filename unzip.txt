@@ -1,1 +1,4 @@
+cd domains/modul.ayz.pl/smashin
 unzip -u sm.zip
+php symfony propel:data-load
+php symfony cache:clear

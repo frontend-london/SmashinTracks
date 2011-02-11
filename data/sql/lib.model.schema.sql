@@ -71,7 +71,8 @@ CREATE TABLE `profiles`
 	`profiles_password` VARCHAR(32)  NOT NULL,
 	`profiles_text` VARCHAR(500)  NOT NULL,
 	`profiles_date` DATETIME  NOT NULL,
-	`profiles_photo_path` VARCHAR(32),
+	`profiles_path` VARCHAR(200)  NOT NULL,
+	`profiles_photo` TINYINT(1) default 0 NOT NULL,
 	`profiles_balance` INTEGER(11) default 0 NOT NULL,
 	`profiles_blocked` TINYINT(1) default 0 NOT NULL,
 	`profiles_deleted` TINYINT(1) default 0 NOT NULL,
@@ -80,7 +81,7 @@ CREATE TABLE `profiles`
 	PRIMARY KEY (`profiles_id`),
 	UNIQUE KEY `profiles_U_1` (`profiles_name`),
 	UNIQUE KEY `profiles_U_2` (`profiles_email`),
-	UNIQUE KEY `profiles_U_3` (`profiles_photo_path`),
+	UNIQUE KEY `profiles_U_3` (`profiles_path`),
 	KEY `profiles_WHERE_ORDER`(`profiles_deleted`, `profiles_blocked`, `profiles_date`)
 )Type=InnoDB;
 
