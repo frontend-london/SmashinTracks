@@ -18,4 +18,34 @@
  */
 class TracksPeer extends BaseTracksPeer {
 
+    static public function getActiveTracks(Criteria $criteria = null)
+    {
+        return self::doSelect(self::addActiveTracksCriteria($criteria));
+    }
+
+    static public function countActiveTracks(Criteria $criteria = null)
+    {
+        return self::doCount(self::addActiveTracksCriteria($criteria));
+    }
+
+
+    static public function addActiveTracksCriteria(Criteria $criteria = null)
+    {
+        if (is_null($criteria))
+        {
+          $criteria = new Criteria();
+        }
+
+        $criteria->add(self::TRACKS_DELETED, false, Criteria::EQUAL);
+        $criteria->add(self::TRACKS_ACCEPTED, true, Criteria::EQUAL);
+        //$criteria->addDescendingOrderByColumn(self::CREATED_AT);
+
+        return $criteria;
+    }
+
+    static public function doSelectActive(Criteria $criteria)
+    {
+        return self::doSelectOne(self::addActiveTracksCriteria($criteria));
+    }
+
 } // TracksPeer

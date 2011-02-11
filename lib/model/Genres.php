@@ -19,7 +19,6 @@
 class Genres extends BaseGenres {
 
     public function getTracksGenressJoinTracksDescending($criteria = null, $con = null, $join_behavior = Criteria::LEFT_JOIN) {
-
         if ($criteria === null) {
                 $criteria = new Criteria(GenresPeer::DATABASE_NAME);
         }
@@ -28,7 +27,40 @@ class Genres extends BaseGenres {
                 $criteria = clone $criteria;
         }
         $criteria->addDescendingOrderByColumn(TracksPeer::TRACKS_DATE);
-        return parent::getTracksGenressJoinTracks($criteria, $con, $join_behavior);
+        return self::getTracksGenressJoinTracks($criteria, $con, $join_behavior);
     }
+
+
+
+    public function countNewActiveTracks() {
+        $criteria = new Criteria();
+        $criteria->add(TracksPeer::TRACKS_DATE, time() - 86400 * sfConfig::get('app_track_new_period'), Criteria::GREATER_THAN);
+        $criteria->add(TracksGenresPeer::GENRES_ID, $this->getGenresId());
+        $criteria->addJoin(TracksPeer::TRACKS_ID, TracksGenresPeer::TRACKS_ID);
+        return TracksPeer::countActiveTracks($criteria);
+        //return self::countTracksGenress($criteria, true);
+    }
+
+    public function getActiveTracksCriteria($criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria(ProfilesPeer::DATABASE_NAME);
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+
+        $criteria->add(TracksGenresPeer::GENRES_ID, $this->getGenresId());
+        $criteria->addJoin(TracksPeer::TRACKS_ID, TracksGenresPeer::TRACKS_ID);
+        return TracksPeer::addActiveTracksCriteria($criteria);
+    }
+
+    public function getActiveTracksCriteriaOrderByDate() {
+        $criteria = new Criteria();
+        $criteria->addDescendingOrderByColumn(TracksPeer::TRACKS_DATE);
+        return $this->getActiveTracksCriteria($criteria);
+    }
+
+    
 
 } // Genres

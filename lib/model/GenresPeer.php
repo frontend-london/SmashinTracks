@@ -21,7 +21,7 @@ class GenresPeer extends BaseGenresPeer {
 	public static function getRandomGenres(Genres $obj = null, PropelPDO $con = null)
 	{
             $genresRandomNumbers = array();
-            $genresMaxId = Smashin::getMaxId(GenresPeer::GENRES_ID, GenresPeer::TABLE_NAME);
+            $genresMaxId = Smashin::getMaxId(self::GENRES_ID, self::TABLE_NAME);
             for($i=1; $i<sfConfig::get('app_genres_see_also_rand')*2;$i++) { // do wygenerowania X gatunków, zabezpieczenie gdyby któryś id nie istniał
                 $rand = rand(1, $genresMaxId);
                 if(($obj!=null) && ($rand!=$obj->getGenresId())) { // by nie proponowało siebie
@@ -30,10 +30,12 @@ class GenresPeer extends BaseGenresPeer {
             }
             // na podstawie: http://www.titov.net/2005/09/21/do-not-use-order-by-rand-or-how-to-get-random-rows-from-table/
             $seeAlsoCriteria = new Criteria();
-            $seeAlsoCriteria->add(GenresPeer::GENRES_ID, $genresRandomNumbers, Criteria::IN);
+            $seeAlsoCriteria->add(self::GENRES_ID, $genresRandomNumbers, Criteria::IN);
             $seeAlsoCriteria->addAscendingOrderByColumn('RAND()');
             $seeAlsoCriteria->setLimit(sfConfig::get('app_genres_see_also_rand')); // ma wyświetlać X gatunków
-            return GenresPeer::doSelect($seeAlsoCriteria);
+            return self::doSelect($seeAlsoCriteria);
 	}
+
+
 
 } // GenresPeer

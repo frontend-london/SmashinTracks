@@ -1,1 +1,1 @@
-unzip sm.zip -u
+unzip -u sm.zip

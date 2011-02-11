@@ -41,11 +41,22 @@ class Tracks extends BaseTracks {
 	}
 
         public function getTracksTitleShorted() {
-            $title = parent::getTracksTitle();
+            $title = self::getTracksTitle();
             if(strlen($title)>sfConfig::get('app_tracklist_max_name_length')) {
                 $title = substr($title, 0, sfConfig::get('app_tracklist_max_name_length')).'..';
             }
             return $title;
+        }
+
+        public function getTracksAge() {
+            $track_date = self::getTracksDate('Y-m-d');
+            $today = date("Y-m-d");
+            return Smashin::dateDiff($track_date, $today);
+        }
+
+        public function isTrackNew() {
+            $track_age = $this->getTracksAge();
+            return ($track_age<sfConfig::get('app_track_new_period'));
         }
 
 } // Tracks

@@ -4,6 +4,14 @@
 # default values
 all:
   # liczba gatunków do wygenerowania na podstonie z gatunkiem pod listą z trackami - See also
-  genres_see_also_rand: 7
+  genres_see_also_rand: 6
   # maksymalna długość nazwy tracka by się mieściła data dodania
   tracklist_max_name_length: 36
+  # domyślna cena, w £
+  default_prize: 1.40
+  # domyślna cena, format tekstowy
+  default_prize_string: £1.40
+  # okres w dniach kiedy track jest nowy
+  track_new_period: 5
+  # lista tracków na stronie - do stronicowania
+  max_tracks_on_list: 10

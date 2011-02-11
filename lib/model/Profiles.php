@@ -29,5 +29,23 @@ class Profiles extends BaseProfiles {
 		parent::__construct();
 	}
 
+        public function getActiveTracksCriteria($criteria = null) {
+            if ($criteria === null) {
+                    $criteria = new Criteria(ProfilesPeer::DATABASE_NAME);
+            }
+            elseif ($criteria instanceof Criteria)
+            {
+                    $criteria = clone $criteria;
+            }
+
+            $criteria->add(TracksPeer::PROFILES_ID, $this->getProfilesId());
+            return TracksPeer::addActiveTracksCriteria($criteria);
+        }
+
+        public function getActiveTracksCriteriaOrderByDate() {
+            $criteria = new Criteria();
+            $criteria->addDescendingOrderByColumn(TracksPeer::TRACKS_DATE);
+            return $this->getActiveTracksCriteria($criteria);
+        }
 
 } // Profiles

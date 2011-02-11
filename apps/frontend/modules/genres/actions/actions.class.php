@@ -22,13 +22,13 @@ class genresActions extends sfActions
   
   public function executeShow(sfWebRequest $request)
   {
-//    $this->genres = GenresPeer::retrieveByPk($request->getParameter('genres_id'));    
-    
     $this->genres = $this->getRoute()->getObject();
-    $this->tracks = $this->genres->getTracksGenressJoinTracksDescending();
     $this->seeAlsoGenres = GenresPeer::getRandomGenres($this->genres);
-
-
-//    $this->forward404Unless($this->genres);
+    //$this->tracks = $this->genres->getTracksGenressJoinTracksDescending(); // wersja bez stronicowania
+    $this->pager = new sfPropelPager('Tracks',sfConfig::get('app_max_tracks_on_list'));
+    $this->pager->setCriteria($this->genres->getActiveTracksCriteriaOrderByDate());
+    $this->pager->setPage($request->getParameter('page', 1)); // 1 = domyślna wartość
+    $this->pager->init();
+//    $this->forward404Unless($this->genres); // niepotrzebne bo route pilnuje
   }  
 }

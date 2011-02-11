@@ -431,7 +431,7 @@ div#artistpage-top-nocontent h1 { margin-bottom: 0px; }
 div#artistpage-top div#at-left { float:left; width:220px; padding-right:29px;}
 div#artistpage-top div#at-right { float:left; width:285px; font-size:12px; line-height:18px; }
 div#artistpage-top div#at-both { font-size:12px; line-height:18px; }
-div#artistpage-top a#at-url { display:block; text-transform:uppercase}
+div#artistpage-top a.at-url { display:block; text-transform:uppercase}
 div#artistpage-top div#at-edytuj { float:right; margin-top:42px;}
 
 div.box-silver {
@@ -964,7 +964,7 @@ div.artist-desc {}
 .track-cart { display:block; background:url(../images/icons/track-cart.gif) no-repeat; width:16px; height:15px; float:left; margin-top:13px;}
 .track-bin { display:block; background:url(../images/icons/track-bin.gif) no-repeat; width:12px; height:15px; float:left; margin-top:13px; margin-left:3px; margin-right:1px;}
 .track-buy, .track-remove, .track-download, .track-check, .track-edit, .track-320, .track-profil, .track-problem, .track-prev { display:block; font-size:10px; font-weight:bold; background:#00b9e1; color:#fff; height:12px; line-height:12px; width:54px; text-align:center; float:left; margin-top:6px; margin-left:5px; }
-.track-buy:hover, .track-remove:hover, .track-download:hover, .track-check:hover, .track-edit:hover, , .track-320:hover, .track-profil:hover, .track-problem:hover, .track-prev:hover { text-decoration:none;}
+.track-buy:hover, .track-remove:hover, .track-download:hover, .track-check:hover, .track-edit:hover, .track-320:hover, .track-profil:hover, .track-problem:hover, .track-prev:hover { text-decoration:none;}
 .track-download { width:69px;}
 .track-check { width:43px; float:right; margin-right:6px;}
 .track-edit, .track-320, .track-prev { width:32px; float:right; margin-right:6px;}
@@ -1016,6 +1016,7 @@ div.box-silver div.bw-div8 { margin-right:21px;}
 
 div.box-white div.bw-div3 { width:532px; border:solid #cecece; border-width:0px 0px 1px 0px; padding:12px 0px; position:relative; height:24px;}
 div.box-white div#bw-div3-noborder { border:none;}
+div.box-white div#bw-div3-border { border-width:1px 0px 1px 0px;}
 div.box-white div#bw-div3-tt { border-width:1px 0px 1px 0px;}
 div.bw-div3-inner { float:right; position:relative; left:-50%; }
 div.box-white div.bw-div3 ul { display:block; position:relative; left:50%; }
@@ -1023,6 +1024,9 @@ div.box-white div.bw-div3 ul li { padding-right:5px; float:left;}
 div.box-white div.bw-div3 ul li a, div.box-white div.bw-div3 ul li span { width:24px; height:24px; line-height:24px; display:block; background:#00b9e1; color:#fff; font-weight:bold; text-align:center; border:1px solid #00b9e1;}
 div.box-white div.bw-div3 ul li a.active, div.box-white div.bw-div3 ul li a:hover { background:#ffffff; color:#818181; text-decoration:none; }
 div.box-white div.bw-div3 ul li span.bw-ellipsis { color:#3e3e3e; background:#fff; border-color:#fff; width:16px;}
+div.box-white div.bw-div3 li#bw-back { padding-right: 0px; margin-right: 5px;}
+div.box-white div.bw-div3 li#bw-back a { width:auto; height:26px; line-height:26px; background:none; border:none; }
+div.box-white div.bw-div3 li#bw-back a:hover { text-decoration:underline; color:#fff;}
 div.box-white div.bw-div3 li#bw-next { padding-right:0px;}
 div.box-white div.bw-div3 li#bw-next a { width:auto; height:26px; line-height:26px; background:none; border:none; }
 div.box-white div.bw-div3 li#bw-next a:hover { text-decoration:underline; color:#fff;}
@@ -1036,13 +1040,13 @@ div.button-red-left { position:absolute; top:0px; left:0px; background:url(../im
 div.button-red-right { position:absolute; top:0px; right:0px; background:url(../images/buttons/red-corner.gif); width:1px; height:26px;}
 div.button-silver-left { position:absolute; top:0px; left:0px; background:url(../images/buttons/silver-corner.gif); width:1px; height:26px;}
 div.button-silver-right { position:absolute; top:0px; right:0px; background:url(../images/buttons/silver-corner.gif); width:1px; height:26px;}
-div.button-fulllist a, .button-next a, div.button-checkout a, div.button-download a, div.button-membershomepage a, div.button-withdrawmoney a, div.button-withdrawmoneytopaypal a, div.button-paynow a, div.button-check a, div.button-withdraw a, div.button-add a, div.button-addnewurl a, div.button-save a, div.button-send a, div.button-upload a, div.button-red-delete a, div.button-red-ok a, div.button-blokuj a, div.button-edytuj a, div.button-editprofile a, div.button-edit a, div.button-delete a, div.button-ok a, div.button-close a, div.button-ok-big a, div.button-zapisz a, div.button-aktualizuj a, div.button-submit a, div.button-silver-cancel a, div.button-silver-back a, div.button-login a, div.button-register a, div.button-wyplac a, div.button-ponow a  { width:100%; height:26px; line-height:26px; font-size:16px; font-weight:bold; color:#fff; text-transform:uppercase; display:block; text-align:center; }
-div.button-fulllist, .button-next, div.button-checkout, div.button-download, div.button-membershomepage, div.button-withdrawmoney, div.button-withdrawmoneytopaypal, div.button-paynow, div.button-check, div.button-withdraw, div.button-add, div.button-addnewurl, div.button-save, div.button-send, div.button-upload, div.button-blokuj, div.button-edytuj, div.button-editprofile, div.button-edit, div.button-delete, div.button-ok, div.button-close, div.button-ok-big, div.button-zapisz, div.button-aktualizuj, div.button-submit, div.button-login, div.button-register, div.button-wyplac, div.button-ponow { height:26px; background:url(../images/buttons/blue-loop.gif) repeat-x; position:relative;}
+div.button-fulllist a, .button-next a, .button-back a, div.button-checkout a, div.button-download a, div.button-membershomepage a, div.button-withdrawmoney a, div.button-withdrawmoneytopaypal a, div.button-paynow a, div.button-check a, div.button-withdraw a, div.button-add a, div.button-addnewurl a, div.button-save a, div.button-send a, div.button-upload a, div.button-red-delete a, div.button-red-ok a, div.button-blokuj a, div.button-edytuj a, div.button-editprofile a, div.button-edit a, div.button-delete a, div.button-ok a, div.button-close a, div.button-ok-big a, div.button-zapisz a, div.button-aktualizuj a, div.button-submit a, div.button-silver-cancel a, div.button-silver-back a, div.button-login a, div.button-register a, div.button-wyplac a, div.button-ponow a  { width:100%; height:26px; line-height:26px; font-size:16px; font-weight:bold; color:#fff; text-transform:uppercase; display:block; text-align:center; }
+div.button-fulllist, .button-next, .button-back, div.button-checkout, div.button-download, div.button-membershomepage, div.button-withdrawmoney, div.button-withdrawmoneytopaypal, div.button-paynow, div.button-check, div.button-withdraw, div.button-add, div.button-addnewurl, div.button-save, div.button-send, div.button-upload, div.button-blokuj, div.button-edytuj, div.button-editprofile, div.button-edit, div.button-delete, div.button-ok, div.button-close, div.button-ok-big, div.button-zapisz, div.button-aktualizuj, div.button-submit, div.button-login, div.button-register, div.button-wyplac, div.button-ponow { height:26px; background:url(../images/buttons/blue-loop.gif) repeat-x; position:relative;}
 div.button-red-delete, div.button-red-ok { height:26px; background:url(../images/buttons/red-loop.gif) repeat-x; position:relative;}
 div.button-silver-cancel, div.button-silver-back { height:26px; background:url(../images/buttons/silver-loop.gif) repeat-x; position:relative;}
 
 div.button-fulllist { width:103px; }
-.button-next { width:65px; }
+.button-next, .button-back { width:65px; }
 div.button-checkout { width:103px; }
 div.button-download { width:219px; }
 div.button-membershomepage { width:203px;}

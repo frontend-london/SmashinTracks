@@ -1,6 +1,6 @@
 <ul id="leftmenu">
     <?php foreach ($menuleft as $i => $genre): ?>
-        <li <?if($genre_path==$genre->getGenresPath()):?>class="active"<?endif;?>><a href="<?=url_for('genres', $genre)?>"><?php echo $genre->getGenresName() ?><span class="lm-nr"><?php echo $genre->countTracksGenress() ?></span></a></li>
+        <li class="<?if($genre_path==$genre->getGenresPath()):?>active<?endif;?><?if($genre->countNewActiveTracks()):?> lm-new<?endif;?>"><a href="<?=url_for('genres', $genre)?>"><?php echo $genre->getGenresName() ?> <span class="lm-nr"><?php echo $genre->countTracksGenress() ?></span></a></li>
     <?php endforeach ?>
 </ul>
 <!--               
