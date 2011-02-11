@@ -1,6 +1,14 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+artists:
+  url:     /artists
+  param: { module: artists, action: show }
+
+artists_all:
+  url:     /artists/all
+  param: { module: artists, action: showAll }
+
 genre:
   url:     /genre/:genres_path
   class:   sfPropelRoute

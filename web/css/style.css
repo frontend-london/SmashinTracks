@@ -850,7 +850,7 @@ div.tracksale div.ts1-div1 { float:left;}
 div.tracksale div.ts1-div2 { float:left;}
 div.tracksale a.track-profil { text-transform:uppercase; margin-top:3px;}
 
-a.track-player {
+.track-player {
 	display:block;	
 	height:40px;
 	width:40px;
@@ -930,7 +930,7 @@ div#letter-z { background-position: 0px -625px; }
 
 
 
-a.track-player img {
+.track-player img {
 	width:40px;
 	height:40px;	
 }

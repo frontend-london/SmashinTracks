@@ -53,4 +53,45 @@ class Profiles extends BaseProfiles {
             if($this->getProfilesText() || !empty($urls) || $this->getProfilesPhoto()) return true; else return false;
         }
 
+        public function getProfilesNameFirstLetter() {
+            return substr($this->getProfilesName(), 0, 1);
+        }
+
+        public function getProfilesTextShorted() {
+            $text = strip_tags($this->getProfilesText());
+            if(strlen($text)>sfConfig::get('app_max_profile_short_text_length')) {
+                $text = substr($text, 0, sfConfig::get('app_max_profile_short_text_length'));
+                if(strpos($text, '.')>0) $text = substr($text, 0, strpos($text, '.')); // do kropki w przypadku gdy występuje
+                $text.='..';
+            }
+            return $text;
+        }
+
+        public function getProfilesGenres() {
+            $criteria = $this->getActiveTracksCriteria();
+            $tracks = TracksPeer::doSelect($criteria);
+            $profile_genres = array();
+            foreach($tracks as $track) {
+                $genres = $track->getTracksGenress();
+                foreach($genres as $genre) {
+                    if(!empty($profile_genres[$genre->getGenresId()])) $profile_genres[$genre->getGenresId()]++; else $profile_genres[$genre->getGenresId()] = 1;
+                }
+            }
+            arsort ($profile_genres); // sortowanie od największego
+
+            $counter = 0;
+            $genres_ids = array();
+            foreach($profile_genres as $genre_key => $genre_value) {
+                $counter++;
+                if($counter>sfConfig::get('app_profile_genres_amount')) break;
+                $genres_ids[] = $genre_key; // wydobycie największych kluczy
+            }
+
+            $criteria = new Criteria();
+            $criteria->add(GenresPeer::GENRES_ID, $genres_ids, Criteria::IN);
+            $genres_objects = GenresPeer::doSelect($criteria);
+
+            return $genres_objects;
+        }
+
 } // Profiles

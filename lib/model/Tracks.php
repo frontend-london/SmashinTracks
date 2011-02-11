@@ -41,7 +41,7 @@ class Tracks extends BaseTracks {
 	}
 
         public function getTracksTitleShorted() {
-            $title = self::getTracksTitle();
+            $title = $this->getTracksTitle();
             if(strlen($title)>sfConfig::get('app_tracklist_max_name_length')) {
                 $title = substr($title, 0, sfConfig::get('app_tracklist_max_name_length')).'..';
             }
