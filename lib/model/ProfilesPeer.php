@@ -18,4 +18,35 @@
  */
 class ProfilesPeer extends BaseProfilesPeer {
 
+    public static function getProfilesAscending($criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria(ProfilesPeer::DATABASE_NAME);
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+
+        $criteria->addAscendingOrderByColumn(ProfilesPeer::PROFILES_NAME);
+        return ProfilesPeer::doSelect($criteria);
+    }
+
+    public static function getMostPopularProfiles($criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria(ProfilesPeer::DATABASE_NAME);
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+        $criteria->addJoin(ProfilesPeer::PROFILES_ID, TracksPeer::PROFILES_ID);
+        $criteria->addJoin(TracksPeer::TRACKS_ID, TransactionsTracksPeer::TRACKS_ID);
+        $criteria->addGroupByColumn(ProfilesPeer::PROFILES_ID);
+        $criteria->addDescendingOrderByColumn('COUNT('.TracksPeer::TRACKS_ID.')'); // sortowanie po ilości tracków sprzedanych
+        $criteria->setLimit(30);
+        $profiles = ProfilesPeer::doSelect($criteria);
+        return $profiles;
+
+    }
+
 } // ProfilesPeer

@@ -22,18 +22,11 @@ class artistsActions extends sfActions
 
   public function executeShow(sfWebRequest $request)
   {
-
+    $this->artists = ProfilesPeer::getMostPopularProfiles();
   }
 
   public function executeShowAll(sfWebRequest $request)
   {
-    $artistCriteria = new Criteria();
-    /*$artistCriteria->clearSelectColumns();
-    $artistCriteria->addSelectColumn(ProfilesPeer::PROFILES_NAME);
-    $artistCriteria->addSelectColumn(ProfilesPeer::PROFILES_PATH);
-    $artistCriteria->addSelectColumn(ProfilesPeer::PROFILES_TEXT);*/
-    //$artistCriteria->setDistinct();
-    $artistCriteria->addAscendingOrderByColumn(ProfilesPeer::PROFILES_NAME);
-    $this->artists = ProfilesPeer::doSelect($artistCriteria);
+    $this->artists = ProfilesPeer::getProfilesAscending();
   }
 }

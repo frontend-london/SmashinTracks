@@ -31,9 +31,12 @@ class TracksPeer extends BaseTracksPeer {
 
     static public function addActiveTracksCriteria(Criteria $criteria = null)
     {
-        if (is_null($criteria))
+        if ($criteria === null) {
+                $criteria = new Criteria(TracksPeer::DATABASE_NAME);
+        }
+        elseif ($criteria instanceof Criteria)
         {
-          $criteria = new Criteria();
+                $criteria = clone $criteria;
         }
 
         $criteria->add(self::TRACKS_DELETED, false, Criteria::EQUAL);
