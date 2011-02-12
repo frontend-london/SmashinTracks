@@ -18,4 +18,10 @@
  */
 class TextsPeer extends BaseTextsPeer {
 
+    static public function doSelectText($name) {
+      $criteria = new Criteria();
+      $criteria->add(TextsPeer::TEXTS_NAME, $name);
+      return TextsPeer::doSelectOne($criteria);
+    }
+
 } // TextsPeer
