@@ -19,7 +19,7 @@
                     <li class="active"><a href="<?="http://{$_SERVER['SERVER_NAME']}{$sf_request->getRelativeUrlRoot()}/"?>">Home</a></li>
                     <li><a href="#">Charts</a></li>
                     <li><a href="<?=url_for('artists')?>">Artists</a></li>
-                    <li><a href="#">Faq</a></li>
+                    <li><a href="<?=url_for('faq')?>">Faq</a></li>
                 </ul>
                 <div id="search-top">
                     <form name="#" action="#" method="get">

@@ -9,6 +9,10 @@ artists_all:
   url:     /artists/all
   param: { module: artists, action: showAll }
 
+faq:
+  url:     /faq
+  param: { module: faq, action: show }
+
 genre:
   url:     /genre/:genres_path
   class:   sfPropelRoute
