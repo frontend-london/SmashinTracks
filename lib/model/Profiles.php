@@ -94,4 +94,13 @@ class Profiles extends BaseProfiles {
             return $genres_objects;
         }
 
+        public function getProfilesPhotoPath() {
+            if($this->getProfilesPhoto()) {
+                $path = 'images/profiles/small/'.$this->getProfilesPath().'.jpg';
+            } else {
+                $path = 'images/icons/default_profile.png';
+            }
+            return $path;
+        }
+
 } // Profiles

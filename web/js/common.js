@@ -1,4 +1,6 @@
-
+function closeMp3Player() {
+    $('div#mp3player').css("display", "none");
+}
 
 $(window).load (
 	function() {
@@ -116,6 +118,40 @@ $(window).load (
 			event.preventDefault();
 			$('div#bw-div12').empty();
 		});
+
+		$("a.track-player").mouseenter(function(event){
+			$("img", this).attr("src", 'images/icons/player-on.png');
+		});
+
+		$("a.track-player").mouseleave(function(event){
+                    $("img", this).attr("src", 'images/icons/player-off.png');
+		});
+
+		$("a.track-player").click(function(event){
+                    event.preventDefault();
+
+                    
+                    fp_src=$(".fp_src",this).attr('title');
+                    fp_ico=$(".fp_ico",this).attr('title');
+                    fp_artist=$(".fp_artist",this).attr('title');
+                    fp_address=$(".fp_address",this).attr('title');
+                    fp_title=$(".fp_title",this).attr('title');
+                    fp_prize=$(".fp_prize",this).attr('title');
+                    fp_add_wishlist=$(".fp_add_wishlist",this).attr('title');
+                    fp_remove_wishlist=$(".fp_remove_wishlist",this).attr('title');
+                    
+
+                     $('div#mp3player').show(1, function() {
+                        //smashinPlayer.playSample(fp_src,fp_ico,fp_artist,fp_address,fp_add_wishlist,fp_remove_wishlist,fp_title,fp_prize);
+                        document.getElementById('smashinPlayer').playSample(fp_src,fp_ico,fp_artist,fp_address,fp_add_wishlist,fp_remove_wishlist,fp_title,fp_prize);
+                      });
+                    
+		});
+
+		$("a#mp-close").click(function(event){
+                    event.preventDefault();
+                    closeMp3Player();
+		});
 		
 	}
 );
@@ -138,7 +174,9 @@ $(document).ready
 		}).next().hide()	*/
 
 		//$( ".bf1d-question" ).accordion( "option", "animated", 'bounceslide',  "option", "header", 'h3'  );
-		
+
+                //alert(screen.height);
+
 		$( "#bf1-questions" ).accordion({ 
 			active: 0,
 			collapsible: true,

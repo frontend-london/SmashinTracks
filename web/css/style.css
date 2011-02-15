@@ -862,6 +862,13 @@ div.tracksale a.track-profil { text-transform:uppercase; margin-top:3px;}
 	background-color:#fff;
 }
 
+.track-player img {
+	background-position:top left;
+	background-repeat:no-repeat;
+}
+
+.track-player span { display: none;}
+
 a.tp-new { background-image:url(../images/icons/track-new.gif); }
 
 a.tp-num { background-image:url(../images/icons/track-numbers.gif);  }
@@ -1349,3 +1356,21 @@ div#footer-copyright { text-align:center; font-size:9px; color:#848484; padding-
 div#footer-copyright a { color:#848484;}
 
 
+div#mp3player {
+    width:100%;
+    position: fixed;
+    height: 102px;
+    bottom:0px;
+    left:0px;
+    z-index:30;
+    background: black;
+    display:none;
+}
+
+div#mp3player a#mp-close {
+    position: absolute;
+    color: aqua;
+    display:block;
+    top:0;
+    left:50%;
+}

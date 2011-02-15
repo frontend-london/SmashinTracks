@@ -8,9 +8,16 @@
         <link rel="shortcut icon" href="favicon.ico" />
         <?php include_stylesheets() ?>
         <?php include_javascripts() ?>
-
 </head>
 <body>
+        <div id="mp3player">
+            <div id="mp3player-inner">
+                <div id="noFlash">
+                    <font>Do poprawnego wyświetlenia strony, wymagana jest wtyczka Flash Player'a w wersji 10.0 lub wyższej.</font><br/>
+                    <a href="http://www.macromedia.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" target="_self"><font class="link">możesz ją sciągnąć TUTAJ.</font></a>
+                </div>
+            </div>
+        </div>
 	<div id="wrap">
     	<div id="wrap-inner">
             <div id="header">

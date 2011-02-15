@@ -20,7 +20,8 @@ abstract class BaseProfilesForm extends BaseFormPropel
       'profiles_password'     => new sfWidgetFormInputText(),
       'profiles_text'         => new sfWidgetFormInputText(),
       'profiles_date'         => new sfWidgetFormDateTime(),
-      'profiles_photo_path'   => new sfWidgetFormInputText(),
+      'profiles_path'         => new sfWidgetFormInputText(),
+      'profiles_photo'        => new sfWidgetFormInputText(),
       'profiles_balance'      => new sfWidgetFormInputText(),
       'profiles_blocked'      => new sfWidgetFormInputText(),
       'profiles_deleted'      => new sfWidgetFormInputText(),
@@ -35,7 +36,8 @@ abstract class BaseProfilesForm extends BaseFormPropel
       'profiles_password'     => new sfValidatorString(array('max_length' => 32)),
       'profiles_text'         => new sfValidatorString(array('max_length' => 500)),
       'profiles_date'         => new sfValidatorDateTime(),
-      'profiles_photo_path'   => new sfValidatorString(array('max_length' => 32, 'required' => false)),
+      'profiles_path'         => new sfValidatorString(array('max_length' => 200)),
+      'profiles_photo'        => new sfValidatorInteger(array('min' => -128, 'max' => 127)),
       'profiles_balance'      => new sfValidatorInteger(array('min' => -2147483648, 'max' => 2147483647)),
       'profiles_blocked'      => new sfValidatorInteger(array('min' => -128, 'max' => 127)),
       'profiles_deleted'      => new sfValidatorInteger(array('min' => -128, 'max' => 127)),
@@ -47,7 +49,7 @@ abstract class BaseProfilesForm extends BaseFormPropel
       new sfValidatorAnd(array(
         new sfValidatorPropelUnique(array('model' => 'Profiles', 'column' => array('profiles_name'))),
         new sfValidatorPropelUnique(array('model' => 'Profiles', 'column' => array('profiles_email'))),
-        new sfValidatorPropelUnique(array('model' => 'Profiles', 'column' => array('profiles_photo_path'))),
+        new sfValidatorPropelUnique(array('model' => 'Profiles', 'column' => array('profiles_path'))),
       ))
     );
 
