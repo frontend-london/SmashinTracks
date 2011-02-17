@@ -25,6 +25,7 @@ class homeActions extends sfActions
     //exit();
 
     $this->newtracks = TracksPeer::getNewTracks();
+    $this->newtracks_genres = GenresPeer::getNewTracksGenres();
 
     $this->bestsellerstracks = TracksPeer::getBestsellersTracks(sfConfig::get('app_homepage_bestsellers_period'), 10);
   }

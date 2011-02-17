@@ -36,6 +36,32 @@ class GenresPeer extends BaseGenresPeer {
             return self::doSelect($seeAlsoCriteria);
 	}
 
+        public static function getNewTracksGenres() {
+            $tracks = TracksPeer::getNewTracks();
+            $tracks_genres = array();
+            foreach($tracks as $track) {
+                $genres = $track->getTracksGenress();
+                foreach($genres as $genre) {
+                    if(!empty($tracks_genres[$genre->getGenresId()])) $tracks_genres[$genre->getGenresId()]++; else $tracks_genres[$genre->getGenresId()] = 1;
+                }
+            }
+            arsort ($tracks_genres); // sortowanie od największego
+
+            $counter = 0;
+            $genres_ids = array();
+            foreach($tracks_genres as $genre_key => $genre_value) {
+                $counter++;
+                if($counter>sfConfig::get('app_homepage_genres_new_tracks')) break;
+                $genres_ids[] = $genre_key; // wydobycie największych kluczy
+            }
+
+            $criteria = new Criteria();
+            $criteria->add(GenresPeer::GENRES_ID, $genres_ids, Criteria::IN);
+            $genres_objects = GenresPeer::doSelect($criteria);
+
+            return $genres_objects;
+        }
+
 
 
 } // GenresPeer

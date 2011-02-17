@@ -48,7 +48,8 @@
                         </div>                
                         <div class="bw-div2">
                             <div class="bw-div2-text">
-                                <strong>New tracks in:</strong>  <a href="#">BASSLINE HOUSE</a>, <a href="#">ORGAN</a>, <a href="#">ELECTROLINE</a>, <a href="#">HARDCORE BREAKS</a>
+                                <strong>New tracks in:</strong>
+                                <?$counter=0; foreach($newtracks_genres as $genre):?><?if($counter>0):?>, <?endif;?><a href="<?=url_for('genre', $genre)?>"><?echo $genre->getGenresName();?></a><?$counter++; endforeach;?>
                             </div>
                             <div class="button-fulllist bw-div2-button">
                                 <div class="button-left"></div>
@@ -77,7 +78,7 @@
                         </div>                
                         <div class="bw-div2">
                             <div class="bw-div2-text">
-                                <strong>See also:</strong>  <a href="#">CHARTS</a>, <a href="#">TOP ARTISTS</a>, <a href="#">OUR RECOMENNDS TRACKS</a>, <a href="#">NEW TRACKS</a>
+                                <strong>See also:</strong>  <a href="#">CHARTS</a>, <a href="#">TOP ARTISTS</a>, <a href="#">NEW TRACKS</a>
                             </div>
                             <div class="button-fulllist bw-div2-button">
                                 <div class="button-left"></div>
