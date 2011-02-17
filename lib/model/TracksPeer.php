@@ -51,7 +51,7 @@ class TracksPeer extends BaseTracksPeer {
         return self::doSelectOne(self::addActiveTracksCriteria($criteria));
     }
 
-    static public function getRecommendedTracks(Criteria $criteria = null)
+    /*static public function getRecommendedTracks(Criteria $criteria = null)
     {
 
         if ($criteria === null) {
@@ -64,6 +64,38 @@ class TracksPeer extends BaseTracksPeer {
         //$criteria
 
         return self::getActiveTracks($criteria);
+    }*/
+
+    static public function getNewTracks(Criteria $criteria = null) {
+        
+        if ($criteria === null) {
+                $criteria = new Criteria(TracksPeer::DATABASE_NAME);
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+        
+        $criteria->addDescendingOrderByColumn(TracksPeer::TRACKS_DATE);
+        $criteria->setLimit(10);
+
+        return self::getActiveTracks($criteria);
+    }
+
+    static public function getBestsellersTracks($period = null, $amount = 30) {
+        $criteria = new Criteria();
+        $criteria->addJoin(TracksPeer::TRACKS_ID, TransactionsTracksPeer::TRACKS_ID);
+        if($period!=null) {
+            $criteria->addJoin(TransactionsTracksPeer::TRANSACTIONS_ID, TransactionsPeer::TRANSACTIONS_ID);
+            $criteria->add(TransactionsPeer::TRANSACTIONS_DATE, time() - 86400 * $period, Criteria::GREATER_THAN);
+        }
+        $criteria->addGroupByColumn(TracksPeer::TRACKS_ID);
+        $criteria->addDescendingOrderByColumn('COUNT('.TracksPeer::TRACKS_ID.')'); // sortowanie po ilości tracków sprzedanych
+        $criteria->setLimit($amount);
+        $tracks = TracksPeer::doSelect($criteria);
+        return $tracks;
+        //getTransactionsTrackss
+        
     }
 
 } // TracksPeer

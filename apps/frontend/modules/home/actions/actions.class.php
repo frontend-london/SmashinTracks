@@ -19,6 +19,13 @@ class homeActions extends sfActions
   {
     //$this->forward('default', 'module');
     //$recommended = TracksPeer::getRecommendedTracks();
-    $this->recommended = TracksRecommendsPeer::doSelect(new Criteria());
+      //$criteria = new Criteria();
+      //$criteria->setLimit(10);
+    $this->recommended = TracksRecommendsPeer::getRecommendedTracks();
+    //exit();
+
+    $this->newtracks = TracksPeer::getNewTracks();
+
+    $this->bestsellerstracks = TracksPeer::getBestsellersTracks(sfConfig::get('app_homepage_bestsellers_period'), 10);
   }
 }

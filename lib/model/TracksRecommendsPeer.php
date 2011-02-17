@@ -18,4 +18,17 @@
  */
 class TracksRecommendsPeer extends BaseTracksRecommendsPeer {
 
+    public static function getRecommendedTracks($criteria = null) {
+        if ($criteria === null) {
+            $criteria = new Criteria(TracksPeer::DATABASE_NAME);
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+        $criteria->addDescendingOrderByColumn(TracksRecommendsPeer::TRACKS_RECOMMENDS_ORDER);
+        $criteria->add(TracksRecommendsPeer::TRACKS_RECOMMENDS_ACTIVE, true);
+        $criteria->setLimit(10);
+        return self::doSelect($criteria);
+    }
 } // TracksRecommendsPeer

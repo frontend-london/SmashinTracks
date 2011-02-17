@@ -70,9 +70,4 @@
                     </form>
                 </div>
 
-                <div id="box-footer-border">
-                    <div id="bf-paypal">
-                        <a href="#"><img src="images/icons/paypal.gif" alt="PayPal" /></a>
-                    </div>
-                    <div class="clear"></div>
-                </div>
+                <?php include_partial('metadata/footer', array('border' => true, 'share' => false)) ?>

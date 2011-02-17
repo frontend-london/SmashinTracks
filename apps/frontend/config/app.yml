@@ -23,3 +23,5 @@ all:
   contact_form_mail_from: no-reply@smashintracks.com
   # contact form mail to
   contact_form_mail_to: office@smashintracks.com
+  # z ilu ostatnich dniach pokazuje bestsellery na głównej
+  homepage_bestsellers_period: 7
