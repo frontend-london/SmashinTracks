@@ -13,9 +13,15 @@
                         <div id="br-div1">Here's a hand picked selection of smashing tracks personally recommended by <a href="#" class="underline">Smashintracks.com</a> in this week.</div>
                         <div id="br-tracks">
 
-                            <?$counter=0; foreach ($recommended as $recom):?>
+                            <?$counter=0; $hidden_recom = false; foreach ($recommended as $recom):?>
+                                <?if($counter==5): $hidden_recom = true;?>
+                                    <div id="br-hidden">
+                                <?endif;?>
                                 <?php include_partial('metadata/record', array('track' => $recom->getTracks())) ?>
                             <?$counter++; endforeach;?>
+                            <?if($hidden_recom):?>
+                                </div>
+                            <?endif;?>
                             
                             <div class="clear"></div>
                             

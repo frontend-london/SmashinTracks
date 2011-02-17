@@ -142,7 +142,6 @@ $(window).load (
                     
 
                      $('div#mp3player').show(1, function() {
-                        //smashinPlayer.playSample(fp_src,fp_ico,fp_artist,fp_address,fp_add_wishlist,fp_remove_wishlist,fp_title,fp_prize);
                         document.getElementById('smashinPlayer').playSample(fp_src,fp_ico,fp_artist,fp_address,fp_add_wishlist,fp_remove_wishlist,fp_title,fp_prize);
                       });
                     
@@ -151,6 +150,13 @@ $(window).load (
 		$("a#mp-close").click(function(event){
                     event.preventDefault();
                     closeMp3Player();
+		});
+
+		$("a#bs-arrow").click(function(event){
+                    event.preventDefault();
+                    $("div#br-hidden").slideToggle();
+                    $(this).toggleClass('arrow-bottom-big');
+                    $(this).toggleClass('arrow-top-big');
 		});
 		
 	}

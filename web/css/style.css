@@ -461,6 +461,7 @@ div#box-recommends2 { margin-top:24px;}
 div#box-recommends img#br-img1, div#box-recommends2 img#br-img1 { padding-top:28px;}
 div#box-recommends div#br-div1, div#box-recommends2 div#br-div1 {font-size:13px; line-height:17px; padding-top:15px; font-weight:bold; padding-right:50px;}
 div#box-recommends div#br-tracks, div#box-recommends2 div#br-tracks { padding-left:2px; padding-top:25px;}
+div#box-recommends div#br-hidden { display: none;}
 
 div#box-paymethod { margin-top:11px;}
 div#box-paymethod img#bp-img1 { margin-top:35px; margin-bottom:26px; margin-left:108px;}
@@ -984,6 +985,7 @@ div.track-users { padding-top:20px;}
 div.track-plays span, div.track-users span { font-weight:bold; color:#3e3e3e; float:right;}
 
 a.arrow-bottom-big { display:block; background:url(../images/arrows/blue-bottom-big.gif) no-repeat; width:19px; height:17px;}
+a.arrow-top-big { display:block; background:url(../images/arrows/blue-top-big.gif) no-repeat; width:19px; height:17px;}
 a.arrow-top { display:block; width:11px; height:6px; background:url(../images/arrows/blue-top.gif) no-repeat;}
 a.arrow-bottom { display:block; width:11px; height:6px; background:url(../images/arrows/blue-bottom.gif) no-repeat;}
 
