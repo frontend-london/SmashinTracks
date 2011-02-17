@@ -15,10 +15,6 @@ class chartsActions extends sfActions
   *
   * @param sfRequest $request A request object
   */
-  public function executeIndex(sfWebRequest $request)
-  {
-    $this->forward('default', 'module');
-  }
 
   public function executeNewTracks(sfWebRequest $request) {
     //$this->newtracks = TracksPeer::getNewTracks();
@@ -28,4 +24,13 @@ class chartsActions extends sfActions
     $this->pager->setPage($request->getParameter('page', 1)); // 1 = domyślna wartość
     $this->pager->init();
   }
+
+  public function executeShow(sfWebRequest $request) {
+    $period = $this->getRequestParameter('period');
+    $this->subsection = $this->getRequestParameter('subsection');
+    //echo $subsection;
+    $this->tracks = TracksPeer::getBestsellersTracks($period, 30);
+    
+  }
+
 }

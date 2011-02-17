@@ -14,7 +14,7 @@ all:
   # domyślna cena, format tekstowy
   default_prize_string: £1.40
   # okres w dniach kiedy track jest nowy
-  track_new_period: 5
+  track_new_period: 13
   # lista tracków na stronie - do stronicowania
   max_tracks_on_list: 10
   # maksymalna długość opisu artysty na podstronie Artists

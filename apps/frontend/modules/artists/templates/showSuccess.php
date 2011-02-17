@@ -1,4 +1,4 @@
-<div id="centerside">
+            <div id="centerside">
                 <div class="box-white" id="box-top">
                     <img src="images/texts/artists.gif" alt="Artists" />
                     <div class="bw-div1">
@@ -33,7 +33,7 @@
                         </div>
                         <div class="bw-div2">
                             <div class="bw-div2-text">
-                                <strong>See also:</strong>  <a href="#">ALL ARTISTS</a>, <a href="#">ARTIST WITH FRESH TRACKS</a>, <a href="#">CHARTS</a>
+                                <strong>See also:</strong>  <a href="<?=url_for('artists_all')?>">ALL ARTISTS</a>, <a href="<?=url_for('charts')?>">CHARTS</a>
                             </div>
                             <div class="clear"></div>
                         </div>

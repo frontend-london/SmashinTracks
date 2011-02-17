@@ -9,6 +9,18 @@ artists_all:
   url:     /artists/all
   param: { module: artists, action: showAll, section: artists }
 
+charts:
+  url:     /charts
+  param: { module: charts, action: show, section: charts, subsection: this_week, period: 7 }
+
+charts_3months:
+  url:     /charts/last-3-months
+  param: { module: charts, action: show, section: charts, subsection: last_3_months, period: 92 }
+
+charts_all:
+  url:     /charts/all-time
+  param: { module: charts, action: show, section: charts, subsection: all_time, period: null }
+
 faq:
   url:     /faq
   param: { module: faq, action: show, section: faq }

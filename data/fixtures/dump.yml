@@ -765,10 +765,34 @@ TextsFaq:
     texts_faq_question: 'Maecenas laoreet vehicula nisl, lobortis molestie dolor blandit eu?'
     texts_faq_answer: 'Etiam justo ante, condimentum eu varius non, laoreet aliquet felis. Mauris auctor feugiat turpis nec rutrum. Phasellus semper tristique lacus a facilisis. Donec eleifend dui sit amet tortor tincidunt viverra. Integer commodo nisl sed justo porttitor vel tincidunt purus suscipit. In porttitor enim sit amet purus vestibulum porta. Duis ac neque dolor. Maecenas sit amet dolor id odio sodales facilisis at in purus.'
     texts_faq_order: '3'
+  TextsFaq_4:
+    texts_faq_question: 'Pellentesque et nisi a sapien congue facilisis?'
+    texts_faq_answer: 'Etiam justo ante, condimentum eu varius non, laoreet aliquet felis. Mauris auctor feugiat turpis nec rutrum. Phasellus semper tristique lacus a facilisis. Donec eleifend dui sit amet tortor tincidunt viverra. Integer commodo nisl sed justo porttitor vel tincidunt purus suscipit. In porttitor enim sit amet purus vestibulum porta. Duis ac neque dolor. Maecenas sit amet dolor id odio sodales facilisis at in purus.'
+    texts_faq_order: '4'
+  TextsFaq_5:
+    texts_faq_question: 'Maecenas laoreet vehicula nisl, lobortis molestie dolor blandit eu?'
+    texts_faq_answer: 'Etiam justo ante, condimentum eu varius non, laoreet aliquet felis. Mauris auctor feugiat turpis nec rutrum. Phasellus semper tristique lacus a facilisis. Donec eleifend dui sit amet tortor tincidunt viverra. Integer commodo nisl sed justo porttitor vel tincidunt purus suscipit. In porttitor enim sit amet purus vestibulum porta. Duis ac neque dolor. Maecenas sit amet dolor id odio sodales facilisis at in purus.'
+    texts_faq_order: '5'
+  TextsFaq_6:
+    texts_faq_question: 'Maecenas sit amet dolor id odio sodales facilisis at in purus?'
+    texts_faq_answer: 'Etiam justo ante, condimentum eu varius non, laoreet aliquet felis. Mauris auctor feugiat turpis nec rutrum. Phasellus semper tristique lacus a facilisis. Donec eleifend dui sit amet tortor tincidunt viverra. Integer commodo nisl sed justo porttitor vel tincidunt purus suscipit. In porttitor enim sit amet purus vestibulum porta. Duis ac neque dolor. Maecenas sit amet dolor id odio sodales facilisis at in purus.'
+    texts_faq_order: '6'
+  TextsFaq_7:
+    texts_faq_question: 'Fusce ullamcorper malesuada elit a ultrices?'
+    texts_faq_answer: 'Etiam justo ante, condimentum eu varius non, laoreet aliquet felis. Mauris auctor feugiat turpis nec rutrum. Phasellus semper tristique lacus a facilisis. Donec eleifend dui sit amet tortor tincidunt viverra. Integer commodo nisl sed justo porttitor vel tincidunt purus suscipit. In porttitor enim sit amet purus vestibulum porta. Duis ac neque dolor. Maecenas sit amet dolor id odio sodales facilisis at in purus.'
+    texts_faq_order: '7'
+  TextsFaq_8:
+    texts_faq_question: 'Ut suscipit, odio quis lobortis adipiscing, sapien purus mestie sapien?'
+    texts_faq_answer: 'Etiam justo ante, condimentum eu varius non, laoreet aliquet felis. Mauris auctor feugiat turpis nec rutrum. Phasellus semper tristique lacus a facilisis. Donec eleifend dui sit amet tortor tincidunt viverra. Integer commodo nisl sed justo porttitor vel tincidunt purus suscipit. In porttitor enim sit amet purus vestibulum porta. Duis ac neque dolor. Maecenas sit amet dolor id odio sodales facilisis at in purus.'
+    texts_faq_order: '8'
+  TextsFaq_9:
+    texts_faq_question: 'Pellentesque et nisi a sapien congue facilisis?'
+    texts_faq_answer: 'Etiam justo ante, condimentum eu varius non, laoreet aliquet felis. Mauris auctor feugiat turpis nec rutrum. Phasellus semper tristique lacus a facilisis. Donec eleifend dui sit amet tortor tincidunt viverra. Integer commodo nisl sed justo porttitor vel tincidunt purus suscipit. In porttitor enim sit amet purus vestibulum porta. Duis ac neque dolor. Maecenas sit amet dolor id odio sodales facilisis at in purus.'
+    texts_faq_order: '9'
 Texts:
   Texts_1:
-    texts_name: terms-conditions
-    texts_value: tekst
+    texts_name: terms
+    texts_value: "                        <p>Aliquam vulputate vulputate pulvinar. Suspendisse sit amet pretium lorem. Quisque eget odio nisl. Phasellus vel orci ante, in convallis nisl. Maecenas sagittis velit at nibh convallis sed ornare nisi auctor. Cras rhoncus, diam eu congue ultrices, urna ipsum laoreet est, ac accumsan velit lectus sed quam. Vivamus ut lectus et enim cursus lobortis eu ac nulla. Aenean pharetra ullamcorper urna id dapibus. Nullam tempus, quam et elementum tincidunt, ante erat porttitor urna, id dictum nisl erat a neque. Proin id condimentum ante. Maecenas ut suscipit augue. Suspendisse dui risus, sollicitudin at viverra sed, bibendum sit amet eros. Proin commodo eros eu libero aliquet non vehicula metus venenatis.</p>\r\n                       <br /> \r\n                        <p>Nullam tincidunt risus ac ipsum semper faucibus. Donec accumsan sagittis urna vitae fringilla. Quisque luctus consectetur fringilla. Nunc volutpat, nisi eu dignissim iaculis, orci est vehicula quam, sed aliquam mi est sed felis. Nulla pretium nunc odio. Aenean dictum eleifend tortor, vel suscipit est tempor consequat. Proin non lorem risus. Cras dignissim fermentum magna vel suscipit. Pellentesque nec est quis dolor ornare fringilla. Suspendisse potenti. Phasellus a cursus nisi. </p>"
   Texts_2:
     texts_name: zalogowany-upload-track
     texts_value: tekst
@@ -1092,10 +1116,50 @@ TracksRecommends:
   TracksRecommends_2:
     tracks_id: Tracks_19
     tracks_recommends_order: '2'
-    tracks_recommends_active: '0'
+    tracks_recommends_active: '1'
+  TracksRecommends_3:
+    tracks_id: Tracks_20
+    tracks_recommends_order: '3'
+    tracks_recommends_active: '1'
+  TracksRecommends_4:
+    tracks_id: Tracks_44
+    tracks_recommends_order: '4'
+    tracks_recommends_active: '1'
+  TracksRecommends_5:
+    tracks_id: Tracks_36
+    tracks_recommends_order: '5'
+    tracks_recommends_active: '1'
+  TracksRecommends_6:
+    tracks_id: Tracks_22
+    tracks_recommends_order: '6'
+    tracks_recommends_active: '1'
+  TracksRecommends_7:
+    tracks_id: Tracks_50
+    tracks_recommends_order: '7'
+    tracks_recommends_active: '1'
+  TracksRecommends_8:
+    tracks_id: Tracks_27
+    tracks_recommends_order: '8'
+    tracks_recommends_active: '1'
+  TracksRecommends_9:
+    tracks_id: Tracks_33
+    tracks_recommends_order: '9'
+    tracks_recommends_active: '1'
+  TracksRecommends_10:
+    tracks_id: Tracks_34
+    tracks_recommends_order: '10'
+    tracks_recommends_active: '1'
+  TracksRecommends_11:
+    tracks_id: Tracks_46
+    tracks_recommends_order: '11'
+    tracks_recommends_active: '1'
+  TracksRecommends_12:
+    tracks_id: Tracks_49
+    tracks_recommends_order: '12'
+    tracks_recommends_active: '1'
 Transactions:
   Transactions_1:
-    transactions_date: '2011-01-30 23:52:21'
+    transactions_date: '2011-02-16 23:52:21'
     transactions_paymethod: '1'
   Transactions_2:
     transactions_date: '2011-01-30 23:52:34'
@@ -1115,7 +1179,7 @@ TransactionsTracks:
     tracks_id: Tracks_18
     tracks_path: 37Z5k57Vdwqq4iR36aCYPLvWw9l5XUVg
   TransactionsTracks_4:
-    transactions_id: Transactions_1
+    transactions_id: Transactions_2
     tracks_id: Tracks_38
     tracks_path: asasdasd
   TransactionsTracks_5:
@@ -1123,7 +1187,7 @@ TransactionsTracks:
     tracks_id: Tracks_25
     tracks_path: gagwgw
   TransactionsTracks_6:
-    transactions_id: Transactions_1
+    transactions_id: Transactions_2
     tracks_id: Tracks_31
     tracks_path: gwgwwwwwwe
   TransactionsTracks_7:
