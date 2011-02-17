@@ -21,5 +21,9 @@ class Smashin
        $dif = $end_date - $start_date;
        return $dif;
     }
+
+    public static function generate_url_for($route_name, $route_object = null) {
+        if($route_object) return url_for($route_name, $route_object); else return url_for($route_name);
+    }
 }
 ?>

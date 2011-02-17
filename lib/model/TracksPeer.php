@@ -51,8 +51,7 @@ class TracksPeer extends BaseTracksPeer {
         return self::doSelectOne(self::addActiveTracksCriteria($criteria));
     }
 
-    /*static public function getRecommendedTracks(Criteria $criteria = null)
-    {
+    static public function addNewTracksCriteria(Criteria $criteria = null, $amount = null) {
 
         if ($criteria === null) {
                 $criteria = new Criteria(TracksPeer::DATABASE_NAME);
@@ -61,25 +60,18 @@ class TracksPeer extends BaseTracksPeer {
         {
                 $criteria = clone $criteria;
         }
-        //$criteria
 
-        return self::getActiveTracks($criteria);
-    }*/
-
-    static public function getNewTracks(Criteria $criteria = null) {
-        
-        if ($criteria === null) {
-                $criteria = new Criteria(TracksPeer::DATABASE_NAME);
-        }
-        elseif ($criteria instanceof Criteria)
-        {
-                $criteria = clone $criteria;
-        }
-        
         $criteria->addDescendingOrderByColumn(TracksPeer::TRACKS_DATE);
-        $criteria->setLimit(10);
 
-        return self::getActiveTracks($criteria);
+        if($amount!=null) $criteria->setLimit($amount);
+
+//        return self::getActiveTracks($criteria);
+        return self::addActiveTracksCriteria($criteria);
+    }
+
+    static public function getNewTracks(Criteria $criteria = null, $amount = null) {
+        
+        return self::doSelect(self::addNewTracksCriteria($criteria, $amount));
     }
 
     static public function getBestsellersTracks($period = null, $amount = 30) {

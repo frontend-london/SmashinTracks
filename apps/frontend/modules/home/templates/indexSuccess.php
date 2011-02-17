@@ -54,7 +54,7 @@
                             <div class="button-fulllist bw-div2-button">
                                 <div class="button-left"></div>
                                 <div class="button-right"></div>
-                                <a href="#">Full List</a>
+                                <a href="<?=url_for('new-tracks')?>">Full List</a>
                             </div>
                             <div class="clear"></div>
                         </div>
@@ -87,12 +87,7 @@
                             </div>
                             <div class="clear"></div>
                         </div>
-                </div>              
-                <div id="box-footer">
-                    <div id="bf-paypal">
-                        <a href="#"><img src="images/icons/paypal.gif" alt="PayPal" /></a>
-                    </div>
+                </div>
 
-                    <div class="clear"></div>
-                </div>       
+                <?php include_partial('metadata/footer', array('facebook' => true)) ?>
             

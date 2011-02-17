@@ -29,6 +29,10 @@ contact_thankyou:
   url:     /contact/thankyou
   param: { module: contact, action: thankyou, section: contact }
 
+new-tracks:
+  url:     /new-tracks
+  param: { module: charts, action: newTracks, section: charts }
+
 profile:
   url:     /profile/:profiles_path
   class:   sfPropelRoute
@@ -52,7 +56,7 @@ track:
 # default rules
 homepage:
   url:   /
-  param: { module: home, action: index, section: home }
+  param: { module: home, action: index, section: home, facebook: true }
 
 # generic rules
 # please, remove them by adding more specific rules

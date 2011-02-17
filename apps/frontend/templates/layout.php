@@ -54,7 +54,7 @@
             <div id="leftside">
                 <?php include_component('metadata', 'menuleft') ?>
             </div>
-            <div id="centerside">
+            <div id="centerside<?if($sf_request->getParameter('facebook')):?>-fb<?endif;?>">
                 <?php echo $sf_content ?>
             </div>
             <div id="rightside">
@@ -81,7 +81,6 @@
             <li<?if($sf_request->getParameter('section')=='home'):?> class="active"<?endif;?>><a href="<?="http://{$_SERVER['SERVER_NAME']}{$sf_request->getRelativeUrlRoot()}/"?>">HOME</a></li>
             <li<?if($sf_request->getParameter('section')=='charts'):?> class="active"<?endif;?>><a href="#">CHARTS</a></li>
             <li<?if($sf_request->getParameter('section')=='artists'):?> class="active"<?endif;?>><a href="<?=url_for('artists')?>">ARTIST</a></li>
-            <li<?if($sf_request->getParameter('section')=='artists'):?> class="active"<?endif;?>><a href="<?=url_for('artists')?>">TOP ARTIST</a></li>
             <li<?if($sf_request->getParameter('section')=='faq'):?> class="active"<?endif;?>><a href="<?=url_for('faq')?>">FAQ</a></li>
             <li<?if($sf_request->getParameter('section')=='terms'):?> class="active"<?endif;?>><a href="<?=url_for('terms')?>">TERMS &amp; CONDITIONS</a></li>
             <li class="<?if($sf_request->getParameter('section')=='contact'):?>active <?endif;?>last"><a href="<?=url_for('contact')?>">CONTACT</a></li>

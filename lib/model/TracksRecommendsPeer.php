@@ -18,9 +18,9 @@
  */
 class TracksRecommendsPeer extends BaseTracksRecommendsPeer {
 
-    public static function getRecommendedTracks($criteria = null) {
+    public static function getActiveTracksRecommends($criteria = null, $amount = 10) {
         if ($criteria === null) {
-            $criteria = new Criteria(TracksPeer::DATABASE_NAME);
+            $criteria = new Criteria(TracksRecommendsPeer::DATABASE_NAME);
         }
         elseif ($criteria instanceof Criteria)
         {
@@ -28,7 +28,8 @@ class TracksRecommendsPeer extends BaseTracksRecommendsPeer {
         }
         $criteria->addAscendingOrderByColumn(TracksRecommendsPeer::TRACKS_RECOMMENDS_ORDER);
         $criteria->add(TracksRecommendsPeer::TRACKS_RECOMMENDS_ACTIVE, true);
-        $criteria->setLimit(10);
+        $criteria->setLimit($amount);
         return self::doSelect($criteria);
     }
+    
 } // TracksRecommendsPeer
