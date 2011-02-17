@@ -12,6 +12,10 @@
                         <img src="images/texts/recommends-10-smashin-tracks.gif" alt="Recommends 10 Smashin Tracks" id="br-img1" />
                         <div id="br-div1">Here's a hand picked selection of smashing tracks personally recommended by <a href="#" class="underline">Smashintracks.com</a> in this week.</div>
                         <div id="br-tracks">
+
+                            <?$counter=0; foreach ($recommended as $recom):?>
+                                <?php //echo $recom->getTracks()->getTracksTitle();?> test<br>
+                            <?$counter++; endforeach;?>
                         
                             <div class="track">
                                 <a href="#" class="track-player tp-new"><img src="images/tmp/track1.gif" alt="" /></a>

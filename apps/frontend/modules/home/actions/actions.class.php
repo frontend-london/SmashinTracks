@@ -18,5 +18,7 @@ class homeActions extends sfActions
   public function executeIndex(sfWebRequest $request)
   {
     //$this->forward('default', 'module');
+    //$recommended = TracksPeer::getRecommendedTracks();
+    $this->recommended = TracksRecommendsPeer::doSelect(new Criteria());
   }
 }

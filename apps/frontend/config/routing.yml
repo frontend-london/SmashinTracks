@@ -25,6 +25,10 @@ contact:
   url:     /contact
   param: { module: contact, action: show, section: contact }
 
+contact_thankyou:
+  url:     /contact/thankyou
+  param: { module: contact, action: thankyou, section: contact }
+
 profile:
   url:     /profile/:profiles_path
   class:   sfPropelRoute

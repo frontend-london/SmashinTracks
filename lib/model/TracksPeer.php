@@ -51,4 +51,19 @@ class TracksPeer extends BaseTracksPeer {
         return self::doSelectOne(self::addActiveTracksCriteria($criteria));
     }
 
+    static public function getRecommendedTracks(Criteria $criteria = null)
+    {
+
+        if ($criteria === null) {
+                $criteria = new Criteria(TracksPeer::DATABASE_NAME);
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+        //$criteria
+
+        return self::getActiveTracks($criteria);
+    }
+
 } // TracksPeer

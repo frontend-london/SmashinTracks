@@ -19,3 +19,7 @@ all:
   max_profile_short_text_length: 80
   # liczba gatunków przy profilu
   profile_genres_amount: 2
+  # contact form mail from
+  contact_form_mail_from: no-reply@smashintracks.com
+  # contact form mail to
+  contact_form_mail_to: office@smashintracks.com
