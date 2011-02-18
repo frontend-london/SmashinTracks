@@ -22,8 +22,8 @@
 
                 <div class="box-silver" id="box-paymethod">
                     <div class="bs-inner">
-						<a href="#"><img src="images/buttons/pay-paypal.gif" alt="Check out with PayPal" id="bp-img1" width="143" height="37" /></a>
-						<a href="#"><img src="images/buttons/pay2-smashintracks.gif" alt="Zapłać pieniędzmi zarobionymi na SmashinTracks.com" id="bp-img2" width="144" height="51" /></a>
+                        <a href="<?=url_for('basket_paypal_checkout');?>"><img src="images/buttons/pay-paypal.gif" alt="Check out with PayPal" id="bp-img1" width="143" height="37" /></a>
+                        <a href="#"><img src="images/buttons/pay2-smashintracks.gif" alt="Zapłać pieniędzmi zarobionymi na SmashinTracks.com" id="bp-img2" width="144" height="51" /></a>
                     </div>
                     <div class="bs-bgr-bottom"></div>
                 </div>

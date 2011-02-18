@@ -40,11 +40,8 @@ class basketActions extends sfActions
     } else {
         $basket = new Basket();
     }
-
     $basket->addTrack($track->getTracksId());
     $oUser->setAttribute('basket',$basket);
-
-
     $this->redirect('basket');
     //$this->forward('basket', 'show');
   }
@@ -57,12 +54,19 @@ class basketActions extends sfActions
     } else {
         $basket = new Basket();
     }
-
     $basket->removeTrack($track->getTracksId());
     $oUser->setAttribute('basket',$basket);
-
-
     $this->redirect('basket');
     //$this->forward('basket', 'show');
   }
+
+  public function executePayPalCheckout() {
+      
+  }
+
+  public function executeDownload() {
+
+  }
+
+
 }

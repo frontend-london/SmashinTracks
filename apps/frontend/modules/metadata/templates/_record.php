@@ -2,6 +2,9 @@
     if(!isset($charts)) $charts = false;
     if(!isset($charts_num)) $charts_num = false;
     if(!isset($basket)) $basket = false;
+    if(!isset($download)) $download = false;
+    if(!isset($transactions_tracks)) $transactions_tracks = false;
+
 ?>
                                 <div class="track">
                                     <a href="mp3/<?=$track->getTracksPath(); ?>.mp3" class="track-player<?if($charts):?> tp-num tp-num-<?=$charts_num?><?elseif($track->isTrackNew()):?> tp-new<?endif;?>">
@@ -15,16 +18,21 @@
                                         <?if($charts && $track->isTrackNew()):?><div class="track-new"></div><?endif;?>
                                         <div class="clear"></div>
                                     </div>
-                                    <?if(!$basket):?>
-                                    <a href="<?=url_for('basket_add', $track)?>" class="track-right">
-                                        <span class="track-cart"></span>
-                                        <span class="track-buy">BUY NOW</span>
-                                        <span class="track-prize"><?=sfConfig::get('app_default_prize_string')?></span>
-                                    </a>
-                                    <?else:?>
+                                    <?if($basket):?>
                                         <a href="<?=url_for('basket_remove', $track)?>" class="track-right">
                                             <div class="track-bin"></div>
                                             <div class="track-remove">REMOVE</div>
+                                            <span class="track-prize"><?=sfConfig::get('app_default_prize_string')?></span>
+                                        </a>
+                                    <?elseif($download):?>
+                                        <a href="<?='mp3/download/'.$transactions_tracks->getTransactionsTracksId()?>" class="track-right">
+                                            <div class="track-download">DOWNLOAD</div>
+                                            <div class="track-download2">TRACK</div>
+                                        </a>
+                                    <?else:?>
+                                        <a href="<?=url_for('basket_add', $track)?>" class="track-right">
+                                            <span class="track-cart"></span>
+                                            <span class="track-buy">BUY NOW</span>
                                             <span class="track-prize"><?=sfConfig::get('app_default_prize_string')?></span>
                                         </a>
                                     <?endif;?>
