@@ -90,4 +90,13 @@ class TracksPeer extends BaseTracksPeer {
         
     }
 
+    static public function getBasketTracks(Basket $basket) {
+        $tracks = $basket->getTracksIds();
+        $criteria = new Criteria();
+        $criteria->add(self::TRACKS_ID, $tracks, Criteria::IN);
+        $criteria->addAscendingOrderByColumn('FIND_IN_SET('.self::TRACKS_ID.",'".implode(',', $tracks). "')");
+        $tracks = TracksPeer::doSelect($criteria);
+        return $tracks;
+    }
+
 } // TracksPeer

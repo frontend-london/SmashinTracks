@@ -9,6 +9,26 @@ artists_all:
   url:     /artists/all
   param: { module: artists, action: showAll, section: artists }
 
+basket:
+  url:     /basket
+  param: { module: basket, action: show, section: basket }
+
+basket_add:
+  url:     /basket/add/:tracks_id
+  class:   sfPropelRoute
+  options: { model: Tracks, type: object }
+  param: { module: basket, action: add, section: basket }
+  requirements:
+    sf_method: [get]
+
+basket_remove:
+  url:     /basket/remove/:tracks_id
+  class:   sfPropelRoute
+  options: { model: Tracks, type: object }
+  param: { module: basket, action: remove, section: basket }
+  requirements:
+    sf_method: [get]
+
 charts:
   url:     /charts
   param: { module: charts, action: show, section: charts, subsection: this_week, period: 7 }

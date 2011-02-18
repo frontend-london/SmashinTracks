@@ -1,6 +1,7 @@
 <?
     if(!isset($charts)) $charts = false;
     if(!isset($charts_num)) $charts_num = false;
+    if(!isset($basket)) $basket = false;
 ?>
                                 <div class="track">
                                     <a href="mp3/<?=$track->getTracksPath(); ?>.mp3" class="track-player<?if($charts):?> tp-num tp-num-<?=$charts_num?><?elseif($track->isTrackNew()):?> tp-new<?endif;?>">
@@ -14,11 +15,19 @@
                                         <?if($charts && $track->isTrackNew()):?><div class="track-new"></div><?endif;?>
                                         <div class="clear"></div>
                                     </div>
-                                    <a href="#" class="track-right">
+                                    <?if(!$basket):?>
+                                    <a href="<?=url_for('basket_add', $track)?>" class="track-right">
                                         <span class="track-cart"></span>
                                         <span class="track-buy">BUY NOW</span>
                                         <span class="track-prize"><?=sfConfig::get('app_default_prize_string')?></span>
                                     </a>
+                                    <?else:?>
+                                        <a href="<?=url_for('basket_remove', $track)?>" class="track-right">
+                                            <div class="track-bin"></div>
+                                            <div class="track-remove">REMOVE</div>
+                                            <span class="track-prize"><?=sfConfig::get('app_default_prize_string')?></span>
+                                        </a>
+                                    <?endif;?>
                                     <div class="track-row2">
                                         <div class="track-name"><a href="<?=url_for('track', $track)?>"><?=$track->getTracksTitleShorted(); ?></a></div>
                                         <div class="track-time"><?=$track->getTracksTimeFormatted(); ?></div>

@@ -25,5 +25,9 @@ class Smashin
     public static function generate_url_for($route_name, $route_object = null) {
         if($route_object) return url_for($route_name, $route_object); else return url_for($route_name);
     }
+
+    public static function generate_prize($prize) {
+        return sfConfig::get('app_default_prize_currency').number_format($prize, 2);
+    }
 }
 ?>

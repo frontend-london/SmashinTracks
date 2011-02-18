@@ -48,15 +48,10 @@ class Tracks extends BaseTracks {
             return $title;
         }
 
-        public function getTracksAge() {
-            $track_date = self::getTracksDate('Y-m-d');
-            $today = date("Y-m-d");
-            return Smashin::dateDiff($track_date, $today);
-        }
 
         public function isTrackNew() {
-            $track_age = $this->getTracksAge();
-            return ($track_age<sfConfig::get('app_track_new_period'));
+            $track_date = self::getTracksDate('U');
+            return((time() - 86400 * sfConfig::get('app_track_new_period'))<$track_date);
         }
 
 } // Tracks
