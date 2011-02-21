@@ -33,6 +33,10 @@ basket_paypal_checkout:
   url:     /basket/paypal-checkout
   param: { module: basket, action: payPalCheckout, section: basket }
 
+basket_paypal_checkout_test:
+  url:     /basket/paypal-checkout/123
+  param: { module: basket, action: payPalCheckout, section: basket }
+
 charts:
   url:     /charts
   param: { module: charts, action: show, section: charts, subsection: this_week, period: 7 }
