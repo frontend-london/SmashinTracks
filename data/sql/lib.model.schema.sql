@@ -57,6 +57,111 @@ CREATE TABLE `genres`
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------
+#-- paypal_cart_info
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `paypal_cart_info`;
+
+
+CREATE TABLE `paypal_cart_info`
+(
+	`paypal_cart_info_id` INTEGER(11)  NOT NULL AUTO_INCREMENT,
+	`txnid` VARCHAR(30) default '' NOT NULL,
+	`itemname` VARCHAR(255) default '' NOT NULL,
+	`itemnumber` VARCHAR(50),
+	`os0` VARCHAR(20),
+	`on0` VARCHAR(50),
+	`os1` VARCHAR(20),
+	`on1` VARCHAR(50),
+	`quantity` CHAR(3) default '' NOT NULL,
+	`invoice` VARCHAR(255) default '' NOT NULL,
+	`custom` VARCHAR(255) default '' NOT NULL,
+	PRIMARY KEY (`paypal_cart_info_id`),
+	KEY `paypal_cart_info_FK_1`(`txnid`),
+	CONSTRAINT `paypal_cart_info_FK_1`
+		FOREIGN KEY (`txnid`)
+		REFERENCES `paypal_payment_info` (`txnid`)
+		ON UPDATE RESTRICT
+		ON DELETE RESTRICT
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
+#-- paypal_payment_info
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `paypal_payment_info`;
+
+
+CREATE TABLE `paypal_payment_info`
+(
+	`firstname` VARCHAR(100) default '' NOT NULL,
+	`lastname` VARCHAR(100) default '' NOT NULL,
+	`buyer_email` VARCHAR(100) default '' NOT NULL,
+	`street` VARCHAR(100) default '' NOT NULL,
+	`city` VARCHAR(50) default '' NOT NULL,
+	`state` CHAR(3) default '' NOT NULL,
+	`zipcode` VARCHAR(11) default '' NOT NULL,
+	`memo` VARCHAR(255),
+	`itemname` VARCHAR(255),
+	`itemnumber` VARCHAR(50),
+	`os0` VARCHAR(20),
+	`on0` VARCHAR(50),
+	`os1` VARCHAR(20),
+	`on1` VARCHAR(50),
+	`quantity` CHAR(3),
+	`paymentdate` VARCHAR(50) default '' NOT NULL,
+	`paymenttype` VARCHAR(10) default '' NOT NULL,
+	`txnid` VARCHAR(30) default '' NOT NULL,
+	`mc_gross` VARCHAR(6) default '' NOT NULL,
+	`mc_fee` VARCHAR(5) default '' NOT NULL,
+	`paymentstatus` VARCHAR(15) default '' NOT NULL,
+	`pendingreason` VARCHAR(10),
+	`txntype` VARCHAR(10) default '' NOT NULL,
+	`tax` VARCHAR(10),
+	`mc_currency` VARCHAR(5) default '' NOT NULL,
+	`reasoncode` VARCHAR(20) default '' NOT NULL,
+	`custom` VARCHAR(255) default '' NOT NULL,
+	`country` VARCHAR(20) default '' NOT NULL,
+	`datecreation` DATE default '0000-00-00' NOT NULL,
+	PRIMARY KEY (`txnid`)
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
+#-- paypal_subscription_info
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `paypal_subscription_info`;
+
+
+CREATE TABLE `paypal_subscription_info`
+(
+	`paypal_subscription_info_id` INTEGER(11)  NOT NULL AUTO_INCREMENT,
+	`subscr_id` VARCHAR(255) default '' NOT NULL,
+	`sub_event` VARCHAR(50) default '' NOT NULL,
+	`subscr_date` VARCHAR(255) default '' NOT NULL,
+	`subscr_effective` VARCHAR(255) default '' NOT NULL,
+	`period1` VARCHAR(255) default '' NOT NULL,
+	`period2` VARCHAR(255) default '' NOT NULL,
+	`period3` VARCHAR(255) default '' NOT NULL,
+	`amount1` VARCHAR(255) default '' NOT NULL,
+	`amount2` VARCHAR(255) default '' NOT NULL,
+	`amount3` VARCHAR(255) default '' NOT NULL,
+	`mc_amount1` VARCHAR(255) default '' NOT NULL,
+	`mc_amount2` VARCHAR(255) default '' NOT NULL,
+	`mc_amount3` VARCHAR(255) default '' NOT NULL,
+	`recurring` VARCHAR(255) default '' NOT NULL,
+	`reattempt` VARCHAR(255) default '' NOT NULL,
+	`retry_at` VARCHAR(255) default '' NOT NULL,
+	`recur_times` VARCHAR(255) default '' NOT NULL,
+	`username` VARCHAR(255) default '' NOT NULL,
+	`password` VARCHAR(255),
+	`payment_txn_id` VARCHAR(50) default '' NOT NULL,
+	`subscriber_emailaddress` VARCHAR(255) default '' NOT NULL,
+	`datecreation` DATE default '0000-00-00' NOT NULL,
+	PRIMARY KEY (`paypal_subscription_info_id`)
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
 #-- profiles
 #-----------------------------------------------------------------------------
 
@@ -341,10 +446,24 @@ CREATE TABLE `transactions`
 (
 	`transactions_id` INTEGER(11)  NOT NULL AUTO_INCREMENT,
 	`transactions_date` DATETIME  NOT NULL,
-	`transactions_paymethod` SMALLINT(6)  NOT NULL,
-	`transactions_paypal_address` VARCHAR(200),
+	`transactions_paymethod` SMALLINT(6),
+	`transactions_paypal_txnid` VARCHAR(30),
+	`transactions_done` TINYINT(1) default 0 NOT NULL,
+	`profiles_id` INTEGER(11),
 	PRIMARY KEY (`transactions_id`),
-	KEY `transactions_ORDER`(`transactions_date`)
+	KEY `transactions_ORDER`(`transactions_date`),
+	KEY `transactions_FK_1`(`transactions_paypal_txnid`),
+	KEY `transactions_FK_2`(`profiles_id`),
+	CONSTRAINT `transactions_FK_1`
+		FOREIGN KEY (`transactions_paypal_txnid`)
+		REFERENCES `paypal_payment_info` (`txnid`)
+		ON UPDATE RESTRICT
+		ON DELETE RESTRICT,
+	CONSTRAINT `transactions_FK_2`
+		FOREIGN KEY (`profiles_id`)
+		REFERENCES `profiles` (`profiles_id`)
+		ON UPDATE RESTRICT
+		ON DELETE RESTRICT
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------

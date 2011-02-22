@@ -24,6 +24,76 @@ propel:
     genres_name: { phpName: GenresName, type: VARCHAR, size: '45', required: true }
     genres_path: { phpName: GenresPath, type: VARCHAR, size: '50', required: false }
     _uniques: { genres_U_1: [genres_name], genres_U_2: [genres_path] }
+  paypal_cart_info:
+    _attributes: { phpName: PaypalCartInfo }
+    paypal_cart_info_id: { phpName: PaypalCartInfoId, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
+    txnid: { phpName: Txnid, type: VARCHAR, size: '30', required: true, defaultValue: '', foreignTable: paypal_payment_info, foreignReference: txnid, onDelete: RESTRICT, onUpdate: RESTRICT }
+    itemname: { phpName: Itemname, type: VARCHAR, size: '255', required: true, defaultValue: '' }
+    itemnumber: { phpName: Itemnumber, type: VARCHAR, size: '50', required: false }
+    os0: { phpName: Os0, type: VARCHAR, size: '20', required: false }
+    on0: { phpName: On0, type: VARCHAR, size: '50', required: false }
+    os1: { phpName: Os1, type: VARCHAR, size: '20', required: false }
+    on1: { phpName: On1, type: VARCHAR, size: '50', required: false }
+    quantity: { phpName: Quantity, type: CHAR, size: '3', required: true, defaultValue: '' }
+    invoice: { phpName: Invoice, type: VARCHAR, size: '255', required: true, defaultValue: '' }
+    custom: { phpName: Custom, type: VARCHAR, size: '255', required: true, defaultValue: '' }
+    _indexes: { paypal_cart_info_FK_1: [txnid] }
+  paypal_payment_info:
+    _attributes: { phpName: PaypalPaymentInfo }
+    firstname: { phpName: Firstname, type: VARCHAR, size: '100', required: true, defaultValue: '' }
+    lastname: { phpName: Lastname, type: VARCHAR, size: '100', required: true, defaultValue: '' }
+    buyer_email: { phpName: BuyerEmail, type: VARCHAR, size: '100', required: true, defaultValue: '' }
+    street: { phpName: Street, type: VARCHAR, size: '100', required: true, defaultValue: '' }
+    city: { phpName: City, type: VARCHAR, size: '50', required: true, defaultValue: '' }
+    state: { phpName: State, type: CHAR, size: '3', required: true, defaultValue: '' }
+    zipcode: { phpName: Zipcode, type: VARCHAR, size: '11', required: true, defaultValue: '' }
+    memo: { phpName: Memo, type: VARCHAR, size: '255', required: false }
+    itemname: { phpName: Itemname, type: VARCHAR, size: '255', required: false }
+    itemnumber: { phpName: Itemnumber, type: VARCHAR, size: '50', required: false }
+    os0: { phpName: Os0, type: VARCHAR, size: '20', required: false }
+    on0: { phpName: On0, type: VARCHAR, size: '50', required: false }
+    os1: { phpName: Os1, type: VARCHAR, size: '20', required: false }
+    on1: { phpName: On1, type: VARCHAR, size: '50', required: false }
+    quantity: { phpName: Quantity, type: CHAR, size: '3', required: false }
+    paymentdate: { phpName: Paymentdate, type: VARCHAR, size: '50', required: true, defaultValue: '' }
+    paymenttype: { phpName: Paymenttype, type: VARCHAR, size: '10', required: true, defaultValue: '' }
+    txnid: { phpName: Txnid, type: VARCHAR, size: '30', primaryKey: true, required: true, defaultValue: '' }
+    mc_gross: { phpName: McGross, type: VARCHAR, size: '6', required: true, defaultValue: '' }
+    mc_fee: { phpName: McFee, type: VARCHAR, size: '5', required: true, defaultValue: '' }
+    paymentstatus: { phpName: Paymentstatus, type: VARCHAR, size: '15', required: true, defaultValue: '' }
+    pendingreason: { phpName: Pendingreason, type: VARCHAR, size: '10', required: false }
+    txntype: { phpName: Txntype, type: VARCHAR, size: '10', required: true, defaultValue: '' }
+    tax: { phpName: Tax, type: VARCHAR, size: '10', required: false }
+    mc_currency: { phpName: McCurrency, type: VARCHAR, size: '5', required: true, defaultValue: '' }
+    reasoncode: { phpName: Reasoncode, type: VARCHAR, size: '20', required: true, defaultValue: '' }
+    custom: { phpName: Custom, type: VARCHAR, size: '255', required: true, defaultValue: '' }
+    country: { phpName: Country, type: VARCHAR, size: '20', required: true, defaultValue: '' }
+    datecreation: { phpName: Datecreation, type: DATE, required: true, defaultValue: '0000-00-00' }
+  paypal_subscription_info:
+    _attributes: { phpName: PaypalSubscriptionInfo }
+    paypal_subscription_info_id: { phpName: PaypalSubscriptionInfoId, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
+    subscr_id: { phpName: SubscrId, type: VARCHAR, size: '255', required: true, defaultValue: '' }
+    sub_event: { phpName: SubEvent, type: VARCHAR, size: '50', required: true, defaultValue: '' }
+    subscr_date: { phpName: SubscrDate, type: VARCHAR, size: '255', required: true, defaultValue: '' }
+    subscr_effective: { phpName: SubscrEffective, type: VARCHAR, size: '255', required: true, defaultValue: '' }
+    period1: { phpName: Period1, type: VARCHAR, size: '255', required: true, defaultValue: '' }
+    period2: { phpName: Period2, type: VARCHAR, size: '255', required: true, defaultValue: '' }
+    period3: { phpName: Period3, type: VARCHAR, size: '255', required: true, defaultValue: '' }
+    amount1: { phpName: Amount1, type: VARCHAR, size: '255', required: true, defaultValue: '' }
+    amount2: { phpName: Amount2, type: VARCHAR, size: '255', required: true, defaultValue: '' }
+    amount3: { phpName: Amount3, type: VARCHAR, size: '255', required: true, defaultValue: '' }
+    mc_amount1: { phpName: McAmount1, type: VARCHAR, size: '255', required: true, defaultValue: '' }
+    mc_amount2: { phpName: McAmount2, type: VARCHAR, size: '255', required: true, defaultValue: '' }
+    mc_amount3: { phpName: McAmount3, type: VARCHAR, size: '255', required: true, defaultValue: '' }
+    recurring: { phpName: Recurring, type: VARCHAR, size: '255', required: true, defaultValue: '' }
+    reattempt: { phpName: Reattempt, type: VARCHAR, size: '255', required: true, defaultValue: '' }
+    retry_at: { phpName: RetryAt, type: VARCHAR, size: '255', required: true, defaultValue: '' }
+    recur_times: { phpName: RecurTimes, type: VARCHAR, size: '255', required: true, defaultValue: '' }
+    username: { phpName: Username, type: VARCHAR, size: '255', required: true, defaultValue: '' }
+    password: { phpName: Password, type: VARCHAR, size: '255', required: false }
+    payment_txn_id: { phpName: PaymentTxnId, type: VARCHAR, size: '50', required: true, defaultValue: '' }
+    subscriber_emailaddress: { phpName: SubscriberEmailaddress, type: VARCHAR, size: '255', required: true, defaultValue: '' }
+    datecreation: { phpName: Datecreation, type: DATE, required: true, defaultValue: '0000-00-00' }
   profiles:
     _attributes: { phpName: Profiles }
     profiles_id: { phpName: ProfilesId, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
@@ -118,9 +188,11 @@ propel:
     _attributes: { phpName: Transactions }
     transactions_id: { phpName: TransactionsId, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
     transactions_date: { phpName: TransactionsDate, type: TIMESTAMP, required: true }
-    transactions_paymethod: { phpName: TransactionsPaymethod, type: SMALLINT, size: '6', required: true }
-    transactions_paypal_address: { phpName: TransactionsPaypalAddress, type: VARCHAR, size: '200', required: false }
-    _indexes: { transactions_ORDER: [transactions_date] }
+    transactions_paymethod: { phpName: TransactionsPaymethod, type: SMALLINT, size: '6', required: false }
+    transactions_paypal_txnid: { phpName: TransactionsPaypalTxnid, type: VARCHAR, size: '30', required: false, foreignTable: paypal_payment_info, foreignReference: txnid, onDelete: RESTRICT, onUpdate: RESTRICT }
+    transactions_done: { phpName: TransactionsDone, type: TINYINT, size: '1', required: true, defaultValue: '0' }
+    profiles_id: { phpName: ProfilesId, type: INTEGER, size: '11', required: false, foreignTable: profiles, foreignReference: profiles_id, onDelete: RESTRICT, onUpdate: RESTRICT }
+    _indexes: { transactions_ORDER: [transactions_date], transactions_FK_1: [transactions_paypal_txnid], transactions_FK_2: [profiles_id] }
   transactions_saldo:
     _attributes: { phpName: TransactionsSaldo }
     transactions_saldo_id: { phpName: TransactionsSaldoId, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }

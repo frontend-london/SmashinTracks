@@ -2,7 +2,8 @@
                     <img src="images/texts/members-checkout.gif" alt="Members Checkout" />
                     <div class="bw-div1">
                         Do zakupu trackow uzyles system <a href="#" class="underline">Paypal.com</a><br />
-						Ponizej masz szczegóły transakcji...
+                        Ponizej masz szczegóły transakcji...
+                        <?//print_r($items)?>
                     </div>
                     <div class="bw-div6">
                         <div class="bw-div6-order">

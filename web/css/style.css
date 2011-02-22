@@ -464,7 +464,8 @@ div#box-recommends div#br-tracks, div#box-recommends2 div#br-tracks { padding-le
 div#box-recommends div#br-hidden { display: none;}
 
 div#box-paymethod { margin-top:11px;}
-div#box-paymethod img#bp-img1 { margin-top:35px; margin-bottom:26px; margin-left:108px;}
+div#box-paymethod form { display: inline;}
+div#box-paymethod #bp-img1 { margin-top:35px; margin-bottom:26px; margin-left:108px;}
 div#box-paymethod img#bp-img2 { margin-top:25px; margin-left:43px; margin-bottom:22px;}
 
 div#box-searchresults {}
