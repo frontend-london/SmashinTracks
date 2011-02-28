@@ -33,6 +33,10 @@ basket_paypal_checkout:
   url:     /basket/paypal-checkout
   param: { module: basket, action: payPalCheckout, section: basket }
 
+basket_paypal_express_checkout:
+  url:     /basket/paypal-express-checkout
+  param: { module: basket, action: payPalExpressCheckout, section: basket }
+
 basket_paypal_checkout_test:
   url:     /basket/paypal-checkout/123
   param: { module: basket, action: payPalCheckout, section: basket }

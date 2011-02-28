@@ -4,6 +4,17 @@ define('ADMIN_PROFILE', 1);
 define('TRACK_PRIZE_HALF', 70);
 define('TRACK_PRIZE', 140);
 
+//DB connect creds and email
+$notify_email =  "modul008@gmail.com"; //email address to which debug emails are sent to
+$DB_Server = "localhost"; //your MySQL Server
+$DB_Username = "modul_smashin"; //your MySQL User Name
+$DB_Password = "19aY2w2cuKWknxvSfV"; //your MySQL Password
+$DB_DBName = "modul_smashin"; //your MySQL Database Name
+
+/*
+ * CONTENT
+ */
+
 function generate_random_pass($length) {
     $haslo = ''.rand(0,9);
     $length--;
@@ -23,6 +34,61 @@ function generate_random_pass($length) {
     return $haslo;
 }
 
+function startLog() {
+    global $invoice;
+    global $txn_id;
+    global $is_log;
+    global $filename_log;
+    if(!$is_log) {
+        $filename_log = "logs/inv_$invoice.log";
+        if($invoice==0) {
+            $filename_log = "logs/paypal.log";
+        }
+        if(file_get_contents($filename_log)!==false) {
+            addToLog(file_get_contents($filename_log)."\n");
+        }
+        addToLog("------------------------------------------------------------------------\n".date('d-m-Y h:i:s')." - INVOICE $invoice - TXNID - $txn_id");
+        addToLog("POST: ".print_r($_POST, true));
+        $is_log = true;
+    }
+}
+
+function addToLog($message) {
+    global $log;
+    $log.=$message."\n";
+}
+
+function saveLog() {
+    global $is_log;
+    global $log;
+    global $filename_log;
+    if($is_log) {
+        file_put_contents($filename_log, $log); // na końcu
+    }
+}
+
+function mail_attachment_text($mailto, $from_mail, $from_name, $subject, $message, $attachment_name, $attachment_content) {
+    $file_size = strlen($attachment);
+    $content = chunk_split(base64_encode($attachment_content));
+    $uid = md5(uniqid(time()));
+    $header = "From: ".$from_name." <".$from_mail.">\r\n";
+    //$header .= "Reply-To: ".$replyto."\r\n";
+    $header .= "MIME-Version: 1.0\r\n";
+    $header .= "Content-Type: multipart/mixed; boundary=\"".$uid."\"\r\n\r\n";
+    $header .= "This is a multi-part message in MIME format.\r\n";
+    $header .= "--".$uid."\r\n";
+    $header .= "Content-type:text/plain; charset=UTF-8\r\n";
+    $header .= "Content-Transfer-Encoding: 7bit\r\n\r\n";
+    $header .= $message."\r\n\r\n";
+    $header .= "--".$uid."\r\n";
+    $header .= "Content-Type: text/plain; name=\"".$attachment_name."\"\r\n"; // use different content types here
+    $header .= "Content-Transfer-Encoding: base64\r\n";
+    $header .= "Content-Disposition: attachment; filename=\"".$attachment_name."\"\r\n\r\n";
+    $header .= $content."\r\n\r\n";
+    $header .= "--".$uid."--";
+    @mail($mailto, $subject, "", $header);
+}
+
 
 
 /////////////////////////////////////////////////
@@ -40,10 +106,15 @@ $header = "POST /cgi-bin/webscr HTTP/1.0\r\n";
 $header .= "Content-Type: application/x-www-form-urlencoded\r\n";
 $header .= "Content-Length: " . strlen($req) . "\r\n\r\n";
 
-// If testing on Sandbox use:
-//$fp = fsockopen ('ssl://www.sandbox.paypal.com', 443, $errno, $errstr, 30);
+// czyści log
+$log = '';
+$is_log = false;
+$filename_log = '';
+$transaction_success = false;
 
-$fp = fsockopen ('ssl://www.paypal.com', 443, $errno, $errstr, 30);
+// If testing on Sandbox use:
+$fp = fsockopen ('ssl://www.sandbox.paypal.com', 443, $errno, $errstr, 30);
+//$fp = fsockopen ('ssl://www.paypal.com', 443, $errno, $errstr, 30);
 
 
 // assign posted variables to local variables
@@ -126,168 +197,245 @@ $auction_closing_date  = $_POST['auction_closing_date'];
 $auction_multi_item  = $_POST['auction_multi_item'];
 $auction_buyer_id  = $_POST['auction_buyer_id'];
 
-
-
-//DB connect creds and email
-$notify_email =  "modul008@gmail.com";         //email address to which debug emails are sent to
-$DB_Server = "localhost"; //your MySQL Server
-$DB_Username = "modul_smashin"; //your MySQL User Name
-$DB_Password = "19aY2w2cuKWknxvSfV"; //your MySQL Password
-$DB_DBName = "modul_smashin"; //your MySQL Database Name
-
-
 if (!$fp) {
-// HTTP ERROR
+    // HTTP ERROR
+    startLog();
+    addToLog("HTTP ERROR - line ".__LINE__);
 } else {
-fputs ($fp, $header . $req);
-while (!feof($fp)) {
-$res = fgets ($fp, 1024);
-if (strcmp ($res, "VERIFIED") == 0) {
+    fputs ($fp, $header . $req);
+    while (!feof($fp)) {
+        $res = fgets ($fp, 1024);
+        if (strcmp ($res, "VERIFIED") == 0) {
+            startLog();
+            addToLog("IPN VERIFIED START - line ".__LINE__);
+            addToLog('Res: '.$res." - line ".__LINE__);
+            addToLog('Req: '.$res." - line ".__LINE__);
+            //create MySQL connection
+            $Connect = @mysql_connect($DB_Server, $DB_Username, $DB_Password);
+            if(!$Connect) {
+                addToLog("DB CONNECTION ERROR". mysql_error() . " - " . mysql_errno(). " - line ".__LINE__);
+                saveLog();
+                die();
+            }
+
+            //select database
+            $Db = @mysql_select_db($DB_DBName, $Connect);
+            if(!$Db) {
+                addToLog("DB SELECT ERROR". mysql_error() . " - " . mysql_errno(). " - line ".__LINE__);
+                saveLog();
+                die();
+            }
+
+            $fecha = date("m")."/".date("d")."/".date("Y");
+            $fecha = date("Y").date("m").date("d");
+
+            //check if transaction ID has been processed before
+            $checkquery = "select txnid from paypal_payment_info where txnid='".$txn_id."'";
+            $sihay = mysql_query($checkquery);
+            if(!$sihay) {
+                addToLog("Duplicate txn id check query failed: " . mysql_error() . " - " . mysql_errno(). " - line ".__LINE__);
+                saveLog();
+                die();
+            }
+            $nm = mysql_num_rows($sihay);
+
+            if ($nm == 0){ //execute query
+                /* DODANIE INFORMACJI O TRANSAKCJI START */
+                $prize =  $num_cart_items*TRACK_PRIZE / 100;
+                $prize_string = number_format($prize, 2);
+                $error = false;
+                if($mc_gross!=$prize_string) {
+                    addToLog("ERROR = TRUE - BAD AMOUNT. Should be: $prize_string\tIs:$mc_gross\tprize - $prize\tprize_string - $prize_string\tmc_gross - $mc_gross - line ".__LINE__);
+                    $error = true;
+                }
+                /* DODANIE INFORMACJI O TRANSAKCJI STOP */
 
 
-
-//create MySQL connection
-$Connect = @mysql_connect($DB_Server, $DB_Username, $DB_Password)
-or die("Couldn't connect to MySQL:<br>" . mysql_error() . "<br>" . mysql_errno());
-
-
-//select database
-$Db = @mysql_select_db($DB_DBName, $Connect)
-or die("Couldn't select database:<br>" . mysql_error(). "<br>" . mysql_errno());
-
-
-$fecha = date("m")."/".date("d")."/".date("Y");
-$fecha = date("Y").date("m").date("d");
-
-//check if transaction ID has been processed before
-$checkquery = "select txnid from paypal_payment_info where txnid='".$txn_id."'";
-$sihay = mysql_query($checkquery) or die("Duplicate txn id check query failed:<br>" . mysql_error() . "<br>" . mysql_errno());
-$nm = mysql_num_rows($sihay);
-if ($nm == 0){
-
-//execute query
-    /* DODANIE INFORMACJI O TRANSAKCJI START */
-    $prize =  $num_cart_items*TRACK_PRIZE / 100;
-    $prize_string = number_format($prize, 2);
-    $error = false;
-    if($mc_gross!=$prize_string) {
-        $error = true;
-        mail($notify_email, "BAD AMOUNT", "BAD AMOUNT. Should be: $prize_string\tIs:$mc_gross\ttxn_id: $txn_id");
-    }
-    /* DODANIE INFORMACJI O TRANSAKCJI STOP */
-
-    /* DODANIE INFORMACJI O TRANSAKCJI START */
-    if(!$error) {
-        $sql2 = "SELECT `profiles_id`  FROM `transactions` WHERE `transactions_id` = '$invoice' LIMIT 1";
-        $result = mysql_query($sql2);
-        $w = mysql_fetch_array($result);
-        if($w) {
-            $profiles_id = $w['profiles_id'];
-            $sql = "UPDATE `stracks`.`transactions` SET `transactions_paymethod` = '1', `transactions_paypal_txnid` = '$txn_id', `transactions_done` = '1' WHERE `transactions`.`transactions_id` = '$invoice' LIMIT 1";
-            $result = mysql_query($sql);
-        }
-    }
-    /* DODANIE INFORMACJI O TRANSAKCJI STOP */
-
-
-    if ($txn_type == "cart"){
-    $strQuery = "insert into paypal_payment_info(paymentstatus,buyer_email,firstname,lastname,street,city,state,zipcode,country,mc_gross,mc_fee,memo,paymenttype,paymentdate,txnid,pendingreason,reasoncode,tax,datecreation) values ('".$payment_status."','".$payer_email."','".$first_name."','".$last_name."','".$address_street."','".$address_city."','".$address_state."','".$address_zip."','".$address_country."','".$mc_gross."','".$mc_fee."','".$memo."','".$payment_type."','".$payment_date."','".$txn_id."','".$pending_reason."','".$reason_code."','".$tax."','".$fecha."')";
-
-     $result = mysql_query($strQuery) or die("Cart - paypal_payment_info, Query failed:<br>" . mysql_error() . "<br>" . mysql_errno());
-     for ($i = 1; $i <= $num_cart_items; $i++) {
-         $itemname = "item_name".$i;
-         $itemnumber = "item_number".$i;
-         $on0 = "option_name1_".$i;
-         $os0 = "option_selection1_".$i;
-         $on1 = "option_name2_".$i;
-         $os1 = "option_selection2_".$i;
-         $quantity = "quantity".$i;
-
-         $struery = "insert into paypal_cart_info(txnid,itemnumber,itemname,os0,on0,os1,on1,quantity,invoice,custom) values ('".$txn_id."','".$_POST[$itemnumber]."','".$_POST[$itemname]."','".$_POST[$on0]."','".$_POST[$os0]."','".$_POST[$on1]."','".$_POST[$os1]."','".$_POST[$quantity]."','".$invoice."','".$custom."')";
-         $result = mysql_query($struery) or die("Cart - paypal_cart_info, Query failed:<br>" . mysql_error() . "<br>" . mysql_errno());
-
-         /* DODANIE INFORMACJI O TRANSAKCJI START */
-         if(!$error) {
-             $in = $_POST[$itemnumber];
-             $invoice_check = (int)substr($in, 0, strpos($in, ' ')); // = invoice
-             if($invoice_check==$invoice) {
-                 $invoice_rest = substr($in, strpos($in, ' '));
-                 $track_id = (int)substr($invoice_rest, 0, strpos($invoice_rest, '-'));
-                 $artist_id = (int)substr($invoice_rest, strpos($invoice_rest, '-')+1);
-
-                 $checkquery2 = "SELECT `tracks_id` FROM `tracks` WHERE `tracks_id` = '$track_id' AND `profiles_id` = '$artist_id'";
-                 $sihay2 = mysql_query($checkquery2) or die("Artist id check query failed:<br>" . mysql_error() . "<br>" . mysql_errno());
-                 $nm = mysql_num_rows($sihay2);
-                 if ($nm == 1){
-                     $track_pass = generate_random_pass(32);
-                     $struery2 = "INSERT INTO `stracks`.`transactions_tracks` (`transactions_tracks_id`, `transactions_id`, `tracks_id`, `tracks_path`) VALUES (NULL, '$invoice', '$track_id', '$track_pass');";
-                     $result2 = mysql_query($struery2) or die("Cart - transactions_tracks, Query failed:<br>" . mysql_error() . "<br>" . mysql_errno());
-                     $transactions_tracks_id = mysql_insert_id();
-                     //$profiles_id ADMIN_PROFILE
-                     $struery3 = "INSERT INTO `stracks`.`transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '$track_id', '$artist_id', '".TRACK_PRIZE_HALF."');";
-                     $result3=mysql_query($struery3);
-                     $struery4 = "INSERT INTO `stracks`.`transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '$track_id', '".ADMIN_PROFILE."', '".TRACK_PRIZE_HALF."');";
-                     $result4=mysql_query($struery4);
-                     if($profiles_id) {
-                         $struery5 = "INSERT INTO `stracks`.`transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '$track_id', '$profiles_id', '-".TRACK_PRIZE."');";
-                     } else {
-                         $struery5 = "INSERT INTO `stracks`.`transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '$track_id', NULL, '-".TRACK_PRIZE."');";
-                     }
-                     $result5=mysql_query($struery5);
-
+                if ($txn_type == "cart"){
+                 addToLog("txn_type = $txn_type - line ".__LINE__);
+                 $strQuery = "insert into paypal_payment_info(paymentstatus,buyer_email,firstname,lastname,street,city,state,zipcode,country,mc_gross,mc_fee,memo,paymenttype,paymentdate,txnid,pendingreason,reasoncode,tax,datecreation) values ('".$payment_status."','".$payer_email."','".$first_name."','".$last_name."','".$address_street."','".$address_city."','".$address_state."','".$address_zip."','".$address_country."','".$mc_gross."','".$mc_fee."','".$memo."','".$payment_type."','".$payment_date."','".$txn_id."','".$pending_reason."','".$reason_code."','".$tax."','".$fecha."')";
+                 $result = mysql_query($strQuery);
+                 if(!$result) {
+                     addToLog("Cart - paypal_payment_info, insert query failed: " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
+                     saveLog();
+                     die();
+                 } else {
+                     addToLog("INSERT SUCCESS: $strQuery - rows: ".mysql_affected_rows()." - line ".__LINE__);
                  }
+
+                /* DODANIE INFORMACJI O TRANSAKCJI START */
+                if(!$error) {
+                    $sql2 = "SELECT `profiles_id`  FROM `transactions` WHERE `transactions_id` = '$invoice' LIMIT 1";
+                    $result2 = mysql_query($sql2);
+                    $w2 = mysql_fetch_array($result2);
+                    if($w2) {
+                        $profiles_id = $w2['profiles_id'];
+                        $sql3 = "UPDATE `transactions` SET `transactions_paymethod` = '1', `transactions_paypal_txnid` = '$txn_id', `transactions_done` = '1' WHERE `transactions`.`transactions_id` = '$invoice' LIMIT 1";
+                        $result3 = mysql_query($sql3);
+                        if(!$result3) {
+                            addToLog("UPDATE FAILED - $sql3 - line ".__LINE__);
+                        } else {
+                            addToLog("UPDATE SUCCESS: $sql3 - rows: ".mysql_affected_rows()." -  line ".__LINE__);
+                        }
+                    } else {
+                      addToLog("SELECT FAILED - $sql2 - line ".__LINE__);
+                    }
+                } else {
+                  addToLog("SELECT & UPDATE `transactions` SKIPPED (error = true) - line ".__LINE__);
+                }
+                /* DODANIE INFORMACJI O TRANSAKCJI STOP */
+
+                 for ($i = 1; $i <= $num_cart_items; $i++) {
+                     $itemname = "item_name".$i;
+                     $itemnumber = "item_number".$i;
+                     $on0 = "option_name1_".$i;
+                     $os0 = "option_selection1_".$i;
+                     $on1 = "option_name2_".$i;
+                     $os1 = "option_selection2_".$i;
+                     $quantity = "quantity".$i;
+
+                     $struery = "insert into paypal_cart_info(txnid,itemnumber,itemname,os0,on0,os1,on1,quantity,invoice,custom) values ('".$txn_id."','".$_POST[$itemnumber]."','".$_POST[$itemname]."','".$_POST[$on0]."','".$_POST[$os0]."','".$_POST[$on1]."','".$_POST[$os1]."','".$_POST[$quantity]."','".$invoice."','".$custom."')";
+                     $result = mysql_query($struery);
+                     if(!$result) {
+                         addToLog("Cart - paypal_cart_info, Query failed: " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
+                         saveLog();
+                         die();
+                     } else {
+                         addToLog("INSERT SUCCESS: $struery - rows: ".mysql_affected_rows()." - line ".__LINE__);
+                     }
+
+                     /* DODANIE INFORMACJI O TRANSAKCJI START */
+                     if(!$error) {
+                         $in = $_POST[$itemnumber];
+                         $invoice_check = (int)substr($in, 0, strpos($in, ' ')); // = invoice
+                         if($invoice_check==$invoice) {
+                             $invoice_rest = substr($in, strpos($in, ' '));
+                             $track_id = (int)substr($invoice_rest, 0, strpos($invoice_rest, '-'));
+                             $artist_id = (int)substr($invoice_rest, strpos($invoice_rest, '-')+1);
+
+                             $checkquery2 = "SELECT `tracks_id` FROM `tracks` WHERE `tracks_id` = '$track_id' AND `profiles_id` = '$artist_id' LIMIT 1";
+                             $sihay2 = mysql_query($checkquery2);
+                             if(!$sihay2) {
+                                 addToLog("Artist id check query failed: sql - $checkquery2 - " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
+                                 saveLog();
+                                 die();
+                             }
+                             $nm = mysql_num_rows($sihay2);
+                             if ($nm == 1){
+                                 $track_pass = generate_random_pass(32);
+                                 $struery2 = "INSERT INTO `transactions_tracks` (`transactions_tracks_id`, `transactions_id`, `tracks_id`, `tracks_path`) VALUES (NULL, '$invoice', '$track_id', '$track_pass');";
+                                 $result2 = mysql_query($struery2);
+                                 if(!$result2) {
+                                     addToLog("Transactions tracks insert query failed: sql - $struery2 - " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
+                                     saveLog();
+                                     die();
+                                 } else {
+                                    addToLog("INSERT SUCCESS: $struery2 - rows: ".mysql_affected_rows()." - line ".__LINE__);
+                                 }
+                                 $transactions_tracks_id = mysql_insert_id();
+                                 $struery3 = "INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '$transactions_tracks_id', '$artist_id', '".TRACK_PRIZE_HALF."');";
+                                 $result3=mysql_query($struery3);
+                                 if(!$result3) {
+                                     addToLog("Transactions saldo(1) insert query failed: sql - $struery3 - " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
+                                     saveLog();
+                                     die();
+                                 } else {
+                                    addToLog("INSERT SUCCESS: $struery3 - rows: ".mysql_affected_rows()." - line ".__LINE__);
+                                 }
+                                 $struery4 = "INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '$transactions_tracks_id', '".ADMIN_PROFILE."', '".TRACK_PRIZE_HALF."');";
+                                 $result4=mysql_query($struery4);
+                                 if(!$result4) {
+                                     addToLog("Transactions saldo(2) insert query failed: sql - $struery4 - " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
+                                     saveLog();
+                                     die();
+                                 } else {
+                                    addToLog("INSERT SUCCESS: $struery4 - rows: ".mysql_affected_rows()." - line ".__LINE__);
+                                 }
+                                 if($profiles_id) {
+                                     $struery5 = "INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '$transactions_tracks_id', '$profiles_id', '-".TRACK_PRIZE."');";
+                                 } else {
+                                     $struery5 = "INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '$transactions_tracks_id', NULL, '-".TRACK_PRIZE."');";
+                                 }
+                                 $result5=mysql_query($struery5);
+                                 if(!$result5) {
+                                     addToLog("Transactions saldo(3) insert query failed: sql - $struery5 - " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
+                                     saveLog();
+                                     die();
+                                 } else {
+                                    addToLog("INSERT SUCCESS: $struery5 - rows: ".mysql_affected_rows()." - line ".__LINE__);
+                                 }
+                             } else {
+                                 addToLog("Artist id check query wrong num rows: sql - $checkquery2 - rows - $nm - line ".__LINE__);
+                             }
+                          } else {
+                              addToLog("Invoice check failed - invoice: $invoice\tinvoice_check: $invoice_check\t - line ".__LINE__);
+                          }
+                      } else {
+                          addToLog("SELECT & UPDATE `transactions_tracks` & `transactions_saldo` SKIPPED (error = true) - line ".__LINE__);
+                      }
+                      /* DODANIE INFORMACJI O TRANSAKCJI STOP */
+                 }
+                } else{
+                 addToLog("txn_type != cart = $txn_type - line ".__LINE__);
+                 $strQuery = "insert into paypal_payment_info(paymentstatus,buyer_email,firstname,lastname,street,city,state,zipcode,country,mc_gross,mc_fee,itemnumber,itemname,os0,on0,os1,on1,quantity,memo,paymenttype,paymentdate,txnid,pendingreason,reasoncode,tax,datecreation) values ('".$payment_status."','".$payer_email."','".$first_name."','".$last_name."','".$address_street."','".$address_city."','".$address_state."','".$address_zip."','".$address_country."','".$mc_gross."','".$mc_fee."','".$item_number."','".$item_name."','".$option_name1."','".$option_selection1."','".$option_name2."','".$option_selection2."','".$quantity."','".$memo."','".$payment_type."','".$payment_date."','".$txn_id."','".$pending_reason."','".$reason_code."','".$tax."','".$fecha."')";
+                 $result = mysql_query($strQuery);
+                 if(!$result) {
+                    addToLog("Paypal_payment_info insert query failed: sql - $strQuery - " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
+                    saveLog();
+                    die();
+                 } else {
+                    addToLog("INSERT SUCCESS: $strQuery - rows: ".mysql_affected_rows()." - line ".__LINE__);
+                 }
+                }
+                 addToLog("IPN VERIFIED END - line ".__LINE__);
+                 $transaction_success = true;
+            } else {
+                 addToLog("VERIFIED DUPLICATED TRANSACTION");
+            }
+
+
+            if ( $txn_type == "subscr_signup"  ||  $txn_type == "subscr_payment"  ) { //subscription handling branch
+              $strQuery = "insert into paypal_payment_info(paymentstatus,buyer_email,firstname,lastname,street,city,state,zipcode,country,mc_gross,mc_fee,memo,paymenttype,paymentdate,txnid,pendingreason,reasoncode,tax,datecreation) values ('".$payment_status."','".$payer_email."','".$first_name."','".$last_name."','".$address_street."','".$address_city."','".$address_state."','".$address_zip."','".$address_country."','".$mc_gross."','".$mc_fee."','".$memo."','".$payment_type."','".$payment_date."','".$txn_id."','".$pending_reason."','".$reason_code."','".$tax."','".$fecha."')";
+              $result = mysql_query($strQuery); // insert subscriber payment info into paypal_payment_info table
+              if(!$result) {
+                addToLog("Subscription - paypal_payment_info, Query failed: sql - $strQuery - " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
+                saveLog();
+                die();
+              } else {
+                addToLog("INSERT SUCCESS: $strQuery - rows: ".mysql_affected_rows()." - line ".__LINE__);
               }
-          }
-          /* DODANIE INFORMACJI O TRANSAKCJI STOP */
-     }
+
+              $strQuery2 = "insert into paypal_subscription_info(subscr_id , sub_event, subscr_date ,subscr_effective,period1,period2, period3, amount1 ,amount2 ,amount3,  mc_amount1,  mc_amount2,  mc_amount3, recurring, reattempt,retry_at, recur_times, username ,password, payment_txn_id, subscriber_emailaddress, datecreation) values ('".$subscr_id."', '".$txn_type."','".$subscr_date."','".$subscr_effective."','".$period1."','".$period2."','".$period3."','".$amount1."','".$amount2."','".$amount3."','".$mc_amount1."','".$mc_amount2."','".$mc_amount3."','".$recurring."','".$reattempt."','".$retry_at."','".$recur_times."','".$username."','".$password."', '".$txn_id."','".$payer_email."','".$fecha."')";
+              $result = mysql_query($strQuery2); // insert subscriber info into paypal_subscription_info table
+              if(!$result) {
+                addToLog("Subscription - paypal_subscription_info, Query failed: sql - $strQuery2 - " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
+                saveLog();
+                die();
+              } else {
+                addToLog("INSERT SUCCESS: $strQuery2 - rows: ".mysql_affected_rows()." - line ".__LINE__);
+              }
+            }
+        } elseif (strcmp ($res, "INVALID") == 0) { // if the IPN POST was 'INVALID'...do this
+            startLog();
+            addToLog("INVALID IPN");
+        } //else {mail($notify_email, "END ELSE REACHED", "END ELSE REACHED $res");}
     }
-
-
-
-    else{
-     $strQuery = "insert into paypal_payment_info(paymentstatus,buyer_email,firstname,lastname,street,city,state,zipcode,country,mc_gross,mc_fee,itemnumber,itemname,os0,on0,os1,on1,quantity,memo,paymenttype,paymentdate,txnid,pendingreason,reasoncode,tax,datecreation) values ('".$payment_status."','".$payer_email."','".$first_name."','".$last_name."','".$address_street."','".$address_city."','".$address_state."','".$address_zip."','".$address_country."','".$mc_gross."','".$mc_fee."','".$item_number."','".$item_name."','".$option_name1."','".$option_selection1."','".$option_name2."','".$option_selection2."','".$quantity."','".$memo."','".$payment_type."','".$payment_date."','".$txn_id."','".$pending_reason."','".$reason_code."','".$tax."','".$fecha."')";
-     $result = mysql_query("insert into paypal_payment_info(paymentstatus,buyer_email,firstname,lastname,street,city,state,zipcode,country,mc_gross,mc_fee,itemnumber,itemname,os0,on0,os1,on1,quantity,memo,paymenttype,paymentdate,txnid,pendingreason,reasoncode,tax,datecreation) values ('".$payment_status."','".$payer_email."','".$first_name."','".$last_name."','".$address_street."','".$address_city."','".$address_state."','".$address_zip."','".$address_country."','".$mc_gross."','".$mc_fee."','".$item_number."','".$item_name."','".$option_name1."','".$option_selection1."','".$option_name2."','".$option_selection2."','".$quantity."','".$memo."','".$payment_type."','".$payment_date."','".$txn_id."','".$pending_reason."','".$reason_code."','".$tax."','".$fecha."')") or die("Default - paypal_payment_info, Query failed:<br>" . mysql_error() . "<br>" . mysql_errno());
+    fclose ($fp);
+    saveLog();
+    if($transaction_success) {
+        $mail_content = "Transaction pomyślnie zakończona. \nFaktura nr $invoice.\n\n Tracks: \n";
+        for ($i = 1; $i <= $num_cart_items; $i++) {
+        $itemname = "item_name".$i;
+        $mail_content.= $i.". ".$_POST[$itemname]."\n";
+        }
+        $mail_content.="\nKwota transakcji: $mc_gross\nKlient: $payer_email";
+        //mail($notify_email, "SmashinTracks.com - Transakcja Pomyślnie Zakończona", $mail_content);
+        $mail_name = "Smashin Tracks";
+        $mail_address = "no-reply@smashintracks.com";
+        $mail_subject = "SmashinTracks.com - Transakcja Pomyślnie Zakończona";
+        $attachment_name = 'inv_'.$invoice.'_log.txt';
+        $attachment_content = "------------------------------------------------------------------------\n".date('d-m-Y h:i:s')." - INVOICE $invoice - TXNID - $txn_id\nPOST: ".print_r($_POST, true);
+        mail_attachment_text("modul008@gmail.com", $mail_address, $mail_name, $mail_subject, $mail_content, $attachment_name, $attachment_content);
     }
-
-
-    // send an email in any case
- echo "Verified";
-     mail($notify_email, "VERIFIED IPN", "$res\n $req\n $strQuery\n $struery\n  $strQuery2");
-}
-else {
-// send an email
-mail($notify_email, "VERIFIED DUPLICATED TRANSACTION", "$res\n $req \n $strQuery\n $struery\n  $strQuery2");
-}
-
-    //subscription handling branch
-    if ( $txn_type == "subscr_signup"  ||  $txn_type == "subscr_payment"  ) {
-
-      // insert subscriber payment info into paypal_payment_info table
-      $strQuery = "insert into paypal_payment_info(paymentstatus,buyer_email,firstname,lastname,street,city,state,zipcode,country,mc_gross,mc_fee,memo,paymenttype,paymentdate,txnid,pendingreason,reasoncode,tax,datecreation) values ('".$payment_status."','".$payer_email."','".$first_name."','".$last_name."','".$address_street."','".$address_city."','".$address_state."','".$address_zip."','".$address_country."','".$mc_gross."','".$mc_fee."','".$memo."','".$payment_type."','".$payment_date."','".$txn_id."','".$pending_reason."','".$reason_code."','".$tax."','".$fecha."')";
-      $result = mysql_query($strQuery) or die("Subscription - paypal_payment_info, Query failed:<br>" . mysql_error() . "<br>" . mysql_errno());
-
-
-         // insert subscriber info into paypal_subscription_info table
-        $strQuery2 = "insert into paypal_subscription_info(subscr_id , sub_event, subscr_date ,subscr_effective,period1,period2, period3, amount1 ,amount2 ,amount3,  mc_amount1,  mc_amount2,  mc_amount3, recurring, reattempt,retry_at, recur_times, username ,password, payment_txn_id, subscriber_emailaddress, datecreation) values ('".$subscr_id."', '".$txn_type."','".$subscr_date."','".$subscr_effective."','".$period1."','".$period2."','".$period3."','".$amount1."','".$amount2."','".$amount3."','".$mc_amount1."','".$mc_amount2."','".$mc_amount3."','".$recurring."','".$reattempt."','".$retry_at."','".$recur_times."','".$username."','".$password."', '".$txn_id."','".$payer_email."','".$fecha."')";
-        $result = mysql_query($strQuery2) or die("Subscription - paypal_subscription_info, Query failed:<br>" . mysql_error() . "<br>" . mysql_errno());
-
-
-             mail($notify_email, "VERIFIED IPN", "$res\n $req\n $strQuery\n $struery\n  $strQuery2");
-
-    }
-
-
-}
-
-// if the IPN POST was 'INVALID'...do this
-
-
-else if (strcmp ($res, "INVALID") == 0) {
-// log for manual investigation
-
-mail($notify_email, "INVALID IPN", "$res\n $req");
-}
-}
-fclose ($fp);
 }
 ?>

@@ -24,13 +24,15 @@
                     <div class="bs-inner">
                         <!--<a href="<?=url_for('basket_paypal_checkout');?>"><img src="images/buttons/pay-paypal.gif" alt="Check out with PayPal" id="bp-img1" width="143" height="37" /></a>-->
 
-                        <form name="paypal"  action="https://www.paypal.com/cgi-bin/webscr" method="post">
-                            <input type="hidden" name="business" value="office@smashintracks.com" /> <!-- odbiorca -->
+                        <!--<form name="paypal"  action="https://www.paypal.com/cgi-bin/webscr" method="post">-->
+                        <form name="paypal"  action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+                        
+                            <input type="hidden" name="business" value="modul0_1298635327_biz@gmail.com" /> <!-- odbiorca office@smashintracks.com -->
                             <input type="hidden" name="invoice" value="<?=$transaction->getTransactionsId();?>" />  <!-- nr faktury, w tym przypadku ten sam co w linku zwrotnym -->
                             <?$counter=1; foreach ($tracks as $track):?>
                                 <input type="hidden" name="item_name_<?=$counter?>" value="MP3 Download: <?=$track->getTracksTitle()?> - <?=$track->getTracksArtist()?>" />
                                 <input type="hidden" name="item_number_<?=$counter?>" value="<?=$transaction->getTransactionsId();?> <?=$track->getTracksId()?>-<?=$track->getProfilesId()?>" /> <!-- 150273464 / 124109-631  = id_faktury / id_tracka-id_artysty -->
-                                <input type="hidden" name="amount_<?=$counter?>" value="0.01" /> <!-- <?=sfConfig::get('app_default_prize')?> -->
+                                <input type="hidden" name="amount_<?=$counter?>" value="<?=sfConfig::get('app_default_prize')?>" /> <!-- <?=sfConfig::get('app_default_prize')?> 0.01 -->
                                 <input type="hidden" name="quantity_<?=$counter?>" value="1" />
                             <?$counter++; endforeach;?>
                             <input type="hidden" name="discount_amount_cart" value="0.00" /> <!-- zniżka -->
@@ -44,7 +46,12 @@
                             <input type="image" name="submit" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" border="0" align="top" alt="PayPal" id="bp-img1" />
                         </form>
 
+<form action='expresscheckout.php' METHOD='POST'>
+<input type='image' name='submit' src='https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif' border='0' align='top' alt='Check out with PayPal'/>
+</form>
+
                         <a href="#"><img src="images/buttons/pay2-smashintracks.gif" alt="Zapłać pieniędzmi zarobionymi na SmashinTracks.com" id="bp-img2" width="144" height="51" /></a>
+                        <a href="<?//=url_for('basket_paypal_express_checkout');?>">PayPalTest</a>
                     </div>
                     <div class="bs-bgr-bottom"></div>
                 </div>

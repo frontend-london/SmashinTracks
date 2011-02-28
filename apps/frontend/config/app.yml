@@ -29,3 +29,9 @@ all:
   contact_form_mail_to: office@smashintracks.com
   # z ilu ostatnich dniach pokazuje bestsellery na głównej
   homepage_bestsellers_period: 7
+
+  paypal_username: modul0_1298635327_biz_api1.gmail.com
+  paypal_password: 1298635337
+  paypal_signature: AF4uKwYk5SxzyrpKA0efJKRkal3KAX267dyqFrBM7WZ2-BBF4m8e9Jot
+  paypal_test: true
+  paypal_path: E:\xampp\htdocs\www\smashintracks\plugins\prestaPaypalPlugin\sdk\lib
