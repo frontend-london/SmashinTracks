@@ -25,7 +25,7 @@
                                             <span class="track-prize"><?=sfConfig::get('app_default_prize_string')?></span>
                                         </a>
                                     <?elseif($download):?>
-                                        <a href="<?='mp3/download/'.$transactions_tracks->getTransactionsTracksId()?>" class="track-right">
+                                        <a href="<?='mp3/download/'.$transactions_tracks->getTransactionsTracksId().'/'.$transactions_tracks->getTracksPath()?>" class="track-right">
                                             <div class="track-download">DOWNLOAD</div>
                                             <div class="track-download2">TRACK</div>
                                         </a>

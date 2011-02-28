@@ -46,26 +46,9 @@
                             <input type="image" name="submit" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" border="0" align="top" alt="PayPal" id="bp-img1" />
                         </form>
 
-<form action='expresscheckout.php' METHOD='POST'>
-<input type='image' name='submit' src='https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif' border='0' align='top' alt='Check out with PayPal'/>
-</form>
-
                         <a href="#"><img src="images/buttons/pay2-smashintracks.gif" alt="Zapłać pieniędzmi zarobionymi na SmashinTracks.com" id="bp-img2" width="144" height="51" /></a>
-                        <a href="<?//=url_for('basket_paypal_express_checkout');?>">PayPalTest</a>
                     </div>
                     <div class="bs-bgr-bottom"></div>
                 </div>
 
-                <div id="box-footer">
-                    <div id="bf-paypal">
-                        <a href="#"><img src="images/icons/paypal.gif" alt="PayPal" /></a>
-                    </div>
-                    <div id="bf-addthis">
-                        <!-- AddThis Button BEGIN -->
-                        <a class="addthis_button" href="http://www.addthis.com/bookmark.php?v=250&amp;username=modul"><img src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a>
-                        <script type="text/javascript">var addthis_config = {"data_track_clickback":true};</script>
-                        <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=modul"></script>
-                        <!-- AddThis Button END -->
-                    </div>
-                    <div class="clear"></div>
-                </div>
+                <?php include_partial('metadata/footer', array('share' => false)) ?>
