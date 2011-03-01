@@ -22,4 +22,3 @@
                 </div>
 
                 <?php include_partial('metadata/footer') ?>
-                          

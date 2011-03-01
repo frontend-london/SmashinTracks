@@ -35,7 +35,8 @@
                         <a href="#" id="st-submit">Search</a>
                     </form>
                 </div>
-                <ul id="submenu">        
+                <ul id="submenu">
+                    <!--
                     <li id="submenu-hi">Hi, <strong>Martino.B</strong></li>
                     <li class="active"><a href="#">HOME</a></li>
                     <li><a href="#">MY SALES</a></li>
@@ -45,10 +46,9 @@
                     <li><a href="#">MY WISHLIST</a></li>
                     <li class="last"><a href="#">MY PROFILE</a></li>
                     <li class="last right"><a href="#">SIGN OUT</a></li>
-					<!--    
-                    <li class="last right"><a href="#">Register</a></li>
+                    -->
+                    <li class="last right<?if($sf_request->getParameter('section')=='register'):?> active<?endif;?>"><a href="<?=url_for('register')?>">Register</a></li>
                     <li class="right"><a href="#">Login</a></li>
-                    -->                         
                 </ul>
             </div>
             <div id="leftside">
