@@ -80,7 +80,8 @@
 
     /* GENERATE & OUTPUT FILE */
     $trackname = getFilename($transactions_tracks_id).'.mp3';
-    $realpath = '../../../music/'.$trackname;
+    //$realpath = '../../../music/'.$trackname;
+    $realpath = '../'.$trackname;
     if(!file_exists($realpath)) die('Error: File not found.');
     $filename = $trackname;
     $mtime = ($mtime = filemtime($realpath)) ? $mtime : gmtime();
