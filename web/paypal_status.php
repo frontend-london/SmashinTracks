@@ -270,7 +270,7 @@ if (!$fp) {
                     $w2 = mysql_fetch_array($result2);
                     if($w2) {
                         $profiles_id = $w2['profiles_id'];
-                        $sql3 = "UPDATE `transactions` SET `transactions_paymethod` = '1', `transactions_paypal_txnid` = '$txn_id', `transactions_done` = '1' WHERE `transactions`.`transactions_id` = '$invoice' LIMIT 1";
+                        $sql3 = "UPDATE `transactions` SET `transactions_paymethod` = '1', `transactions_paypal_txnid` = '$txn_id', `transactions_date` =  NOW(), `transactions_done` = '1' WHERE `transactions`.`transactions_id` = '$invoice' LIMIT 1";
                         $result3 = mysql_query($sql3);
                         if(!$result3) {
                             addToLog("UPDATE FAILED - $sql3 - line ".__LINE__);
