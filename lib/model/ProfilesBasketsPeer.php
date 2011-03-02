@@ -17,5 +17,15 @@
  * @package    lib.model
  */
 class ProfilesBasketsPeer extends BaseProfilesBasketsPeer {
-
+    public static function getProfilesBasketsById($basket_id, $criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria();
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+        $criteria->add(ProfilesBasketsPeer::PROFILES_BASKETS_ID, $basket_id);
+        return ProfilesBasketsPeer::doSelectOne($criteria);
+    }
 } // ProfilesBasketsPeer

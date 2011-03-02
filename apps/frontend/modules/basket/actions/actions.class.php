@@ -23,25 +23,39 @@ class basketActions extends sfActions
     } else {
         $basket = new Basket();
     }
+
+    if($oUser->hasAttribute('transaction_id')) {
+        $transaction_id = $oUser->getAttribute('transaction_id');
+        $transaction = TransactionsPeer::getTransactionById($transaction_id);
+        if($transaction->getTransactionsDone()) {            
+            foreach ($transaction->getTransactionsTrackssJoinTracks() as $transaction_track) {
+                $track = $transaction_track->getTracks();
+                $basket->removeTrack($track->getTracksId());
+            }
+            $transaction = new Transactions();
+        }
+        $transaction->setTransactionsDate('now');
+        $transaction->save();
+    } else {
+        $transaction = new Transactions();
+        $transaction->setTransactionsDate('now');
+        $transaction->save();
+        $oUser->setAttribute('transaction_id',$transaction->getTransactionsId());
+    }
+    $this->transaction = $transaction;
     $this->tracks = TracksPeer::getBasketTracks($basket);
     $this->prize = Smashin::generate_prize(count($this->tracks)*sfConfig::get('app_default_prize'));
-
-    if($oUser->hasAttribute('transaction')) {
-        $this->transaction = $oUser->getAttribute('transaction');
-        $this->transaction->setTransactionsDate('now');
-        $this->transaction->save();
-    } else {
-        $this->transaction = new Transactions();
-        $this->transaction->setTransactionsDate('now');
-        $this->transaction->save();
-        $oUser->setAttribute('transaction',$this->transaction);
-    }
 
   }
 
   public function executeAdd(sfWebRequest $request) {
     $track = $this->getRoute()->getObject();
     $oUser = $this->getUser();
+/*  wersja dla zalogowanych
+ *     if($oUser->hasAttribute('basket_id')) {
+        $basket_id = $oUser->getAttribute('basket_id');
+        $basket = ProfilesBasketsPeer::getProfilesBasketsById($basket_id);
+ */
     if($oUser->hasAttribute('basket')) {
         $basket = $oUser->getAttribute('basket');
     } else {

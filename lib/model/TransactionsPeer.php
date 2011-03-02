@@ -17,5 +17,15 @@
  * @package    lib.model
  */
 class TransactionsPeer extends BaseTransactionsPeer {
-
+    public static function getTransactionById($transaction_id, $criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria();
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+        $criteria->add(TransactionsPeer::TRANSACTIONS_ID, $transaction_id);
+        return TransactionsPeer::doSelectOne($criteria);
+    }
 } // TransactionsPeer
