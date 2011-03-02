@@ -2259,6 +2259,12 @@ Transactions:
     transactions_paymethod: '1'
     transactions_paypal_txnid: PaypalPaymentInfo_6BV546935E327614R
     transactions_done: '1'
+  Transactions_27:
+    transactions_date: '2011-03-01 15:40:34'
+    transactions_done: '0'
+  Transactions_28:
+    transactions_date: '2011-03-01 21:35:39'
+    transactions_done: '0'
 TransactionsTracks:
   TransactionsTracks_1:
     transactions_id: Transactions_2

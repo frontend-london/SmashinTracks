@@ -9,12 +9,12 @@ all:
   homepage_genres_new_tracks: 4
   # maksymalna długość nazwy tracka by się mieściła data dodania
   tracklist_max_name_length: 36
-  # domyślna cena, w £. Zmień również define('TRACK_PRIZE', 140); i define('TRACK_PRIZE_HALF', 70); w web/paypal_status.php
-  default_prize: 1.40
+  # domyślna cena, w £. Zmień również define('TRACK_PRIZE', 140); i define('TRACK_PRIZE_HALF', 70); w web/paypal_status.php 1.40
+  default_prize: 0.02
   # domyślna waluta
   default_prize_currency: £
-  # domyślna cena, format tekstowy
-  default_prize_string: £1.40
+  # domyślna cena, format tekstowy £1.40
+  default_prize_string: £0.02
   # okres w dniach kiedy track jest nowy
   track_new_period: 10
   # lista tracków na stronie - do stronicowania
@@ -29,9 +29,3 @@ all:
   contact_form_mail_to: office@smashintracks.com
   # z ilu ostatnich dniach pokazuje bestsellery na głównej
   homepage_bestsellers_period: 7
-
-  paypal_username: modul0_1298635327_biz_api1.gmail.com
-  paypal_password: 1298635337
-  paypal_signature: AF4uKwYk5SxzyrpKA0efJKRkal3KAX267dyqFrBM7WZ2-BBF4m8e9Jot
-  paypal_test: true
-  paypal_path: E:\xampp\htdocs\www\smashintracks\plugins\prestaPaypalPlugin\sdk\lib

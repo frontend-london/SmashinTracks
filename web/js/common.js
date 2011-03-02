@@ -158,6 +158,11 @@ $(window).load (
                     $(this).toggleClass('arrow-bottom-big');
                     $(this).toggleClass('arrow-top-big');
 		});
+
+		$("a#bm5-a1-close").click(function(event){
+                    //event.preventDefault();
+                    $("div#bm5-container").css("display", "none");
+		});
 		
 	}
 );
@@ -183,7 +188,7 @@ $(document).ready
 
                 //alert(screen.height);
 
-		$( "#bf1-questions" ).accordion({ 
+		$("#bf1-questions").accordion({ 
 			active: 0,
 			collapsible: true,
 			autoHeight: false,

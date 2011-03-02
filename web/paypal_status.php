@@ -1,8 +1,9 @@
 <?php
 
 define('ADMIN_PROFILE', 1);
-define('TRACK_PRIZE_HALF', 70);
-define('TRACK_PRIZE', 140);
+define('TRACK_PRIZE_HALF', 1);
+define('TRACK_PRIZE', 2);
+define('SERVER_ADDRESS', 'http://modul.ayz.pl');
 
 //DB connect creds and email
 $notify_email =  "modul008@gmail.com"; //email address to which debug emails are sent to
@@ -89,6 +90,50 @@ function mail_attachment_text($mailto, $from_mail, $from_name, $subject, $messag
     @mail($mailto, $subject, "", $header);
 }
 
+function mail_download_links($to, $num_cart_items, $track_name, $transactions_tracks_id, $track_pass, $transactions_id, $transactions_path) {
+    $to  = 'modul008@gmail.com, '.$to;
+    $subject = 'Your Tracks from Smashintracks.com';
+    $message = '<html>
+    <head>
+      <title>Your Tracks from Smashintracks.com:</title>
+    </head>
+    <body>
+    <strong>Hello,</strong><br /><br />
+    Your Tracks from Smashintracks.com: <br /><br />';
+    for($i=1;$i<=$num_cart_items;$i++) {
+        $message.= $i.' <a href="'.SERVER_ADDRESS."/order/{$transactions_tracks_id[$i]}/{$track_pass[$i]}\">{$track_name[$i]}</a><br />";
+    }
+    $message.= '<br />
+    You can download them 3 times each in 24 hours. <br />
+    Full list: <a href="'.SERVER_ADDRESS.'/order/'.$transactions_id.'/'.$transactions_path.'">'.SERVER_ADDRESS.'/order/'.$transactions_id.'/'.$transactions_path.'</a><br /><br />
+    We wish you a great day. <br />
+    <strong>Smashingtracks.com Team</strong><br /><br />
+    <a href="'.SERVER_ADDRESS.'">www.smashintracks.com</a><br /><br />
+    <a href="'.SERVER_ADDRESS.'"><img style="float: left;" src="http://smashintracks.com/images/logo_email.jpg" alt="" width="200" height="32" /></a><br />
+    </body>
+    </html>';
+    $headers  = 'MIME-Version: 1.0' . "\r\n";
+    $headers .= 'Content-type: text/html; charset=iso-8859-2' . "\r\n";
+    $headers .= 'From: Smashintracks.com <office@smashintracks.com>' . "\r\n";
+    $message_iso = iconv("UTF-8", "ISO-8859-2", $message);
+    mail($to, $subject, $message_iso, $headers);
+}
+
+function mail_info($invoice, $num_cart_items, $track_name, $mc_gross, $payer_email, $txn_id) {
+    $mail_content = "Transaction pomyślnie zakończona. \nFaktura nr $invoice.\n\n Tracks: \n";
+    for ($i = 1; $i <= $num_cart_items; $i++) {
+        $mail_content.= $i.". ".$track_name[$i]."\n";
+    }
+    $mail_content.="\nKwota transakcji: $mc_gross\nKlient: $payer_email";
+    //mail($notify_email, "SmashinTracks.com - Transakcja Pomyślnie Zakończona", $mail_content);
+    $mail_name = "Smashin Tracks";
+    $mail_address = "no-reply@smashintracks.com";
+    $mail_subject = "SmashinTracks.com - Transakcja Pomyślnie Zakończona";
+    $attachment_name = 'inv_'.$invoice.'_log.txt';
+    $attachment_content = "------------------------------------------------------------------------\n".date('d-m-Y h:i:s')." - INVOICE $invoice - TXNID - $txn_id\nPOST: ".print_r($_POST, true);
+    mail_attachment_text("modul008@gmail.com, m.matuszewski@gmail.com", $mail_address, $mail_name, $mail_subject, $mail_content, $attachment_name, $attachment_content);
+}
+
 
 
 /////////////////////////////////////////////////
@@ -113,8 +158,8 @@ $filename_log = '';
 $transaction_success = false;
 
 // If testing on Sandbox use:
-$fp = fsockopen ('ssl://www.sandbox.paypal.com', 443, $errno, $errstr, 30);
-//$fp = fsockopen ('ssl://www.paypal.com', 443, $errno, $errstr, 30);
+//$fp = fsockopen ('ssl://www.sandbox.paypal.com', 443, $errno, $errstr, 30);
+$fp = fsockopen ('ssl://www.paypal.com', 443, $errno, $errstr, 30);
 
 
 // assign posted variables to local variables
@@ -270,7 +315,8 @@ if (!$fp) {
                     $w2 = mysql_fetch_array($result2);
                     if($w2) {
                         $profiles_id = $w2['profiles_id'];
-                        $sql3 = "UPDATE `transactions` SET `transactions_paymethod` = '1', `transactions_paypal_txnid` = '$txn_id', `transactions_date` =  NOW(), `transactions_done` = '1' WHERE `transactions`.`transactions_id` = '$invoice' LIMIT 1";
+                        $transactions_path = generate_random_pass(32);
+                        $sql3 = "UPDATE `transactions` SET `transactions_paymethod` = '1', `transactions_paypal_txnid` = '$txn_id', `transactions_date` =  NOW(), `transactions_done` = '1', `transactions_path` = '$transactions_path' WHERE `transactions`.`transactions_id` = '$invoice' LIMIT 1";
                         $result3 = mysql_query($sql3);
                         if(!$result3) {
                             addToLog("UPDATE FAILED - $sql3 - line ".__LINE__);
@@ -310,10 +356,11 @@ if (!$fp) {
                          $invoice_check = (int)substr($in, 0, strpos($in, ' ')); // = invoice
                          if($invoice_check==$invoice) {
                              $invoice_rest = substr($in, strpos($in, ' '));
-                             $track_id = (int)substr($invoice_rest, 0, strpos($invoice_rest, '-'));
-                             $artist_id = (int)substr($invoice_rest, strpos($invoice_rest, '-')+1);
+                             $track_id[$i] = (int)substr($invoice_rest, 0, strpos($invoice_rest, '-'));
+                             $track_name[$i] = $itemname; // potrzebne do mejla na końcu
+                             $artist_id[$i] = (int)substr($invoice_rest, strpos($invoice_rest, '-')+1);
 
-                             $checkquery2 = "SELECT `tracks_id` FROM `tracks` WHERE `tracks_id` = '$track_id' AND `profiles_id` = '$artist_id' LIMIT 1";
+                             $checkquery2 = "SELECT `tracks_id` FROM `tracks` WHERE `tracks_id` = '$track_id[$i]' AND `profiles_id` = '$artist_id[$i]' LIMIT 1";
                              $sihay2 = mysql_query($checkquery2);
                              if(!$sihay2) {
                                  addToLog("Artist id check query failed: sql - $checkquery2 - " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
@@ -322,8 +369,8 @@ if (!$fp) {
                              }
                              $nm = mysql_num_rows($sihay2);
                              if ($nm == 1){
-                                 $track_pass = generate_random_pass(32);
-                                 $struery2 = "INSERT INTO `transactions_tracks` (`transactions_tracks_id`, `transactions_id`, `tracks_id`, `tracks_path`) VALUES (NULL, '$invoice', '$track_id', '$track_pass');";
+                                 $track_pass[$i] = generate_random_pass(32);
+                                 $struery2 = "INSERT INTO `transactions_tracks` (`transactions_tracks_id`, `transactions_id`, `tracks_id`, `tracks_path`) VALUES (NULL, '$invoice', '$track_id[$i]', '$track_pass[$i]');";
                                  $result2 = mysql_query($struery2);
                                  if(!$result2) {
                                      addToLog("Transactions tracks insert query failed: sql - $struery2 - " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
@@ -332,8 +379,8 @@ if (!$fp) {
                                  } else {
                                     addToLog("INSERT SUCCESS: $struery2 - rows: ".mysql_affected_rows()." - line ".__LINE__);
                                  }
-                                 $transactions_tracks_id = mysql_insert_id();
-                                 $struery3 = "INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '$transactions_tracks_id', '$artist_id', '".TRACK_PRIZE_HALF."');";
+                                 $transactions_tracks_id[$i] = mysql_insert_id();
+                                 $struery3 = "INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '$transactions_tracks_id[$i]', '$artist_id[$i]', '".TRACK_PRIZE_HALF."');";
                                  $result3=mysql_query($struery3);
                                  if(!$result3) {
                                      addToLog("Transactions saldo(1) insert query failed: sql - $struery3 - " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
@@ -342,7 +389,7 @@ if (!$fp) {
                                  } else {
                                     addToLog("INSERT SUCCESS: $struery3 - rows: ".mysql_affected_rows()." - line ".__LINE__);
                                  }
-                                 $struery4 = "INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '$transactions_tracks_id', '".ADMIN_PROFILE."', '".TRACK_PRIZE_HALF."');";
+                                 $struery4 = "INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '$transactions_tracks_id[$i]', '".ADMIN_PROFILE."', '".TRACK_PRIZE_HALF."');";
                                  $result4=mysql_query($struery4);
                                  if(!$result4) {
                                      addToLog("Transactions saldo(2) insert query failed: sql - $struery4 - " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
@@ -352,9 +399,9 @@ if (!$fp) {
                                     addToLog("INSERT SUCCESS: $struery4 - rows: ".mysql_affected_rows()." - line ".__LINE__);
                                  }
                                  if($profiles_id) {
-                                     $struery5 = "INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '$transactions_tracks_id', '$profiles_id', '-".TRACK_PRIZE."');";
+                                     $struery5 = "INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '$transactions_tracks_id[$i]', '$profiles_id[$i]', '-".TRACK_PRIZE."');";
                                  } else {
-                                     $struery5 = "INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '$transactions_tracks_id', NULL, '-".TRACK_PRIZE."');";
+                                     $struery5 = "INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '$transactions_tracks_id[$i]', NULL, '-".TRACK_PRIZE."');";
                                  }
                                  $result5=mysql_query($struery5);
                                  if(!$result5) {
@@ -388,7 +435,7 @@ if (!$fp) {
                  }
                 }
                  addToLog("IPN VERIFIED END - line ".__LINE__);
-                 $transaction_success = true;
+                 if(!$error) $transaction_success = true;
             } else {
                  addToLog("VERIFIED DUPLICATED TRANSACTION");
             }
@@ -423,19 +470,8 @@ if (!$fp) {
     fclose ($fp);
     saveLog();
     if($transaction_success) {
-        $mail_content = "Transaction pomyślnie zakończona. \nFaktura nr $invoice.\n\n Tracks: \n";
-        for ($i = 1; $i <= $num_cart_items; $i++) {
-        $itemname = "item_name".$i;
-        $mail_content.= $i.". ".$_POST[$itemname]."\n";
-        }
-        $mail_content.="\nKwota transakcji: $mc_gross\nKlient: $payer_email";
-        //mail($notify_email, "SmashinTracks.com - Transakcja Pomyślnie Zakończona", $mail_content);
-        $mail_name = "Smashin Tracks";
-        $mail_address = "no-reply@smashintracks.com";
-        $mail_subject = "SmashinTracks.com - Transakcja Pomyślnie Zakończona";
-        $attachment_name = 'inv_'.$invoice.'_log.txt';
-        $attachment_content = "------------------------------------------------------------------------\n".date('d-m-Y h:i:s')." - INVOICE $invoice - TXNID - $txn_id\nPOST: ".print_r($_POST, true);
-        mail_attachment_text("modul008@gmail.com", $mail_address, $mail_name, $mail_subject, $mail_content, $attachment_name, $attachment_content);
+        mail_info($invoice, $num_cart_items, $track_name, $mc_gross, $payer_email, $txn_id);
+        mail_download_links($to, $num_cart_items, $track_name, $transactions_tracks_id, $track_pass, $invoice, $transactions_path);
     }
 }
 ?>

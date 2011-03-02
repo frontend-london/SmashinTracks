@@ -173,12 +173,14 @@ div#loginbox div#lb-div9 { padding-top:13px; padding-bottom:10px;}
 div#loginbox div#lb-div10, div#loginbox div#lb-div12 { font-weight:normal; padding-left:169px; width:197px;}
 div#loginbox div#lb-div12 { width:210px;}
 
+div#bm5-container { width: 100%; height: 100%; background:url(../images/bgr/trans.png) repeat top left; position: fixed; top:0px; left:0px; z-index:40; /*display: none;*/}
 div#box-message { position:absolute;  width:433px; top:50%; left:50%; margin-left:-216px; z-index:10; margin-top:-117px;}
 div#box-message div#bm5-outer { background:url(../images/bgr/box-loop.gif) repeat-y; margin: 14px 0px; }
 div#box-message div#bm5-inner { background:url(../images/bgr/box-top.gif) no-repeat; background-position:0px -14px; padding:0px 6px;}
 div#box-message div#bm5-bgr-top { background:url(../images/bgr/box-top.gif) no-repeat top left; position:absolute; left:0px; top:0px; height:14px; width:433px;}
 div#box-message div#bm5-bgr-bottom { background:url(../images/bgr/box-bottom.gif) no-repeat top left; position:absolute; left:0px; bottom:0px; height:14px; width:433px;}
 div#box-message img#bm5-img1 { padding-left:24px; padding-top:18px;}
+div#box-message img#bm5-img2 { padding-left: 4px; padding-top: 0px; padding-bottom:6px; width:369px; border: solid #cecece; border-width:0px 0px 1px 0px; }
 div#box-message div#bm5-div1 { font-size:13px; line-height:22px; width:373px; margin-top:17px; padding-top:27px; border: solid #cecece; border-width:1px 0px 0px 0px; margin-left:24px; }
 div#box-message div.button-ok, div#box-message div.button-close { float:right; margin-right:25px; margin-top:16px; margin-bottom:10px;}
 div#box-message div.button-ok { width:64px; }
