@@ -20,6 +20,7 @@ abstract class BaseTransactionsForm extends BaseFormPropel
       'transactions_paypal_txnid' => new sfWidgetFormPropelChoice(array('model' => 'PaypalPaymentInfo', 'add_empty' => true)),
       'transactions_done'         => new sfWidgetFormInputText(),
       'profiles_id'               => new sfWidgetFormPropelChoice(array('model' => 'Profiles', 'add_empty' => true)),
+      'transactions_path'         => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -29,6 +30,7 @@ abstract class BaseTransactionsForm extends BaseFormPropel
       'transactions_paypal_txnid' => new sfValidatorPropelChoice(array('model' => 'PaypalPaymentInfo', 'column' => 'txnid', 'required' => false)),
       'transactions_done'         => new sfValidatorInteger(array('min' => -128, 'max' => 127)),
       'profiles_id'               => new sfValidatorPropelChoice(array('model' => 'Profiles', 'column' => 'profiles_id', 'required' => false)),
+      'transactions_path'         => new sfValidatorString(array('max_length' => 32, 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('transactions[%s]');

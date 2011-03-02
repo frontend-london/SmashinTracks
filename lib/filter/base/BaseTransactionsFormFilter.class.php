@@ -17,6 +17,7 @@ abstract class BaseTransactionsFormFilter extends BaseFormFilterPropel
       'transactions_paypal_txnid' => new sfWidgetFormPropelChoice(array('model' => 'PaypalPaymentInfo', 'add_empty' => true)),
       'transactions_done'         => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'profiles_id'               => new sfWidgetFormPropelChoice(array('model' => 'Profiles', 'add_empty' => true)),
+      'transactions_path'         => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
@@ -25,6 +26,7 @@ abstract class BaseTransactionsFormFilter extends BaseFormFilterPropel
       'transactions_paypal_txnid' => new sfValidatorPropelChoice(array('required' => false, 'model' => 'PaypalPaymentInfo', 'column' => 'txnid')),
       'transactions_done'         => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'profiles_id'               => new sfValidatorPropelChoice(array('required' => false, 'model' => 'Profiles', 'column' => 'profiles_id')),
+      'transactions_path'         => new sfValidatorPass(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('transactions_filters[%s]');
@@ -48,6 +50,7 @@ abstract class BaseTransactionsFormFilter extends BaseFormFilterPropel
       'transactions_paypal_txnid' => 'ForeignKey',
       'transactions_done'         => 'Number',
       'profiles_id'               => 'ForeignKey',
+      'transactions_path'         => 'Text',
     );
   }
 }

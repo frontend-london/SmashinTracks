@@ -450,6 +450,7 @@ CREATE TABLE `transactions`
 	`transactions_paypal_txnid` VARCHAR(30),
 	`transactions_done` TINYINT(1) default 0 NOT NULL,
 	`profiles_id` INTEGER(11),
+	`transactions_path` VARCHAR(32),
 	PRIMARY KEY (`transactions_id`),
 	KEY `transactions_ORDER`(`transactions_date`),
 	KEY `transactions_FK_1`(`transactions_paypal_txnid`),

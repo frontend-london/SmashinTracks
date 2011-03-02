@@ -192,6 +192,7 @@ propel:
     transactions_paypal_txnid: { phpName: TransactionsPaypalTxnid, type: VARCHAR, size: '30', required: false, foreignTable: paypal_payment_info, foreignReference: txnid, onDelete: RESTRICT, onUpdate: RESTRICT }
     transactions_done: { phpName: TransactionsDone, type: TINYINT, size: '1', required: true, defaultValue: '0' }
     profiles_id: { phpName: ProfilesId, type: INTEGER, size: '11', required: false, foreignTable: profiles, foreignReference: profiles_id, onDelete: RESTRICT, onUpdate: RESTRICT }
+    transactions_path: { phpName: TransactionsPath, type: VARCHAR, size: '32', required: false }
     _indexes: { transactions_ORDER: [transactions_date], transactions_FK_1: [transactions_paypal_txnid], transactions_FK_2: [profiles_id] }
   transactions_saldo:
     _attributes: { phpName: TransactionsSaldo }
