@@ -22,6 +22,6 @@ class registerActions extends sfActions
 
   public function executeShow(sfWebRequest $request)
   {
-
+    $this->form = new ProfilesForm();
   }
 }

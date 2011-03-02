@@ -27,11 +27,17 @@ class basketActions extends sfActions
     if($oUser->hasAttribute('transaction_id')) {
         $transaction_id = $oUser->getAttribute('transaction_id');
         $transaction = TransactionsPeer::getTransactionById($transaction_id);
-        if($transaction->getTransactionsDone()) {            
+        if($transaction->getTransactionsDone()) {
+            $this->logMessage('Basket before '.print_r($basket->getTracksIds(), true), 'alert');
+            $this->logMessage('Transaction'.print_r($transaction, true), 'alert');
+            $this->logMessage('Transaction tracks'.print_r($transaction->getTransactionsTrackssJoinTracks(), true), 'alert');
             foreach ($transaction->getTransactionsTrackssJoinTracks() as $transaction_track) {
                 $track = $transaction_track->getTracks();
+                $this->logMessage('Remove track '.$track->getTracksId(), 'alert');
                 $basket->removeTrack($track->getTracksId());
             }
+            $this->logMessage('Basket after '.print_r($basket->getTracksIds(), true), 'alert');
+            $oUser->setAttribute('basket',$basket);
             $transaction = new Transactions();
         }
         $transaction->setTransactionsDate('now');

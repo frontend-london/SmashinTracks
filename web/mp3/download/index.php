@@ -4,11 +4,12 @@
     $DB_Username = "modul_smashin"; //your MySQL User Name
     $DB_Password = "19aY2w2cuKWknxvSfV"; //your MySQL Password
     $DB_DBName = "modul_smashin"; //your MySQL Database Name
-
+/*
     $DB_Server = "localhost"; //your MySQL Server
     $DB_Username = "root"; //your MySQL User Name
     $DB_Password = ""; //your MySQL Password
     $DB_DBName = "stracks"; //your MySQL Database Name
+*/
 
     function return_bytes($val) {
         $val = trim($val);

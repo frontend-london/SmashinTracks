@@ -1,5 +1,5 @@
                 <? slot('head-after'); ?>
-                    <meta http-equiv="refresh" content="5;url=<?=$sf_request->getUri();?>" />
+                    <meta http-equiv="refresh" content="10;url=<?=$sf_request->getUri();?>" />
                 <? end_slot(); ?>
 
                 <div class="box-white" id="box-top">

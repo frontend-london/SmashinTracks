@@ -78,7 +78,7 @@ function mail_attachment_text($mailto, $from_mail, $from_name, $subject, $messag
     $header .= "Content-Type: multipart/mixed; boundary=\"".$uid."\"\r\n\r\n";
     $header .= "This is a multi-part message in MIME format.\r\n";
     $header .= "--".$uid."\r\n";
-    $header .= "Content-type:text/plain; charset=UTF-8\r\n";
+    $header .= "Content-type:text/plain; charset=iso-8859-2\r\n";
     $header .= "Content-Transfer-Encoding: 7bit\r\n\r\n";
     $header .= $message."\r\n\r\n";
     $header .= "--".$uid."\r\n";
@@ -87,10 +87,12 @@ function mail_attachment_text($mailto, $from_mail, $from_name, $subject, $messag
     $header .= "Content-Disposition: attachment; filename=\"".$attachment_name."\"\r\n\r\n";
     $header .= $content."\r\n\r\n";
     $header .= "--".$uid."--";
-    @mail($mailto, $subject, "", $header);
+    $subject_iso = iconv("UTF-8", "ISO-8859-2", $subject);
+    $header_iso = iconv("UTF-8", "ISO-8859-2", $header);
+    mail($mailto, $subject_iso, "", $header_iso);
 }
 
-function mail_download_links($to, $num_cart_items, $track_name, $transactions_tracks_id, $track_pass, $transactions_id, $transactions_path) {
+function mail_download_links($to, $num_cart_items, $track_name, $transactions_tracks_id, $track_pass, $transactions_id, $transactions_path, $invoice) {
     $to  = 'modul008@gmail.com, '.$to;
     $subject = 'Your Tracks from Smashintracks.com';
     $message = '<html>
@@ -101,32 +103,33 @@ function mail_download_links($to, $num_cart_items, $track_name, $transactions_tr
     <strong>Hello,</strong><br /><br />
     Your Tracks from Smashintracks.com: <br /><br />';
     for($i=1;$i<=$num_cart_items;$i++) {
-        $message.= $i.' <a href="'.SERVER_ADDRESS."/order/{$transactions_tracks_id[$i]}/{$track_pass[$i]}\">{$track_name[$i]}</a><br />";
+        $message.= $i.' <a href="'.SERVER_ADDRESS."/mp3/download/{$transactions_tracks_id[$i]}/{$track_pass[$i]}\">{$track_name[$i]}</a><br />";
     }
     $message.= '<br />
+    Invoice no. '.$invoice.'<br />
     You can download them 3 times each in 24 hours. <br />
     Full list: <a href="'.SERVER_ADDRESS.'/order/'.$transactions_id.'/'.$transactions_path.'">'.SERVER_ADDRESS.'/order/'.$transactions_id.'/'.$transactions_path.'</a><br /><br />
     We wish you a great day. <br />
-    <strong>Smashingtracks.com Team</strong><br /><br />
+    <strong>Smashintracks.com Team</strong><br /><br />
     <a href="'.SERVER_ADDRESS.'">www.smashintracks.com</a><br /><br />
     <a href="'.SERVER_ADDRESS.'"><img style="float: left;" src="http://smashintracks.com/images/logo_email.jpg" alt="" width="200" height="32" /></a><br />
     </body>
     </html>';
     $headers  = 'MIME-Version: 1.0' . "\r\n";
     $headers .= 'Content-type: text/html; charset=iso-8859-2' . "\r\n";
-    $headers .= 'From: Smashintracks.com <office@smashintracks.com>' . "\r\n";
+    $headers .= 'From: SmashinTracks.com <office@smashintracks.com>' . "\r\n";
     $message_iso = iconv("UTF-8", "ISO-8859-2", $message);
     mail($to, $subject, $message_iso, $headers);
 }
 
 function mail_info($invoice, $num_cart_items, $track_name, $mc_gross, $payer_email, $txn_id) {
-    $mail_content = "Transaction pomyślnie zakończona. \nFaktura nr $invoice.\n\n Tracks: \n";
+    $mail_content = "Transakcja pomyślnie zakończona. \nFaktura nr $invoice.\n\n Tracks: \n";
     for ($i = 1; $i <= $num_cart_items; $i++) {
         $mail_content.= $i.". ".$track_name[$i]."\n";
     }
     $mail_content.="\nKwota transakcji: $mc_gross\nKlient: $payer_email";
     //mail($notify_email, "SmashinTracks.com - Transakcja Pomyślnie Zakończona", $mail_content);
-    $mail_name = "Smashin Tracks";
+    $mail_name = "SmashinTracks.com";
     $mail_address = "no-reply@smashintracks.com";
     $mail_subject = "SmashinTracks.com - Transakcja Pomyślnie Zakończona";
     $attachment_name = 'inv_'.$invoice.'_log.txt';
@@ -357,7 +360,7 @@ if (!$fp) {
                          if($invoice_check==$invoice) {
                              $invoice_rest = substr($in, strpos($in, ' '));
                              $track_id[$i] = (int)substr($invoice_rest, 0, strpos($invoice_rest, '-'));
-                             $track_name[$i] = $itemname; // potrzebne do mejla na końcu
+                             $track_name[$i] = $_POST[$itemname]; // potrzebne do mejla na końcu
                              $artist_id[$i] = (int)substr($invoice_rest, strpos($invoice_rest, '-')+1);
 
                              $checkquery2 = "SELECT `tracks_id` FROM `tracks` WHERE `tracks_id` = '$track_id[$i]' AND `profiles_id` = '$artist_id[$i]' LIMIT 1";
@@ -471,7 +474,7 @@ if (!$fp) {
     saveLog();
     if($transaction_success) {
         mail_info($invoice, $num_cart_items, $track_name, $mc_gross, $payer_email, $txn_id);
-        mail_download_links($to, $num_cart_items, $track_name, $transactions_tracks_id, $track_pass, $invoice, $transactions_path);
+        mail_download_links($to, $num_cart_items, $track_name, $transactions_tracks_id, $track_pass, $invoice, $transactions_path, $invoice);
     }
 }
 ?>
