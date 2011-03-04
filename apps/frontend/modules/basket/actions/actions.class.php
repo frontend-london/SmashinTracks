@@ -88,36 +88,16 @@ class basketActions extends sfActions
   }
 
   public function executePayPalCheckout(sfWebRequest $request) {
-      $this->transaction = $this->getRoute()->getObject();
-      if($this->transaction->getTransactionsDone()) {
+      $transaction = $this->getRoute()->getObject();
+      $tx = $request->getParameter('tx');
+      if($transaction->getTransactionsPaypalTxnid()!=$tx) $this->forward404();
+      if($transaction->getTransactionsDone()) {
+        $this->transaction = $transaction;
         return sfView::SUCCESS;
       } else {
         return sfView::ERROR;
       }
       
-      /*
-      $tx = $request->getParameter('tx'); // Transaction ID/PDT token np. 0VE68616NX111264S
-      $st = $request->getParameter('st'); // Transaction status np. Completed
-      if($st!='Completed') $this->redirect404 ();
-      $amt = $request->getParameter('amt'); // Amount of the transaction np. 0.02
-      $cc = $request->getParameter('cc'); // Currency code np. GB
-      $cm = $request->getParameter('cm'); // Custom message np. nic
-      $criteria = new Criteria();
-      $criteria->add(PaypalCartInfoPeer::TXNID, $tx);
-      $items = PaypalCartInfoPeer::doSelect($criteria);
-      $tracks_id = array();
-      foreach($items as $item) {
-          $tracks_id[] = $item->getItemnumber();
-      }
-      //print_r($tracks_id);
-      $tracks = TracksPeer::getTracksIn($tracks_id);
-
-      $criteria = new Criteria();
-      $criteria->add(PaypalPaymentInfoPeer::TXNID, $tx);
-      $info = PaypalPaymentInfoPeer::doSelectOne($criteria);
-      //$paymentdate = $info->getPaymentdate();
-      if($info->getMcGross()!=count($items)*sfConfig::get('app_default_prize')) $this->redirect404 (); // test na dobrą wartość zapłaty
-      */
   }
 
   public function executeDownload() {
