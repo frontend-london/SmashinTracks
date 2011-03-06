@@ -23,5 +23,14 @@ class registerActions extends sfActions
   public function executeShow(sfWebRequest $request)
   {
     $this->form = new ProfilesForm();
+
+    if ($request->isMethod('post'))
+     {
+       $this->form->bind($request->getParameter('profiles'));
+       if ($this->form->isValid())
+       {
+
+       }
+     }
   }
 }

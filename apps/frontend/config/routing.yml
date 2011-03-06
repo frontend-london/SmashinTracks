@@ -105,6 +105,10 @@ profile:
   requirements:
     sf_method: [get]
 
+register:
+  url:     /register
+  param: { module: register, action: show, section: register }
+
 terms:
   url:     /terms-and-conditions
   param: { module: terms, action: show, section: terms }
@@ -116,10 +120,6 @@ track:
   param:   { module: track, action: show, section: charts }
   requirements:
     sf_method: [get]
-
-register:
-  url:     /register
-  param: { module: register, action: show, section: register }
 
 # default rules
 homepage:
