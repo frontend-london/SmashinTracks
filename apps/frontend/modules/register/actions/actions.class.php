@@ -15,22 +15,27 @@ class registerActions extends sfActions
   *
   * @param sfRequest $request A request object
   */
-  public function executeIndex(sfWebRequest $request)
-  {
-    $this->forward('default', 'module');
-  }
 
   public function executeShow(sfWebRequest $request)
   {
     $this->form = new ProfilesForm();
 
+    
+
     if ($request->isMethod('post'))
-     {
+    {
        $this->form->bind($request->getParameter('profiles'));
        if ($this->form->isValid())
        {
-
+          //$this->form->save($request->getParameter('profiles'));
+          $this->form->save(); // zaktualizuj save / doSave w modelu
+          $this->redirect('register_welcome');
        }
-     }
+    }
+
+  }
+
+  public function executeWelcome(sfWebRequest $request) {
+      
   }
 }

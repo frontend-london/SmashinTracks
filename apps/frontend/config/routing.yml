@@ -109,6 +109,10 @@ register:
   url:     /register
   param: { module: register, action: show, section: register }
 
+register_welcome:
+  url:     /register/welcome
+  param: { module: register, action: welcome, section: register }
+
 terms:
   url:     /terms-and-conditions
   param: { module: terms, action: show, section: terms }
