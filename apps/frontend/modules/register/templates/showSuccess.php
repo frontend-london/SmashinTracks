@@ -51,19 +51,31 @@
                                 </div>
                             <?php endif; ?>
                             <div id="br3-div5">
-                                    <label>
-                                    <input type="checkbox" name="#" value="" class="input-checkbox" />
-                                    <span>Yes, sign me up for all the latest news and info </span>
+                                <label>
+                                    <!--<input type="checkbox" name="#" value="" class="input-checkbox" />-->
+                                    <?php echo $form['profiles_newsletter']->render(array('class' => 'input-checkbox')) ?>
+                                    <span><?php echo $form['profiles_newsletter']->renderLabel('Yes, sign me up for all the latest news and info') ?></span>
                                 </label>
                                 <div class="clear"></div>
                             </div>
+                            <?php if ($form['profiles_newsletter']->hasError()): ?>
+                                <div class="div-error-message">
+                                    <?php echo $form['profiles_newsletter']->renderError() ?>
+                                </div>
+                            <?php endif; ?>
                             <div id="br3-div6">
                                 <label>
-                                    <input type="checkbox" name="#" value="" class="input-checkbox" />
-                                    <span>I agree to the <a href="#" class="bold blue">Terms &amp; Conditions</a> of<br /> Smashintracks.com </span>
+                                    <!--<input type="checkbox" name="#" value="" class="input-checkbox" />-->
+                                    <?php echo $form['profiles_terms']->render(array('class' => 'input-checkbox')) ?>
+                                    <span><?php echo $form['profiles_terms']->renderLabel('I agree to the <a href="#" class="bold blue">Terms &amp; Conditions</a> of<br /> Smashintracks.com ') ?></span>
                                 </label>
                                 <div class="clear"></div>
                             </div>
+                            <?php if ($form['profiles_terms']->hasError()): ?>
+                                <div class="div-error-message">
+                                    <?php echo $form['profiles_terms']->renderError() ?>
+                                </div>
+                            <?php endif; ?>
                             <?php if ($form->hasGlobalErrors()): ?>
                                 <div class="div-error-message">
                                     <?php echo $form->renderGlobalErrors() ?>
