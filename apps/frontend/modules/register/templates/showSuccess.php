@@ -52,7 +52,6 @@
                             <?php endif; ?>
                             <div id="br3-div5">
                                 <label>
-                                    <!--<input type="checkbox" name="#" value="" class="input-checkbox" />-->
                                     <?php echo $form['profiles_newsletter']->render(array('class' => 'input-checkbox')) ?>
                                     <span><?php echo $form['profiles_newsletter']->renderLabel('Yes, sign me up for all the latest news and info') ?></span>
                                 </label>
@@ -65,9 +64,8 @@
                             <?php endif; ?>
                             <div id="br3-div6">
                                 <label>
-                                    <!--<input type="checkbox" name="#" value="" class="input-checkbox" />-->
                                     <?php echo $form['profiles_terms']->render(array('class' => 'input-checkbox')) ?>
-                                    <span><?php echo $form['profiles_terms']->renderLabel('I agree to the <a href="#" class="bold blue">Terms &amp; Conditions</a> of<br /> Smashintracks.com ') ?></span>
+                                    <span><?php echo $form['profiles_terms']->renderLabel('I agree to the <a href="'.url_for('terms').'" class="bold blue">Terms &amp; Conditions</a> of<br /> Smashintracks.com ') ?></span>
                                 </label>
                                 <div class="clear"></div>
                             </div>
@@ -86,7 +84,7 @@
                                 <div class="button-silver-cancel">
                                     <div class="button-silver-left"></div>
                                     <div class="button-silver-right"></div>
-                                    <a href="#">Cancel</a>
+                                    <a href="javascript: history.go(-1)">Cancel</a>
                                 </div>
                                 <div class="button-register">
                                     <div class="button-left"></div>
