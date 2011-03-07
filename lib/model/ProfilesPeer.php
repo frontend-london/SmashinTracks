@@ -49,4 +49,24 @@ class ProfilesPeer extends BaseProfilesPeer {
 
     }
 
+    /*
+     * Generuje unikalny URL
+     */
+    public static function generateProfilesPath($string) {
+        $path_size = ProfilesPeer::getTableMap()->getColumn(ProfilesPeer::PROFILES_PATH)->getSize();
+        $path = Smashin::generate_url($string, $path_size);
+        $counter=1;
+        while(true) {
+            $criteria = new Criteria(ProfilesPeer::DATABASE_NAME);
+            $criteria->add(ProfilesPeer::PROFILES_PATH, $path);
+            if(ProfilesPeer::doSelectOne($criteria)) {
+                $add_end = '-'.$counter;
+                $path = Smashin::generate_url($string, $path_size-strlen($add_end)).$add_end;
+                $counter++;
+            } else break;
+        }
+        return $path;
+        
+    }
+
 } // ProfilesPeer

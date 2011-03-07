@@ -103,4 +103,21 @@ class Profiles extends BaseProfiles {
             return $path;
         }
 
+        public function save(PropelPDO $con = null)
+        {
+            if ($this->isNew())
+            {
+              $pass = substr(hash('sha256',$this->getProfilesPassword()),0,32);
+              $this->setProfilesPassword($pass);
+
+              $this->setProfilesDate(time());
+              $path = ProfilesPeer::generateProfilesPath($this->getProfilesName());
+              $this->setProfilesPath($path);
+            }
+
+
+
+            return parent::save($con);
+        }
+
 } // Profiles

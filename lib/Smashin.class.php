@@ -29,5 +29,54 @@ class Smashin
     public static function generate_prize($prize) {
         return sfConfig::get('app_default_prize_currency').number_format($prize, 2);
     }
+
+    /*
+     * Zamienia wszyskie litery specjalne na ich odpowiedniki w ASCII np. ą na a itd.
+     */
+    public static function clearUTF($s)
+    {
+        $r = '';
+        $s1 = @iconv('UTF-8', 'ASCII//TRANSLIT', $s);
+        $j = 0;
+        for ($i = 0; $i < strlen($s1); $i++) {
+            $ch1 = $s1[$i];
+            $ch2 = @mb_substr($s, $j++, 1, 'UTF-8');
+            if (strstr('`^~\'"', $ch1) !== false) {
+                if ($ch1 <> $ch2) {
+                    --$j;
+                    continue;
+                }
+            }
+            $r .= ($ch1=='?') ? $ch2 : $ch1;
+        }
+        return $r;
+    }
+
+    /*
+     * Zamienia wszystkie znaki spoza podstawowych a-z 0-9 A-Z na podstawowe
+     * Przykład
+     * ciąg: aącćDóu !@#$%^%&* test
+     * na:   aaccdou-test
+     */
+    public static function generate_url($string, $size=0)
+    {
+        $string = strtr($string, array('&amp;' => '-'));
+        $string = self::clearUTF($string);
+        $string_cp = $string;
+        $string = '';
+
+        for($i=0;$i<strlen($string_cp);$i++) {
+            $char = ord($string_cp[$i]);
+            if((in_array($char, range(48, 57)) || in_array($char, range(65, 90)) || in_array($char, range(97, 122)))) $string.=$string_cp[$i]; else $string.=' ';
+        }
+        $string = trim($string);
+        $string = strtr($string, array(' ' => '-'));
+        while(strpos($string,'--')) {
+            $string = strtr($string, array('--' => '-'));
+        }
+        $string = strtolower($string); // tylko male litery
+        if($size>0) $string = substr($string, 0, $size);
+        return $string;
+    }
 }
 ?>
