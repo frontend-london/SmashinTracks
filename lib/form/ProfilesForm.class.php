@@ -81,7 +81,18 @@ class ProfilesForm extends BaseProfilesForm
     $field_name = 'profiles_terms';
     $this->validatorSchema[$field_name] = new sfValidatorBoolean(array('required' => true), array('invalid' => 'Please read and accept the terms first.', 'required' => 'Please read and accept the terms first.'));
 
-
+    $post_validators = $this->validatorSchema->getPostValidator()->getValidators();
+    foreach($post_validators as $post_validator) {
+        if(get_class($post_validator)=='sfValidatorPropelUnique') {
+            $columns = $post_validator->getOption('column');
+            if($columns[0]=='profiles_name') {
+                $post_validator->setMessage('invalid', 'Selected name is already in use.');
+            } elseif($columns[0]=='profiles_email') {
+                $post_validator->setMessage('invalid', 'Selected email is already in use.');
+            }
+        }
+        
+    }
     $this->validatorSchema->setPostValidator(
         new sfValidatorAnd(array(
             $this->validatorSchema->getPostValidator(),
