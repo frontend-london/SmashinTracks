@@ -17,16 +17,13 @@ class homeActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
-    //$this->forward('default', 'module');
-    //$recommended = TracksPeer::getRecommendedTracks();
-      //$criteria = new Criteria();
-      //$criteria->setLimit(10);
     $this->recommended = TracksRecommendsPeer::getActiveTracksRecommends();
-    //exit();
 
     $this->newtracks = TracksPeer::getNewTracks(null, 10);
     $this->newtracks_genres = GenresPeer::getNewTracksGenres();
 
     $this->bestsellerstracks = TracksPeer::getBestsellersTracks(sfConfig::get('app_homepage_bestsellers_period'), 10);
   }
+
+
 }

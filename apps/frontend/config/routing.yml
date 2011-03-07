@@ -61,6 +61,10 @@ genre:
   requirements:
     sf_method: [get]
 
+members:
+  url:     /members
+  param: { module: members, action: show, section: home }
+
 contact:
   url:     /contact
   param: { module: contact, action: show, section: contact }
