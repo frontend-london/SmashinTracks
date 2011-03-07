@@ -58,7 +58,8 @@ class registerActions extends sfActions
           
           $oUser = $this->getUser();
           $oUser->setAttribute('profile_id',$profile->getProfilesId());
-          $oUser->setAttribute('is_user',true);
+          $this->getUser()->setAuthenticated(true);
+          $this->getUser()->addCredentials('user');
           
           $this->redirect('register_welcome');
        }
