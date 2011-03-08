@@ -69,4 +69,16 @@ class ProfilesPeer extends BaseProfilesPeer {
         
     }
 
+    public static function getProfilesById($profiles_id, $criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria();
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+        $criteria->add(ProfilesPeer::PROFILES_ID, $profiles_id);
+        return ProfilesPeer::doSelectOne($criteria);
+    }
+
 } // ProfilesPeer

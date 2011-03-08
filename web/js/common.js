@@ -163,6 +163,17 @@ $(window).load (
                     //event.preventDefault();
                     $("div#bm5-container").css("display", "none");
 		});
+
+		$("a#a-loginbox").click(function(event){
+                    event.preventDefault();
+                    $("div#bm5-container-loginbox").fadeIn();
+		});
+
+		$("a#a-loginbox-close").click(function(event){
+                    event.preventDefault();
+                    //$("div#bm5-container-hidden").css("display", "none");
+                    $("div#bm5-container-loginbox").fadeOut();
+		});
 		
 	}
 );

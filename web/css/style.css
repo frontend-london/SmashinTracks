@@ -148,7 +148,7 @@ div#wrap-inner {
 	position:relative;
 }
 
-div#loginbox { position:absolute; top:351px; left:234px; width:433px; 	z-index:20; font-size:13px; line-height:13px; color:#3e3e3e; font-weight:bold; /*background:url(../images/bgr/loginbox.gif) no-repeat top left; */}
+div#loginbox { position:absolute; top:50%; left:50%; width:433px; margin-left:-216px; z-index:20; margin-top:-157px; font-size:13px; line-height:13px; color:#3e3e3e; font-weight:bold; /*background:url(../images/bgr/loginbox.gif) no-repeat top left; */}
 div#loginbox div#lb-outer { background:url(../images/bgr/box-loop.gif); margin: 14px 0px;  }
 div#loginbox div#lb-inner { background:url(../images/bgr/box-top.gif) no-repeat; background-position:0px -14px; padding:0px 6px;}
 div#loginbox div#lb-bgr-top { background:url(../images/bgr/box-top.gif) no-repeat top left; position:absolute; left:0px; top:0px; height:14px; width:433px;}
@@ -173,7 +173,8 @@ div#loginbox div#lb-div9 { padding-top:13px; padding-bottom:10px;}
 div#loginbox div#lb-div10, div#loginbox div#lb-div12 { font-weight:normal; padding-left:169px; width:197px;}
 div#loginbox div#lb-div12 { width:210px;}
 
-div#bm5-container { width: 100%; height: 100%; background:url(../images/bgr/trans.png) repeat top left; position: fixed; top:0px; left:0px; z-index:40; /*display: none;*/}
+div#bm5-container, div#bm5-container-loginbox { width: 100%; height: 100%; background:url(../images/bgr/trans.png) repeat top left; position: fixed; top:0px; left:0px; z-index:40; /*display: none;*/}
+div#bm5-container-loginbox { display: none;}
 div#box-message { position:absolute;  width:433px; top:50%; left:50%; margin-left:-216px; z-index:10; margin-top:-117px;}
 div#box-message div#bm5-outer { background:url(../images/bgr/box-loop.gif) repeat-y; margin: 14px 0px; }
 div#box-message div#bm5-inner { background:url(../images/bgr/box-top.gif) no-repeat; background-position:0px -14px; padding:0px 6px;}
@@ -291,7 +292,7 @@ ul#submenu li {
 	float:left;
 	color:#3e3e3e;
 	display:block;	
-	font-size:13px;
+	font-size:11px;
 	font-weight:bold;
 	line-height:11px;
 	text-transform:uppercase;

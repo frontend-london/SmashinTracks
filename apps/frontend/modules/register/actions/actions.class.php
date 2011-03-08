@@ -55,11 +55,8 @@ class registerActions extends sfActions
           $this->sendEmail();
 
           $profile = $this->form->save();
-          
-          $oUser = $this->getUser();
-          $oUser->setAttribute('profile_id',$profile->getProfilesId());
-          $this->getUser()->setAuthenticated(true);
-          $this->getUser()->addCredentials('user');
+
+          Smashin::signIn($profile);
           
           $this->redirect('register_welcome');
        }

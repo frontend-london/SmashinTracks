@@ -19,4 +19,9 @@ class membersActions extends sfActions
   public function executeShow(sfWebRequest $request) {
 
   }
+
+  public function executeSignOut(sfWebRequest $request) {
+      Smashin::signOut();
+      $this->forward('homepage');
+  }
 }

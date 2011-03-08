@@ -78,5 +78,19 @@ class Smashin
         if($size>0) $string = substr($string, 0, $size);
         return $string;
     }
+
+    public static function signOut() {
+      $oUser = $this->getUser();
+      $oUser->getAttributeHolder()->remove('profile_id');
+      $this->getUser()->setAuthenticated(false);
+      $this->getUser()->removeCredential('user');
+    }
+
+    public static function signIn($profile) {
+      $oUser = $this->getUser();
+      $oUser->setAttribute('profile_id',$profile->getProfilesId());
+      $this->getUser()->setAuthenticated(true);
+      $this->getUser()->addCredential('user');
+    }
 }
 ?>
