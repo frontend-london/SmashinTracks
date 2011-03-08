@@ -80,17 +80,15 @@ class Smashin
     }
 
     public static function signOut() {
-      $oUser = $this->getUser();
-      $oUser->getAttributeHolder()->remove('profile_id');
-      $this->getUser()->setAuthenticated(false);
-      $this->getUser()->removeCredential('user');
+      sfContext::getInstance()->getAttributeHolder()->remove('profile_id');
+      sfContext::getInstance()->getUser()->setAuthenticated(false);
+      sfContext::getInstance()->getUser()->removeCredential('user');      
     }
 
     public static function signIn($profile) {
-      $oUser = $this->getUser();
-      $oUser->setAttribute('profile_id',$profile->getProfilesId());
-      $this->getUser()->setAuthenticated(true);
-      $this->getUser()->addCredential('user');
+      sfContext::getInstance()->getUser()->setAuthenticated(true);
+      sfContext::getInstance()->getUser()->setAttribute('profile_id',$profile->getProfilesId());
+      sfContext::getInstance()->getUser()->addCredential('user');
     }
 }
 ?>
