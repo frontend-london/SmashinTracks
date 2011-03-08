@@ -120,11 +120,12 @@
                                 <div class="button-login">
                                     <div class="button-left"></div>
                                     <div class="button-right"></div>
-                                    <a href="#">Login</a>
+                                    <a href="#" id="a-loginbox-tmp-submit">Login</a>
                                 </div>
                                 <div class="clear"></div>
                             </div>
                             <div id="lb-div7">
+                                <div id="tmp-text" style="float: left; color: red; display:none;">Will be tommorow</div>
                                 <a href="#">Forgot password?</a>
                             </div>
                         </div>

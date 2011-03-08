@@ -166,13 +166,21 @@ $(window).load (
 
 		$("a#a-loginbox").click(function(event){
                     event.preventDefault();
+                    $("a#a-loginbox").parent().addClass("active");
                     $("div#bm5-container-loginbox").fadeIn();
 		});
 
 		$("a#a-loginbox-close").click(function(event){
                     event.preventDefault();
                     //$("div#bm5-container-hidden").css("display", "none");
+                    $("a#a-loginbox").parent().removeClass("active");
                     $("div#bm5-container-loginbox").fadeOut();
+                    $("div#tmp-text").css("display", "none");
+		});
+
+		$("a#a-loginbox-tmp-submit").click(function(event){
+                    event.preventDefault();
+                    $("div#tmp-text").fadeIn();//css("display", "block");
 		});
 		
 	}
