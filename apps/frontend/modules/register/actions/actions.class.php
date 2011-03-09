@@ -58,7 +58,9 @@ class registerActions extends sfActions
 
           Smashin::signIn($profile);
           
-          $this->redirect('register_welcome');
+          //$this->redirect('register_welcome');
+          echo 'rrrrrrrrrrrrrrrrrrrrrrrrrrrrr';
+          sfWebController::redirect('register_welcome');
        }
     }
 

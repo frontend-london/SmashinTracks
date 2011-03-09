@@ -107,7 +107,7 @@ class Profiles extends BaseProfiles {
         {
             if ($this->isNew())
             {
-              $pass = substr(hash('sha256',$this->getProfilesPassword()),0,32);
+              $pass = Smashin::generateHash($this->getProfilesPassword());
               $this->setProfilesPassword($pass);
 
               $this->setProfilesDate(time());

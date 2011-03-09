@@ -78,62 +78,6 @@
             <div id="footer-copyright">&copy; 2010  <a href="#">Smashintracks.com</a></div>
         </div>
     </div>
-    <? if(has_slot('box-message')): include_slot('box-message'); else: ?>
-        <div id="bm5-container-loginbox">
-                <div id="loginbox">
-                    <div id="lb-outer">
-                        <div id="lb-inner">
-                            <img src="images/texts/log-in.gif" alt="Log In" id="lb-img1" />
-                            <div id="lb-div1">
-                                Not a member yet? <a href="#">Sign up here</a>
-                            </div>
-                            <div id="lb-div2"></div>
-                            <div id="lb-div3">
-                                <div class="lb-left">
-                                    Your email address:
-                                </div>
-                                <div class="lb-right">
-                                    <input type="text" name="#" value="marti_no@o2.pl" class="input-230px" />
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-                            <div id="lb-div4">
-                                <div class="lb-left">
-                                    Password:
-                                </div>
-                                <div class="lb-right">
-                                    <input type="password" name="#" value="" class="input-230px" />
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-                            <div id="lb-div5">
-                                <label>
-                                    <input type="checkbox" name="#" value="#"  /> Remember me
-                                </label>
-                            </div>
-                            <div id="lb-div6">
-                                <div class="button-silver-cancel">
-                                    <div class="button-silver-left"></div>
-                                    <div class="button-silver-right"></div>
-                                    <a href="#" id="a-loginbox-close">Cancel</a>
-                                </div>
-                                <div class="button-login">
-                                    <div class="button-left"></div>
-                                    <div class="button-right"></div>
-                                    <a href="#" id="a-loginbox-tmp-submit">Login</a>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-                            <div id="lb-div7">
-                                <div id="tmp-text" style="float: left; color: red; display:none;">Will be tommorow</div>
-                                <a href="#">Forgot password?</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="lb-bgr-top"></div>
-                    <div id="lb-bgr-bottom"></div>
-                </div>
-            </div>
-    <? endif; ?>
+    <? if(has_slot('box-message')) include_slot('box-message'); else include_component('metadata', 'loginbox');  ?>
 </body>
 </html>

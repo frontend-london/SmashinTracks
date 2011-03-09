@@ -16,4 +16,21 @@
           $this->profile = ProfilesPeer::getProfilesById($profile_id);
       }
     }
+
+    public function executeLoginbox(sfWebRequest $request)
+    {
+     $this->form = new LoginForm();
+
+     if ($request->isMethod('post'))
+     {
+       $this->form->bind($request->getParameter('login'));
+       
+       if ($this->form->isValid())
+       {
+           $profile = ProfilesPeer::getProfileIfLoginCorrect($this->form->getValue('email'), $this->form->getValue('password'));
+           Smashin::signIn($profile);
+           $this->getContext()->getActionStack()->getLastEntry()->getActionInstance()->redirect('homepage');
+       }
+     }
+  }
 }  

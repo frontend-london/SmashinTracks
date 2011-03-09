@@ -79,8 +79,18 @@ class Smashin
         return $string;
     }
 
+    /** 
+     * Szyfruje hasło sha256 - char(64)
+     * @param <string> $pass
+     * @return <string> wygenerowane hasło
+     */
+    public static function generateHash($pass) {
+        //return hash('sha256',$pass); // sha256 = char(64)
+        return substr(hash('sha256',$pass),0,32);
+    }
+
     public static function signOut() {
-      sfContext::getInstance()->getAttributeHolder()->remove('profile_id');
+      sfContext::getInstance()->getUser()->getAttributeHolder()->remove('profile_id');
       sfContext::getInstance()->getUser()->setAuthenticated(false);
       sfContext::getInstance()->getUser()->removeCredential('user');      
     }

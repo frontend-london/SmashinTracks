@@ -117,6 +117,10 @@ register_welcome:
   url:     /register/welcome
   param: { module: register, action: welcome, section: register }
 
+sign-out:
+  url:     /sign-out
+  param: { module: metadata, action: signOut, section: home }
+
 terms:
   url:     /terms-and-conditions
   param: { module: terms, action: show, section: terms }

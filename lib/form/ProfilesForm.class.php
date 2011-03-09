@@ -34,9 +34,6 @@ class ProfilesForm extends BaseProfilesForm
 
     $this->widgetSchema->setNameFormat('profiles[%s]');
 
-    //$this->useFields(array('profiles_name', 'profiles_email', 'profiles_password', 'profiles_password_confirm',  'profiles_newsletter', 'profiles_terms'));
-    //$this->useFields(array('profiles_name', 'profiles_email', 'profiles_password', 'profiles_newsletter'));
-
 
     $field = 'Your name';
     $field_name = 'profiles_name';
@@ -46,7 +43,6 @@ class ProfilesForm extends BaseProfilesForm
     $this->getValidator($field_name)->setMessage('max_length',"$field is too long (max %max_length% characters).");
     $this->getValidator($field_name)->setMessage('required',"$field can not be empty."); // addMessage
     $this->getValidator($field_name)->setMessage('invalid',"$field is invalid.");
-    //$this->getValidator($field_name)->
 
     $field = 'Your email';
     $field_name = 'profiles_email';

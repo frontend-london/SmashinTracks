@@ -19,4 +19,10 @@ class metadataActions extends sfActions
   {
     $this->forward('default', 'module');
   }
+
+  public function executeSignOut(sfWebRequest $request)
+  {
+      Smashin::signOut();
+      $this->redirect('homepage');
+  }
 }

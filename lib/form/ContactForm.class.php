@@ -24,7 +24,6 @@ class ContactForm extends BaseForm
         //array('min_length' => 4)  ,'min_length' => 'The message "%value%" is too short. It must be of %min_length% characters at least.',
         'required'   => 'Content can not be empty.'
       )),
-
     ));
   }
 }

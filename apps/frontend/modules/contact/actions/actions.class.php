@@ -22,7 +22,7 @@ class contactActions extends sfActions
   
   public function executeShow(sfWebRequest $request)
   {
-      $this->form = new ContactForm();
+     $this->form = new ContactForm();
 
      if ($request->isMethod('post'))
      {

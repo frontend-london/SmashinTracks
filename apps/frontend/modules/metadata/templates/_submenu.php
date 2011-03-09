@@ -8,7 +8,7 @@
                             <li><a href="#">MY DOWNLOADS</a></li>
                             <li><a href="#">MY WISHLIST</a></li>
                             <li class="last"><a href="#">MY PROFILE</a></li>
-                            <li class="last right"><a href="#">SIGN OUT</a></li>
+                            <li class="last right"><a href="<?=url_for('sign-out')?>">SIGN OUT</a></li>
                         <?else:?>
                             <li class="last right<?if($sf_request->getParameter('section')=='register'):?> active<?endif;?>"><a href="<?=url_for('register')?>">Register</a></li>
                             <li class="right"><a href="#" id="a-loginbox">Login</a></li>

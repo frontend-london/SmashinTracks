@@ -20,31 +20,31 @@ class ProfilesPeer extends BaseProfilesPeer {
 
     public static function getProfilesAscending($criteria = null) {
         if ($criteria === null) {
-                $criteria = new Criteria(ProfilesPeer::DATABASE_NAME);
+                $criteria = new Criteria(self::DATABASE_NAME);
         }
         elseif ($criteria instanceof Criteria)
         {
                 $criteria = clone $criteria;
         }
 
-        $criteria->addAscendingOrderByColumn(ProfilesPeer::PROFILES_NAME);
-        return ProfilesPeer::doSelect($criteria);
+        $criteria->addAscendingOrderByColumn(self::PROFILES_NAME);
+        return self::doSelect($criteria);
     }
 
     public static function getMostPopularProfiles($criteria = null) {
         if ($criteria === null) {
-                $criteria = new Criteria(ProfilesPeer::DATABASE_NAME);
+                $criteria = new Criteria(self::DATABASE_NAME);
         }
         elseif ($criteria instanceof Criteria)
         {
                 $criteria = clone $criteria;
         }
-        $criteria->addJoin(ProfilesPeer::PROFILES_ID, TracksPeer::PROFILES_ID);
+        $criteria->addJoin(self::PROFILES_ID, TracksPeer::PROFILES_ID);
         $criteria->addJoin(TracksPeer::TRACKS_ID, TransactionsTracksPeer::TRACKS_ID);
-        $criteria->addGroupByColumn(ProfilesPeer::PROFILES_ID);
+        $criteria->addGroupByColumn(self::PROFILES_ID);
         $criteria->addDescendingOrderByColumn('COUNT('.TracksPeer::TRACKS_ID.')'); // sortowanie po ilości tracków sprzedanych
         $criteria->setLimit(30);
-        $profiles = ProfilesPeer::doSelect($criteria);
+        $profiles = self::doSelect($criteria);
         return $profiles;
 
     }
@@ -53,13 +53,13 @@ class ProfilesPeer extends BaseProfilesPeer {
      * Generuje unikalny URL
      */
     public static function generateProfilesPath($string) {
-        $path_size = ProfilesPeer::getTableMap()->getColumn(ProfilesPeer::PROFILES_PATH)->getSize();
+        $path_size = self::getTableMap()->getColumn(self::PROFILES_PATH)->getSize();
         $path = Smashin::generate_url($string, $path_size);
         $counter=1;
         while(true) {
-            $criteria = new Criteria(ProfilesPeer::DATABASE_NAME);
-            $criteria->add(ProfilesPeer::PROFILES_PATH, $path);
-            if(ProfilesPeer::doSelectOne($criteria)) {
+            $criteria = new Criteria(self::DATABASE_NAME);
+            $criteria->add(self::PROFILES_PATH, $path);
+            if(self::doSelectOne($criteria)) {
                 $add_end = '-'.$counter;
                 $path = Smashin::generate_url($string, $path_size-strlen($add_end)).$add_end;
                 $counter++;
@@ -77,8 +77,24 @@ class ProfilesPeer extends BaseProfilesPeer {
         {
                 $criteria = clone $criteria;
         }
-        $criteria->add(ProfilesPeer::PROFILES_ID, $profiles_id);
-        return ProfilesPeer::doSelectOne($criteria);
+        $criteria->add(self::PROFILES_ID, $profiles_id);
+        return self::doSelectOne($criteria);
+    }
+
+    public static function isLoginCorrect($email, $pass) {
+        $criteria = new Criteria();
+        $criteria->add(self::PROFILES_EMAIL, $email);
+        $criteria->add(self::PROFILES_PASSWORD, Smashin::generateHash($pass));
+        if(empty($email) || empty($pass)) return 0;
+        return self::doCount($criteria);
+    }
+
+    public static function getProfileIfLoginCorrect($email, $pass) {
+        $criteria = new Criteria();
+        $criteria->add(self::PROFILES_EMAIL, $email);
+        $criteria->add(self::PROFILES_PASSWORD, Smashin::generateHash($pass));
+        if(empty($email) || empty($pass)) return null;
+        return self::doSelectOne($criteria);
     }
 
 } // ProfilesPeer
