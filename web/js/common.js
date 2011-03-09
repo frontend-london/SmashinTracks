@@ -174,6 +174,7 @@ $(window).load (
                     event.preventDefault();
                     //$("div#bm5-container-hidden").css("display", "none");
                     $("a#a-loginbox").parent().removeClass("active");
+                    $("div#lb-div10").css("display", "none");
                     $("div#bm5-container-loginbox").fadeOut();
                     $("div#tmp-text").css("display", "none");
 		});
