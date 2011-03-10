@@ -107,6 +107,40 @@ class Profiles extends BaseProfiles {
             return Smashin::generate_prize($this->getProfilesBalance()/100);
         }
 
+        public function getProfilesTracksSold() {
+            $criteria = new Criteria();
+            $criteria->addJoin(TransactionsTracksPeer::TRACKS_ID, TracksPeer::TRACKS_ID);
+            $criteria->add(TracksPeer::PROFILES_ID, $this->getProfilesId());
+            return TransactionsTracksPeer::doCount($criteria);
+        }
+
+        public function getProfilesViewedCount() {
+            $criteria = new Criteria();
+            $criteria->add(ProfilesViewedPeer::ARTISTS_ID, $this->getProfilesId());
+            return ProfilesViewedPeer::doCount($criteria);
+        }
+
+        /**
+         * Twoja ‘Wishlist’ zawiera trackow:
+         * @return <type>
+         */
+        public function getProfilesWishlistCount() {
+            return count($this->getProfilesWishlistss());
+        }
+
+        /**
+         * Twoich trackow w innych ‘Wishlist’:
+         * @return <type>
+         */
+        public function getProfilesInWishlistCount() {
+            $criteria = new Criteria();
+            $criteria->addJoin(ProfilesWishlistsPeer::TRACKS_ID, TracksPeer::TRACKS_ID);
+            $criteria->add(TracksPeer::PROFILES_ID, $this->getProfilesId());
+            return ProfilesWishlistsPeer::doCount($criteria);
+            //return count($this->getProfilesWishlistss());
+        }
+
+        
         public function save(PropelPDO $con = null)
         {
             if ($this->isNew())
@@ -118,10 +152,12 @@ class Profiles extends BaseProfiles {
               $path = ProfilesPeer::generateProfilesPath($this->getProfilesName());
               $this->setProfilesPath($path);
             }
-
-
-
             return parent::save($con);
+        }
+
+        public function countTrackssActive() {
+            $criteria = $this->getActiveTracksCriteria();
+            return $this->countTrackss($criteria);
         }
 
 } // Profiles

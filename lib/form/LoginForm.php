@@ -16,7 +16,7 @@ class LoginForm extends BaseForm
   {
     $this->setWidgets(array(
       'email'       => new sfWidgetFormInputText(),
-      'password'    => new sfWidgetFormInputText(),
+      'password'    => new sfWidgetFormInputPassword(),
       'remember_me' => new sfWidgetFormInputCheckbox(),
     ));
 

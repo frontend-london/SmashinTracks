@@ -10,19 +10,19 @@
                             </div>
                         	<div id="bm-div2-right">
                             	<img src="images/texts/tracks-sold.gif" alt="Track Sold" id="bm-img3" />
-                                <span>3678</span>
+                                <span><?=$profile->getProfilesTracksSold();?></span>
                                 <div class="clear"></div>
                             </div>
                             <div class="clear"></div>
                         </div>
                         <div id="bm-div3">
                         	<div id="bm-div3-left">
-                                Twoich trackow na tej stronie: &nbsp;  <strong>46</strong><br />
-                                Odwiedziny twojego profilu: &nbsp; <strong>77</strong>
+                                Twoich trackow na tej stronie: &nbsp;  <strong><?=$profile->countTrackssActive()?></strong><br />
+                                Odwiedziny twojego profilu: &nbsp; <strong><?=$profile->getProfilesViewedCount()?></strong>
                             </div>
                         	<div id="bm-div3-right">
-                                Twoich trackow w innych ‘Wishlist’: &nbsp;<strong>0</strong><br />
-                                Twoja ‘Wishlist’ zawiera trackow: &nbsp;<strong>77</strong>
+                                Twoich trackow w innych ‘Wishlist’: &nbsp;<strong><?=$profile->getProfilesInWishlistCount();?></strong><br />
+                                Twoja ‘Wishlist’ zawiera trackow: &nbsp;<strong><?=$profile->getProfilesWishlistCount();?></strong>
                             </div>
                             <div class="clear"></div>
                         </div>
@@ -33,7 +33,7 @@
                 <div id="zalogowany-boxes">
                 	<div class="box-zalogowany bz-left bz-c1">
                     	<a href="#"><img src="images/texts/my-sales.gif" alt="My Sales" /></a>
-						<span>Jesli sprzedajesz tracki na <a href="#" class="underline">Smashintracks.com</a> tutaj mozesz obejrzec jak sie sprzedaja i ile juz zarobiles...</span>
+                        <span>Jesli sprzedajesz tracki na <a href="#" class="underline">Smashintracks.com</a> tutaj mozesz obejrzec jak sie sprzedaja i ile juz zarobiles...</span>
                         <div class="button-check">
                             <div class="button-left"></div>
                             <div class="button-right"></div>
@@ -88,10 +88,4 @@
                     <div class="clear"></div>
                 </div>
 
-                <div id="box-footer">
-                    <div id="bf-paypal">
-                        <a href="#"><img src="images/icons/paypal.gif" alt="PayPal" /></a>
-                    </div>
-
-                    <div class="clear"></div>
-                </div>
+                <?php include_partial('metadata/footer', array('share' => false)) ?>
