@@ -69,7 +69,7 @@
                     </div>
                 	<div class="box-zalogowany bz-left bz-c3">
                     	<a href="#"><img src="images/texts/my-wishlist.gif" alt="My Wishlist" /></a>
-						<span>Jesli masz liste trackow ktore ci sie spodobaly, w tym miejscu mozesz je przesluchac, kupic lub skasowac...</span>
+                        <span>Jesli masz liste trackow ktore ci sie spodobaly, w tym miejscu mozesz je przesluchac, kupic lub skasowac...</span>
                         <div class="button-check">
                             <div class="button-left"></div>
                             <div class="button-right"></div>
