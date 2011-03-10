@@ -140,7 +140,27 @@ class Profiles extends BaseProfiles {
             //return count($this->getProfilesWishlistss());
         }
 
-        
+        public function getTracksSoldNew() {
+            $criteria = new Criteria();
+            $criteria->add(TransactionsSaldoPeer::PROFILES_ID, $this->getProfilesId());
+            $criteria->add(TransactionsSaldoPeer::TRANSACTIONS_SALDO_VALUE, 0, Criteria::GREATER_THAN);
+            $criteria->addJoin(TransactionsSaldoPeer::TRANSACTIONS_TRACKS_ID, TransactionsTracksPeer::TRANSACTIONS_TRACKS_ID);
+            $criteria->addJoin(TransactionsTracksPeer::TRANSACTIONS_ID, TransactionsPeer::TRANSACTIONS_ID);
+            $criteria->addJoin(TransactionsSaldoPeer::PROFILES_ID, WithdrawsPeer::PROFILES_ID, Criteria::LEFT_JOIN);
+            $criteria->add(TransactionsPeer::TRANSACTIONS_DATE, '('.TransactionsPeer::TRANSACTIONS_DATE.'> (SELECT MAX('.WithdrawsPeer::WITHDRAWS_DATE.') FROM '.WithdrawsPeer::TABLE_NAME.' WHERE '.TransactionsSaldoPeer::PROFILES_ID.' = '.WithdrawsPeer::PROFILES_ID.') OR '.WithdrawsPeer::WITHDRAWS_DATE.' IS NULL)', Criteria::CUSTOM);
+            $criteria->addGroupByColumn(TransactionsSaldoPeer::TRANSACTIONS_TRACKS_ID);
+            $criteria->addDescendingOrderByColumn(WithdrawsPeer::WITHDRAWS_DATE);
+            return TransactionsSaldoPeer::doCount($criteria);
+        }
+
+        public function getTracksSoldAll() {
+            $criteria = new Criteria();
+            $criteria->add(TransactionsSaldoPeer::PROFILES_ID, $this->getProfilesId());
+            $criteria->add(TransactionsSaldoPeer::TRANSACTIONS_SALDO_VALUE, 0, Criteria::GREATER_THAN);
+            $criteria->addGroupByColumn(TransactionsSaldoPeer::TRANSACTIONS_TRACKS_ID);
+            return TransactionsSaldoPeer::doCount($criteria);
+        }
+
         public function save(PropelPDO $con = null)
         {
             if ($this->isNew())

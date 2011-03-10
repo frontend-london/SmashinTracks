@@ -19,4 +19,8 @@ class membersActions extends sfActions
   public function executeShow(sfWebRequest $request) {
      $this->profile = ProfilesPeer::getCurrentProfile();
   }
+
+  public function executeMySales(sfWebRequest $request) {
+     $this->profile = ProfilesPeer::getCurrentProfile();
+  }
 }

@@ -65,6 +65,10 @@ members:
   url:     /members
   param: { module: members, action: show, section: members }
 
+members_my-sales:
+  url:     /members/my-sales
+  param: { module: members, action: mySales, section: my-sales }
+
 contact:
   url:     /contact
   param: { module: contact, action: show, section: contact }

@@ -2,7 +2,7 @@
                         <?if(is_object($profile)): /*$sf_user->hasCredential('user')):*/?>
                             <li id="submenu-hi">Hi, <strong><?=$profile->getProfilesName()?></strong></li>
                             <li<?if($sf_request->getParameter('section')=='members'):?> class="active"<?endif;?>><a href="<?=url_for('members')?>">HOME</a></li>
-                            <li><a href="#">MY SALES</a></li>
+                            <li><a href="<?=url_for('members_my-sales')?>">MY SALES</a></li>
                             <li><a href="#">UPLOAD TRACK</a></li>
                             <li><a href="#">MY CATALOG</a></li>
                             <li><a href="#">MY DOWNLOADS</a></li>
