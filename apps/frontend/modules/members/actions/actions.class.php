@@ -17,11 +17,6 @@ class membersActions extends sfActions
    * @param sfWebRequest $request A request object
    */
   public function executeShow(sfWebRequest $request) {
-
-  }
-
-  public function executeSignOut(sfWebRequest $request) {
-      Smashin::signOut();
-      $this->forward('homepage');
+     $this->profile = ProfilesPeer::getCurrentProfile();
   }
 }

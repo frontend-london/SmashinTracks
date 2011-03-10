@@ -24,9 +24,9 @@
 	<div id="wrap">
             <div id="wrap-inner">
                 <div id="header">
-                    <a href="<?="http://{$_SERVER['SERVER_NAME']}{$sf_request->getRelativeUrlRoot()}/"?>" id="logo">SmashinTracks.com - Tracks you won't find anywhere else</a>
+                    <a href="<?=url_for('homepage')?>" id="logo">SmashinTracks.com - Tracks you won't find anywhere else</a>
                     <ul id="mainmenu">
-                        <li<?if($sf_request->getParameter('section')=='home'):?> class="active"<?endif;?>><a href="<?="http://{$_SERVER['SERVER_NAME']}{$sf_request->getRelativeUrlRoot()}/"?>">Home</a></li>
+                        <li<?if($sf_request->getParameter('section')=='home'):?> class="active"<?endif;?>><a href="<?=url_for('homepage')?>">Home</a></li>
                         <li<?if($sf_request->getParameter('section')=='charts'):?> class="active"<?endif;?>><a href="<?=url_for('charts')?>">Charts</a></li>
                         <li<?if($sf_request->getParameter('section')=='artists'):?> class="active"<?endif;?>><a href="<?=url_for('artists')?>">Artists</a></li>
                         <li<?if($sf_request->getParameter('section')=='faq'):?> class="active"<?endif;?>><a href="<?=url_for('faq')?>">Faq</a></li>

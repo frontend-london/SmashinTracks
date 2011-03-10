@@ -103,6 +103,10 @@ class Profiles extends BaseProfiles {
             return $path;
         }
 
+        public function getProfilesBalanceText() {
+            return Smashin::generate_prize($this->getProfilesBalance()/100);
+        }
+
         public function save(PropelPDO $con = null)
         {
             if ($this->isNew())

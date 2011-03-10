@@ -1,7 +1,7 @@
                     <ul id="submenu">
                         <?if($sf_user->hasCredential('user')):?>
                             <li id="submenu-hi">Hi, <strong><?=$profile->getProfilesName()?></strong></li>
-                            <li<?if($sf_request->getParameter('section')=='home'):?> class="active"<?endif;?>><a href="#">HOME</a></li>
+                            <li<?if($sf_request->getParameter('section')=='members'):?> class="active"<?endif;?>><a href="<?=url_for('members')?>">HOME</a></li>
                             <li><a href="#">MY SALES</a></li>
                             <li><a href="#">UPLOAD TRACK</a></li>
                             <li><a href="#">MY CATALOG</a></li>

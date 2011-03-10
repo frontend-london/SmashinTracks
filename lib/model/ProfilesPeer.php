@@ -69,7 +69,7 @@ class ProfilesPeer extends BaseProfilesPeer {
         
     }
 
-    public static function getProfilesById($profiles_id, $criteria = null) {
+    public static function getProfileById($profiles_id, $criteria = null) {
         if ($criteria === null) {
                 $criteria = new Criteria();
         }
@@ -79,6 +79,18 @@ class ProfilesPeer extends BaseProfilesPeer {
         }
         $criteria->add(self::PROFILES_ID, $profiles_id);
         return self::doSelectOne($criteria);
+    }
+
+    public static function isProfileById($profiles_id, $criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria();
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+        $criteria->add(self::PROFILES_ID, $profiles_id);
+        return self::doCount($criteria);
     }
 
     public static function isLoginCorrect($email, $pass) {
@@ -95,6 +107,24 @@ class ProfilesPeer extends BaseProfilesPeer {
         $criteria->add(self::PROFILES_PASSWORD, Smashin::generateHash($pass));
         if(empty($email) || empty($pass)) return null;
         return self::doSelectOne($criteria);
+    }
+
+    public static function isCurrentProfile() {
+      $oUser = $this->getUser();
+      if($oUser->hasAttribute('profile_id')) {
+          $profile_id = $oUser->getAttribute('profile_id');
+          $this->profile = ProfilesPeer::getProfileById($profile_id);
+      }
+    }
+
+    public static function getCurrentProfile() {
+        $oUser = sfContext::getInstance()->getUser();
+        if($oUser->hasAttribute('profile_id')) {
+          $profile_id = $oUser->getAttribute('profile_id');
+          return self::getProfileById($profile_id);
+        } else {
+            return null;
+        }
     }
 
 } // ProfilesPeer

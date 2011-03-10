@@ -175,6 +175,7 @@ $(window).load (
                     //$("div#bm5-container-hidden").css("display", "none");
                     $("a#a-loginbox").parent().removeClass("active");
                     $("div#lb-div10").css("display", "none");
+                    $("div#lb-inner input").removeClass("input-err");
                     $("div#bm5-container-loginbox").fadeOut();
                     $("div#tmp-text").css("display", "none");
 		});

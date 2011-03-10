@@ -10,11 +10,7 @@
 
     public function executeSubmenu(sfWebRequest $request)
     {
-      $oUser = $this->getUser();
-      if($oUser->hasAttribute('profile_id')) {
-          $profile_id = $oUser->getAttribute('profile_id');
-          $this->profile = ProfilesPeer::getProfilesById($profile_id);
-      }
+      $this->profile = ProfilesPeer::getCurrentProfile();
     }
 
     public function executeLoginbox(sfWebRequest $request)

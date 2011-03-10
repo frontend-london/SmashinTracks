@@ -1,11 +1,11 @@
                 <div class="box-silver" id="box-membershomepage">
                     <div class="bs-inner">
                         <img src="images/texts/members-homepage.gif" alt="Members Homepage" id="bm-img1" />
-                        <div id="bm-div1">Witaj w panelu uzytkownika <a href="#" class="underline">Smashintracks.com</a> ...</div>
+                        <div id="bm-div1">Witaj w panelu uzytkownika <a href="http://smashintracks.com/" class="underline">Smashintracks.com</a> ...</div>
                         <div id="bm-div2">
                         	<div id="bm-div2-left">
                             	<img src="images/texts/your-balance.gif" alt="Your Balance" id="bm-img2" />
-                                <span>£450.00</span>
+                                <span><?=$profile->getProfilesBalanceText();?></span>
                                 <div class="clear"></div>
                             </div>
                         	<div id="bm-div2-right">

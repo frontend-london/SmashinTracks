@@ -63,7 +63,7 @@ genre:
 
 members:
   url:     /members
-  param: { module: members, action: show, section: home }
+  param: { module: members, action: show, section: members }
 
 contact:
   url:     /contact
