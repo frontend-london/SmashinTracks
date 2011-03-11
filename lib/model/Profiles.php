@@ -218,7 +218,8 @@ class Profiles extends BaseProfiles {
                      * Wartość salda nie ulega zmianie jeśli płacono przez PayPal
                      */
                     $prize = 0;
-                    $amount = Smashin::generate_prize($prize);
+                    $amount = $prize;
+                    $amount_string = Smashin::generate_prize($prize/100);
                 } else {
                     /*
                      * Liczenie wartości salda transakcji opłaconej ze środków ST
@@ -233,10 +234,11 @@ class Profiles extends BaseProfiles {
                     foreach($transaction_saldo_objects as $trs) {
                         $prize+= $trs->getTransactionsSaldoValue();
                     }
-                    $amount = Smashin::generate_prize($prize/100);
+                    $amount = $prize;
+                    $amount_string = Smashin::generate_prize($prize/100);
                 }
 
-                $row = array('nr' => $nr, 'date' => $date,  'sort_date' => $sort_date, 'details' => $details, 'details_url' => $details_url, 'amount' => $amount, 'saldo' => $saldo, 'type' => $type);
+                $row = array('nr' => $nr, 'date' => $date,  'sort_date' => $sort_date, 'details' => $details, 'details_url' => $details_url, 'amount' => $amount, 'amount_string' => $amount_string, 'saldo' => $saldo, 'type' => $type);
                 $transactions[$sort_date] = $row;
             }
 
@@ -252,11 +254,12 @@ class Profiles extends BaseProfiles {
                 $details = 'Withdrawal to PayPal #'.$wd->getWithdrawsId();
                 $details_url = '#';
                 $prize = $wd->getWithdrawsSaldoValue();
-                $amount = Smashin::generate_prize($prize/100);
+                $amount = $prize;
+                $amount_string = Smashin::generate_prize($prize/100);
                 $saldo = '';
                 $type = 'W';
 
-                $row = array('nr' => $nr, 'date' => $date, 'sort_date' => $sort_date, 'details' => $details, 'details_url' => $details_url, 'amount' => $amount, 'saldo' => $saldo, 'type' => $type);
+                $row = array('nr' => $nr, 'date' => $date, 'sort_date' => $sort_date, 'details' => $details, 'details_url' => $details_url, 'amount' => $amount, 'amount_string' => $amount_string, 'saldo' => $saldo, 'type' => $type);
                 $transactions[$sort_date] = $row;
             }
 
@@ -268,7 +271,6 @@ class Profiles extends BaseProfiles {
             $sales_criteria->add(TransactionsSaldoPeer::TRANSACTIONS_SALDO_VALUE, 0, Criteria::GREATER_THAN);
             $sales_criteria->addJoin(TransactionsSaldoPeer::TRANSACTIONS_TRACKS_ID, TransactionsTracksPeer::TRANSACTIONS_TRACKS_ID);
             $sales_criteria->addJoin(TransactionsTracksPeer::TRANSACTIONS_ID, TransactionsPeer::TRANSACTIONS_ID);
-            //$sales_criteria->addAsColumn(TransactionsPeer::TRANSACTIONS_DATE, TransactionsPeer::TRANSACTIONS_DATE);
             $sales_criteria->addSelectColumn(TransactionsPeer::TRANSACTIONS_DATE);
             $sales_criteria->addSelectColumn(TransactionsSaldoPeer::TRANSACTIONS_SALDO_VALUE);
             $sales_criteria->addSelectColumn(TransactionsSaldoPeer::TRANSACTIONS_TRACKS_ID);
@@ -283,7 +285,8 @@ class Profiles extends BaseProfiles {
                 while(!empty($transactions[$sort_date])) $sort_date++;
                 
                 $prize = $sales_row['TRANSACTIONS_SALDO_VALUE'];
-                $amount = Smashin::generate_prize($prize/100);
+                $amount = $prize;
+                $amount_string = Smashin::generate_prize($prize/100);
                 $saldo = '';
                 $type = 'SA';
 
@@ -294,7 +297,7 @@ class Profiles extends BaseProfiles {
                 $details_url = $routing->generate('track', $track);
 
 
-                $row = array('nr' => $nr, 'date' => $date, 'sort_date' => $sort_date, 'details' => $details, 'details_url' => $details_url, 'amount' => $amount, 'saldo' => $saldo, 'type' => $type);
+                $row = array('nr' => $nr.'.', 'date' => $date, 'sort_date' => $sort_date, 'details' => $details, 'details_url' => $details_url, 'amount' => $amount, 'amount_string' => $amount_string, 'saldo' => $saldo, 'type' => $type);
                 $transactions[$sort_date] = $row;
 
                 //print_r($sales_row);
@@ -303,6 +306,11 @@ class Profiles extends BaseProfiles {
 
 
             sort($transactions); // od najstarszego do najnowszego
+            $saldo = 0;
+            foreach($transactions as &$transaction) {
+                $saldo+=$transaction['amount'];
+                $transaction['saldo'] = Smashin::generate_prize($saldo/100);
+            }
             rsort($transactions); // od najnowszego do najstarszego
             //print_r($transactions);
             
