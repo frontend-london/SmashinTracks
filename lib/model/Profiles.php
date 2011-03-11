@@ -185,11 +185,15 @@ class Profiles extends BaseProfiles {
 /*
             $nr = '';
             $date = '';
+            $sort_date = '';
             $details = '';
             $details_url = '';
             $amount = '';
             $saldo = '';
-            $row = array('nr' => $nr, 'date' => $date, 'details' => $details, 'details_url' => $details_url, 'amount' => $amount, 'saldo' => $saldo);
+            $type = '';
+
+            $row = array('nr' => $nr, 'date' => $date, 'sort_date' => $sort_date, 'details' => $details, 'details_url' => $details_url, 'amount' => $amount, 'saldo' => $saldo, 'type' => $type);
+            $transactions[] = $row;
 */
 
             
@@ -197,9 +201,10 @@ class Profiles extends BaseProfiles {
             /*
              * Shoppings
              */
+            $transaction_criteria = new Criteria();
+            $transaction_criteria->add(TransactionsPeer::TRANSACTIONS_DONE, true);
             $transaction_objects = $this->getTransactionss();
             foreach($transaction_objects as $tr) {
-                if(!$tr->getTransactionsDone()) continue;
                 $nr = ' -';
                 $date = $tr->getTransactionsDate('d-m-Y');
                 $sort_date = $tr->getTransactionsDate('U');
@@ -234,8 +239,23 @@ class Profiles extends BaseProfiles {
                 $transactions[] = $row;
             }
 
-            
+            $withdraw_objects = $this->getWithdrawss();
+            foreach($withdraw_objects as $wd) {
+                $nr = ' -';
+                $date = $wd->getWithdrawsDate('d-m-Y');
+                $sort_date = $wd->getWithdrawsDate('U');
+                $details = 'Withdrawal to PayPal #'.$wd->getWithdrawsId();
+                $details_url = '#';
+                $prize = $wd->getWithdrawsSaldoValue();
+                $amount = Smashin::generate_prize($prize/100);
+                $saldo = '';
+                $type = 'W';
 
+                $row = array('nr' => $nr, 'date' => $date, 'sort_date' => $sort_date, 'details' => $details, 'details_url' => $details_url, 'amount' => $amount, 'saldo' => $saldo, 'type' => $type);
+                $transactions[] = $row;
+            }
+            
+            print_r($transactions);
             
             return $transactions;
         }
