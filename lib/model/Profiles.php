@@ -199,7 +199,7 @@ class Profiles extends BaseProfiles {
             
 
             /*
-             * Shoppings
+             * Shoppings, type = SH
              */
             $transaction_criteria = new Criteria();
             $transaction_criteria->add(TransactionsPeer::TRANSACTIONS_DONE, true);
@@ -208,9 +208,10 @@ class Profiles extends BaseProfiles {
                 $nr = ' -';
                 $date = $tr->getTransactionsDate('d-m-Y');
                 $sort_date = $tr->getTransactionsDate('U');
+                while(!empty($transactions[$sort_date])) $sort_date++;
                 $details = 'Shopping: #'.$tr->getTransactionsId();
                 $details_url = '#';
-                $type = 'S'; // Shopping
+                $type = 'SH'; // Shopping
                 $saldo = ''; //todo
                 if($tr->getTransactionsPaymethod()==1) {
                     /*
@@ -236,14 +237,18 @@ class Profiles extends BaseProfiles {
                 }
 
                 $row = array('nr' => $nr, 'date' => $date,  'sort_date' => $sort_date, 'details' => $details, 'details_url' => $details_url, 'amount' => $amount, 'saldo' => $saldo, 'type' => $type);
-                $transactions[] = $row;
+                $transactions[$sort_date] = $row;
             }
 
+            /*
+             * Withdraws, type = W
+             */
             $withdraw_objects = $this->getWithdrawss();
             foreach($withdraw_objects as $wd) {
                 $nr = ' -';
                 $date = $wd->getWithdrawsDate('d-m-Y');
                 $sort_date = $wd->getWithdrawsDate('U');
+                while(!empty($transactions[$sort_date])) $sort_date++;
                 $details = 'Withdrawal to PayPal #'.$wd->getWithdrawsId();
                 $details_url = '#';
                 $prize = $wd->getWithdrawsSaldoValue();
@@ -252,10 +257,54 @@ class Profiles extends BaseProfiles {
                 $type = 'W';
 
                 $row = array('nr' => $nr, 'date' => $date, 'sort_date' => $sort_date, 'details' => $details, 'details_url' => $details_url, 'amount' => $amount, 'saldo' => $saldo, 'type' => $type);
-                $transactions[] = $row;
+                $transactions[$sort_date] = $row;
             }
-            
-            print_r($transactions);
+
+            /*
+             * Sales, type = SA
+             */
+            $sales_criteria = new Criteria();
+            $sales_criteria->add(TransactionsSaldoPeer::PROFILES_ID, $this->getProfilesId());
+            $sales_criteria->add(TransactionsSaldoPeer::TRANSACTIONS_SALDO_VALUE, 0, Criteria::GREATER_THAN);
+            $sales_criteria->addJoin(TransactionsSaldoPeer::TRANSACTIONS_TRACKS_ID, TransactionsTracksPeer::TRANSACTIONS_TRACKS_ID);
+            $sales_criteria->addJoin(TransactionsTracksPeer::TRANSACTIONS_ID, TransactionsPeer::TRANSACTIONS_ID);
+            //$sales_criteria->addAsColumn(TransactionsPeer::TRANSACTIONS_DATE, TransactionsPeer::TRANSACTIONS_DATE);
+            $sales_criteria->addSelectColumn(TransactionsPeer::TRANSACTIONS_DATE);
+            $sales_criteria->addSelectColumn(TransactionsSaldoPeer::TRANSACTIONS_SALDO_VALUE);
+            $sales_criteria->addSelectColumn(TransactionsSaldoPeer::TRANSACTIONS_TRACKS_ID);
+            $sales_criteria->addSelectColumn(TransactionsTracksPeer::TRACKS_ID);
+            $sales_criteria->addAscendingOrderByColumn(TransactionsSaldoPeer::TRANSACTIONS_SALDO_ID);
+            $sales_smtm = TransactionsSaldoPeer::doSelectStmt($sales_criteria);
+            $nr = 0;
+            while($sales_row = $sales_smtm->fetch(PDO::FETCH_ASSOC)) {
+                $nr++;
+                $date = date("d-m-Y",strtotime ($sales_row['TRANSACTIONS_DATE']));
+                $sort_date = date("U",strtotime ($sales_row['TRANSACTIONS_DATE']));
+                while(!empty($transactions[$sort_date])) $sort_date++;
+                
+                $prize = $sales_row['TRANSACTIONS_SALDO_VALUE'];
+                $amount = Smashin::generate_prize($prize/100);
+                $saldo = '';
+                $type = 'SA';
+
+                $tracks_id = $sales_row['TRACKS_ID'];
+                $track = TracksPeer::getTrackById($tracks_id);
+                $details = $track->getTracksTitleShorted();
+                $routing = sfContext::getInstance()->getRouting();
+                $details_url = $routing->generate('track', $track);
+
+
+                $row = array('nr' => $nr, 'date' => $date, 'sort_date' => $sort_date, 'details' => $details, 'details_url' => $details_url, 'amount' => $amount, 'saldo' => $saldo, 'type' => $type);
+                $transactions[$sort_date] = $row;
+
+                //print_r($sales_row);
+            }
+
+
+
+            sort($transactions); // od najstarszego do najnowszego
+            rsort($transactions); // od najnowszego do najstarszego
+            //print_r($transactions);
             
             return $transactions;
         }

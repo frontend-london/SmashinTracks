@@ -104,4 +104,16 @@ class TracksPeer extends BaseTracksPeer {
         return $tracks;
     }
 
+    public static function getTrackById($tracks_id, $criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria();
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+        $criteria->add(self::TRACKS_ID, $tracks_id);
+        return self::doSelectOne($criteria);
+    }
+
 } // TracksPeer
