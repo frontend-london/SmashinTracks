@@ -47,7 +47,7 @@ class registerActions extends sfActions
   {
     $this->form = new ProfilesForm();
 
-    if ($request->isMethod('post'))
+    if ($request->isMethod('post') && $request->hasParameter('profiles'))
     {
        $this->form->bind($request->getParameter('profiles'));
        if ($this->form->isValid())

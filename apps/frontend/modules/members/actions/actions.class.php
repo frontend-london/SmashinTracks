@@ -21,6 +21,8 @@ class membersActions extends sfActions
   }
 
   public function executeMySales(sfWebRequest $request) {
-     $this->profile = ProfilesPeer::getCurrentProfile();
+     $profile = ProfilesPeer::getCurrentProfile();
+     $this->transactions = $profile->getAllTransactions();
+     $this->profile = $profile;
   }
 }

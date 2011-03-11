@@ -180,4 +180,64 @@ class Profiles extends BaseProfiles {
             return $this->countTrackss($criteria);
         }
 
+        public function getAllTransactions() {
+            $transactions = array();
+/*
+            $nr = '';
+            $date = '';
+            $details = '';
+            $details_url = '';
+            $amount = '';
+            $saldo = '';
+            $row = array('nr' => $nr, 'date' => $date, 'details' => $details, 'details_url' => $details_url, 'amount' => $amount, 'saldo' => $saldo);
+*/
+
+            
+
+            /*
+             * Shoppings
+             */
+            $transaction_objects = $this->getTransactionss();
+            foreach($transaction_objects as $tr) {
+                if(!$tr->getTransactionsDone()) continue;
+                $nr = ' -';
+                $date = $tr->getTransactionsDate('d-m-Y');
+                $sort_date = $tr->getTransactionsDate('U');
+                $details = 'Shopping: #'.$tr->getTransactionsId();
+                $details_url = '#';
+                $type = 'S'; // Shopping
+                $saldo = ''; //todo
+                if($tr->getTransactionsPaymethod()==1) {
+                    /*
+                     * Wartość salda nie ulega zmianie jeśli płacono przez PayPal
+                     */
+                    $prize = 0;
+                    $amount = Smashin::generate_prize($prize);
+                } else {
+                    /*
+                     * Liczenie wartości salda transakcji opłaconej ze środków ST
+                     */
+                    $criteria = new Criteria();
+                    $criteria->add(TransactionsTracksPeer::TRANSACTIONS_ID, $tr->getTransactionsId());
+                    $criteria->addJoin(TransactionsSaldoPeer::TRANSACTIONS_TRACKS_ID, TransactionsTracksPeer::TRANSACTIONS_TRACKS_ID);
+                    $criteria->add(TransactionsSaldoPeer::PROFILES_ID, $this->getProfilesId());
+                    $criteria->add(TransactionsSaldoPeer::TRANSACTIONS_SALDO_VALUE, 0, Criteria::LESS_THAN);
+                    $transaction_saldo_objects = $this->getTransactionsSaldos($criteria);
+                    $prize = 0;
+                    foreach($transaction_saldo_objects as $trs) {
+                        $prize+= $trs->getTransactionsSaldoValue();
+                    }
+                    $amount = Smashin::generate_prize($prize/100);
+                }
+
+                $row = array('nr' => $nr, 'date' => $date,  'sort_date' => $sort_date, 'details' => $details, 'details_url' => $details_url, 'amount' => $amount, 'saldo' => $saldo, 'type' => $type);
+                $transactions[] = $row;
+            }
+
+            
+
+            
+            return $transactions;
+        }
+
 } // Profiles

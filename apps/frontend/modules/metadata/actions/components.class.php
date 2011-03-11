@@ -17,7 +17,7 @@
     {
      $this->form = new LoginForm();
 
-     if ($request->isMethod('post'))
+     if ($request->isMethod('post') && $request->hasParameter('login'))
      {
        $this->form->bind($request->getParameter('login'));
        
