@@ -213,32 +213,27 @@ class Profiles extends BaseProfiles {
                 $details_url = '#';
                 $type = 'SH'; // Shopping
                 $saldo = ''; //todo
-                if($tr->getTransactionsPaymethod()==1) {
-                    /*
-                     * Wartość salda nie ulega zmianie jeśli płacono przez PayPal
-                     */
-                    $prize = 0;
-                    $amount = $prize;
-                    $amount_string = Smashin::generate_prize($prize/100);
+                if($tr->getTransactionsPaymethod()==1) { // gdy przez paypal
+                    $paypal = true;
                 } else {
-                    /*
-                     * Liczenie wartości salda transakcji opłaconej ze środków ST
-                     */
-                    $criteria = new Criteria();
-                    $criteria->add(TransactionsTracksPeer::TRANSACTIONS_ID, $tr->getTransactionsId());
-                    $criteria->addJoin(TransactionsSaldoPeer::TRANSACTIONS_TRACKS_ID, TransactionsTracksPeer::TRANSACTIONS_TRACKS_ID);
-                    $criteria->add(TransactionsSaldoPeer::PROFILES_ID, $this->getProfilesId());
-                    $criteria->add(TransactionsSaldoPeer::TRANSACTIONS_SALDO_VALUE, 0, Criteria::LESS_THAN);
-                    $transaction_saldo_objects = $this->getTransactionsSaldos($criteria);
-                    $prize = 0;
-                    foreach($transaction_saldo_objects as $trs) {
-                        $prize+= $trs->getTransactionsSaldoValue();
-                    }
-                    $amount = $prize;
-                    $amount_string = Smashin::generate_prize($prize/100);
+                    $paypal = false;
                 }
+                
+                $criteria = new Criteria();
+                $criteria->add(TransactionsTracksPeer::TRANSACTIONS_ID, $tr->getTransactionsId());
+                $criteria->addJoin(TransactionsSaldoPeer::TRANSACTIONS_TRACKS_ID, TransactionsTracksPeer::TRANSACTIONS_TRACKS_ID);
+                $criteria->add(TransactionsSaldoPeer::PROFILES_ID, $this->getProfilesId());
+                $criteria->add(TransactionsSaldoPeer::TRANSACTIONS_SALDO_VALUE, 0, Criteria::LESS_THAN);
+                $transaction_saldo_objects = $this->getTransactionsSaldos($criteria);
+                $prize = 0;
+                foreach($transaction_saldo_objects as $trs) {
+                    $prize+= $trs->getTransactionsSaldoValue();
+                }
+                $amount = $prize;
+                $amount_string = Smashin::generate_prize($prize/100);
+                
 
-                $row = array('nr' => $nr, 'date' => $date,  'sort_date' => $sort_date, 'details' => $details, 'details_url' => $details_url, 'amount' => $amount, 'amount_string' => $amount_string, 'saldo' => $saldo, 'type' => $type);
+                $row = array('nr' => $nr, 'date' => $date,  'sort_date' => $sort_date, 'details' => $details, 'details_url' => $details_url, 'amount' => $amount, 'amount_string' => $amount_string, 'saldo' => $saldo, 'type' => $type, 'paypal' => $paypal);
                 $transactions[$sort_date] = $row;
             }
 
@@ -258,8 +253,9 @@ class Profiles extends BaseProfiles {
                 $amount_string = Smashin::generate_prize($prize/100);
                 $saldo = '';
                 $type = 'W';
+                $paypal = false;
 
-                $row = array('nr' => $nr, 'date' => $date, 'sort_date' => $sort_date, 'details' => $details, 'details_url' => $details_url, 'amount' => $amount, 'amount_string' => $amount_string, 'saldo' => $saldo, 'type' => $type);
+                $row = array('nr' => $nr, 'date' => $date, 'sort_date' => $sort_date, 'details' => $details, 'details_url' => $details_url, 'amount' => $amount, 'amount_string' => $amount_string, 'saldo' => $saldo, 'type' => $type, 'paypal' => $paypal);
                 $transactions[$sort_date] = $row;
             }
 
@@ -289,6 +285,7 @@ class Profiles extends BaseProfiles {
                 $amount_string = Smashin::generate_prize($prize/100);
                 $saldo = '';
                 $type = 'SA';
+                $paypal = false;
 
                 $tracks_id = $sales_row['TRACKS_ID'];
                 $track = TracksPeer::getTrackById($tracks_id);
@@ -297,7 +294,7 @@ class Profiles extends BaseProfiles {
                 $details_url = $routing->generate('track', $track);
 
 
-                $row = array('nr' => $nr.'.', 'date' => $date, 'sort_date' => $sort_date, 'details' => $details, 'details_url' => $details_url, 'amount' => $amount, 'amount_string' => $amount_string, 'saldo' => $saldo, 'type' => $type);
+                $row = array('nr' => $nr.'.', 'date' => $date, 'sort_date' => $sort_date, 'details' => $details, 'details_url' => $details_url, 'amount' => $amount, 'amount_string' => $amount_string, 'saldo' => $saldo, 'type' => $type, 'paypal' => $paypal);
                 $transactions[$sort_date] = $row;
 
                 //print_r($sales_row);
@@ -308,7 +305,7 @@ class Profiles extends BaseProfiles {
             sort($transactions); // od najstarszego do najnowszego
             $saldo = 0;
             foreach($transactions as &$transaction) {
-                $saldo+=$transaction['amount'];
+                if(!$transaction['paypal']) $saldo+=$transaction['amount'];
                 $transaction['saldo'] = Smashin::generate_prize($saldo/100);
             }
             rsort($transactions); // od najnowszego do najstarszego

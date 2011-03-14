@@ -1252,6 +1252,7 @@ table#table-transactions .tt-col3 { width:322px;}
 table#table-transactions td.tt-col3 { text-align:left; width:316px; padding-left:6px;}
 table#table-transactions td.tt-col3 a { text-decoration:underline; }
 table#table-transactions td.tt-col3 a:hover { text-decoration:none; }
+table#table-transactions td.tt-col3 span { float: right; padding-right: 12px; }
 table#table-transactions .tt-col4 { width:61px;}
 table#table-transactions .tt-col5 { width:72px;}
 table#table-transactions tr.tt-shopping { background:#d5e9ff; font-weight:bold; }
