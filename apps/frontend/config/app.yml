@@ -19,6 +19,8 @@ all:
   track_new_period: 10
   # lista tracków na stronie - do stronicowania
   max_tracks_on_list: 10
+  # lista transakcji na stronie My Sales - do stronicowania
+  max_transactions_on_list: 10
   # maksymalna długość opisu artysty na podstronie Artists
   max_profile_short_text_length: 80
   # liczba gatunków przy profilu

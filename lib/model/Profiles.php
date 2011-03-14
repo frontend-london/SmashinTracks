@@ -182,21 +182,6 @@ class Profiles extends BaseProfiles {
 
         public function getAllTransactions() {
             $transactions = array();
-/*
-            $nr = '';
-            $date = '';
-            $sort_date = '';
-            $details = '';
-            $details_url = '';
-            $amount = '';
-            $saldo = '';
-            $type = '';
-
-            $row = array('nr' => $nr, 'date' => $date, 'sort_date' => $sort_date, 'details' => $details, 'details_url' => $details_url, 'amount' => $amount, 'saldo' => $saldo, 'type' => $type);
-            $transactions[] = $row;
-*/
-
-            
 
             /*
              * Shoppings, type = SH
@@ -296,11 +281,7 @@ class Profiles extends BaseProfiles {
 
                 $row = array('nr' => $nr.'.', 'date' => $date, 'sort_date' => $sort_date, 'details' => $details, 'details_url' => $details_url, 'amount' => $amount, 'amount_string' => $amount_string, 'saldo' => $saldo, 'type' => $type, 'paypal' => $paypal);
                 $transactions[$sort_date] = $row;
-
-                //print_r($sales_row);
             }
-
-
 
             sort($transactions); // od najstarszego do najnowszego
             $saldo = 0;
@@ -309,7 +290,6 @@ class Profiles extends BaseProfiles {
                 $transaction['saldo'] = Smashin::generate_prize($saldo/100);
             }
             rsort($transactions); // od najnowszego do najstarszego
-            //print_r($transactions);
             
             return $transactions;
         }

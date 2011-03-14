@@ -32,17 +32,17 @@
 
                 <div id="zalogowany-boxes">
                 	<div class="box-zalogowany bz-left bz-c1">
-                    	<a href="#"><img src="images/texts/my-sales.gif" alt="My Sales" /></a>
-                        <span>Jesli sprzedajesz tracki na <a href="#" class="underline">Smashintracks.com</a> tutaj mozesz obejrzec jak sie sprzedaja i ile juz zarobiles...</span>
+                    	<a href="<?=url_for('members_my-sales'); ?>"><img src="images/texts/my-sales.gif" alt="My Sales" /></a>
+                        <span>Jesli sprzedajesz tracki na <a href="http://smashintracks.com/" class="underline">Smashintracks.com</a> tutaj mozesz obejrzec jak sie sprzedaja i ile juz zarobiles...</span>
                         <div class="button-check">
                             <div class="button-left"></div>
                             <div class="button-right"></div>
-                            <a href="#">Check</a>
+                            <a href="<?=url_for('members_my-sales'); ?>">Check</a>
                         </div>
                     </div>
                     <div class="box-zalogowany bz-right bz-c1">
                     	<a href="#"><img src="images/texts/upload-track.gif" alt="Upload Track" /></a>
-						<span>Uploaduj swoje tracki na <a href="#" class="underline">Smashintracks.com</a> i zacznij od tego momentu na nich zarabiac!</span>
+                        <span>Uploaduj swoje tracki na <a href="http://smashintracks.com/" class="underline">Smashintracks.com</a> i zacznij od tego momentu na nich zarabiac!</span>
                         <div class="button-check">
                             <div class="button-left"></div>
                             <div class="button-right"></div>
@@ -60,7 +60,7 @@
                     </div>
                     <div class="box-zalogowany bz-right">
                     	<a href="#"><img src="images/texts/my-downloads.gif" alt="My Downloads" /></a>
-						<span>Jesli kupowales jakies tracki na <a href="#" class="underline">Smashintracks.com</a> tutaj zobaczysz pelna historie swoich zakupow...</span>
+						<span>Jesli kupowales jakies tracki na <a href="http://smashintracks.com/" class="underline">Smashintracks.com</a> tutaj zobaczysz pelna historie swoich zakupow...</span>
                         <div class="button-check">
                             <div class="button-left"></div>
                             <div class="button-right"></div>

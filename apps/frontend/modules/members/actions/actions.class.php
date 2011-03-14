@@ -22,7 +22,15 @@ class membersActions extends sfActions
 
   public function executeMySales(sfWebRequest $request) {
      $profile = ProfilesPeer::getCurrentProfile();
-     $this->transactions = $profile->getAllTransactions();
+     $transactions = $profile->getAllTransactions();
+    
+    $pager = new myArrayPager(null, sfConfig::get('app_max_transactions_on_list'));
+    $pager->setResultArray($transactions);
+    $pager->setPage($this->getRequestParameter('page',1));
+    $pager->init();
+    $this->pager = $pager;
+
      $this->profile = $profile;
+
   }
 }

@@ -42,7 +42,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?foreach($transactions as $transaction):?>
+                            <?foreach ($pager->getResults() as $transaction):?>
                                 <tr<?if($transaction['type']=='W'):?> class="tt-withdrawal"<?elseif($transaction['type']=='SH'):?> class="tt-shopping"<?endif;?>>
                                   <td class="tt-col1"><?=$transaction['nr']?></td>
                                   <td class="tt-col2"><?=$transaction['date']?></td>
@@ -59,28 +59,16 @@
                         </tbody>
                     </table>
 
-                    <div class="bw-div3" id="bw-div3-tt">
-                        <div class="bw-div3-inner">
-                            <ul>
-                                <li><a href="#" class="active">1</a></li>
-                                <li><a href="#">2</a></li>
-                            </ul>
-                        </div>
-                    </div>
+                    <?php include_partial('metadata/paging', array('pager' => $pager, 'route_name' => 'members_my-sales', 'border' => true)) ?>
 
                     <div class="button-silver-back" id="bw-div11">
                         <div class="button-silver-left"></div>
                         <div class="button-silver-right"></div>
-                        <a href="#">Back</a>
+                        <a href="<?=url_for('members'); ?>">Back</a>
                     </div>
 
                     <div class="clear"></div>
 
                 </div>
 
-                <div id="box-footer">
-                    <div id="bf-paypal">
-                        <a href="#"><img src="images/icons/paypal.gif" alt="PayPal" /></a>
-                    </div>
-                    <div class="clear"></div>
-                </div>
+                <?php include_partial('metadata/footer', array('share' => false)) ?>
