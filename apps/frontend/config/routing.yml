@@ -49,6 +49,14 @@ charts_all:
   url:     /charts/all-time
   param: { module: charts, action: show, section: charts, subsection: all_time, period: null }
 
+contact:
+  url:     /contact
+  param: { module: contact, action: show, section: contact }
+
+contact_thankyou:
+  url:     /contact/thankyou
+  param: { module: contact, action: thankyou, section: contact }
+
 faq:
   url:     /faq
   param: { module: faq, action: show, section: faq }
@@ -69,14 +77,18 @@ members_my-sales:
   url:     /members/my-sales
   param: { module: members, action: mySales, section: my-sales }
 
-contact:
-  url:     /contact
-  param: { module: contact, action: show, section: contact }
+members_my-tracks:
+  url:     /members/my-tracks
+  param: { module: members, action: myTracks, section: my-tracks, subsection: all_tracks }
 
-contact_thankyou:
-  url:     /contact/thankyou
-  param: { module: contact, action: thankyou, section: contact }
+members_my-tracks_most_popular:
+  url:     /members/my-tracks/most-popular
+  param: { module: members, action: myTracks, section: my-tracks, subsection: most_popular }
 
+members_my-tracks_in_wishlists:
+  url:     /members/my-tracks/in-wishlists
+  param: { module: members, action: myTracks, section: my-tracks, subsection: in_wishlists }
+  
 new-tracks:
   url:     /new-tracks
   param: { module: charts, action: newTracks, section: charts }

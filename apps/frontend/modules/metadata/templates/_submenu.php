@@ -4,7 +4,7 @@
                             <li<?if($sf_request->getParameter('section')=='members'):?> class="active"<?endif;?>><a href="<?=url_for('members')?>">HOME</a></li>
                             <li<?if($sf_request->getParameter('section')=='my-sales'):?> class="active"<?endif;?>><a href="<?=url_for('members_my-sales')?>">MY SALES</a></li>
                             <li><a href="#">UPLOAD TRACK</a></li>
-                            <li><a href="#">MY CATALOG</a></li>
+                            <li<?if($sf_request->getParameter('section')=='my-tracks'):?> class="active"<?endif;?>><a href="<?=url_for('members_my-tracks')?>">MY TRACKS</a></li>
                             <li><a href="#">MY DOWNLOADS</a></li>
                             <li><a href="#">MY WISHLIST</a></li>
                             <li class="last"><a href="#">MY PROFILE</a></li>

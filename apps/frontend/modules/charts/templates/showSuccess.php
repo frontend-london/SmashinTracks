@@ -17,7 +17,7 @@
                             <div class="bookmark-bgr-right"></div>
                         </div>
 
-                    	<div class="bookmark <?if($subsection=='all_time'):?> bookmark-active<?else:?> bookmark-nobgr-right<?endif;?>">
+                    	<div class="bookmark<?if($subsection=='all_time'):?> bookmark-active<?else:?> bookmark-nobgr-right<?endif;?>">
                         <a href="<?=url_for('charts_all')?>">ALL TIME</a>
                             <div class="bookmark-bgr-left"></div>
                             <div class="bookmark-bgr-right"></div>

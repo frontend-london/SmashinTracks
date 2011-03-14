@@ -3,6 +3,8 @@
     if(!isset($charts_num)) $charts_num = false;
     if(!isset($basket)) $basket = false;
     if(!isset($download)) $download = false;
+    if(!isset($my_tracks)) $my_tracks = false;
+    if(!isset($my_tracks_in_wishlists)) $my_tracks_in_wishlists = false;
     if(!isset($transactions_tracks)) $transactions_tracks = false;
 
 ?>
@@ -29,6 +31,21 @@
                                             <div class="track-download">DOWNLOAD</div>
                                             <div class="track-download2">TRACK</div>
                                         </a>
+                                    <?elseif($my_tracks):?>
+                                        <?if($my_tracks_in_wishlists):?>
+                                            <div class="track-right">
+                                                    <div class="track-users">
+                                                    Users: <span><?=$track->countProfilesWishlistss()?></span>
+                                                </div>
+                                            </div>
+                                        <?else:?>
+                                            <div class="track-right">
+                                                    <div class="track-plays">
+                                                    Plays: <span><?=$track->countTracksPlayeds()?></span><br />
+                                                    Bought: <span><?=$track->countTransactionsTrackss()?></span>
+                                                </div>
+                                            </div>
+                                        <?endif;?>
                                     <?else:?>
                                         <a href="<?=url_for('basket_add', $track)?>" class="track-right">
                                             <span class="track-cart"></span>
@@ -39,7 +56,9 @@
                                     <div class="track-row2">
                                         <div class="track-name"><a href="<?=url_for('track', $track)?>"><?=$track->getTracksTitleShorted(); ?></a></div>
                                         <div class="track-time"><?=$track->getTracksTimeFormatted(); ?></div>
-                                        <a href="#" class="track-star"></a>
+                                        <?if(!$my_tracks):?>
+                                            <a href="#" class="track-star"></a>
+                                        <?endif;?>
                                         <div class="track-added">Added: <?=$track->getTracksDate('Y-m-d'); ?></div>
                                         <div class="clear"></div>
                                     </div>

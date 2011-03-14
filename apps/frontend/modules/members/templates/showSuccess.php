@@ -32,12 +32,12 @@
 
                 <div id="zalogowany-boxes">
                 	<div class="box-zalogowany bz-left bz-c1">
-                    	<a href="<?=url_for('members_my-sales'); ?>"><img src="images/texts/my-sales.gif" alt="My Sales" /></a>
+                    	<a href="<?=url_for('members_my-sales');?>"><img src="images/texts/my-sales.gif" alt="My Sales" /></a>
                         <span>Jesli sprzedajesz tracki na <a href="http://smashintracks.com/" class="underline">Smashintracks.com</a> tutaj mozesz obejrzec jak sie sprzedaja i ile juz zarobiles...</span>
                         <div class="button-check">
                             <div class="button-left"></div>
                             <div class="button-right"></div>
-                            <a href="<?=url_for('members_my-sales'); ?>">Check</a>
+                            <a href="<?=url_for('members_my-sales');?>">Check</a>
                         </div>
                     </div>
                     <div class="box-zalogowany bz-right bz-c1">
@@ -50,12 +50,12 @@
                         </div>
                     </div>
                 	<div class="box-zalogowany bz-left">
-                    	<a href="#"><img src="images/texts/my-tracks.gif" alt="My Tracks" /></a>
+                    	<a href="<?=url_for('members_my-tracks');?>"><img src="images/texts/my-tracks.gif" alt="My Tracks" /></a>
 						<span>Jesli wrzuciles jakies tracki tutaj mozesz zobaczyc ile razy je kupiono, przesluchano, dodano do wishlist...</span>
                         <div class="button-check">
                             <div class="button-left"></div>
                             <div class="button-right"></div>
-                            <a href="#">Check</a>
+                            <a href="<?=url_for('members_my-tracks');?>">Check</a>
                         </div>
                     </div>
                     <div class="box-zalogowany bz-right">

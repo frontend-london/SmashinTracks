@@ -48,6 +48,22 @@ class Profiles extends BaseProfiles {
             return $this->getActiveTracksCriteria($criteria);
         }
 
+        public function getActiveTracksCriteriaOrderByPopular() {
+            $criteria = new Criteria();
+            $criteria->addJoin(TracksPeer::TRACKS_ID, TransactionsTracksPeer::TRACKS_ID);
+            $criteria->addGroupByColumn(TransactionsTracksPeer::TRACKS_ID);
+            $criteria->addDescendingOrderByColumn('COUNT('.TransactionsTracksPeer::TRACKS_ID.')');
+            return $this->getActiveTracksCriteria($criteria);
+        }
+
+        public function getActiveTracksCriteriaOrderByInWishlists() {
+            $criteria = new Criteria();
+            $criteria->addJoin(TracksPeer::TRACKS_ID, ProfilesWishlistsPeer::TRACKS_ID);
+            $criteria->addGroupByColumn(ProfilesWishlistsPeer::TRACKS_ID);
+            $criteria->addDescendingOrderByColumn('COUNT('.ProfilesWishlistsPeer::TRACKS_ID.')');
+            return $this->getActiveTracksCriteria($criteria);
+        }
+
         public function isContent() {
             $urls = $this->getProfilesUrlss();
             if($this->getProfilesText() || !empty($urls) || $this->getProfilesPhoto()) return true; else return false;
