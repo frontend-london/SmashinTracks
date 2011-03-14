@@ -59,12 +59,12 @@
                         </div>
                     </div>
                     <div class="box-zalogowany bz-right">
-                    	<a href="#"><img src="images/texts/my-downloads.gif" alt="My Downloads" /></a>
-						<span>Jesli kupowales jakies tracki na <a href="http://smashintracks.com/" class="underline">Smashintracks.com</a> tutaj zobaczysz pelna historie swoich zakupow...</span>
+                    	<a href="<?=url_for('members_my-downloads');?>"><img src="images/texts/my-downloads.gif" alt="My Downloads" /></a>
+                        <span>Jesli kupowales jakies tracki na <a href="http://smashintracks.com/" class="underline">Smashintracks.com</a> tutaj zobaczysz pelna historie swoich zakupow...</span>
                         <div class="button-check">
                             <div class="button-left"></div>
                             <div class="button-right"></div>
-                            <a href="#">Check</a>
+                            <a href="<?=url_for('members_my-downloads');?>">Check</a>
                         </div>
                     </div>
                 	<div class="box-zalogowany bz-left bz-c3">

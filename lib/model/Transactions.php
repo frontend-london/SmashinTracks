@@ -17,5 +17,21 @@
  * @package    lib.model
  */
 class Transactions extends BaseTransactions {
+    public function getTransactionsValue() {
+        $criteria = new Criteria();
+        $criteria->addJoin(TransactionsTracksPeer::TRANSACTIONS_ID, $this->getTransactionsId());
+        $criteria->addJoin(TransactionsSaldoPeer::TRANSACTIONS_TRACKS_ID, TransactionsTracksPeer::TRANSACTIONS_TRACKS_ID);
+        $criteria->addJoin(TransactionsSaldoPeer::PROFILES_ID, $this->getProfilesId());
+        $criteria->add(TransactionsSaldoPeer::TRANSACTIONS_SALDO_VALUE, 0, Criteria::LESS_THAN);
+        $criteria->addSelectColumn('-SUM('.TransactionsSaldoPeer::TRANSACTIONS_SALDO_VALUE.')');
+        $smtm = TransactionsSaldoPeer::doSelectStmt($criteria);
+        $row = $smtm->fetch(PDO::FETCH_NUM);
+        $saldo = $row[0];
+        return Smashin::generate_prize($saldo/100);
+    }
 
+    public function isTransactionActive() {
+        $transaction_date = $this->getTransactionsDate('U');
+        return((time() - 86400 * sfConfig::get('app_track_download_period'))<$transaction_date);
+    }
 } // Transactions

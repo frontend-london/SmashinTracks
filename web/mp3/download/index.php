@@ -4,6 +4,8 @@
     $DB_Username = "modul_smashin"; //your MySQL User Name
     $DB_Password = "19aY2w2cuKWknxvSfV"; //your MySQL Password
     $DB_DBName = "modul_smashin"; //your MySQL Database Name
+
+    define('TRACK_NEW_PERIOD', 1); // czas na ściągnięcie w dniach
 /*
     $DB_Server = "localhost"; //your MySQL Server
     $DB_Username = "root"; //your MySQL User Name
@@ -37,7 +39,7 @@
         $result2 = mysql_query($sql2);
         $w2 = mysql_fetch_array($result2);
         if(!$w2) die('Error '.__LINE__);
-        $due_date = $w2['transactions_date']  + (1 * 24 * 60 * 60); // date + 24h
+        $due_date = $w2['transactions_date']  + (TRACK_NEW_PERIOD * 24 * 60 * 60); // date + 24h
         $curr_date = time();
         if($due_date<$curr_date) die('Error: File expired.');
         $sql3 = "select COUNT(*) ilosc from transactions_tracks_downloads where transactions_tracks_id = '$transactions_tracks_id'";

@@ -73,6 +73,10 @@ members:
   url:     /members
   param: { module: members, action: show, section: members }
 
+members_my-downloads:
+  url:     /members/my-downloads
+  param: { module: members, action: myDownloads, section: my-downloads }
+
 members_my-sales:
   url:     /members/my-sales
   param: { module: members, action: mySales, section: my-sales }
@@ -88,7 +92,7 @@ members_my-tracks_most_popular:
 members_my-tracks_in_wishlists:
   url:     /members/my-tracks/in-wishlists
   param: { module: members, action: myTracks, section: my-tracks, subsection: in_wishlists }
-  
+
 new-tracks:
   url:     /new-tracks
   param: { module: charts, action: newTracks, section: charts }

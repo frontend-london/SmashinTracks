@@ -50,7 +50,7 @@ class Tracks extends BaseTracks {
 
 
         public function isTrackNew() {
-            $track_date = self::getTracksDate('U');
+            $track_date = $this->getTracksDate('U');
             return((time() - 86400 * sfConfig::get('app_track_new_period'))<$track_date);
         }
 

@@ -46,14 +46,18 @@ class membersActions extends sfActions
         $tracks = $profile->getTrackss($profile->getActiveTracksCriteriaOrderByInWishlists());
         $in_wishlists = true;
     }
-
     $tracks_count = $profile->countTrackssActive();
-    
 
     $this->profile = $profile;
     $this->tracks = $tracks;
     $this->tracks_count = $tracks_count;
     $this->subsection = $subsection;
     $this->in_wishlists = $in_wishlists;
+  }
+
+  public function executeMyDownloads(sfWebRequest $request) {
+      $profile = ProfilesPeer::getCurrentProfile();
+      $transactions = $profile->getTransactionssActiveOrderByDate();
+      $this->transactions = $transactions;
   }
 }

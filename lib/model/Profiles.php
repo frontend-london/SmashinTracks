@@ -310,4 +310,23 @@ class Profiles extends BaseProfiles {
             return $transactions;
         }
 
+        public function getTransactionssActive($criteria) {
+            if ($criteria === null) {
+                    $criteria = new Criteria(TransactionsPeer::DATABASE_NAME);
+            }
+            elseif ($criteria instanceof Criteria)
+            {
+                    $criteria = clone $criteria;
+            }
+
+            $criteria->add(TransactionsPeer::TRANSACTIONS_DONE, true);
+            return $this->getTransactionss($criteria);
+        }
+
+        public function getTransactionssActiveOrderByDate() {
+            $criteria = new Criteria();
+            $criteria->addDescendingOrderByColumn(TransactionsPeer::TRANSACTIONS_DATE);
+            return $this->getTransactionssActive($criteria);
+        }
+
 } // Profiles

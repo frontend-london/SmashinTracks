@@ -7,6 +7,8 @@
     if(!isset($my_tracks_in_wishlists)) $my_tracks_in_wishlists = false;
     if(!isset($transactions_tracks)) $transactions_tracks = false;
 
+    if(!isset($icon_wishlist)) $icon_wishlist = true;
+
 ?>
                                 <div class="track">
                                     <a href="mp3/<?=$track->getTracksPath(); ?>.mp3" class="track-player<?if($charts):?> tp-num tp-num-<?=$charts_num?><?elseif($track->isTrackNew()):?> tp-new<?endif;?>">
@@ -56,7 +58,7 @@
                                     <div class="track-row2">
                                         <div class="track-name"><a href="<?=url_for('track', $track)?>"><?=$track->getTracksTitleShorted(); ?></a></div>
                                         <div class="track-time"><?=$track->getTracksTimeFormatted(); ?></div>
-                                        <?if(!$my_tracks):?>
+                                        <?if($icon_wishlist):?>
                                             <a href="#" class="track-star"></a>
                                         <?endif;?>
                                         <div class="track-added">Added: <?=$track->getTracksDate('Y-m-d'); ?></div>

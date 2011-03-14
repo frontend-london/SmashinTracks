@@ -184,7 +184,13 @@ $(window).load (
                     event.preventDefault();
                     $("div#tmp-text").fadeIn();//css("display", "block");
 		});
-		
+
+		$("a.a-mydownloads-info").click(function(event){
+                    event.preventDefault();
+                    $(this).parent().parent().next().toggle();
+		});
+
+
 	}
 );
 
