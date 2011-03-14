@@ -17,5 +17,5 @@
  * @package    lib.model
  */
 class ProfilesBaskets extends BaseProfilesBaskets {
-
+    
 } // ProfilesBaskets

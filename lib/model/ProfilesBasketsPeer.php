@@ -28,4 +28,17 @@ class ProfilesBasketsPeer extends BaseProfilesBasketsPeer {
         $criteria->add(ProfilesBasketsPeer::PROFILES_BASKETS_ID, $basket_id);
         return ProfilesBasketsPeer::doSelectOne($criteria);
     }
+
+    public static function getProfilesBasketsByProfileIdTrackId($profile_id, $track_id, $criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria();
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+        $criteria->add(ProfilesBasketsPeer::PROFILES_ID, $profile_id);
+        $criteria->add(ProfilesBasketsPeer::TRACKS_ID, $track_id);
+        return ProfilesBasketsPeer::doSelectOne($criteria);
+    }
 } // ProfilesBasketsPeer

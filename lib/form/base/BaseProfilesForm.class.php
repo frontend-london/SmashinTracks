@@ -31,12 +31,12 @@ abstract class BaseProfilesForm extends BaseFormPropel
 
     $this->setValidators(array(
       'profiles_id'           => new sfValidatorChoice(array('choices' => array($this->getObject()->getProfilesId()), 'empty_value' => $this->getObject()->getProfilesId(), 'required' => false)),
-      'profiles_name'         => new sfValidatorString(array('max_length' => 200)),
-      'profiles_email'        => new sfValidatorString(array('max_length' => 200)),
-      'profiles_password'     => new sfValidatorString(array('max_length' => 32)),
+      'profiles_name'         => new sfValidatorString(array('max_length' => 20)),
+      'profiles_email'        => new sfValidatorString(array('max_length' => 50)),
+      'profiles_password'     => new sfValidatorString(array('max_length' => 64)),
       'profiles_text'         => new sfValidatorString(array('max_length' => 500)),
       'profiles_date'         => new sfValidatorDateTime(),
-      'profiles_path'         => new sfValidatorString(array('max_length' => 200)),
+      'profiles_path'         => new sfValidatorString(array('max_length' => 50)),
       'profiles_photo'        => new sfValidatorInteger(array('min' => -128, 'max' => 127)),
       'profiles_balance'      => new sfValidatorInteger(array('min' => -2147483648, 'max' => 2147483647)),
       'profiles_blocked'      => new sfValidatorInteger(array('min' => -128, 'max' => 127)),

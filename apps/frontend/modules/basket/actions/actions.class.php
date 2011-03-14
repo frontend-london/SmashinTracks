@@ -17,26 +17,29 @@ class basketActions extends sfActions
   */
   public function executeShow(sfWebRequest $request)
   {
+
     $oUser = $this->getUser();
+    $profile = ProfilesPeer::getCurrentProfile();
     if($oUser->hasAttribute('basket')) {
         $basket = $oUser->getAttribute('basket');
+        if(!$basket->hasProfile()) $basket->setProfile($profile);
     } else {
-        $basket = new Basket();
+        $basket = new Basket($profile);
     }
 
     if($oUser->hasAttribute('transaction_id')) {
         $transaction_id = $oUser->getAttribute('transaction_id');
         $transaction = TransactionsPeer::getTransactionById($transaction_id);
         if($transaction->getTransactionsDone()) {
-            $this->logMessage('Basket before '.print_r($basket->getTracksIds(), true), 'alert');
-            $this->logMessage('Transaction'.print_r($transaction, true), 'alert');
-            $this->logMessage('Transaction tracks'.print_r($transaction->getTransactionsTrackssJoinTracks(), true), 'alert');
+//            $this->logMessage('Basket before '.print_r($basket->getTracksIds(), true), 'alert');
+//            $this->logMessage('Transaction'.print_r($transaction, true), 'alert');
+//            $this->logMessage('Transaction tracks'.print_r($transaction->getTransactionsTrackssJoinTracks(), true), 'alert');
             foreach ($transaction->getTransactionsTrackssJoinTracks() as $transaction_track) {
                 $track = $transaction_track->getTracks();
-                $this->logMessage('Remove track '.$track->getTracksId(), 'alert');
+//                $this->logMessage('Remove track '.$track->getTracksId(), 'alert');
                 $basket->removeTrack($track->getTracksId());
             }
-            $this->logMessage('Basket after '.print_r($basket->getTracksIds(), true), 'alert');
+//            $this->logMessage('Basket after '.print_r($basket->getTracksIds(), true), 'alert');
             $oUser->setAttribute('basket',$basket);
             $transaction = new Transactions();
         }
@@ -57,15 +60,13 @@ class basketActions extends sfActions
   public function executeAdd(sfWebRequest $request) {
     $track = $this->getRoute()->getObject();
     $oUser = $this->getUser();
-/*  wersja dla zalogowanych
- *     if($oUser->hasAttribute('basket_id')) {
-        $basket_id = $oUser->getAttribute('basket_id');
-        $basket = ProfilesBasketsPeer::getProfilesBasketsById($basket_id);
- */
+    $profile = ProfilesPeer::getCurrentProfile();
+
     if($oUser->hasAttribute('basket')) {
         $basket = $oUser->getAttribute('basket');
+        if(!$basket->hasProfile()) $basket->setProfile($profile);
     } else {
-        $basket = new Basket();
+        $basket = new Basket($profile);
     }
     $basket->addTrack($track->getTracksId());
     $oUser->setAttribute('basket',$basket);
@@ -76,10 +77,12 @@ class basketActions extends sfActions
   public function executeRemove(sfWebRequest $request) {
     $track = $this->getRoute()->getObject();
     $oUser = $this->getUser();
+    $profile = ProfilesPeer::getCurrentProfile();
     if($oUser->hasAttribute('basket')) {
         $basket = $oUser->getAttribute('basket');
+        if(!$basket->hasProfile()) $basket->setProfile($profile);
     } else {
-        $basket = new Basket();
+        $basket = new Basket($profile);
     }
     $basket->removeTrack($track->getTracksId());
     $oUser->setAttribute('basket',$basket);
