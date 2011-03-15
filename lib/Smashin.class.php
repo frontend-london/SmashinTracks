@@ -91,6 +91,7 @@ class Smashin
 
     public static function signOut() {
       sfContext::getInstance()->getUser()->getAttributeHolder()->remove('profile_id');
+      sfContext::getInstance()->getUser()->getAttributeHolder()->remove('basket');
       sfContext::getInstance()->getUser()->setAuthenticated(false);
       sfContext::getInstance()->getUser()->removeCredential('user');      
     }

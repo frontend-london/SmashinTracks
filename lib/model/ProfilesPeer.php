@@ -127,4 +127,14 @@ class ProfilesPeer extends BaseProfilesPeer {
         }
     }
 
+    public static function getCurrentProfileId() {
+        $oUser = sfContext::getInstance()->getUser();
+        if($oUser->hasAttribute('profile_id')) {
+          $profile_id = $oUser->getAttribute('profile_id');
+          return $profile_id;
+        } else {
+            return null;
+        }
+    }
+
 } // ProfilesPeer

@@ -50,7 +50,7 @@
                     <div id="box-basket">
                         <div class="box-silver2">
                             <div class="bs2-inner">
-                                <img src="images/texts/your-basket.gif" alt="Your Basket" id="bb-img1" />
+                                <a href="<?=url_for('basket')?>"><img src="images/texts/your-basket.gif" alt="Your Basket" id="bb-img1" /></a>
                                 <div id="bb-empty">Your basket is empty...</div>
                             </div>
                             <div class="bs2-bgr-bottom"></div>
