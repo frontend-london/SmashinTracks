@@ -8,6 +8,7 @@
     if(!isset($transactions_tracks)) $transactions_tracks = false;
     if(!isset($wishlist)) $wishlist = false;
 
+    if(!isset($subsection)) $subsection = null;
     if(!isset($icon_wishlist)) $icon_wishlist = true;
 
 ?>
@@ -60,7 +61,11 @@
                                         <div class="track-name"><a href="<?=url_for('track', $track)?>"><?=$track->getTracksTitleShorted(); ?></a></div>
                                         <div class="track-time"><?=$track->getTracksTimeFormatted(); ?></div>
                                         <?if($wishlist):?>
-                                            <a href="<?=url_for('members_my-wishlist_remove', $track)?>" class="track-bin2"></a>
+                                            <?if($subsection=='last_added'):?>
+                                                <a href="<?=url_for('members_my-wishlist_remove', $track)?>" class="track-bin2"></a>
+                                            <?else:?>
+                                                <a href="<?=url_for('members_my-wishlist_by_artist_remove', $track)?>" class="track-bin2"></a>
+                                            <?endif;?>
                                         <?elseif($icon_wishlist):?>
                                             <a href="<?=url_for('members_my-wishlist_add', $track)?>" class="track-star"></a>
                                         <?endif;?>

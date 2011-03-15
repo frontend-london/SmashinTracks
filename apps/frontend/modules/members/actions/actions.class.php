@@ -62,6 +62,7 @@ class membersActions extends sfActions
   }
 
   public function executeMyWishlist(sfWebRequest $request) {
+    $subsection = $this->getRequestParameter('subsection');
     $oUser = $this->getUser();
     if($oUser->hasAttribute('wishlist')) {
         $wishlist = $oUser->getAttribute('wishlist');
@@ -70,7 +71,12 @@ class membersActions extends sfActions
         $wishlist = new Wishlist(ProfilesPeer::getCurrentProfileId());
     }
     
-    $this->tracks = TracksPeer::getWishlistTracks($wishlist);
+    if($subsection=='last_added') {
+        $this->tracks = TracksPeer::getWishlistTracks($wishlist);
+    } else { // By Artists
+        $this->tracks = TracksPeer::getWishlistTracksOrderByArtist($wishlist);
+    }
+    $this->subsection = $subsection;
   }
 
   public function executeMyWishlistAdd(sfWebRequest $request) {
@@ -89,6 +95,7 @@ class membersActions extends sfActions
   }
 
   public function executeMyWishlistRemove(sfWebRequest $request) {
+    $subsection = $this->getRequestParameter('subsection');
     $track = $this->getRoute()->getObject();
     $oUser = $this->getUser();
     if($oUser->hasAttribute('wishlist')) {
@@ -99,6 +106,10 @@ class membersActions extends sfActions
     }
     $wishlist->removeTrack($track->getTracksId());
     $oUser->setAttribute('wishlist',$wishlist);
-    $this->redirect('members_my-wishlist');
+    if($subsection=='last_added') {
+        $this->redirect('members_my-wishlist');
+    } else { // By Artists
+        $this->redirect('members_my-wishlist_by_artist');
+    }
   }
 }

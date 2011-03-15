@@ -107,9 +107,8 @@ class Basket {
     }
 
     public function getTracksIds() {
-        asort($this->tracks);
+        arsort($this->tracks);
         return array_keys($this->tracks);
     }
-
     
 }

@@ -95,7 +95,11 @@ members_my-tracks_in_wishlists:
 
 members_my-wishlist:
   url:     /members/my-wishlist
-  param: { module: members, action: myWishlist, section: my-wishlist }
+  param: { module: members, action: myWishlist, section: my-wishlist, subsection: last_added }
+
+members_my-wishlist_by_artist:
+  url:     /members/my-wishlist/by-artist
+  param: { module: members, action: myWishlist, section: my-wishlist, subsection: by_artist }
 
 members_my-wishlist_add:
   url:     /members/my-wishlist/add/:tracks_id
@@ -109,7 +113,15 @@ members_my-wishlist_remove:
   url:     /members/my-wishlist/remove/:tracks_id
   class:   sfPropelRoute
   options: { model: Tracks, type: object }
-  param: { module: members, action: myWishlistRemove, section: my-wishlist }
+  param: { module: members, action: myWishlistRemove, section: my-wishlist, subsection: last_added }
+  requirements:
+    sf_method: [get]
+
+members_my-wishlist_by_artist_remove:
+  url:     /members/my-wishlist/by-artist/remove/:tracks_id
+  class:   sfPropelRoute
+  options: { model: Tracks, type: object }
+  param: { module: members, action: myWishlistRemove, section: my-wishlist, subsection: by_artist }
   requirements:
     sf_method: [get]
 

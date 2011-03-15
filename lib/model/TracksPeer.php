@@ -90,10 +90,14 @@ class TracksPeer extends BaseTracksPeer {
         
     }
 
-    static public function getTracksIn($set) {
+    static public function getTracksIn($set, $order = null) {
         $criteria = new Criteria();
         $criteria->add(self::TRACKS_ID, $set, Criteria::IN);
-        $criteria->addAscendingOrderByColumn('FIND_IN_SET('.self::TRACKS_ID.",'".implode(',', $set). "')");
+        if(isset($order)) {
+            $criteria->addAscendingOrderByColumn($order);
+        } else {
+            $criteria->addAscendingOrderByColumn('FIND_IN_SET('.self::TRACKS_ID.",'".implode(',', $set). "')");
+        }
         $tracks = TracksPeer::doSelect($criteria);
         return $tracks;
     }
@@ -107,6 +111,12 @@ class TracksPeer extends BaseTracksPeer {
     static public function getWishlistTracks(Wishlist $wishlist) {
         $tracks_ids = $wishlist->getTracksIds();
         $tracks = self::getTracksIn($tracks_ids);
+        return $tracks;
+    }
+
+    static public function getWishlistTracksOrderByArtist(Wishlist $wishlist) {
+        $tracks_ids = $wishlist->getTracksIds();
+        $tracks = self::getTracksIn($tracks_ids, TracksPeer::TRACKS_PATH);
         return $tracks;
     }
 
