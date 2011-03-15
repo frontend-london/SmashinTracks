@@ -137,6 +137,7 @@ propel:
     profiles_wishlists_id: { phpName: ProfilesWishlistsId, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
     profiles_id: { phpName: ProfilesId, type: INTEGER, size: '11', required: true, foreignTable: profiles, foreignReference: profiles_id, onDelete: RESTRICT, onUpdate: RESTRICT }
     tracks_id: { phpName: TracksId, type: INTEGER, size: '11', required: true, foreignTable: tracks, foreignReference: tracks_id, onDelete: RESTRICT, onUpdate: RESTRICT }
+    profiles_wishlists_date: { phpName: ProfilesWishlistsDate, type: TIMESTAMP, required: true }
     _indexes: { fk_pw_profiles_id: [profiles_id], fk_pw_tracks_id: [tracks_id] }
   texts:
     _attributes: { phpName: Texts }

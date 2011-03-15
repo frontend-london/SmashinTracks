@@ -60,4 +60,45 @@ class membersActions extends sfActions
       $transactions = $profile->getTransactionssActiveOrderByDate();
       $this->transactions = $transactions;
   }
+
+  public function executeMyWishlist(sfWebRequest $request) {
+    $oUser = $this->getUser();
+    if($oUser->hasAttribute('wishlist')) {
+        $wishlist = $oUser->getAttribute('wishlist');
+        $wishlist->setProfile(ProfilesPeer::getCurrentProfileId());
+    } else {
+        $wishlist = new Wishlist(ProfilesPeer::getCurrentProfileId());
+    }
+    
+    $this->tracks = TracksPeer::getWishlistTracks($wishlist);
+  }
+
+  public function executeMyWishlistAdd(sfWebRequest $request) {
+    $track = $this->getRoute()->getObject();
+    $oUser = $this->getUser();
+
+    if($oUser->hasAttribute('wishlist')) {
+        $wishlist = $oUser->getAttribute('wishlist');
+        $wishlist->setProfile(ProfilesPeer::getCurrentProfileId());
+    } else {
+        $wishlist = new Wishlist(ProfilesPeer::getCurrentProfileId());
+    }
+    $wishlist->addTrack($track->getTracksId());
+    $oUser->setAttribute('wishlist',$wishlist);
+    $this->redirect('members_my-wishlist');
+  }
+
+  public function executeMyWishlistRemove(sfWebRequest $request) {
+    $track = $this->getRoute()->getObject();
+    $oUser = $this->getUser();
+    if($oUser->hasAttribute('wishlist')) {
+        $wishlist = $oUser->getAttribute('wishlist');
+        $wishlist->setProfile(ProfilesPeer::getCurrentProfileId());
+    } else {
+        $wishlist = new Wishlist(ProfilesPeer::getCurrentProfileId());
+    }
+    $wishlist->removeTrack($track->getTracksId());
+    $oUser->setAttribute('wishlist',$wishlist);
+    $this->redirect('members_my-wishlist');
+  }
 }

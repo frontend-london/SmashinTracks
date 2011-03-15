@@ -4,17 +4,36 @@ class Basket {
     protected $tracks;
     protected $profiles_id = null;
     protected $is_profile = false;
-    
+
+    protected function getProfilesBasketss() {
+        return ProfilesPeer::getProfileById($this->profiles_id)->getProfilesBasketss();
+    }
+
+    protected function getProfilesBasketsDate($profile_basket) {
+        return $profile_basket->getProfilesBasketsDate('U');
+    }
+
+    protected function setProfilesBasketsDate($profile_basket, $date) {
+        $profile_basket->setProfilesBasketsDate($date);
+    }
+
+    protected function getProfilesBasketsByProfileIdTrackId($id) {
+        return ProfilesBasketsPeer::getProfilesBasketsByProfileIdTrackId($this->profiles_id, $id);
+    }
+
+    protected function createProfilesBaskets() {
+        return new ProfilesBaskets();
+    }
     
     public function __construct($profiles_id = null) {
         $this->tracks = array();
         if(isset($profiles_id)) {
             $this->profiles_id = $profiles_id;
-            $profile_baskets = ProfilesPeer::getProfileById($profiles_id)->getProfilesBasketss();
+            $this->is_profile = true;
+            $profile_baskets = $this->getProfilesBasketss();
             foreach ($profile_baskets as $profile_basket) {
-                $this->addTrack($profile_basket->getTracksId(), $profile_basket->getProfilesBasketsDate('U'), false, true);
+                $this->addTrack($profile_basket->getTracksId(), $this->getProfilesBasketsDate($profile_basket), false, true);
             }
-            $this->is_profile = true; // na końcu by nie dodawać wpisów do bazy które już tam są
         }
     }
 
@@ -34,9 +53,9 @@ class Basket {
                 }
             }
 
-            $profile_baskets = ProfilesPeer::getProfileById($profiles_id)->getProfilesBasketss();
+            $profile_baskets = $this->getProfilesBasketss();
             foreach ($profile_baskets as $profile_basket) {
-                $this->addTrack($profile_basket->getTracksId(), $profile_basket->getProfilesBasketsDate('U'), false, true);
+                $this->addTrack($profile_basket->getTracksId(), $this->getProfilesBasketsDate($profile_basket), false, true);
             }
         } else { // gdy konto nie jest podpięte
             $this->profiles_id =  null;
@@ -48,15 +67,15 @@ class Basket {
         if(empty($date)) $date = time();
         if(isset($this->tracks[$id]) && $this->tracks[$id]>$date) $date = $this->tracks[$id];
         if(($this->is_profile) && (!$only_to_array)) {
-            $profile_basket = ProfilesBasketsPeer::getProfilesBasketsByProfileIdTrackId($this->profiles_id, $id);
+            $profile_basket = $this->getProfilesBasketsByProfileIdTrackId($id);
             if(!is_object($profile_basket)) {
-                $profile_basket = new ProfilesBaskets();
+                $profile_basket = $this->createProfilesBaskets();
                 $profile_basket->setProfilesId($this->profiles_id);
                 $profile_basket->setTracksId($id);
             }
 
-            if((!is_object($profile_basket) || $profile_basket->getProfilesBasketsDate('U')!=$date)) {
-                $profile_basket->setProfilesBasketsDate($date);
+            if((!is_object($profile_basket) || $this->getProfilesBasketsDate($profile_basket)!=$date)) {
+                $this->setProfilesBasketsDate($profile_basket, $date);
                 $profile_basket->save();
             }
         }
@@ -68,7 +87,7 @@ class Basket {
 
     public function removeTrack($id) {
         if($this->is_profile) {
-            $profile_basket = ProfilesBasketsPeer::getProfilesBasketsByProfileIdTrackId($this->profiles_id, $id);
+            $profile_basket = $this->getProfilesBasketsByProfileIdTrackId($id);
             if(is_object($profile_basket)) $profile_basket->delete();
         }
 

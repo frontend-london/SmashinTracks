@@ -104,6 +104,12 @@ class TracksPeer extends BaseTracksPeer {
         return $tracks;
     }
 
+    static public function getWishlistTracks(Wishlist $wishlist) {
+        $tracks_ids = $wishlist->getTracksIds();
+        $tracks = self::getTracksIn($tracks_ids);
+        return $tracks;
+    }
+
     public static function getTrackById($tracks_id, $criteria = null) {
         if ($criteria === null) {
                 $criteria = new Criteria();

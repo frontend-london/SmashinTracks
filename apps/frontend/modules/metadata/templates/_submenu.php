@@ -6,7 +6,7 @@
                             <li><a href="#">UPLOAD TRACK</a></li>
                             <li<?if($sf_request->getParameter('section')=='my-tracks'):?> class="active"<?endif;?>><a href="<?=url_for('members_my-tracks')?>">MY TRACKS</a></li>
                             <li<?if($sf_request->getParameter('section')=='my-downloads'):?> class="active"<?endif;?>><a href="<?=url_for('members_my-downloads')?>">MY DOWNLOADS</a></li>
-                            <li><a href="#">MY WISHLIST</a></li>
+                            <li<?if($sf_request->getParameter('section')=='my-wishlist'):?> class="active"<?endif;?>><a href="<?=url_for('members_my-wishlist')?>">MY WISHLIST</a></li>
                             <li class="last"><a href="#">MY PROFILE</a></li>
                             <li class="last right"><a href="<?=url_for('sign-out')?>">SIGN OUT</a></li>
                         <?else:?>

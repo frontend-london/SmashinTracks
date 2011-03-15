@@ -280,6 +280,7 @@ CREATE TABLE `profiles_wishlists`
 	`profiles_wishlists_id` INTEGER(11)  NOT NULL AUTO_INCREMENT,
 	`profiles_id` INTEGER(11)  NOT NULL,
 	`tracks_id` INTEGER(11)  NOT NULL,
+	`profiles_wishlists_date` DATETIME  NOT NULL,
 	PRIMARY KEY (`profiles_wishlists_id`),
 	KEY `fk_pw_profiles_id`(`profiles_id`),
 	KEY `fk_pw_tracks_id`(`tracks_id`),

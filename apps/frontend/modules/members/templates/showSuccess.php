@@ -68,12 +68,12 @@
                         </div>
                     </div>
                 	<div class="box-zalogowany bz-left bz-c3">
-                    	<a href="#"><img src="images/texts/my-wishlist.gif" alt="My Wishlist" /></a>
+                    	<a href="<?=url_for('members_my-wishlist');?>"><img src="images/texts/my-wishlist.gif" alt="My Wishlist" /></a>
                         <span>Jesli masz liste trackow ktore ci sie spodobaly, w tym miejscu mozesz je przesluchac, kupic lub skasowac...</span>
                         <div class="button-check">
                             <div class="button-left"></div>
                             <div class="button-right"></div>
-                            <a href="#">Check</a>
+                            <a href="<?=url_for('members_my-wishlist');?>">Check</a>
                         </div>
                     </div>
                     <div class="box-zalogowany bz-right bz-c3">

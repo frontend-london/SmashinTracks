@@ -17,5 +17,28 @@
  * @package    lib.model
  */
 class ProfilesWishlistsPeer extends BaseProfilesWishlistsPeer {
+    public static function getProfilesWishlistsById($basket_id, $criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria();
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+        $criteria->add(ProfilesWishlistsPeer::PROFILES_WISHLISTS_ID, $basket_id);
+        return ProfilesWishlistsPeer::doSelectOne($criteria);
+    }
 
+    public static function getProfilesWishlistsByProfileIdTrackId($profile_id, $track_id, $criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria();
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+        $criteria->add(ProfilesWishlistsPeer::PROFILES_ID, $profile_id);
+        $criteria->add(ProfilesWishlistsPeer::TRACKS_ID, $track_id);
+        return ProfilesWishlistsPeer::doSelectOne($criteria);
+    }
 } // ProfilesWishlistsPeer

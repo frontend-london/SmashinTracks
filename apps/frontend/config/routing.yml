@@ -93,6 +93,26 @@ members_my-tracks_in_wishlists:
   url:     /members/my-tracks/in-wishlists
   param: { module: members, action: myTracks, section: my-tracks, subsection: in_wishlists }
 
+members_my-wishlist:
+  url:     /members/my-wishlist
+  param: { module: members, action: myWishlist, section: my-wishlist }
+
+members_my-wishlist_add:
+  url:     /members/my-wishlist/add/:tracks_id
+  class:   sfPropelRoute
+  options: { model: Tracks, type: object }
+  param: { module: members, action: myWishlistAdd, section: my-wishlist }
+  requirements:
+    sf_method: [get]
+
+members_my-wishlist_remove:
+  url:     /members/my-wishlist/remove/:tracks_id
+  class:   sfPropelRoute
+  options: { model: Tracks, type: object }
+  param: { module: members, action: myWishlistRemove, section: my-wishlist }
+  requirements:
+    sf_method: [get]
+
 new-tracks:
   url:     /new-tracks
   param: { module: charts, action: newTracks, section: charts }
