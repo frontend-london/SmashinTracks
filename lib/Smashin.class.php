@@ -85,8 +85,7 @@ class Smashin
      * @return <string> wygenerowane hasło
      */
     public static function generateHash($pass) {
-        //return hash('sha256',$pass); // sha256 = char(64)
-        return substr(hash('sha256',$pass),0,32);
+        return hash('sha256',$pass); // sha256 = char(64)
     }
 
     public static function signOut() {

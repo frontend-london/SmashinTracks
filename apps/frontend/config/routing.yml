@@ -125,6 +125,14 @@ members_my-wishlist_by_artist_remove:
   requirements:
     sf_method: [get]
 
+members_withdraw:
+  url:     /members/withdraw
+  param: { module: membersWithdraw, action: show, section: withdraw }
+
+members_withdraw_your-paypal:
+  url:     /members/withdraw/your-paypal
+  param: { module: membersWithdraw, action: yourPaypal, section: withdraw }
+
 new-tracks:
   url:     /new-tracks
   param: { module: charts, action: newTracks, section: charts }
@@ -142,14 +150,6 @@ order_unregistered:
   class:   sfPropelRoute
   options: { model: Transactions, type: object }
   param: { module: order, action: show, section: order }
-  requirements:
-    sf_method: [get]
-
-order_download:
-  url:     /order/download/:transactions_tracks_id/:tracks_path
-  class:   sfPropelRoute
-  options: { model: TransactionsTracks, type: object }
-  param: { module: order, action: download, section: order }
   requirements:
     sf_method: [get]
 

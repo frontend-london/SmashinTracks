@@ -123,6 +123,10 @@ class Profiles extends BaseProfiles {
             return Smashin::generate_prize($this->getProfilesBalance()/100);
         }
 
+        public function getProfilesBalanceReal() {
+            return $this->getProfilesBalance()/100;
+        }
+
         public function getProfilesTracksSold() {
             $criteria = new Criteria();
             $criteria->addJoin(TransactionsTracksPeer::TRACKS_ID, TracksPeer::TRACKS_ID);

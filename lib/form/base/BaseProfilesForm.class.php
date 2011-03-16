@@ -31,7 +31,7 @@ abstract class BaseProfilesForm extends BaseFormPropel
 
     $this->setValidators(array(
       'profiles_id'           => new sfValidatorChoice(array('choices' => array($this->getObject()->getProfilesId()), 'empty_value' => $this->getObject()->getProfilesId(), 'required' => false)),
-      'profiles_name'         => new sfValidatorString(array('max_length' => 20)),
+      'profiles_name'         => new sfValidatorString(array('max_length' => 30)),
       'profiles_email'        => new sfValidatorString(array('max_length' => 50)),
       'profiles_password'     => new sfValidatorString(array('max_length' => 64)),
       'profiles_text'         => new sfValidatorString(array('max_length' => 500)),

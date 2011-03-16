@@ -171,7 +171,7 @@ DROP TABLE IF EXISTS `profiles`;
 CREATE TABLE `profiles`
 (
 	`profiles_id` INTEGER(11)  NOT NULL AUTO_INCREMENT,
-	`profiles_name` VARCHAR(20)  NOT NULL,
+	`profiles_name` VARCHAR(30)  NOT NULL,
 	`profiles_email` VARCHAR(50)  NOT NULL,
 	`profiles_password` VARCHAR(64)  NOT NULL,
 	`profiles_text` VARCHAR(500)  NOT NULL,

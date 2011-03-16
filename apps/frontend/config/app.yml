@@ -9,12 +9,12 @@ all:
   homepage_genres_new_tracks: 4
   # maksymalna długość nazwy tracka by się mieściła data dodania
   tracklist_max_name_length: 36
-  # domyślna cena, w £. Zmień również define('TRACK_PRIZE', 140); i define('TRACK_PRIZE_HALF', 70); w web/paypal_status.php 1.40
-  default_prize: 0.02
   # domyślna waluta
   default_prize_currency: £
-  # domyślna cena, format tekstowy £1.40
-  default_prize_string: £0.02
+  # domyślna cena, w £. Zmień również define('TRACK_PRIZE', 140); i define('TRACK_PRIZE_HALF', 70); w web/paypal_status.php 1.40
+  default_prize: 0.02
+  # minimalna wartość wypłaty w £
+  min_withdraw: 10
   # okres w dniach kiedy track jest nowy
   track_new_period: 10
   # okres w dniach kiedy można ściągnąć kupiony track - zmień również web/mp3/download/index.php - define('TRACK_NEW_PERIOD', 1);

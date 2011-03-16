@@ -159,6 +159,11 @@ $(window).load (
                     $(this).toggleClass('arrow-top-big');
 		});
 
+		$("a#bm5-a-close").click(function(event){
+                    event.preventDefault();
+                    $("div#bm5-container").fadeOut();
+		});
+
 		$("a#bm5-a1-close").click(function(event){
                     //event.preventDefault();
                     $("div#bm5-container").css("display", "none");

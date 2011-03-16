@@ -18,13 +18,13 @@
                         </div>
                         <div id="bm2-div3">
                             <div id="bm2-div3-left">
-                                Minimalna kwota wyplaty to <strong>15 pounds</strong>
+                                Minimalna kwota wyplaty to <strong><?=Smashin::generate_prize(sfConfig::get('app_min_withdraw'))?></strong>
                             </div>
                             <div id="bm2-div3-right">
                                 <div class="button-withdraw">
                                     <div class="button-left"></div>
                                     <div class="button-right"></div>
-                                    <a href="#">Withdraw Money</a>
+                                    <a href="<?=url_for('members_withdraw');?>">Withdraw Money</a>
                                 </div>
                             </div>
                             <div class="clear"></div>

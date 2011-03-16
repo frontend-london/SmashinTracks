@@ -97,7 +97,7 @@ propel:
   profiles:
     _attributes: { phpName: Profiles }
     profiles_id: { phpName: ProfilesId, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
-    profiles_name: { phpName: ProfilesName, type: VARCHAR, size: '20', required: true }
+    profiles_name: { phpName: ProfilesName, type: VARCHAR, size: '30', required: true }
     profiles_email: { phpName: ProfilesEmail, type: VARCHAR, size: '50', required: true }
     profiles_password: { phpName: ProfilesPassword, type: VARCHAR, size: '64', required: true }
     profiles_text: { phpName: ProfilesText, type: VARCHAR, size: '500', required: true }

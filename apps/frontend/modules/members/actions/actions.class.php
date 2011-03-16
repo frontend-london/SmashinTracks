@@ -112,4 +112,5 @@ class membersActions extends sfActions
         $this->redirect('members_my-wishlist_by_artist');
     }
   }
+  
 }
