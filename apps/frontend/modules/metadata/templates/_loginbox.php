@@ -38,9 +38,6 @@
                                         <?php echo $form['remember_me']->renderError() ?>
                                         <?php echo $form->renderGlobalErrors() ?>
                                     </div>
-                                    <!--<div class="div-error-message" id="lb-div10">
-                                        E-mail address not found, or password incorrect. For an instant e-mail reminder, please click <strong>'Forgot password?'</strong> below.
-                                    </div>-->
                                 <?php endif; ?>
                                 <div id="lb-div6">
                                     <?php echo $form->renderHiddenFields() ?>

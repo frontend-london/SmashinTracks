@@ -101,6 +101,14 @@ class ProfilesPeer extends BaseProfilesPeer {
         return self::doCount($criteria);
     }
 
+    public static function isPassCorrect($id, $pass) {
+        $criteria = new Criteria();
+        $criteria->add(self::PROFILES_ID, $id);
+        $criteria->add(self::PROFILES_PASSWORD, Smashin::generateHash($pass));
+        if(empty($id) || empty($pass)) return 0;
+        return self::doCount($criteria);
+    }
+
     public static function getProfileIfLoginCorrect($email, $pass) {
         $criteria = new Criteria();
         $criteria->add(self::PROFILES_EMAIL, $email);

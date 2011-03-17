@@ -303,13 +303,14 @@ class Profiles extends BaseProfiles {
                 $transactions[$sort_date] = $row;
             }
 
-            sort($transactions); // od najstarszego do najnowszego
+            ksort($transactions); // od najstarszego do najnowszego
+            //print_r($transactions);
             $saldo = 0;
             foreach($transactions as &$transaction) {
                 if(!$transaction['paypal']) $saldo+=$transaction['amount'];
                 $transaction['saldo'] = Smashin::generate_prize($saldo/100);
             }
-            rsort($transactions); // od najnowszego do najstarszego
+            krsort($transactions); // od najnowszego do najstarszego
             
             return $transactions;
         }

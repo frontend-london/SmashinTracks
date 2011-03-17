@@ -89,3 +89,28 @@
                 </div>
 
                 <?php include_partial('metadata/footer', array('share' => false)) ?>
+
+                <?if($withdraw_complete_message):?>
+                    <? slot('box-message'); ?>
+                        <div id="bm5-container">
+                            <div id="box-message">
+                                <div id="bm5-outer">
+                                    <div id="bm5-inner">
+                                        <img src="images/texts/ok.gif" alt="OK" id="bm5-img1" />
+                                        <div id="bm5-div1">
+                                            <strong>Zgloszenie wyplaty zostalo pomyslnie wyslane. Twoje pieniadze w przeciagu <span class="blue">2-3 dni roboczych</span> powinny<br /> znalezc sie, na podanym przez ciebie koncie <span class="blue">PAYPAL</span>.</strong>
+                                        </div>
+                                        <div class="button-close">
+                                            <div class="button-left"></div>
+                                            <div class="button-right"></div>
+                                            <a href="#" id="bm5-a-close">CLOSE</a>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                                <div id="bm5-bgr-top"></div>
+                                <div id="bm5-bgr-bottom"></div>
+                            </div>
+                        </div>
+                    <? end_slot(); ?>
+                <?endif;?>

@@ -18,6 +18,7 @@ class membersActions extends sfActions
    */
   public function executeShow(sfWebRequest $request) {
      $this->profile = ProfilesPeer::getCurrentProfile();
+     $this->withdraw_complete_message = $this->getUser()->getFlash('withdraw_complete_message', false); // wyświetla komunikat OK..
   }
 
   public function executeMySales(sfWebRequest $request) {

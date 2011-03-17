@@ -33,6 +33,31 @@ class membersWithdrawActions extends sfActions
         $this->redirect('members_withdraw');
     }
 
-    $this->profile = $profile;
+
+
+
+    $form = new WithdrawForm();
+
+     if ($request->isMethod('post') && $request->hasParameter('withdraw'))
+     {
+       $form->bind($request->getParameter('withdraw'));
+
+       if ($form->isValid())
+       {
+            $withdraw = new Withdraws();
+            $withdraw->setProfiles($profile);
+            $withdraw->setWithdrawsPaypalAddress($form->getValue('email'));
+            $withdraw->setWithdrawsDate(date('U'));
+            $withdraw->setWithdrawsSaldoValue($profile->getProfilesBalance());
+            $withdraw->save();
+            $profile->setProfilesBalance(0);
+            $profile->save();
+
+            $this->getUser()->setFlash('withdraw_complete_message', true); // wyświetli komunikat OK..
+            $this->redirect('members');
+       } 
+     }
+     $this->form = $form;
+
   }
 }
