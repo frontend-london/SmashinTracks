@@ -47,7 +47,11 @@
                                   <td class="tt-col1"><?=$transaction['nr']?></td>
                                   <td class="tt-col2"><?=$transaction['date']?></td>
                                   <td class="tt-col3">
-                                    <a href="<?=$transaction['details_url']?>"><?=$transaction['details']?></a>
+                                    <?if(!empty($transaction['details_url'])):?>
+                                      <a href="<?=$transaction['details_url']?>"><?=$transaction['details']?></a>
+                                    <?else:?>
+                                      <?=$transaction['details']?>
+                                    <?endif;?>
                                     <?if($transaction['paypal']):?>
                                         <span>PAYPAL</span>
                                     <?endif;?>

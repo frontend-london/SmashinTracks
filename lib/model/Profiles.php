@@ -202,6 +202,7 @@ class Profiles extends BaseProfiles {
 
         public function getAllTransactions() {
             $transactions = array();
+            $routing = sfContext::getInstance()->getRouting();
 
             /*
              * Shoppings, type = SH
@@ -215,7 +216,7 @@ class Profiles extends BaseProfiles {
                 $sort_date = $tr->getTransactionsDate('U');
                 while(!empty($transactions[$sort_date])) $sort_date++;
                 $details = 'Shopping: #'.$tr->getTransactionsId();
-                $details_url = '#';
+                $details_url = $routing->generate('members_my-downloads');
                 $type = 'SH'; // Shopping
                 $saldo = ''; //todo
                 if($tr->getTransactionsPaymethod()==1) { // gdy przez paypal
@@ -252,7 +253,7 @@ class Profiles extends BaseProfiles {
                 $sort_date = $wd->getWithdrawsDate('U');
                 while(!empty($transactions[$sort_date])) $sort_date++;
                 $details = 'Withdrawal to PayPal #'.$wd->getWithdrawsId();
-                $details_url = '#';
+                $details_url = '';
                 $prize = $wd->getWithdrawsSaldoValue();
                 $amount = $prize;
                 $amount_string = Smashin::generate_prize($prize/100);
@@ -295,7 +296,6 @@ class Profiles extends BaseProfiles {
                 $tracks_id = $sales_row['TRACKS_ID'];
                 $track = TracksPeer::getTrackById($tracks_id);
                 $details = $track->getTracksTitleShorted();
-                $routing = sfContext::getInstance()->getRouting();
                 $details_url = $routing->generate('track', $track);
 
 
