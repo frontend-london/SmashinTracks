@@ -140,6 +140,15 @@ class Profiles extends BaseProfiles {
             return ProfilesViewedPeer::doCount($criteria);
         }
 
+        public function getProfilesTransactionId() {
+            $criteria = new Criteria();
+            $criteria->add(TransactionsPeer::PROFILES_ID, $this->getProfilesId());
+            $criteria->add(TransactionsPeer::TRANSACTIONS_DONE, false);
+            $criteria->addDescendingOrderByColumn(TransactionsPeer::TRANSACTIONS_DATE);
+            $transaction = TransactionsPeer::doSelectOne($criteria);
+            if($transaction) return $transaction->getTransactionsId (); else return null;
+        }
+
         /**
          * Twoja ‘Wishlist’ zawiera trackow:
          * @return <type>

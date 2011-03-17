@@ -49,6 +49,39 @@ class membersCheckoutActions extends sfActions
             $profile->setProfilesBalance(0);
             $profile->save();*/
 
+
+
+
+            /*if($oUser->hasAttribute('transaction_id')) {
+                $transaction_id = $oUser->getAttribute('transaction_id');
+                $transaction = TransactionsPeer::getTransactionById($transaction_id);
+                if($transaction->getTransactionsDone()) {
+                    $transaction = new Transactions();
+                }
+            } else {
+                $transaction = new Transactions();
+            }
+
+            $transaction->setTransactionsDate('now');
+            $transaction->setTransactionsDone(true);
+            $transaction->setProfilesId(ProfilesPeer::getCurrentProfileId());
+            $transaction->setTransactionsPaymethod(2); // 2 - przez ST
+            $transaction->save();
+            $oUser->setAttribute('transaction_id',$transaction->getTransactionsId());*/
+
+
+
+            /*
+             * pobrać basket, dodać do saldo i tracks itd, dodać zabezpiecenie gdy nie ma środków
+             */
+
+
+
+
+
+
+
+
             //echo 't';
             $this->getUser()->setFlash('order_complete', true);
             $this->getUser()->setFlash('profile_balance', $this->profile_balance);

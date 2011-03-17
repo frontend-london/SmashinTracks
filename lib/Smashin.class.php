@@ -91,6 +91,7 @@ class Smashin
     public static function signOut() {
       sfContext::getInstance()->getUser()->getAttributeHolder()->remove('profile_id');
       sfContext::getInstance()->getUser()->getAttributeHolder()->remove('basket');
+      sfContext::getInstance()->getUser()->getAttributeHolder()->remove('transaction_id');
       sfContext::getInstance()->getUser()->setAuthenticated(false);
       sfContext::getInstance()->getUser()->removeCredential('user');      
     }
@@ -98,6 +99,7 @@ class Smashin
     public static function signIn($profile) {
       sfContext::getInstance()->getUser()->setAuthenticated(true);
       sfContext::getInstance()->getUser()->setAttribute('profile_id',$profile->getProfilesId());
+      sfContext::getInstance()->getUser()->setAttribute('transaction_id',$profile->getProfilesTransactionId());
       sfContext::getInstance()->getUser()->addCredential('user');
     }
 }
