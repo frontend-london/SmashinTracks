@@ -42,7 +42,7 @@
                             <input type="image" name="submit" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" border="0" align="top" alt="PayPal" id="bp-img1" />
                         </form>
 
-                        <a href="#"><img src="images/buttons/pay2-smashintracks.gif" alt="Zapłać pieniędzmi zarobionymi na SmashinTracks.com" id="bp-img2" width="144" height="51" /></a>
+                        <a href="<?=url_for('members_checkout');?>"><img src="images/buttons/pay2-smashintracks.gif" alt="Zapłać pieniędzmi zarobionymi na SmashinTracks.com" id="bp-img2" width="144" height="51" /></a>
                     </div>
                     <div class="bs-bgr-bottom"></div>
                 </div>

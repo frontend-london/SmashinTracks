@@ -73,6 +73,14 @@ members:
   url:     /members
   param: { module: members, action: show, section: members }
 
+members_checkout:
+  url:     /members/checkout
+  param: { module: membersCheckout, action: show, section: basket }
+
+members_checkout_complete:
+  url:     /members/checkout/complete
+  param: { module: membersCheckout, action: complete, section: basket }
+
 members_my-downloads:
   url:     /members/my-downloads
   param: { module: members, action: myDownloads, section: my-downloads }

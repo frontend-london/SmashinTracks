@@ -19,7 +19,7 @@
                                 <?php echo $form['password']->renderLabel('Your password on SmashinTracks:') ?>
                             </div>
                             <div class="bm3-right">
-                                <?php echo $form['password']->render(array('class' => 'input-290px'.($form['password']->hasError()?' input-err':''))) ?>
+                                <?php echo $form['password']->render(array('class' => 'input-290px'.(($form['password']->hasError() || $form->hasGlobalErrors())?' input-err':''))) ?>
                             </div>
                             <div class="clear"></div>
                         </div>
