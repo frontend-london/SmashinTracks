@@ -11,11 +11,13 @@
                             <div class="clear"></div>
                         </div>
                         <div id="bo-footer">
-                            <div class="left">
-                                <strong>See also:</strong>  <a href="#">MY DOWNLOADS</a>, <a href="#">MY WISHLIST</a>
-                            </div>
+                            <?if(is_object($profile)):?>
+                                <div class="left">
+                                    <strong>See also:</strong>  <a href="<?=url_for('members_my-downloads')?>">MY DOWNLOADS</a>, <a href="<?=url_for('members_my-wishlist')?>">MY WISHLIST</a>
+                                </div>
+                            <?endif;?>
                             <div class="right">
-                                <strong>Back to:</strong>  <a href="#">HOMEPAGE</a>
+                                <strong>Back to:</strong>  <a href="<?=url_for('homepage')?>">HOMEPAGE</a>
                             </div>
                             <div class="clear"></div>
                         </div>

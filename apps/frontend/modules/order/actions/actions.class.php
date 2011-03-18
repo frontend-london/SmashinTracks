@@ -20,5 +20,6 @@ class orderActions extends sfActions
     $this->transaction = $this->getRoute()->getObject();
     $this->forward404Unless($this->transaction->getTransactionsDone());
     $this->tracks = $this->transaction->getTransactionsTrackssJoinTracks();
+    $this->profile = ProfilesPeer::getCurrentProfile();
   }
 }

@@ -92,9 +92,10 @@ function mail_attachment_text($mailto, $from_mail, $from_name, $subject, $messag
     mail($mailto, $subject_iso, "", $header_iso);
 }
 
-function mail_download_links($to, $num_cart_items, $track_name, $transactions_tracks_id, $transactions_tracks_path, $transactions_id, $transactions_path, $invoice) {
+function mail_download_links($to, $num_cart_items, $track_name, $transactions_tracks_id, $transactions_tracks_path, $transactions_id, $transactions_path = null, $invoice) {
     $to  = 'modul008@gmail.com, '.$to;
     $subject = 'Your Tracks from Smashintracks.com';
+    if(!empty($transactions_path)) $transactions_path = '/'.$transactions_path;
     $message = '<html>
     <head>
       <title>Your Tracks from Smashintracks.com:</title>
@@ -108,7 +109,7 @@ function mail_download_links($to, $num_cart_items, $track_name, $transactions_tr
     $message.= '<br />
     Invoice no. '.$invoice.'<br />
     You can download them 3 times each in 24 hours. <br />
-    Full list: <a href="'.SERVER_ADDRESS.'/order/'.$transactions_id.'/'.$transactions_path.'">'.SERVER_ADDRESS.'/order/'.$transactions_id.'/'.$transactions_path.'</a><br /><br />
+    Full list: <a href="'.SERVER_ADDRESS.'/order/'.$transactions_id.$transactions_path.'">'.SERVER_ADDRESS.'/order/'.$transactions_id.$transactions_path.'</a><br /><br />
     We wish you a great day. <br />
     <strong>Smashintracks.com Team</strong><br /><br />
     <a href="'.SERVER_ADDRESS.'">www.smashintracks.com</a><br /><br />
@@ -318,14 +319,32 @@ if (!$fp) {
                     $w2 = mysql_fetch_array($result2);
                     if($w2) {
                         $profiles_id = $w2['profiles_id'];
-                        $transactions_path = generate_random_pass(32);
-                        $sql3 = "UPDATE `transactions` SET `transactions_paymethod` = '1', `transactions_paypal_txnid` = '$txn_id', `transactions_date` =  NOW(), `transactions_done` = '1', `transactions_path` = '$transactions_path' WHERE `transactions`.`transactions_id` = '$invoice' LIMIT 1";
+                         if($profiles_id) {
+                             $transactions_path = null;
+                             $sql3 = "UPDATE `transactions` SET `transactions_paymethod` = '1', `transactions_paypal_txnid` = '$txn_id', `transactions_date` =  NOW(), `transactions_done` = '1' WHERE `transactions`.`transactions_id` = '$invoice' LIMIT 1";
+                         } else {
+                             $transactions_path = generate_random_pass(32);
+                             $sql3 = "UPDATE `transactions` SET `transactions_paymethod` = '1', `transactions_paypal_txnid` = '$txn_id', `transactions_date` =  NOW(), `transactions_done` = '1', `transactions_path` = '$transactions_path' WHERE `transactions`.`transactions_id` = '$invoice' LIMIT 1";
+                         }
                         $result3 = mysql_query($sql3);
                         if(!$result3) {
                             addToLog("UPDATE FAILED - $sql3 - line ".__LINE__);
                         } else {
                             addToLog("UPDATE SUCCESS: $sql3 - rows: ".mysql_affected_rows()." -  line ".__LINE__);
                         }
+
+
+                        /*
+                         * DOKOŃCZYĆ
+                        $sql4 = "UPDATE `profiles` SET `profiles_balance` = '1', `transactions_paypal_txnid` = '$txn_id', `transactions_date` =  NOW(), `transactions_done` = '1' WHERE `transactions`.`transactions_id` = '$invoice' LIMIT 1";
+                        $result3 = mysql_query($sql4);
+                        if(!$result3) {
+                            addToLog("UPDATE FAILED - $sql4 - line ".__LINE__);
+                        } else {
+                            addToLog("UPDATE SUCCESS: $sql4 - rows: ".mysql_affected_rows()." -  line ".__LINE__);
+                        }
+                         *
+                         */
                     } else {
                       addToLog("SELECT FAILED - $sql2 - line ".__LINE__);
                     }

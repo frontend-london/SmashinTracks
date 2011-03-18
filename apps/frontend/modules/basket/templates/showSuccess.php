@@ -39,7 +39,7 @@
                             <input type="hidden" name="currency_code" value="GBP" />
                             <input type="hidden" name="lc" value="GB" />
                             <input type="hidden" name="return" value="http://<?=$_SERVER['SERVER_NAME'].$sf_request->getRelativeUrlRoot()?>/basket/paypal-checkout/<?=$transaction->getTransactionsId();?>" />
-                            <input type="image" name="submit" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" border="0" align="top" alt="PayPal" id="bp-img1" />
+                            <input type="image" name="submit" src="images/buttons/pay-paypal.gif" border="0" align="top" alt="PayPal" id="bp-img1" />
                         </form>
 
                         <a href="<?=url_for('members_checkout');?>"><img src="images/buttons/pay2-smashintracks.gif" alt="Zapłać pieniędzmi zarobionymi na SmashinTracks.com" id="bp-img2" width="144" height="51" /></a>
