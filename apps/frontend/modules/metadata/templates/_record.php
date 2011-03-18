@@ -31,7 +31,7 @@
                                             <span class="track-prize"><?=Smashin::generate_prize(sfConfig::get('app_default_prize'))?></span>
                                         </a>
                                     <?elseif($download):?>
-                                        <a href="<?='mp3/download/'.$transactions_tracks->getTransactionsTracksId().'/'.$transactions_tracks->getTracksPath()?>" class="track-right">
+                                        <a href="<?='mp3/download/'.$transactions_tracks->getTransactionsTracksId().'/'.$transactions_tracks->getTransactionsTracksPath()?>" class="track-right">
                                             <div class="track-download">DOWNLOAD</div>
                                             <div class="track-download2">TRACK</div>
                                         </a>

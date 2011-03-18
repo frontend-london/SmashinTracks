@@ -1,17 +1,17 @@
 <?php
-
+/*
     $DB_Server = "localhost"; //your MySQL Server
     $DB_Username = "modul_smashin"; //your MySQL User Name
     $DB_Password = "19aY2w2cuKWknxvSfV"; //your MySQL Password
     $DB_DBName = "modul_smashin"; //your MySQL Database Name
-
+*/
     define('TRACK_NEW_PERIOD', 1); // czas na ściągnięcie w dniach
-/*
+
     $DB_Server = "localhost"; //your MySQL Server
     $DB_Username = "root"; //your MySQL User Name
     $DB_Password = ""; //your MySQL Password
     $DB_DBName = "stracks"; //your MySQL Database Name
-*/
+
 
     function return_bytes($val) {
         $val = trim($val);
@@ -29,8 +29,8 @@
         return $val;
     }
 
-    function checkDb($transactions_tracks_id, $tracks_path) {
-        $sql = "select * from transactions_tracks where transactions_tracks_id = '$transactions_tracks_id' and tracks_path = '$tracks_path' limit 1";
+    function checkDb($transactions_tracks_id, $transactions_tracks_path) {
+        $sql = "select * from transactions_tracks where transactions_tracks_id = '$transactions_tracks_id' and transactions_tracks_path = '$transactions_tracks_path' limit 1";
         $result = mysql_query($sql);
         $w = mysql_fetch_array($result);
         if(!$w) die('Error: Download link is broken.');
@@ -76,9 +76,9 @@
     $first_url = substr($url, 0, strpos($url, '/'));
     $second_url = substr(strstr($url, '/'), 1);
     $transactions_tracks_id = (int)$first_url;
-    $tracks_path = $second_url;
-    if(urlencode($tracks_path)!=$tracks_path) die('Error '.__LINE__);
-    checkDb($transactions_tracks_id, $tracks_path);
+    $transactions_tracks_path = $second_url;
+    if(urlencode($transactions_tracks_path)!=$transactions_tracks_path) die('Error '.__LINE__);
+    checkDb($transactions_tracks_id, $transactions_tracks_path);
 
 
     /* GENERATE & OUTPUT FILE */

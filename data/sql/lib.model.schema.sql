@@ -509,9 +509,9 @@ CREATE TABLE `transactions_tracks`
 	`transactions_tracks_id` INTEGER(11)  NOT NULL AUTO_INCREMENT,
 	`transactions_id` INTEGER(11)  NOT NULL,
 	`tracks_id` INTEGER(11)  NOT NULL,
-	`tracks_path` VARCHAR(32)  NOT NULL,
+	`transactions_tracks_path` VARCHAR(32)  NOT NULL,
 	PRIMARY KEY (`transactions_tracks_id`),
-	UNIQUE KEY `transactions_tracks_U_1` (`tracks_path`),
+	UNIQUE KEY `transactions_tracks_U_1` (`transactions_tracks_path`),
 	KEY `fk_tt_transactions_id`(`transactions_id`),
 	KEY `fk_tt_tracks_id`(`tracks_id`),
 	CONSTRAINT `transactions_tracks_FK_1`

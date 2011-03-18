@@ -18,6 +18,7 @@ class membersCheckoutActions extends sfActions
   public function executeShow(sfWebRequest $request)
   {
     $oUser = $this->getUser();
+    
     if($oUser->hasAttribute('basket')) {
         $basket = $oUser->getAttribute('basket');
         $basket->setProfile(ProfilesPeer::getCurrentProfileId());
@@ -52,7 +53,7 @@ class membersCheckoutActions extends sfActions
 
 
 
-            /*if($oUser->hasAttribute('transaction_id')) {
+            if($oUser->hasAttribute('transaction_id')) {
                 $transaction_id = $oUser->getAttribute('transaction_id');
                 $transaction = TransactionsPeer::getTransactionById($transaction_id);
                 if($transaction->getTransactionsDone()) {
@@ -67,9 +68,40 @@ class membersCheckoutActions extends sfActions
             $transaction->setProfilesId(ProfilesPeer::getCurrentProfileId());
             $transaction->setTransactionsPaymethod(2); // 2 - przez ST
             $transaction->save();
-            $oUser->setAttribute('transaction_id',$transaction->getTransactionsId());*/
+            $oUser->setAttribute('transaction_id',$transaction->getTransactionsId());
 
+            foreach($tracks as $track) {
+                $transaction_track = new TransactionsTracks();
+                $transaction_track->setTransactions($transaction);
+                $transaction_track->setTracks($track);
+                $transaction_track->setTransactionsTracksPath(Smashin::generate_random_pass(32));
+                $transaction_track->save();
 
+                /* kupujący */
+                $transactions_saldo[1] = new TransactionsSaldo();
+                $transactions_saldo[1]->setTransactionsTracks($transaction_track);
+                $transactions_saldo[1]->setProfiles($profile);
+                $transactions_saldo[1]->setTransactionsSaldoValue(-Smashin::generate_default_prize_int());
+                $transactions_saldo[1]->save();
+
+                $profile->setProfilesBalance($profile->getProfilesBalance()-Smashin::generate_default_prize_int());
+
+                /* sprzedawca */
+                $transactions_saldo[2] = new TransactionsSaldo();
+                $transactions_saldo[2]->setTransactionsTracks($transaction_track);
+                $transactions_saldo[2]->setProfilesId($track->getProfilesId());
+                $transactions_saldo[2]->setTransactionsSaldoValue(Smashin::generate_default_prize_int()/2);
+                $transactions_saldo[2]->save();
+
+                /* admin */
+                $transactions_saldo[3] = new TransactionsSaldo();
+                $transactions_saldo[3]->setTransactionsTracks($transaction_track);
+                $transactions_saldo[3]->setProfilesId(sfConfig::get('app_admin_profile_id'));
+                $transactions_saldo[3]->setTransactionsSaldoValue(Smashin::generate_default_prize_int()/2);
+                $transactions_saldo[3]->save();
+            }
+
+            $profile->save();
 
             /*
              * pobrać basket, dodać do saldo i tracks itd, dodać zabezpiecenie gdy nie ma środków
@@ -97,11 +129,24 @@ class membersCheckoutActions extends sfActions
 
   public function executeComplete(sfWebRequest $request)
   {
-    $order_complete = $this->getUser()->getFlash('order_complete', false);
+    $order_complete = $this->getUser()->getFlash('order_complete', false); // powinno przyjąć true
+
+    $oUser = $this->getUser();
+
+    if($oUser->hasAttribute('transaction_id')) {
+        $transaction_id = $oUser->getAttribute('transaction_id');
+        $transaction = TransactionsPeer::getTransactionById($transaction_id);
+        if(!$transaction->getTransactionsDone()) $order_complete = false;
+    } else {
+        $order_complete = false;
+    }
+
+
     if($order_complete) {
         $this->profile_balance = $this->getUser()->getFlash('profile_balance');
         $this->basket_prize = $this->getUser()->getFlash('basket_prize');
         $this->new_balance = $this->getUser()->getFlash('new_balance');
+        $this->transaction = $transaction;
 
         /* NIE ZMIENIA STRONY PO NACISNIECIU F5: */
         $this->getUser()->setFlash('order_complete', true);

@@ -3,6 +3,8 @@
 
 # default values
 all:
+  # admin profile id. Zmień również define('ADMIN_PROFILE', 1); w web/paypal_status.php linia 3
+  admin_profile_id: 1
   # liczba gatunków do wygenerowania na podstonie z gatunkiem pod listą z trackami - See also
   genres_see_also_rand: 6
   # liczba gatunków do wygenerowania na głównej pod listą New Tracks

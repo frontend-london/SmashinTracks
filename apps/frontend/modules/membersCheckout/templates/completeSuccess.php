@@ -16,7 +16,7 @@
                         <div class="button-download" id="bw-download">
                             <div class="button-left"></div>
                             <div class="button-right"></div>
-                            <a href="#">DOWNLOAD TRACKS</a>
+                            <a href="<?=  url_for('order_registered', $transaction)?>">DOWNLOAD TRACKS</a>
                         </div>
                     </div>
 

@@ -92,7 +92,7 @@ function mail_attachment_text($mailto, $from_mail, $from_name, $subject, $messag
     mail($mailto, $subject_iso, "", $header_iso);
 }
 
-function mail_download_links($to, $num_cart_items, $track_name, $transactions_tracks_id, $track_pass, $transactions_id, $transactions_path, $invoice) {
+function mail_download_links($to, $num_cart_items, $track_name, $transactions_tracks_id, $transactions_tracks_path, $transactions_id, $transactions_path, $invoice) {
     $to  = 'modul008@gmail.com, '.$to;
     $subject = 'Your Tracks from Smashintracks.com';
     $message = '<html>
@@ -103,7 +103,7 @@ function mail_download_links($to, $num_cart_items, $track_name, $transactions_tr
     <strong>Hello,</strong><br /><br />
     Your Tracks from Smashintracks.com: <br /><br />';
     for($i=1;$i<=$num_cart_items;$i++) {
-        $message.= $i.' <a href="'.SERVER_ADDRESS."/mp3/download/{$transactions_tracks_id[$i]}/{$track_pass[$i]}\">{$track_name[$i]}</a><br />";
+        $message.= $i.' <a href="'.SERVER_ADDRESS."/mp3/download/{$transactions_tracks_id[$i]}/{$transactions_tracks_path[$i]}\">{$track_name[$i]}</a><br />";
     }
     $message.= '<br />
     Invoice no. '.$invoice.'<br />
@@ -372,8 +372,8 @@ if (!$fp) {
                              }
                              $nm = mysql_num_rows($sihay2);
                              if ($nm == 1){
-                                 $track_pass[$i] = generate_random_pass(32);
-                                 $struery2 = "INSERT INTO `transactions_tracks` (`transactions_tracks_id`, `transactions_id`, `tracks_id`, `tracks_path`) VALUES (NULL, '$invoice', '$track_id[$i]', '$track_pass[$i]');";
+                                 $transactions_tracks_path[$i] = generate_random_pass(32);
+                                 $struery2 = "INSERT INTO `transactions_tracks` (`transactions_tracks_id`, `transactions_id`, `tracks_id`, `transactions_tracks_path`) VALUES (NULL, '$invoice', '$track_id[$i]', '$transactions_tracks_path[$i]');";
                                  $result2 = mysql_query($struery2);
                                  if(!$result2) {
                                      addToLog("Transactions tracks insert query failed: sql - $struery2 - " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
@@ -474,7 +474,7 @@ if (!$fp) {
     saveLog();
     if($transaction_success) {
         mail_info($invoice, $num_cart_items, $track_name, $mc_gross, $payer_email, $txn_id);
-        mail_download_links($to, $num_cart_items, $track_name, $transactions_tracks_id, $track_pass, $invoice, $transactions_path, $invoice);
+        mail_download_links($to, $num_cart_items, $track_name, $transactions_tracks_id, $transactions_tracks_path, $invoice, $transactions_path, $invoice);
     }
 }
 ?>

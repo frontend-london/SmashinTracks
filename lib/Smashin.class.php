@@ -30,6 +30,10 @@ class Smashin
         return sfConfig::get('app_default_prize_currency').number_format($prize, 2);
     }
 
+    public static function generate_default_prize_int() {
+        return intval(sfConfig::get('app_default_prize')*100);
+    }
+
     /*
      * Zamienia wszyskie litery specjalne na ich odpowiedniki w ASCII np. ą na a itd.
      */
@@ -101,6 +105,25 @@ class Smashin
       sfContext::getInstance()->getUser()->setAttribute('profile_id',$profile->getProfilesId());
       sfContext::getInstance()->getUser()->setAttribute('transaction_id',$profile->getProfilesTransactionId());
       sfContext::getInstance()->getUser()->addCredential('user');
+    }
+
+    public static function generate_random_pass($length) {
+        $haslo = ''.rand(0,9);
+        $length--;
+        for($i=1;$i<=$length;$i++) {
+            $a = rand(0,61);
+            if($a<=9) $symbol = $a;
+            else{
+                $a = $a - 10;
+                if($a<=25) $symbol = chr(65+$a);
+                else {
+                    $a = $a - 26;
+                    $symbol = chr(97+$a);
+                }
+            }
+            $haslo = $haslo.$symbol;
+        }
+        return $haslo;
     }
 }
 ?>

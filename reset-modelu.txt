@@ -1,9 +1,0 @@
-reset modelu symfony z bazy
-
-symfony propel:build-schema
-symfony.bat propel:build --model
-symfony.bat propel:data-dump dump.yml
-symfony.bat propel:build --all --no-confirmation
-symfony.bat propel:insert-sql
-symfony.bat propel:data-load
-symfony.bat cc

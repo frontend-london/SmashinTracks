@@ -208,9 +208,9 @@ propel:
     transactions_tracks_id: { phpName: TransactionsTracksId, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
     transactions_id: { phpName: TransactionsId, type: INTEGER, size: '11', required: true, foreignTable: transactions, foreignReference: transactions_id, onDelete: RESTRICT, onUpdate: RESTRICT }
     tracks_id: { phpName: TracksId, type: INTEGER, size: '11', required: true, foreignTable: tracks, foreignReference: tracks_id, onDelete: RESTRICT, onUpdate: RESTRICT }
-    tracks_path: { phpName: TracksPath, type: VARCHAR, size: '32', required: true }
+    transactions_tracks_path: { phpName: TransactionsTracksPath, type: VARCHAR, size: '32', required: true }
     _indexes: { fk_tt_transactions_id: [transactions_id], fk_tt_tracks_id: [tracks_id] }
-    _uniques: { transactions_tracks_U_1: [tracks_path] }
+    _uniques: { transactions_tracks_U_1: [transactions_tracks_path] }
   transactions_tracks_downloads:
     _attributes: { phpName: TransactionsTracksDownloads }
     transactions_tracks_downloads_id: { phpName: TransactionsTracksDownloadsId, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
