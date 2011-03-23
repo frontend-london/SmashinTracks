@@ -195,7 +195,6 @@ $(window).load (
                     $(this).parent().parent().next().toggle();
 		});
 
-
 	}
 );
 

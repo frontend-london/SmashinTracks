@@ -15,6 +15,12 @@
 
         });
 
+function HandleFileButtonClick()
+  {
+    document.frmUpload.myFile.click();
+    document.frmUpload.txtFakeText.value = document.frmUpload.myFile.value;
+  }
+
     </script>
 <? end_slot(); ?>
 
@@ -26,14 +32,16 @@
                             o <span class="blue">informacje o sobie, zdjecie/logo</span> - beda one widoczne przez wszystkich
                             odwiedzajacych twoj profil.
                         </div>
+                        <form id="myprofile_form" name="myprofile_form" method="post" action="index.php">
                         <div id="bm3-div2">
-                        	<div class="bm3-left">Your photo/logo:</div>
+                        <div class="bm3-left">Your photo/logo:</div>
                             <div class="bm3-right">
-                            	<input type="text" class="input-290px" name="#" value="" />
+                            	<input type="text" class="input-290px" name="#" id="input_photo1" value="" />
                                 <div class="button-add">
                                     <div class="button-left"></div>
                                     <div class="button-right"></div>
-                                    <a href="#">ADD</a>
+                                    <span>Add</span>
+                                    <input type="file" class="file_input_hidden" onchange="javascript: document.getElementById('input_photo1').value = this.value"  />
                                 </div>
                             </div>
                             <div class="clear"></div>
@@ -55,12 +63,15 @@
 						<div id="bm3-div9">
                         	<div class="bm3-left">Add url:</div>
                             <div class="bm3-right">
-                            	<input type="text" class="input-290px" name="#" value="http://www.youtubte.com/jacksparrowproject" />
+                            	<input type="text" class="input-290px" name="#" id="input1" value="http://www.youtubte.com/jacksparrowproject" />
                                 <div class="button-add">
                                     <div class="button-left"></div>
                                     <div class="button-right"></div>
-                                    <a href="#">Add</a>
+                                    <a href="#">ADD</a>
                                 </div>
+
+
+
                             </div>
                             <div class="clear"></div>
                         </div>
@@ -113,6 +124,7 @@
                             </div>
                             <div class="clear"></div>
                         </div>
+                        </form>
                     </div>
                     <div class="bs-bgr-bottom"></div>
                 </div>
