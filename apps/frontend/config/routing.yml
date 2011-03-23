@@ -85,6 +85,10 @@ members_my-downloads:
   url:     /members/my-downloads
   param: { module: members, action: myDownloads, section: my-downloads }
 
+members_my-profile:
+  url:     /members/my-profile
+  param: { module: membersMyProfile, action: show, section: my-profile }
+
 members_my-sales:
   url:     /members/my-sales
   param: { module: members, action: mySales, section: my-sales }
