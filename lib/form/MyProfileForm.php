@@ -2,7 +2,7 @@
 
 function passValidatorExtended($validator, $values)
 {
-  if($values['profiles_url_add_action']) { // przypadek, gdy hasło do profilu nie jest sprawdzane
+  if($values['profiles_url_add_action'] || $values['profiles_url_edit_action']) { // przypadek, gdy hasło do profilu nie jest sprawdzane
       return $values; 
   } else {
       $profile = ProfilesPeer::getCurrentProfile();
@@ -25,8 +25,9 @@ class MyProfileForm extends BaseForm
       'profiles_photo_delete' => new sfWidgetFormInputCheckbox(),
       'profiles_url_add' => new sfWidgetFormInputText(),
       'profiles_url_add_action' => new sfWidgetFormInputHiddenPassword(),
-//      'profiles_url_delete' => new sfWidgetFormInputText(),
-//      'profiles_url_delete_action' => new sfWidgetFormInputHiddenPassword(),
+      'profiles_url_edit' => new sfWidgetFormInputText(),
+      'profiles_url_edit_id' => new sfWidgetFormInputHidden(),
+      'profiles_url_edit_action' => new sfWidgetFormInputHiddenPassword(),
       'profiles_password'    => new sfWidgetFormInputPassword(),
     ));
 
@@ -44,6 +45,9 @@ class MyProfileForm extends BaseForm
       'profiles_photo_delete' => new sfValidatorBoolean(array('required' => false)),
       'profiles_url_add' => new sfValidatorUrl(array('required' => false), array('invalid'  => 'Invalid URL.')),
       'profiles_url_add_action' => new sfValidatorBoolean(array('required' => false)),
+      'profiles_url_edit' => new sfValidatorUrl(array('required' => false), array('invalid'  => 'Invalid URL.')),
+      'profiles_url_edit_action' => new sfValidatorBoolean(array('required' => false)),
+      'profiles_url_edit_id' => new sfValidatorInteger(array('required' => false)),
       'profiles_password' => new sfValidatorString(array('required' => false)),
 
 

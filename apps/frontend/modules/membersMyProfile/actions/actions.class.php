@@ -21,10 +21,11 @@ class membersMyProfileActions extends sfActions
 
     $this->url_edit_id = $this->getUser()->getFlash('url_edit_id');
     $this->getUser()->setFlash('url_edit_id', null);
-
-
-
-    $form = new MyProfileForm(array('profiles_text' => $profile->getProfilesText(), 'profiles_photo_delete' => false, 'profiles_url_add_action' => false));
+    if(empty($this->url_edit_id)) {
+        $tmp_pr = $request->getParameter('profile');
+        $this->url_edit_id = $tmp_pr['profiles_url_edit_id'];
+    }
+    $form = new MyProfileForm(array('profiles_text' => $profile->getProfilesText(), 'profiles_photo_delete' => false));
     $this->added_url = false;
 
     if ($request->isMethod('post') && $request->hasParameter('profile'))
@@ -32,14 +33,21 @@ class membersMyProfileActions extends sfActions
         $form->bind($request->getParameter('profile'), $request->getFiles('profile'));
         if ($form->isValid())
         {
-
-            if($form->getValue('profiles_url_add_action')) { // pole do dodania linka i tylko to
+            if($form->getValue('profiles_url_add_action')) { // tylko pole do dodania linka
                 if(($form->getValue('profiles_url_add')!='')) {
                     $url = new ProfilesUrls();
                     $url->setProfiles($profile);
                     $url->setProfilesUrlsUrl($form->getValue('profiles_url_add'));
                     $url->save();
                     $this->added_url = true;
+                }
+            } elseif($form->getValue('profiles_url_edit_action')) { // tylko pole do edycji linka
+                $this->url_edit_id = null;
+                $url_id = $form->getValue('profiles_url_edit_id');
+                $url = ProfilesUrlsPeer::getProfilesUrlsById($url_id);
+                if($url->getProfilesId()==ProfilesPeer::getCurrentProfileId()) {
+                    $url->setProfilesUrlsUrl($form->getValue('profiles_url_edit'));
+                    $url->save();
                 }
             } else {
 
@@ -92,7 +100,9 @@ class membersMyProfileActions extends sfActions
   {
     $url_delete = $this->getRoute()->getObject();
     if($url_delete->getProfilesId()==ProfilesPeer::getCurrentProfileId()) $url_delete->delete();
-    $this->forward('membersMyProfile', 'show');
+//    $this->forward('membersMyProfile', 'show');
+    $this->redirect('members_my-profile');
+    
   }
 
 }

@@ -27,7 +27,6 @@ function HandleFileButtonClick()
                 <div class="box-silver" id="box-myprofile">
                     <div class="bs-inner">
                         <form action="<?php echo url_for('members_my-profile') ?>" method="POST" id="form_myprofile" name="form_myprofile" enctype="multipart/form-data">
-                            <input type="hidden" name="MAX_FILE_SIZE" value="100" />
                             <img src="images/texts/my-profile-on-smashintracks.gif" alt="My Profile on SmashinTracks.com" id="bm3-img1" />
                             <div id="bm3-div1">
                                 Jesli sprzedajesz tracki na <span class="blue">SmashinTracks.com</span> warto zaktualizowac swoj profil
@@ -102,14 +101,18 @@ function HandleFileButtonClick()
                             <?foreach($profile->getProfilesUrlss() as $url):?>
                                 <div class="bm3-yoururl">
                                     <div class="bm3-left">Your url: </div>
-                                    <?if($url->getProfilesUrlsId()==$url_edit_id):?>
+                                    <?if(($url->getProfilesUrlsId()==$url_edit_id)):?>
                                         <div class="bm3-right">
                                             <div class="bm3-yoururl-title-input">
-                                                <input type="text" class="input-290px" name="#" value="" />
+                                                <?php
+                                                    $options = array('class' => 'input-290px'.(($form['profiles_url_edit']->hasError())?' input-err':''));
+                                                    if(!$form['profiles_url_edit']->hasError()) $options = array_merge($options, array('value' => $url->getProfilesUrlsUrl()));
+                                                    echo $form['profiles_url_edit']->render($options);
+                                                ?>
                                                 <div class="button-ok">
                                                     <div class="button-left"></div>
                                                     <div class="button-right"></div>
-                                                    <a href="#">Ok</a>
+                                                    <a href="#" id="a-url-edit-submit" rel="<?=$url_edit_id?>">Ok</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -130,6 +133,11 @@ function HandleFileButtonClick()
                                     <?endif;?>
                                     <div class="clear"></div>
                                 </div>
+                                <?php if (($url->getProfilesUrlsId()==$url_edit_id) && $form['profiles_url_edit']->hasError()): ?>
+                                    <div class="div-error-message">
+                                        <?php echo $form['profiles_url_edit']->renderError() ?>
+                                    </div>
+                                <?php endif; ?>
                             <?endforeach;?>
                             <div id="bm3-div4">
                                     Aby zachowac zmiany wpisz swoje haslo i kliknij Save...

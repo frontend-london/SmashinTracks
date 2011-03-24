@@ -18,4 +18,9 @@
  */
 class ProfilesUrlsPeer extends BaseProfilesUrlsPeer {
 
+    public static function getProfilesUrlsById($id) {
+        $criteria = new Criteria();
+        $criteria->add(ProfilesUrlsPeer::PROFILES_URLS_ID, $id);
+        return self::doSelectOne($criteria);
+    }
 } // ProfilesUrlsPeer

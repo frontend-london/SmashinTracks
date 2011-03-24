@@ -197,8 +197,15 @@ $(window).load (
 
 		$("a#a-url-add-submit").click(function(event){
                     event.preventDefault();
-                    //$(this).parent().parent().next().toggle();
                     $('input#profile_profiles_url_add_action').val(1);
+                    $('#form_myprofile').submit();
+		});
+
+		$("a#a-url-edit-submit").click(function(event){
+                    event.preventDefault();
+                    id = $(this).attr('rel');
+                    $('input#profile_profiles_url_edit_id').val(id);
+                    $('input#profile_profiles_url_edit_action').val(1);
                     $('#form_myprofile').submit();
 		});
 
