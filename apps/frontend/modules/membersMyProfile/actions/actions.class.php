@@ -90,6 +90,8 @@ class membersMyProfileActions extends sfActions
 
   public function executeUrlDelete(sfWebRequest $request)
   {
+    $url_delete = $this->getRoute()->getObject();
+    if($url_delete->getProfilesId()==ProfilesPeer::getCurrentProfileId()) $url_delete->delete();
     $this->forward('membersMyProfile', 'show');
   }
 

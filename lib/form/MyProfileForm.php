@@ -25,6 +25,8 @@ class MyProfileForm extends BaseForm
       'profiles_photo_delete' => new sfWidgetFormInputCheckbox(),
       'profiles_url_add' => new sfWidgetFormInputText(),
       'profiles_url_add_action' => new sfWidgetFormInputHiddenPassword(),
+//      'profiles_url_delete' => new sfWidgetFormInputText(),
+//      'profiles_url_delete_action' => new sfWidgetFormInputHiddenPassword(),
       'profiles_password'    => new sfWidgetFormInputPassword(),
     ));
 
@@ -39,9 +41,8 @@ class MyProfileForm extends BaseForm
                               'required' => false,
 //                              'validated_file_class' => 'sfValidatedFileCustom'
                           )),
-//      'profiles_url_add' => new sfValidatorString(array('required' => false)),
-      'profiles_url_add' => new sfValidatorUrl(array('required' => false), array('invalid'  => 'Invalid URL.')),
       'profiles_photo_delete' => new sfValidatorBoolean(array('required' => false)),
+      'profiles_url_add' => new sfValidatorUrl(array('required' => false), array('invalid'  => 'Invalid URL.')),
       'profiles_url_add_action' => new sfValidatorBoolean(array('required' => false)),
       'profiles_password' => new sfValidatorString(array('required' => false)),
 

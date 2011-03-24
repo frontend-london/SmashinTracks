@@ -124,7 +124,7 @@ function HandleFileButtonClick()
                                             <div class="button-delete">
                                                 <div class="button-left"></div>
                                                 <div class="button-right"></div>
-                                                <a href="<?=url_for('members_my-profile_url_edit',$url)?>">Delete</a>
+                                                <a href="<?=url_for('members_my-profile_url_delete',$url)?>">Delete</a>
                                             </div>
                                         </div>
                                     <?endif;?>
