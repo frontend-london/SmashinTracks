@@ -18,6 +18,7 @@ class MyProfileForm extends BaseForm
     $this->setWidgets(array(
       'profiles_text' => new sfWidgetFormTextarea(),
       'profiles_photo' => new sfWidgetFormInputFile(),
+      'profiles_photo_delete' => new sfWidgetFormInputCheckbox(),
       'profiles_password'    => new sfWidgetFormInputPassword(),
     ));
 
@@ -26,15 +27,13 @@ class MyProfileForm extends BaseForm
     $this->setValidators(array(
       'profiles_text'   => new sfValidatorString(array('required' => false)),
       'profiles_photo'  => new sfValidatorFile(array(
-                              'max_size' => 500000,
+                              'max_size' => 102400,
                               'mime_types' => 'web_images', //you can set your own of course
                               'path' => '/web/images/profiles/upload',
                               'required' => false,
 //                              'validated_file_class' => 'sfValidatedFileCustom'
                           )),
-
-        
-
+      'profiles_photo_delete' => new sfValidatorBoolean(array('required' => false)),
       'profiles_password' => new sfValidatorString(array('required' => true), array('required' => 'Password is required.')),
 
 

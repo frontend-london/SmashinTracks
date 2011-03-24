@@ -24,7 +24,7 @@ class membersMyProfileActions extends sfActions
 
 
 
-    $form = new MyProfileForm(array('profiles_text' => $profile->getProfilesText()));
+    $form = new MyProfileForm(array('profiles_text' => $profile->getProfilesText(), 'profiles_photo_delete' => false));
 
     if ($request->isMethod('post') && $request->hasParameter('profile'))
     {
@@ -32,30 +32,32 @@ class membersMyProfileActions extends sfActions
         if ($form->isValid())
         {
             $profile->setProfilesText($form->getValue('profiles_text'));
-            $profile->save();
 
+            if($form->getValue('profiles_photo_delete')) {
+                $profile->setProfilesPhoto(false);
+            }
             
             $file = $form->getValue('profiles_photo');
-            $filename_upload = sfConfig::get('sf_upload_profiles_dir').DIRECTORY_SEPARATOR.$profile->getProfilesPath().'_'.date('U').$file->getExtension($file->getOriginalExtension());
-            $filename_target_big = sfConfig::get('sf_images_profiles_big_dir').DIRECTORY_SEPARATOR.$profile->getProfilesPath().'.jpg';
-            $filename_target_small = sfConfig::get('sf_images_profiles_small_dir').DIRECTORY_SEPARATOR.$profile->getProfilesPath().'.jpg';
-            $file->save($filename_upload);
+            if(is_object($file)) {
+                $filename_upload = sfConfig::get('sf_upload_profiles_dir').DIRECTORY_SEPARATOR.$profile->getProfilesPath().'_'.date('U').$file->getExtension($file->getOriginalExtension());
+                $filename_target_big = sfConfig::get('sf_images_profiles_big_dir').DIRECTORY_SEPARATOR.$profile->getProfilesPath().'.jpg';
+                $filename_target_small = sfConfig::get('sf_images_profiles_small_dir').DIRECTORY_SEPARATOR.$profile->getProfilesPath().'.jpg';
+                $file->save($filename_upload);
 
-            $thumbnail_big = new sfThumbnail(220, 220);
-            $thumbnail_big->loadFile($filename_upload);
-            $thumbnail_big->save($filename_target_big, 'image/jpeg');
-            unset($thumbnail_big);
+                $thumbnail_big = new sfThumbnail(220, 220);
+                $thumbnail_big->loadFile($filename_upload);
+                $thumbnail_big->save($filename_target_big, 'image/jpeg');
+                unset($thumbnail_big);
 
-            $thumbnail_small = new sfThumbnail(40, 40, false);
-            $thumbnail_small->loadFile($filename_upload);
-            $thumbnail_small->save($filename_target_small, 'image/jpeg');
-            unset($thumbnail_small);
+                $thumbnail_small = new sfThumbnail(40, 40, false);
+                $thumbnail_small->loadFile($filename_upload);
+                $thumbnail_small->save($filename_target_small, 'image/jpeg');
+                unset($thumbnail_small);
 
+                $profile->setProfilesPhoto(true);
+            }
 
-  
-
-
-
+            $profile->save();
         }
     }
     $this->form = $form;

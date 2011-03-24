@@ -27,6 +27,7 @@ function HandleFileButtonClick()
                 <div class="box-silver" id="box-myprofile">
                     <div class="bs-inner">
                         <form action="<?php echo url_for('members_my-profile') ?>" method="POST" id="form_myprofile" name="form_myprofile" enctype="multipart/form-data">
+                            <input type="hidden" name="MAX_FILE_SIZE" value="100" />
                             <img src="images/texts/my-profile-on-smashintracks.gif" alt="My Profile on SmashinTracks.com" id="bm3-img1" />
                             <div id="bm3-div1">
                                 Jesli sprzedajesz tracki na <span class="blue">SmashinTracks.com</span> warto zaktualizowac swoj profil
@@ -34,7 +35,7 @@ function HandleFileButtonClick()
                                 odwiedzajacych twoj profil.
                             </div>
                             <div id="bm3-div2">
-                            <div class="bm3-left"><?php echo $form['profiles_photo']->renderLabel('Your photo/logo:') ?></div>
+                                <div class="bm3-left"><?php echo $form['profiles_photo']->renderLabel('Your photo/logo:') ?></div>
                                 <div class="bm3-right">
                                     <input type="text" class="input-290px" id="input_photo1" value="" />
                                     <div class="button-add">
@@ -47,13 +48,23 @@ function HandleFileButtonClick()
                                 <div class="clear"></div>
                             </div>
                             <div id="bm3-div11">
-                                    220 x 220 pixels, max 100kb, JPG or GIF
+                                    220 x 220 pixels, max 100kb, JPG or GIF or PNG
                             </div>
                             <?php if ($form['profiles_photo']->hasError()): ?>
                                 <div class="div-error-message">
                                     <?php echo $form['profiles_photo']->renderError() ?>
                                 </div>
                             <?php endif; ?>
+                            <?if($profile->getProfilesPhoto()):?>
+                                <div id="bm3-div6">
+                                    <img src="images/profiles/big/<?=$profile->getProfilesPath();?>.jpg" alt="<?=$profile->getProfilesName();?>" width="121" height="121" />
+                                    <label>
+                                        <?php echo $form['profiles_photo_delete']->render(array()) ?>
+                                        <span><?php echo $form['profiles_photo_delete']->renderLabel('Zaznacz aby usunac <br />aktualne foto') ?></span>
+                                    </label>
+                                    <div class="clear"></div>
+                                </div>
+                            <?endif;?>
                             <div id="bm3-div3">
                                 <div class="bm3-left"><?php echo $form['profiles_text']->renderLabel('Profil text:') ?></div>
                                 <div class="bm3-right">
