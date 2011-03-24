@@ -59,7 +59,7 @@ function HandleFileButtonClick()
                                 <div id="bm3-div6">
                                     <img src="images/profiles/big/<?=$profile->getProfilesPath();?>.jpg" alt="<?=$profile->getProfilesName();?>" width="121" height="121" />
                                     <label>
-                                        <?php echo $form['profiles_photo_delete']->render(array()) ?>
+                                        <?php echo $form['profiles_photo_delete']->render() ?>
                                         <span><?php echo $form['profiles_photo_delete']->renderLabel('Zaznacz aby usunac <br />aktualne foto') ?></span>
                                     </label>
                                     <div class="clear"></div>
@@ -81,15 +81,24 @@ function HandleFileButtonClick()
                             <div id="bm3-div9">
                                 <div class="bm3-left">Add url:</div>
                                 <div class="bm3-right">
-                                    <input type="text" class="input-290px" name="#" id="input1" value="" />
+                                    <?php
+                                        $options = array('class' => 'input-290px'.(($form['profiles_url_add']->hasError())?' input-err':''));
+                                        if($added_url) $options = array_merge($options, array('value' => ''));
+                                        echo $form['profiles_url_add']->render($options);
+                                    ?>
                                     <div class="button-add">
                                         <div class="button-left"></div>
                                         <div class="button-right"></div>
-                                        <a href="#">ADD</a>
+                                        <a href="#" id="a-url-add-submit">ADD</a>
                                     </div>
                                 </div>
                                 <div class="clear"></div>
                             </div>
+                            <?php if ($form['profiles_url_add']->hasError()): ?>
+                                <div class="div-error-message">
+                                    <?php echo $form['profiles_url_add']->renderError() ?>
+                                </div>
+                            <?php endif; ?>
                             <?foreach($profile->getProfilesUrlss() as $url):?>
                                 <div class="bm3-yoururl">
                                     <div class="bm3-left">Your url: </div>

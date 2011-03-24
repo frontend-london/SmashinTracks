@@ -195,6 +195,13 @@ $(window).load (
                     $(this).parent().parent().next().toggle();
 		});
 
+		$("a#a-url-add-submit").click(function(event){
+                    event.preventDefault();
+                    //$(this).parent().parent().next().toggle();
+                    $('input#profile_profiles_url_add_action').val(1);
+                    $('#form_myprofile').submit();
+		});
+
 	}
 );
 

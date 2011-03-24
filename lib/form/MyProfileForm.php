@@ -1,13 +1,17 @@
 <?php
 
-function passValidator($validator, $values)
+function passValidatorExtended($validator, $values)
 {
-  $profile = ProfilesPeer::getCurrentProfile();
-  if(ProfilesPeer::isPassCorrect($profile->getProfilesId(), $values['profiles_password']))
-  {
-    return $values;
+  if($values['profiles_url_add_action']) { // przypadek, gdy hasło do profilu nie jest sprawdzane
+      return $values; 
   } else {
-    throw new sfValidatorError($validator, 'invalid');
+      $profile = ProfilesPeer::getCurrentProfile();
+      if(!empty($values['profiles_password']) && ProfilesPeer::isPassCorrect($profile->getProfilesId(), $values['profiles_password']))
+      {
+        return $values;
+      } else {
+        throw new sfValidatorError($validator, 'invalid');
+      }
   }
 }
 
@@ -19,6 +23,8 @@ class MyProfileForm extends BaseForm
       'profiles_text' => new sfWidgetFormTextarea(),
       'profiles_photo' => new sfWidgetFormInputFile(),
       'profiles_photo_delete' => new sfWidgetFormInputCheckbox(),
+      'profiles_url_add' => new sfWidgetFormInputText(),
+      'profiles_url_add_action' => new sfWidgetFormInputHiddenPassword(),
       'profiles_password'    => new sfWidgetFormInputPassword(),
     ));
 
@@ -33,8 +39,11 @@ class MyProfileForm extends BaseForm
                               'required' => false,
 //                              'validated_file_class' => 'sfValidatedFileCustom'
                           )),
+//      'profiles_url_add' => new sfValidatorString(array('required' => false)),
+      'profiles_url_add' => new sfValidatorUrl(array('required' => false), array('invalid'  => 'Invalid URL.')),
       'profiles_photo_delete' => new sfValidatorBoolean(array('required' => false)),
-      'profiles_password' => new sfValidatorString(array('required' => true), array('required' => 'Password is required.')),
+      'profiles_url_add_action' => new sfValidatorBoolean(array('required' => false)),
+      'profiles_password' => new sfValidatorString(array('required' => false)),
 
 
 
@@ -42,7 +51,7 @@ class MyProfileForm extends BaseForm
     ));
 
     $this->validatorSchema->setPostValidator(new sfValidatorCallback(
-        array('callback'  => 'passValidator',),
+        array('callback'  => 'passValidatorExtended',),
         array('invalid'  => 'You have specified an incorrect password. <br />Please check your password and try again.')
     ));
   }
