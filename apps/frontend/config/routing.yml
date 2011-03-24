@@ -89,6 +89,22 @@ members_my-profile:
   url:     /members/my-profile
   param: { module: membersMyProfile, action: show, section: my-profile }
 
+members_my-profile_url_edit:
+  url:     /members/my-profile/url/edit/:profiles_urls_id
+  class:   sfPropelRoute
+  options: { model: ProfilesUrls, type: object }
+  param: { module: membersMyProfile, action: urlEdit, section: my-profile }
+  requirements:
+    sf_method: [get]
+
+members_my-profile_url_delete:
+  url:     /members/my-profile/url/delete/:profiles_urls_id
+  class:   sfPropelRoute
+  options: { model: ProfilesUrls, type: object }
+  param: { module: membersMyProfile, action: urlDelete, section: my-profile }
+  requirements:
+    sf_method: [get]
+
 members_my-sales:
   url:     /members/my-sales
   param: { module: members, action: mySales, section: my-sales }

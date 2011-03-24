@@ -18,4 +18,9 @@
  */
 class ProfilesUrls extends BaseProfilesUrls {
 
+  public function __toString()
+  {
+    return $this->getProfilesUrlsUrl();
+  }
+
 } // ProfilesUrls
