@@ -82,8 +82,11 @@ class membersMyProfileActions extends sfActions
             }
         }
     }
+
+    $form2 = new MyProfileForm(array('profiles_text' => $profile->getProfilesText(), 'profiles_photo_delete' => false));
 //    $form->setOption('profiles_url_add_action', false);
     $this->form = $form;
+    $this->form2 = $form2;
     $this->profile = $profile;
 
   }
