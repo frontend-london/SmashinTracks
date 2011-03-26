@@ -194,8 +194,8 @@ class Profiles extends BaseProfiles {
         {
             if ($this->isNew())
             {
-              $pass = Smashin::generateHash($this->getProfilesPassword());
-              $this->setProfilesPassword($pass);
+//              $pass = Smashin::generateHash($this->getProfilesPassword());
+//              $this->setProfilesPassword($pass);
 
               $this->setProfilesDate(time());
               $path = ProfilesPeer::generateProfilesPath($this->getProfilesName());
@@ -203,6 +203,20 @@ class Profiles extends BaseProfiles {
             }
             return parent::save($con);
         }
+
+        public function setProfilesPassword($v)
+	{
+		if ($v !== null) {
+			$v = (string) $v;
+		}
+
+		if ($this->profiles_password !== $v) {
+			$this->profiles_password = Smashin::generateHash($v);
+			$this->modifiedColumns[] = ProfilesPeer::PROFILES_PASSWORD;
+		}
+
+		return $this;
+	}
 
         public function countTrackssActive() {
             $criteria = $this->getActiveTracksCriteria();

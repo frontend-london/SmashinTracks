@@ -1,14 +1,23 @@
 <?php
 
-function passValidator($validator, $values)
+function changePassValidator($validator, $values)
 {
   $profile = ProfilesPeer::getCurrentProfile();
-  if(ProfilesPeer::isPassCorrect($profile->getProfilesId(), $values['profiles_old_password']))
-  {
-    return $values;
+  $values['profiles_new_password_change'] = false;
+  if(!empty($values['profiles_new_password'])) {
+      if(ProfilesPeer::isPassCorrect($profile->getProfilesId(), $values['profiles_old_password']))
+      {
+        $values['profiles_new_password_change'] = true;
+        return $values;
+      } else {
+//        throw new sfValidatorError($validator, 'invalid');
+        $error = new sfValidatorError($validator, 'invalid');
+        throw new sfValidatorErrorSchema($validator, array('profiles_old_password' => $error));
+      }
   } else {
-    throw new sfValidatorError($validator, 'invalid');
+    return $values;
   }
+
 }
 
 /**
@@ -26,7 +35,8 @@ class MyProfileMySettingsForm extends BaseProfilesForm
     parent::setup();
     sfValidatorBase::setDefaultMessage('required', 'This value is required.');
     sfValidatorBase::setDefaultMessage('invalid', 'This value is invalid.');
-    $this->useFields(array('profiles_name', 'profiles_email', 'profiles_password'));
+//    $this->useFields(array('profiles_name', 'profiles_email', 'profiles_password'));
+    $this->useFields(array('profiles_name', 'profiles_email'));
   }
 
   public function configure()
@@ -36,8 +46,8 @@ class MyProfileMySettingsForm extends BaseProfilesForm
       'profiles_name'                   => new sfWidgetFormInputText(),
       'profiles_email'                  => new sfWidgetFormInputText(),
       'profiles_old_password'           => new sfWidgetFormInputPassword(),
-      'profiles_password'               => new sfWidgetFormInputPassword(),
-      'profiles_password_confirm'       => new sfWidgetFormInputPassword(),
+      'profiles_new_password'               => new sfWidgetFormInputPassword(),
+      'profiles_new_password_confirm'       => new sfWidgetFormInputPassword(),
     ));
 
     $this->widgetSchema->setNameFormat('settings[%s]');
@@ -64,7 +74,7 @@ class MyProfileMySettingsForm extends BaseProfilesForm
 
     $field = 'Your password';
     $field_name = 'profiles_old_password';
-    $this->validatorSchema[$field_name] = new sfValidatorString(array('required' => true), array('required' => "$field can not be empty."));
+    $this->validatorSchema[$field_name] = new sfValidatorString(array('required' => false), array('required' => "$field can not be empty."));
     $this->getValidator($field_name)->addOption('min_length',5);
     $this->getValidator($field_name)->addOption('trim',true);
     $this->getValidator($field_name)->setMessage('min_length',"$field is too short (min %min_length% characters).");
@@ -73,17 +83,19 @@ class MyProfileMySettingsForm extends BaseProfilesForm
     $this->getValidator($field_name)->setMessage('invalid',"$field is invalid.");
 
     $field = 'New password';
-    $field_name = 'profiles_password';
+    $field_name = 'profiles_new_password';
+    $this->validatorSchema[$field_name] = new sfValidatorString(array('required' => false), array('required' => "$field can not be empty."));
     $this->getValidator($field_name)->addOption('min_length',5);
     $this->getValidator($field_name)->addOption('trim',true);
+    $this->getValidator($field_name)->addOption('required',false);
     $this->getValidator($field_name)->setMessage('min_length',"$field is too short (min %min_length% characters).");
     $this->getValidator($field_name)->setMessage('max_length',"$field is too long (max %max_length% characters).");
     $this->getValidator($field_name)->setMessage('required',"$field can not be empty.");
     $this->getValidator($field_name)->setMessage('invalid',"$field is invalid.");
 
     $field = 'Confirm new password';
-    $field_name = 'profiles_password_confirm';
-    $this->validatorSchema[$field_name] = new sfValidatorString(array('required' => true), array('required' => "$field can not be empty."));
+    $field_name = 'profiles_new_password_confirm';
+    $this->validatorSchema[$field_name] = new sfValidatorString(array('required' => false), array('required' => "$field can not be empty."));
 
 
     $post_validators = $this->validatorSchema->getPostValidator()->getValidators();
@@ -102,10 +114,10 @@ class MyProfileMySettingsForm extends BaseProfilesForm
         new sfValidatorAnd(array(
             $this->validatorSchema->getPostValidator(),
             new sfValidatorCallback(
-                    array('callback'  => 'passValidator',),
+                    array('callback'  => 'changePassValidator',),
                     array('invalid'  => 'You have specified an incorrect password. <br />Please check your password and try again.')
                 ),
-            new sfValidatorSchemaCompare('profiles_password', sfValidatorSchemaCompare::EQUAL, 'profiles_password_confirm',
+            new sfValidatorSchemaCompare('profiles_new_password', sfValidatorSchemaCompare::EQUAL, 'profiles_new_password_confirm',
                 array('throw_global_error' => true),
                 array('invalid' => 'Your password does not match your confirmed password.')
             )

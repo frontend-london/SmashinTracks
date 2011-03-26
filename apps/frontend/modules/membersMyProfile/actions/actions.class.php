@@ -84,14 +84,33 @@ class membersMyProfileActions extends sfActions
     }
 
     $form2 = new MyProfileMySettingsForm($profile);
-
+    $this->profiles_new_password_error = false;
 
     if ($request->isMethod('post') && $request->hasParameter('settings'))
     {
         $form2->bind($request->getParameter('settings'));
-//        if ($form2->isValid())
-//        {
-//        }
+
+        //print_r($form2->getValues());
+
+//        if($form2->getValue('profiles_new_password_error')) {
+//                $this->profiles_new_password_error = true;
+//            }
+
+        if ($form2->isValid())
+        {
+            $profile = $form2->save();
+            if($form2->getValue('profiles_new_password_change')) {
+                //$form2->offsetUnset('profiles_password');
+                //$form2->setVal
+                //$form2->useFields(array('profiles_name', 'profiles_email'));
+                $profile->setProfilesPassword($form2->getValue('profiles_new_password'));
+                $profile->save();
+            }
+            
+           
+
+            
+        }
     }
 
     $this->form = $form;

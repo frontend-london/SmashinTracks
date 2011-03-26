@@ -202,27 +202,27 @@ function HandleFileButtonClick()
                             </div>
                             <div class="clear"></div>
                         </div>
-                        <?php if ($form2['profiles_old_password']->hasError()): ?>
+                        <?php if ($form2['profiles_old_password']->hasError() || $profiles_new_password_error): ?>
                             <div class="div-error-message">
                                 <?php echo $form2['profiles_old_password']->renderError() ?>
                             </div>
                         <?php endif; ?>
                         <div id="bm4-div6">
-                            <div class="bm3-left"><?php echo $form2['profiles_password']->renderLabel('New password:') ?></div>
+                            <div class="bm3-left"><?php echo $form2['profiles_new_password']->renderLabel('New password:') ?></div>
                             <div class="bm3-right">
-                                <?php echo $form2['profiles_password']->render(array('class' => 'input-290px'.($form2['profiles_password']->hasError()?' input-err':''))) ?>
+                                <?php echo $form2['profiles_new_password']->render(array('class' => 'input-290px'.($form2['profiles_new_password']->hasError()?' input-err':''))) ?>
                             </div>
                             <div class="clear"></div>
                         </div>
-                        <?php if ($form2['profiles_password']->hasError()): ?>
+                        <?php if ($form2['profiles_new_password']->hasError()): ?>
                             <div class="div-error-message">
-                                <?php echo $form2['profiles_password']->renderError() ?>
+                                <?php echo $form2['profiles_new_password']->renderError() ?>
                             </div>
                         <?php endif; ?>
                         <div id="bm4-div4">
-                            <div class="bm3-left"><?php echo $form2['profiles_password_confirm']->renderLabel('Confirm new password:') ?></div>
+                            <div class="bm3-left"><?php echo $form2['profiles_new_password_confirm']->renderLabel('Confirm new password:') ?></div>
                             <div class="bm3-right">
-                                <?php echo $form2['profiles_password_confirm']->render(array('class' => 'input-290px'.($form2['profiles_password_confirm']->hasError()?' input-err':''))) ?>
+                                <?php echo $form2['profiles_new_password_confirm']->render(array('class' => 'input-290px'.($form2['profiles_new_password_confirm']->hasError()?' input-err':''))) ?>
                                 <?php echo $form2->renderHiddenFields() ?>
                                 <div class="button-save">
                                     <div class="button-left"></div>
@@ -232,9 +232,9 @@ function HandleFileButtonClick()
                             </div>
                             <div class="clear"></div>
                         </div>
-                        <?php if ($form2->hasGlobalErrors() || $form2['profiles_password_confirm']->hasError()): ?>
+                        <?php if ($form2->hasGlobalErrors() || $form2['profiles_new_password_confirm']->hasError()): ?>
                             <div class="div-error-message">
-                                <?php echo $form2['profiles_password_confirm']->renderError() ?>
+                                <?php echo $form2['profiles_new_password_confirm']->renderError() ?>
                                 <?php echo $form2->renderGlobalErrors() ?>
                             </div>
                         <?php endif; ?>
