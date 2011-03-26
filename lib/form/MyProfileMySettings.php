@@ -21,34 +21,20 @@ class MyProfileMySettingsForm extends BaseForm
   {
     $this->setWidgets(array(
       'profiles_name' => new sfWidgetFormInputText(),
-      'profiles_email' => new sfWidgetFormInputText(),
-      'profiles_password' => new sfWidgetFormInputText(),
-      'profiles_new_password' => new sfWidgetFormInputText(),
-      'profiles_new_password_confirm' => new sfWidgetFormInputText(),
+      'profiles_email'                  => new sfWidgetFormInputText(),
+      'profiles_password'               => new sfWidgetFormInputPassword(),
+      'profiles_new_password'           => new sfWidgetFormInputPassword(),
+      'profiles_new_password_confirm'   => new sfWidgetFormInputPassword(),
     ));
 
     $this->widgetSchema->setNameFormat('settings[%s]');
 
     $this->setValidators(array(
-      'profiles_name'   => new sfValidatorString(array('required' => false)),
-      'profiles_photo'  => new sfValidatorFile(array(
-                              'max_size' => 102400,
-                              'mime_types' => 'web_images', //you can set your own of course
-                              'path' => '/web/images/profiles/upload',
-                              'required' => false,
-//                              'validated_file_class' => 'sfValidatedFileCustom'
-                          )),
-      'profiles_photo_delete' => new sfValidatorBoolean(array('required' => false)),
-      'profiles_url_add' => new sfValidatorUrl(array('required' => false), array('invalid'  => 'Invalid URL.')),
-      'profiles_url_add_action' => new sfValidatorBoolean(array('required' => false)),
-      'profiles_url_edit' => new sfValidatorUrl(array('required' => false), array('invalid'  => 'Invalid URL.')),
-      'profiles_url_edit_action' => new sfValidatorBoolean(array('required' => false)),
-      'profiles_url_edit_id' => new sfValidatorInteger(array('required' => false)),
-      'profiles_password' => new sfValidatorString(array('required' => false)),
-
-
-
-
+      'profiles_name'   => new sfValidatorString(),
+      'profiles_email'   => new sfValidatorEmail(array(), array('invalid' => "Your email is invalid.", 'required'  => "Your email can not be empty.")),
+      'profiles_password'   => new sfValidatorString(array('min_length' => 5, 'trim' => true), array('min_length' => "Your password is too short (min %min_length% characters).", 'max_length' => "Your password is too long (max %max_length% characters).", 'required' => "Your password can not be empty.", 'invalid',"Your password is invalid.")),
+      'profiles_new_password'   => new sfValidatorString(array('min_length' => 5, 'trim' => true), array('min_length' => "New password is too short (min %min_length% characters).", 'max_length' => "New password is too long (max %max_length% characters).", 'required' => "New password can not be empty.", 'invalid',"New password is invalid.")),
+      'profiles_new_password_confirm' => new sfValidatorString(array(), array('required' => "Confirm password can not be empty.")),
     ));
 
     $this->validatorSchema->setPostValidator(new sfValidatorCallback(
