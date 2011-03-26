@@ -166,50 +166,79 @@ function HandleFileButtonClick()
                     <div class="bs-bgr-bottom"></div>
                 </div>
                 <div class="box-white" id="box-mysettings">
-                    <img src="images/texts/main-settings.gif" alt="Main Settings" />
-                    <div class="bw-div1">
-                        Tutaj mozesz zmienic swoje podstawowe dane takie jak <span class="blue">artist name, e-mail, haslo.</span>
-                    </div>
-                    <div id="bm4-div1">
-                        <div class="bm3-left">Artist name:</div>
-                        <div class="bm3-right">
-                            <input type="text" class="input-290px" name="#" value="Martino B" />
+                    <form action="<?php echo url_for('members_my-profile') ?>" method="POST" id="form_settings" name="form_settings">
+                        <img src="images/texts/main-settings.gif" alt="Main Settings" />
+                        <div class="bw-div1">
+                            Tutaj mozesz zmienic swoje podstawowe dane takie jak <span class="blue">artist name, e-mail, haslo.</span>
                         </div>
-                        <div class="clear"></div>
-                    </div>
-                    <div id="bm4-div2">
-						<div class="bm3-left">Your e-mail:</div>
-                        <div class="bm3-right">
-                            <input type="text" class="input-290px" name="#" value="marti_no@o2.pl" />
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                    <div id="bm4-div6">
-						<div class="bm3-left">Your password:</div>
-                        <div class="bm3-right">
-                            <input type="password" class="input-290px" name="#" value="" />
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                    <div id="bm4-div3">
-						<div class="bm3-left">New password:</div>
-                        <div class="bm3-right">
-                            <input type="password" class="input-290px" name="#" value="" />
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                    <div id="bm4-div4">
-						<div class="bm3-left">Confirm new password:</div>
-                        <div class="bm3-right">
-                            <input type="password" class="input-290px" name="#" value="" />
-                            <div class="button-save">
-                                <div class="button-left"></div>
-                                <div class="button-right"></div>
-                                <a href="#">SAVE</a>
+                        <div id="bm4-div1">
+                            <div class="bm3-left"><?php echo $form2['profiles_name']->renderLabel('Artist name:') ?></div>
+                            <div class="bm3-right">
+                                <?php echo $form2['profiles_name']->render(array('class' => 'input-290px'.($form2['profiles_name']->hasError()?' input-err':''))) ?>
                             </div>
+                            <div class="clear"></div>
                         </div>
-                        <div class="clear"></div>
-                    </div>
+                        <?php if ($form2['profiles_name']->hasError()): ?>
+                                <div class="div-error-message">
+                                    <?php echo $form2['profiles_name']->renderError() ?>
+                                </div>
+                            <?php endif; ?>
+                        <div id="bm4-div2">
+                            <div class="bm3-left"><?php echo $form2['profiles_email']->renderLabel('Your email:') ?></div>
+                            <div class="bm3-right">
+                                    <?php echo $form2['profiles_email']->render(array('class' => 'input-290px'.($form2['profiles_email']->hasError()?' input-err':''))) ?>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <?php if ($form2['profiles_email']->hasError()): ?>
+                            <div class="div-error-message">
+                                <?php echo $form2['profiles_email']->renderError() ?>
+                            </div>
+                        <?php endif; ?>
+                        <div id="bm4-div6">
+                            <div class="bm3-left"><?php echo $form2['profiles_old_password']->renderLabel('Your password:') ?></div>
+                            <div class="bm3-right">
+                                <?php echo $form2['profiles_old_password']->render(array('class' => 'input-290px'.($form2['profiles_old_password']->hasError()?' input-err':''))) ?>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <?php if ($form2['profiles_old_password']->hasError()): ?>
+                            <div class="div-error-message">
+                                <?php echo $form2['profiles_old_password']->renderError() ?>
+                            </div>
+                        <?php endif; ?>
+                        <div id="bm4-div6">
+                            <div class="bm3-left"><?php echo $form2['profiles_password']->renderLabel('New password:') ?></div>
+                            <div class="bm3-right">
+                                <?php echo $form2['profiles_password']->render(array('class' => 'input-290px'.($form2['profiles_password']->hasError()?' input-err':''))) ?>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <?php if ($form2['profiles_password']->hasError()): ?>
+                            <div class="div-error-message">
+                                <?php echo $form2['profiles_password']->renderError() ?>
+                            </div>
+                        <?php endif; ?>
+                        <div id="bm4-div4">
+                            <div class="bm3-left"><?php echo $form2['profiles_password_confirm']->renderLabel('Confirm new password:') ?></div>
+                            <div class="bm3-right">
+                                <?php echo $form2['profiles_password_confirm']->render(array('class' => 'input-290px'.($form2['profiles_password_confirm']->hasError()?' input-err':''))) ?>
+                                <?php echo $form2->renderHiddenFields() ?>
+                                <div class="button-save">
+                                    <div class="button-left"></div>
+                                    <div class="button-right"></div>
+                                    <a href="javascript: document.form_settings.submit();">SAVE</a>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <?php if ($form2->hasGlobalErrors() || $form2['profiles_password_confirm']->hasError()): ?>
+                            <div class="div-error-message">
+                                <?php echo $form2['profiles_password_confirm']->renderError() ?>
+                                <?php echo $form2->renderGlobalErrors() ?>
+                            </div>
+                        <?php endif; ?>
+                    </form>
                 </div>
 
                 <?php include_partial('metadata/footer', array('share' => false, 'border' => true)) ?>

@@ -83,8 +83,17 @@ class membersMyProfileActions extends sfActions
         }
     }
 
-    $form2 = new MyProfileForm(array('profiles_text' => $profile->getProfilesText(), 'profiles_photo_delete' => false));
-//    $form->setOption('profiles_url_add_action', false);
+    $form2 = new MyProfileMySettingsForm($profile);
+
+
+    if ($request->isMethod('post') && $request->hasParameter('settings'))
+    {
+        $form2->bind($request->getParameter('settings'));
+//        if ($form2->isValid())
+//        {
+//        }
+    }
+
     $this->form = $form;
     $this->form2 = $form2;
     $this->profile = $profile;
