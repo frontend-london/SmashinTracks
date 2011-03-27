@@ -17,6 +17,17 @@ class membersUploadTrackActions extends sfActions
   */
   public function executeShow(sfWebRequest $request)
   {
-//    $this->forward('default', 'module');
+//      $profile = ProfilesPeer::getCurrentProfile();
+      $form = new TracksForm();
+//      print_r(GenresPeer::getGenresNames());
+      if ($request->isMethod('post') && $request->hasParameter('tracks'))
+      {
+        $form->bind($request->getParameter('tracks'), $request->getFiles('tracks'));
+        if ($form->isValid())
+        {
+
+        }
+      }
+      $this->form = $form;
   }
 }

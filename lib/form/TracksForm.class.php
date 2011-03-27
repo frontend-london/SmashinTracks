@@ -42,86 +42,80 @@ class TracksForm extends BaseTracksForm
   {
 
     $this->setWidgets(array(
-      'profiles_name'                   => new sfWidgetFormInputText(),
-      'profiles_email'                  => new sfWidgetFormInputText(),
-      'profiles_old_password'           => new sfWidgetFormInputPassword(),
-      'profiles_new_password'               => new sfWidgetFormInputPassword(),
-      'profiles_new_password_confirm'       => new sfWidgetFormInputPassword(),
+      'tracks_title'          => new sfWidgetFormInputText(),
+      'tracks_artist'         => new sfWidgetFormInputText(),
+      'tracks_preview'        => new sfWidgetFormInputFile(),
+      'full_track'            => new sfWidgetFormInputFile(),
+      'tracks_time'           => new sfWidgetFormInputText(),
+      'genre_1'               => new sfWidgetFormSelect(array('choices' => array_combine(array_merge(array(''), GenresPeer::getGenresNames()), array_merge(array('-- wybierz gatunek --'), GenresPeer::getGenresNames())))),
+      'genre_2'               => new sfWidgetFormSelect(array('choices' => array_combine(array_merge(array(''), GenresPeer::getGenresNames()), array_merge(array('-- wybierz gatunek --'), GenresPeer::getGenresNames())))),
+      'genre_3'               => new sfWidgetFormSelect(array('choices' => array_combine(array_merge(array(''), GenresPeer::getGenresNames()), array_merge(array('-- wybierz gatunek --'), GenresPeer::getGenresNames())))),
+      'terms'                 => new sfWidgetFormInputCheckbox(),
     ));
 
-    $this->widgetSchema->setNameFormat('settings[%s]');
+    $this->widgetSchema->setNameFormat('tracks[%s]');
 
-    $field = 'Your name';
-    $field_name = 'profiles_name';
+    $field = 'Track title';
+    $field_name = 'tracks_title';
     $this->getValidator($field_name)->addOption('min_length',5);
     $this->getValidator($field_name)->addOption('trim',true);
     $this->getValidator($field_name)->setMessage('min_length',"$field is too short (min %min_length% characters).");
     $this->getValidator($field_name)->setMessage('max_length',"$field is too long (max %max_length% characters).");
-    $this->getValidator($field_name)->setMessage('required',"$field can not be empty."); // addMessage
+    $this->getValidator($field_name)->setMessage('required',"$field can not be empty.");
     $this->getValidator($field_name)->setMessage('invalid',"$field is invalid.");
 
-    $field = 'Your email';
-    $field_name = 'profiles_email';
+    $field = 'Alias';
+    $field_name = 'tracks_artist';
+    $this->getValidator($field_name)->addOption('min_length',5);
+    $this->getValidator($field_name)->addOption('trim',true);
+    $this->getValidator($field_name)->setMessage('min_length',"$field is too short (min %min_length% characters).");
     $this->getValidator($field_name)->setMessage('max_length',"$field is too long (max %max_length% characters).");
-    $this->getValidator($field_name)->setMessage('required',"$field can not be empty."); // addMessage
+    $this->getValidator($field_name)->setMessage('required',"$field can not be empty.");
+    $this->getValidator($field_name)->setMessage('invalid',"$field is invalid.");
+
+    $field = 'Track preview';
+    $field_name = 'track_preview';
+    $this->validatorSchema[$field_name] = new sfValidatorFile(array(
+                                              'max_size' => 102400,
+                                              'mime_types' => array('audio/mpeg'),
+                                              'required' => true,
+                                          ), array('required' => "$field can not be empty."));
+
+    $field = 'Full track';
+    $field_name = 'full_track';
+    $this->validatorSchema[$field_name] = new sfValidatorFile(array(
+                                              'max_size' => 102400,
+                                              'mime_types' => array('audio/mpeg'),
+                                              'required' => true,
+                                          ), array('required' => "$field can not be empty."));
+
+    $field = 'Time';
+    $field_name = 'tracks_time';
+    $this->getValidator($field_name)->setMessage('required',"$field can not be empty.");
     $this->getValidator($field_name)->setMessage('invalid',"$field is invalid.");
     $this->validatorSchema[$field_name] = new sfValidatorAnd(array(
-        $this->validatorSchema[$field_name],
-        new sfValidatorEmail(array(), array('invalid' => "$field is invalid.")),
-    ), array('required' => true,), array('required'  => "$field can not be empty.",
-    ));
-
-    $field = 'Your password';
-    $field_name = 'profiles_old_password';
-    $this->validatorSchema[$field_name] = new sfValidatorString(array('required' => false), array('required' => "$field can not be empty."));
-    $this->getValidator($field_name)->addOption('min_length',5);
-    $this->getValidator($field_name)->addOption('trim',true);
-    $this->getValidator($field_name)->setMessage('min_length',"$field is too short (min %min_length% characters).");
-    $this->getValidator($field_name)->setMessage('max_length',"$field is too long (max %max_length% characters).");
-    $this->getValidator($field_name)->setMessage('required',"$field can not be empty.");
-    $this->getValidator($field_name)->setMessage('invalid',"$field is invalid.");
-
-    $field = 'New password';
-    $field_name = 'profiles_new_password';
-    $this->validatorSchema[$field_name] = new sfValidatorString(array('required' => false), array('required' => "$field can not be empty."));
-    $this->getValidator($field_name)->addOption('min_length',5);
-    $this->getValidator($field_name)->addOption('trim',true);
-    $this->getValidator($field_name)->addOption('required',false);
-    $this->getValidator($field_name)->setMessage('min_length',"$field is too short (min %min_length% characters).");
-    $this->getValidator($field_name)->setMessage('max_length',"$field is too long (max %max_length% characters).");
-    $this->getValidator($field_name)->setMessage('required',"$field can not be empty.");
-    $this->getValidator($field_name)->setMessage('invalid',"$field is invalid.");
-
-    $field = 'Confirm new password';
-    $field_name = 'profiles_new_password_confirm';
-    $this->validatorSchema[$field_name] = new sfValidatorString(array('required' => false), array('required' => "$field can not be empty."));
+            $this->validatorSchema[$field_name],
+            new sfValidatorTime(array('time_format' => '/^([0-9][0-9]):([0-5][0-9])$/', 'time_output' => 'H:i:s'), array())
+        ), array('required' => true,), array('required'  => "$field can not be empty.",
+        ));
 
 
-    $post_validators = $this->validatorSchema->getPostValidator()->getValidators();
-    foreach($post_validators as $post_validator) {
-        if(get_class($post_validator)=='sfValidatorPropelUnique') {
-            $columns = $post_validator->getOption('column');
-            if($columns[0]=='profiles_name') {
-                $post_validator->setMessage('invalid', 'Selected name is already in use.');
-            } elseif($columns[0]=='profiles_email') {
-                $post_validator->setMessage('invalid', 'Selected email is already in use.');
-            }
-        }
+    $field = 'Genre 1';
+    $field_name = 'genre_1';
+    $this->validatorSchema[$field_name] = new sfValidatorPropelChoice(array('model' => GenresPeer::TABLE_NAME, 'criteria' => new Criteria(), 'column' => 'genres_name'), array('required' => "$field can not be empty.", 'invalid' => "$field is invalid."));
+    
+    $field = 'Genre 2';
+    $field_name = 'genre_2';
+    $this->validatorSchema[$field_name] = new sfValidatorPropelChoice(array('model' => GenresPeer::TABLE_NAME, 'criteria' => new Criteria(), 'column' => 'genres_name', 'required' => false), array('required' => "$field can not be empty.", 'invalid' => "$field is invalid."));
 
-    }
-    $this->validatorSchema->setPostValidator(
-        new sfValidatorAnd(array(
-            $this->validatorSchema->getPostValidator(),
-            new sfValidatorCallback(
-                    array('callback'  => 'changePassValidator',),
-                    array('invalid'  => 'You have specified an incorrect password. <br />Please check your password and try again.')
-                ),
-            new sfValidatorSchemaCompare('profiles_new_password', sfValidatorSchemaCompare::EQUAL, 'profiles_new_password_confirm',
-                array('throw_global_error' => true),
-                array('invalid' => 'Your password does not match your confirmed password.')
-            )
-        ))
-    );
+    $field = 'Genre 3';
+    $field_name = 'genre_3';
+    $this->validatorSchema[$field_name] = new sfValidatorPropelChoice(array('model' => GenresPeer::TABLE_NAME, 'criteria' => new Criteria(), 'column' => 'genres_name', 'required' => false), array('required' => "$field can not be empty.", 'invalid' => "$field is invalid."));
+
+    $field = 'Terms';
+    $field_name = 'terms';
+    $this->validatorSchema[$field_name] = new sfValidatorBoolean(array('required' => true), array('invalid' => 'Please read and accept the terms first.', 'required' => 'Please read and accept the terms first.'));
+
 
   }
 }

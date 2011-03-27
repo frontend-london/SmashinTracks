@@ -38,9 +38,7 @@ class MyProfileForm extends BaseForm
       'profiles_photo'  => new sfValidatorFile(array(
                               'max_size' => 102400,
                               'mime_types' => 'web_images', //you can set your own of course
-                              'path' => '/web/images/profiles/upload',
                               'required' => false,
-//                              'validated_file_class' => 'sfValidatedFileCustom'
                           )),
       'profiles_photo_delete' => new sfValidatorBoolean(array('required' => false)),
       'profiles_url_add' => new sfValidatorUrl(array('required' => false), array('invalid'  => 'Invalid URL.')),

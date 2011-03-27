@@ -36,6 +36,13 @@ class GenresPeer extends BaseGenresPeer {
             return self::doSelect($seeAlsoCriteria);
 	}
 
+        public static function getGenresNames() {
+            $criteria = new Criteria();
+            $criteria->addSelectColumn(self::GENRES_NAME);
+            $r = self::doSelectStmt($criteria);
+            return $r->fetchAll(PDO::FETCH_COLUMN);
+        }
+
         public static function getNewTracksGenres() {
             $tracks = TracksPeer::getNewTracks();
             $tracks_genres = array();
