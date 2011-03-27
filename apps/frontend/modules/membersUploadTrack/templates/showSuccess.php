@@ -21,19 +21,20 @@
                             <div class="clear"></div>
                         </div>
                         <div id="bu-div4">
-                        	<div class="bm3-left">Track preview:</div>
+                            <div class="bm3-left">Track preview:</div>
                             <div class="bm3-right">
-                            	<input type="text" class="input-290px" name="#" value="" />
+                                <input type="text" class="input-290px" id="input_track_preview" value="" />
                                 <div class="button-add">
                                     <div class="button-left"></div>
                                     <div class="button-right"></div>
-                                    <a href="#">ADD</a>
+                                    <span>Add</span>
+                                    <?php //echo $form['profiles_photo']->render(array('class' => 'file_input_hidden', 'onchange' => "javascript: document.getElementById('input_track_preview').value = this.value")) ?>
                                 </div>
                             </div>
                             <div class="clear"></div>
                         </div>
                         <div id="bu-div5">
-							Maxymalnie 120 sekund w jakosci 128kbps!
+                            Maxymalnie 120 sekund w jakosci 128kbps!
                         </div>
                         <div id="bu-div6">
                         	<div class="bm3-left underline">Full track:</div>

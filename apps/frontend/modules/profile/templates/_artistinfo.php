@@ -10,6 +10,13 @@
                                 <?=html_entity_decode($profile->getProfilesText());?><br />
                             <?endif;?>
                             <?foreach($profile->getProfilesUrlss() as $profileurl):?><a class="at-url" target="_blank" href="<?=$profileurl->getProfilesUrlsUrl();?>"><?echo $profileurl->getProfilesUrlsUrl();?></a><?endforeach;?>
+                            <?if($profile->getProfilesId()==ProfilesPeer::getCurrentProfileId()):?>
+                                <div class="button-editprofile" id="at-edytuj">
+                                    <div class="button-left"></div>
+                                    <div class="button-right"></div>
+                                    <a href="<?=url_for('members_my-profile')?>">EDIT PROFILE</a>
+                                </div>
+                            <?endif;?>
                         </div>
                     <?else:?>
                         <div id="at-both">
@@ -17,6 +24,13 @@
                                 <?=html_entity_decode($profile->getProfilesText());?><br />
                             <?endif;?>
                             <?foreach($profile->getProfilesUrlss() as $profileurl):?><a class="at-url" target="_blank" href="<?=$profileurl->getProfilesUrlsUrl();?>"><?echo $profileurl->getProfilesUrlsUrl();?></a><?endforeach;?>
+                            <?if($profile->getProfilesId()==ProfilesPeer::getCurrentProfileId()):?>
+                                <div class="button-editprofile" id="at-edytuj">
+                                    <div class="button-left"></div>
+                                    <div class="button-right"></div>
+                                    <a href="<?=url_for('members_my-profile')?>">EDIT PROFILE</a>
+                                </div>
+                            <?endif;?>
                         </div>
                     <?endif;?>
                     <div class="clear"></div>
