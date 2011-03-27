@@ -54,12 +54,51 @@ class Tracks extends BaseTracks {
             return((time() - 86400 * sfConfig::get('app_track_new_period'))<$track_date);
         }
 
+        /*
+         * Generuje unikalny URL
+         */
+        public function generateTracksPath($string) {
+            $path_size = TracksPeer::getTableMap()->getColumn(TracksPeer::TRACKS_PATH)->getSize();
+            $path = Smashin::generate_url($string, $path_size);
+            $counter=1;
+            while(true) {
+                $criteria = new Criteria(TracksPeer::DATABASE_NAME);
+                if($this->getTracksId()) $criteria->add(TracksPeer::TRACKS_ID, $this->getTracksId(), Criteria::ALT_NOT_EQUAL);
+                $criteria->add(TracksPeer::TRACKS_PATH, $path);
+                if(TracksPeer::doSelectOne($criteria)) {
+                    $add_end = '-'.$counter;
+                    $path = Smashin::generate_url($string, $path_size-strlen($add_end)).$add_end;
+                    $counter++;
+                } else break;
+            }
+            return $path;
+        }
+
         public function save(PropelPDO $con = null) {
             if ($this->isNew()) $this->setTracksDate(time());
-            $path = TracksPeer::generateTracksPath($this->getProfiles()->getProfilesName().'-'.$this->getTracksTitle());
+//            $path = $this->generateTracksPath($this->getProfiles()->getProfilesPath().'-'.$this->getTracksTitle());
+            $path = $this->generateTracksPath($this->getTracksTitle());
             $this->setTracksPath($path);
         
             return parent::save($con);
         }
+
+        public function setTracksPath($v)
+	{
+		if ($v !== null) {
+			$v = (string) $v;
+		}
+
+//                $big_old = sfConfig::get('sf_images_profiles_big_dir').DIRECTORY_SEPARATOR.$this->profiles_path.'.jpg';
+//		if (($this->profiles_path !== $v) && file_exists($big_old)) {
+//                    $big_new = sfConfig::get('sf_images_profiles_big_dir').DIRECTORY_SEPARATOR.$v.'.jpg';
+//                    $small_old = sfConfig::get('sf_images_profiles_small_dir').DIRECTORY_SEPARATOR.$this->profiles_path.'.jpg';
+//                    $small_new = sfConfig::get('sf_images_profiles_small_dir').DIRECTORY_SEPARATOR.$v.'.jpg';
+//                    rename($big_old, $big_new);
+//                    rename($small_old, $small_new);
+//		}
+
+		return parent::setTracksPath($v);
+	}
 
 } // Tracks

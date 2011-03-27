@@ -31,8 +31,21 @@ class membersUploadTrackActions extends sfActions
             $time_regex = $form->getValue('tracks_time_regex');
             $time = (int)strtr($time_regex, ':', '');
             $track->setTracksTime($time);
-            $track->setProfilesId(ProfilesPeer::getCurrentProfileId());
+            $track->setTracksAccepted(true); // do testów
+            $track->setProfiles(ProfilesPeer::getCurrentProfile());
             $track->save();
+
+            $file_tracks_preview = $form->getValue('tracks_preview');
+            if(is_object($file_tracks_preview)) { // musi być po $track->save(); - potrzebny TracksId
+                $filename_tracks_preview = sfConfig::get('sf_upload_tracks_preview_dir').DIRECTORY_SEPARATOR.$profile->getProfilesPath().'-'.$track->getTracksTitle().'mp3';
+                $file_tracks_preview->save($filename_tracks_preview);
+            }
+
+            $file_full_track = $form->getValue('full_track');
+            if(is_object($file_full_track)) { // musi być po $track->save(); - potrzebny TracksId
+                $filename_full_track = sfConfig::get('sf_upload_full_track_dir').DIRECTORY_SEPARATOR.$profile->getProfilesPath().'-'.$track->getTracksTitle().'mp3';
+                $file_full_track->save($filename_full_track);
+            }
 
             for($i=1;$i<=3;$i++) {
                 if($form->getValue('genre'.$i)) {

@@ -1,25 +1,5 @@
 <?php
 
-function changePassValidator($validator, $values)
-{
-  $profile = ProfilesPeer::getCurrentProfile();
-  $values['profiles_new_password_change'] = false;
-  if(!empty($values['profiles_new_password'])) {
-      if(ProfilesPeer::isPassCorrect($profile->getProfilesId(), $values['profiles_old_password']))
-      {
-        $values['profiles_new_password_change'] = true;
-        return $values;
-      } else {
-//        throw new sfValidatorError($validator, 'invalid');
-        $error = new sfValidatorError($validator, 'invalid');
-        throw new sfValidatorErrorSchema($validator, array('profiles_old_password' => $error));
-      }
-  } else {
-    return $values;
-  }
-
-}
-
 /**
  * Tracks form.
  *
