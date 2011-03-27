@@ -54,4 +54,12 @@ class Tracks extends BaseTracks {
             return((time() - 86400 * sfConfig::get('app_track_new_period'))<$track_date);
         }
 
+        public function save(PropelPDO $con = null) {
+            if ($this->isNew()) $this->setTracksDate(time());
+            $path = TracksPeer::generateTracksPath($this->getProfiles()->getProfilesName().'-'.$this->getTracksTitle());
+            $this->setTracksPath($path);
+        
+            return parent::save($con);
+        }
+
 } // Tracks

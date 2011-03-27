@@ -190,19 +190,53 @@ class Profiles extends BaseProfiles {
             return TransactionsSaldoPeer::doCount($criteria);
         }
 
+        /*
+         * Generuje unikalny URL
+         */
+        public function generateProfilesPath($string) {
+            $path_size = ProfilesPeer::getTableMap()->getColumn(ProfilesPeer::PROFILES_PATH)->getSize();
+            $path = Smashin::generate_url($string, $path_size);
+            $counter=1;
+            while(true) {
+                $criteria = new Criteria(ProfilesPeer::DATABASE_NAME);
+                $criteria->add(ProfilesPeer::PROFILES_ID, $this->getProfilesId(), Criteria::ALT_NOT_EQUAL);
+                $criteria->add(ProfilesPeer::PROFILES_PATH, $path);
+                if(ProfilesPeer::doSelectOne($criteria)) {
+                    $add_end = '-'.$counter;
+                    $path = Smashin::generate_url($string, $path_size-strlen($add_end)).$add_end;
+                    $counter++;
+                } else break;
+            }
+            return $path;
+
+        }
+
         public function save(PropelPDO $con = null)
         {
-            if ($this->isNew())
-            {
-//              $pass = Smashin::generateHash($this->getProfilesPassword());
-//              $this->setProfilesPassword($pass);
+            if ($this->isNew()) $this->setProfilesDate(time());
+            $path = $this->generateProfilesPath($this->getProfilesName());
+            $this->setProfilesPath($path);
 
-              $this->setProfilesDate(time());
-              $path = ProfilesPeer::generateProfilesPath($this->getProfilesName());
-              $this->setProfilesPath($path);
-            }
             return parent::save($con);
         }
+
+        public function setProfilesPath($v)
+	{
+		if ($v !== null) {
+			$v = (string) $v;
+		}
+
+                $big_old = sfConfig::get('sf_images_profiles_big_dir').DIRECTORY_SEPARATOR.$this->profiles_path.'.jpg';
+		if (($this->profiles_path !== $v) && file_exists($big_old)) {
+                    $big_new = sfConfig::get('sf_images_profiles_big_dir').DIRECTORY_SEPARATOR.$v.'.jpg';
+                    $small_old = sfConfig::get('sf_images_profiles_small_dir').DIRECTORY_SEPARATOR.$this->profiles_path.'.jpg';
+                    $small_new = sfConfig::get('sf_images_profiles_small_dir').DIRECTORY_SEPARATOR.$v.'.jpg';
+                    rename($big_old, $big_new);
+                    rename($small_old, $small_new);
+		}
+
+		return parent::setProfilesPath($v);
+	}
 
         public function setProfilesPassword($v)
 	{

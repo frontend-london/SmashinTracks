@@ -59,7 +59,13 @@ class membersMyProfileActions extends sfActions
 
                 $file = $form->getValue('profiles_photo');
                 if(is_object($file)) {
-                    $filename_upload = sfConfig::get('sf_upload_profiles_dir').DIRECTORY_SEPARATOR.$profile->getProfilesPath().'_'.date('U').$file->getExtension($file->getOriginalExtension());
+                    $profile->setProfilesPhoto(true);
+                }
+
+                $profile->save();
+
+                if(is_object($file)) { // musi być po - potrzebny ProfilesId
+                    $filename_upload = sfConfig::get('sf_upload_profiles_dir').DIRECTORY_SEPARATOR.$profile->getProfilesId().'_'.$profile->getProfilesPath().'_'.date('U').$file->getExtension($file->getOriginalExtension());
                     $filename_target_big = sfConfig::get('sf_images_profiles_big_dir').DIRECTORY_SEPARATOR.$profile->getProfilesPath().'.jpg';
                     $filename_target_small = sfConfig::get('sf_images_profiles_small_dir').DIRECTORY_SEPARATOR.$profile->getProfilesPath().'.jpg';
                     $file->save($filename_upload);
@@ -73,11 +79,9 @@ class membersMyProfileActions extends sfActions
                     $thumbnail_small->loadFile($filename_upload);
                     $thumbnail_small->save($filename_target_small, 'image/jpeg');
                     unset($thumbnail_small);
-
-                    $profile->setProfilesPhoto(true);
                 }
 
-                $profile->save();
+                
 
             }
         }
@@ -89,27 +93,14 @@ class membersMyProfileActions extends sfActions
     if ($request->isMethod('post') && $request->hasParameter('settings'))
     {
         $form2->bind($request->getParameter('settings'));
-
-        //print_r($form2->getValues());
-
-//        if($form2->getValue('profiles_new_password_error')) {
-//                $this->profiles_new_password_error = true;
-//            }
-
         if ($form2->isValid())
         {
             $profile = $form2->save();
+            $profile->setProfilesPath(Smashin::generate_url($profile->getProfilesName()));
             if($form2->getValue('profiles_new_password_change')) {
-                //$form2->offsetUnset('profiles_password');
-                //$form2->setVal
-                //$form2->useFields(array('profiles_name', 'profiles_email'));
                 $profile->setProfilesPassword($form2->getValue('profiles_new_password'));
                 $profile->save();
             }
-            
-           
-
-            
         }
     }
 

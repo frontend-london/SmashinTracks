@@ -25,6 +25,24 @@ class membersUploadTrackActions extends sfActions
         $form->bind($request->getParameter('tracks'), $request->getFiles('tracks'));
         if ($form->isValid())
         {
+            $track = $form->save();
+            $track = new Tracks();
+
+            $time_regex = $form->getValue('tracks_time_regex');
+            $time = (int)strtr($time_regex, ':', '');
+            $track->setTracksTime($time);
+            $track->setProfilesId(ProfilesPeer::getCurrentProfileId());
+            $track->save();
+
+            for($i=1;$i<=3;$i++) {
+                if($form->getValue('genre'.$i)) {
+                    $genre[$i] = GenresPeer::getGenreByName($form->getValue('genre'.$i));
+                    $track_genre[$i] = new TracksGenres();
+                    $track_genre[$i]->setGenres($genre[$i]);
+                    $track_genre[$i]->setTracks($track);
+                    $track_genre[$i]->save();
+                }
+            }
 
         }
       }

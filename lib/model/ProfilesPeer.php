@@ -49,25 +49,7 @@ class ProfilesPeer extends BaseProfilesPeer {
 
     }
 
-    /*
-     * Generuje unikalny URL
-     */
-    public static function generateProfilesPath($string) {
-        $path_size = self::getTableMap()->getColumn(self::PROFILES_PATH)->getSize();
-        $path = Smashin::generate_url($string, $path_size);
-        $counter=1;
-        while(true) {
-            $criteria = new Criteria(self::DATABASE_NAME);
-            $criteria->add(self::PROFILES_PATH, $path);
-            if(self::doSelectOne($criteria)) {
-                $add_end = '-'.$counter;
-                $path = Smashin::generate_url($string, $path_size-strlen($add_end)).$add_end;
-                $counter++;
-            } else break;
-        }
-        return $path;
-        
-    }
+
 
     public static function getProfileById($profiles_id, $criteria = null) {
         if ($criteria === null) {

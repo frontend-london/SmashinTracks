@@ -69,6 +69,12 @@ class GenresPeer extends BaseGenresPeer {
             return $genres_objects;
         }
 
+        public static function getGenreByName($name) {
+            $criteria = new Criteria();
+            $criteria->add(self::GENRES_NAME, $name);
+            return self::doSelectOne($criteria);
+        }
+
 
 
 } // GenresPeer
