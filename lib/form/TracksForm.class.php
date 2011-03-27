@@ -35,7 +35,7 @@ class TracksForm extends BaseTracksForm
     parent::setup();
     sfValidatorBase::setDefaultMessage('required', 'This value is required.');
     sfValidatorBase::setDefaultMessage('invalid', 'This value is invalid.');
-    $this->useFields(array('tracks_title', 'tracks_artist', 'tracks_time'));
+    $this->useFields(array('tracks_title', 'tracks_artist'));
   }
 
   public function configure()
@@ -46,7 +46,7 @@ class TracksForm extends BaseTracksForm
       'tracks_artist'         => new sfWidgetFormInputText(),
       'tracks_preview'        => new sfWidgetFormInputFile(),
       'full_track'            => new sfWidgetFormInputFile(),
-      'tracks_time'           => new sfWidgetFormInputText(),
+      'tracks_time_regex'     => new sfWidgetFormInputText(),
       'genre_1'               => new sfWidgetFormSelect(array('choices' => array_combine(array_merge(array(''), GenresPeer::getGenresNames()), array_merge(array('-- wybierz gatunek --'), GenresPeer::getGenresNames())))),
       'genre_2'               => new sfWidgetFormSelect(array('choices' => array_combine(array_merge(array(''), GenresPeer::getGenresNames()), array_merge(array('-- wybierz gatunek --'), GenresPeer::getGenresNames())))),
       'genre_3'               => new sfWidgetFormSelect(array('choices' => array_combine(array_merge(array(''), GenresPeer::getGenresNames()), array_merge(array('-- wybierz gatunek --'), GenresPeer::getGenresNames())))),
@@ -74,9 +74,9 @@ class TracksForm extends BaseTracksForm
     $this->getValidator($field_name)->setMessage('invalid',"$field is invalid.");
 
     $field = 'Track preview';
-    $field_name = 'track_preview';
+    $field_name = 'tracks_preview';
     $this->validatorSchema[$field_name] = new sfValidatorFile(array(
-                                              'max_size' => 102400,
+                                              'max_size' => 10485760, // 10 MB
                                               'mime_types' => array('audio/mpeg'),
                                               'required' => true,
                                           ), array('required' => "$field can not be empty."));
@@ -84,20 +84,16 @@ class TracksForm extends BaseTracksForm
     $field = 'Full track';
     $field_name = 'full_track';
     $this->validatorSchema[$field_name] = new sfValidatorFile(array(
-                                              'max_size' => 102400,
+                                              'max_size' => 104857600, // 100 MB
                                               'mime_types' => array('audio/mpeg'),
                                               'required' => true,
                                           ), array('required' => "$field can not be empty."));
 
     $field = 'Time';
-    $field_name = 'tracks_time';
+    $field_name = 'tracks_time_regex';
+    $this->validatorSchema[$field_name] = new sfValidatorRegex(array('pattern' => '/^([0-9]?[0-9]?[0-9]):([0-5][0-9])$/'));
     $this->getValidator($field_name)->setMessage('required',"$field can not be empty.");
     $this->getValidator($field_name)->setMessage('invalid',"$field is invalid.");
-    $this->validatorSchema[$field_name] = new sfValidatorAnd(array(
-            $this->validatorSchema[$field_name],
-            new sfValidatorTime(array('time_format' => '/^([0-9][0-9]):([0-5][0-9])$/', 'time_output' => 'H:i:s'), array())
-        ), array('required' => true,), array('required'  => "$field can not be empty.",
-        ));
 
 
     $field = 'Genre 1';

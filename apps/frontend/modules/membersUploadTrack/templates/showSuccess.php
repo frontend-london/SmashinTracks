@@ -34,7 +34,7 @@
                             <div id="bu-div4">
                                 <div class="bm3-left"><?php echo $form['tracks_preview']->renderLabel('Track preview:') ?></div>
                                 <div class="bm3-right">
-                                    <input type="text" class="input-290px" id="input_track_preview" value="" />
+                                    <input type="text" class="input-290px<?if($form['tracks_preview']->hasError()):?> input-err<?endif?>" id="input_track_preview" value="" />
                                     <div class="button-add">
                                         <div class="button-left"></div>
                                         <div class="button-right"></div>
@@ -55,7 +55,7 @@
                             <div id="bu-div6">
                                 <div class="bm3-left underline"><?php echo $form['full_track']->renderLabel('Full track:') ?></div>
                                 <div class="bm3-right">
-                                    <input type="text" class="input-290px" id="input_full_track" value="" />
+                                    <input type="text" class="input-290px<?if($form['full_track']->hasError()):?> input-err<?endif?>" id="input_full_track" value="" />
                                     <div class="button-add">
                                         <div class="button-left"></div>
                                         <div class="button-right"></div>
@@ -74,22 +74,22 @@
                                 </div>
                             <?php endif; ?>
                             <div id="bu-div13">
-                                <div class="bm3-left"><?php echo $form['tracks_time']->renderLabel('Time:') ?></div>
+                                <div class="bm3-left"><?php echo $form['tracks_time_regex']->renderLabel('Time:') ?></div>
                                 <div class="bm3-right">
-                                    <?php echo $form['tracks_time']->render(array('class' => 'input-79px'.(($form['tracks_time']->hasError())?' input-err':''))) ?>
+                                    <?php echo $form['tracks_time_regex']->render(array('class' => 'input-79px'.(($form['tracks_time_regex']->hasError())?' input-err':''))) ?>
                                     <span>example 5:25</span>
                                 </div>
                                 <div class="clear"></div>
                             </div>
-                            <?php if ($form['tracks_time']->hasError()): ?>
+                            <?php if ($form['tracks_time_regex']->hasError()): ?>
                                 <div class="div-error-message">
-                                    <?php echo $form['tracks_time']->renderError() ?>
+                                    <?php echo $form['tracks_time_regex']->renderError() ?>
                                 </div>
                             <?php endif; ?>
                             <div id="bu-div8">
                                 <div class="bm3-left"><?php echo $form['genre_1']->renderLabel('Genre 1:') ?></div>
                                 <div class="bm3-right">
-                                    <?php echo $form['genre_1']->render(array('id' => 'bu-select-genre1')) ?>
+                                    <?php echo $form['genre_1']->render(array('id' => 'bu-select-genre1', 'class' => ($form['genre_1']->hasError())?' select-err':'')) ?>
                                 </div>
                                 <div class="clear"></div>
                             </div>
@@ -101,7 +101,7 @@
                             <div id="bu-div9">
                                 <div class="bm3-left"><?php echo $form['genre_2']->renderLabel('Genre 2:') ?></div>
                                 <div class="bm3-right">
-                                    <?php echo $form['genre_2']->render(array('id' => 'bu-select-genre2')) ?>
+                                    <?php echo $form['genre_2']->render(array('id' => 'bu-select-genre2', 'class' => ($form['genre_2']->hasError())?' select-err':'')) ?>
                                 </div>
                                 <div class="clear"></div>
                             </div>
@@ -113,7 +113,7 @@
                             <div id="bu-div10">
                                 <div class="bm3-left"><?php echo $form['genre_3']->renderLabel('Genre 3:') ?></div>
                                 <div class="bm3-right">
-                                    <?php echo $form['genre_3']->render(array('id' => 'bu-select-genre3')) ?>
+                                    <?php echo $form['genre_3']->render(array('id' => 'bu-select-genre3', 'class' => ($form['genre_3']->hasError())?' select-err':'')) ?>
                                 </div>
                                 <div class="clear"></div>
                             </div>
@@ -134,6 +134,11 @@
                                 </label>
                                 <div class="clear"></div>
                             </div>
+                            <?php if ($form['terms']->hasError()): ?>
+                                <div class="div-error-message">
+                                    <?php echo $form['terms']->renderError() ?>
+                                </div>
+                            <?php endif; ?>
                             <div id="bu-div12">
                                 <?php echo $form->renderHiddenFields() ?>
                                 <div class="button-upload">
