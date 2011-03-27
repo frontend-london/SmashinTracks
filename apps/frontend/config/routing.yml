@@ -153,6 +153,10 @@ members_my-wishlist_by_artist_remove:
   requirements:
     sf_method: [get]
 
+members_upload-track:
+  url:     /members/upload-track
+  param: { module: membersUploadTrack, action: show, section: upload-track }
+
 members_withdraw:
   url:     /members/withdraw
   param: { module: membersWithdraw, action: show, section: withdraw }
