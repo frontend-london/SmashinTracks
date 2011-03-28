@@ -26,7 +26,10 @@ class trackActions extends sfActions
     $this->profile = $this->track->getProfiles();
 
     $this->pager = new sfPropelPager('Tracks',sfConfig::get('app_max_tracks_on_list'));
-    $this->pager->setCriteria($this->profile->getActiveTracksCriteriaOrderByDate());
+    $criteria = new Criteria();
+    $criteria = $this->profile->getActiveTracksCriteriaOrderByDate();
+    $criteria->add(TracksPeer::TRACKS_ID, $this->track->getTracksId(), Criteria::ALT_NOT_EQUAL);
+    $this->pager->setCriteria($criteria);
     $this->pager->setPage($request->getParameter('page', 1)); // 1 = domyślna wartość
     $this->pager->init();
   }
