@@ -817,6 +817,7 @@ abstract class BaseTracks extends BaseObject  implements Persistent {
 			// If this object has been modified, then save it to the database.
 			if ($this->isModified()) {
 				if ($this->isNew()) {
+                                        $this->log(print_r($this->toArray(), true));
 					$pk = TracksPeer::doInsert($this, $con);
 					$affectedRows += 1; // we are assuming that there is only 1 row per doInsert() which
 										 // should always be true here (even though technically

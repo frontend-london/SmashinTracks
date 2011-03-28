@@ -199,7 +199,7 @@ class Profiles extends BaseProfiles {
             $counter=1;
             while(true) {
                 $criteria = new Criteria(ProfilesPeer::DATABASE_NAME);
-                $criteria->add(ProfilesPeer::PROFILES_ID, $this->getProfilesId(), Criteria::ALT_NOT_EQUAL);
+                if($this->getProfilesId()) $criteria->add(ProfilesPeer::PROFILES_ID, $this->getProfilesId(), Criteria::ALT_NOT_EQUAL);
                 $criteria->add(ProfilesPeer::PROFILES_PATH, $path);
                 if(ProfilesPeer::doSelectOne($criteria)) {
                     $add_end = '-'.$counter;

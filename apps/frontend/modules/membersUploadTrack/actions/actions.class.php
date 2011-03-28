@@ -17,7 +17,7 @@ class membersUploadTrackActions extends sfActions
   */
   public function executeShow(sfWebRequest $request)
   {
-//      $profile = ProfilesPeer::getCurrentProfile();
+      $profile = ProfilesPeer::getCurrentProfile();
       $form = new TracksForm();
 //      print_r(GenresPeer::getGenresNames());
       if ($request->isMethod('post') && $request->hasParameter('tracks'))
@@ -25,25 +25,32 @@ class membersUploadTrackActions extends sfActions
         $form->bind($request->getParameter('tracks'), $request->getFiles('tracks'));
         if ($form->isValid())
         {
-            $track = $form->save();
-            $track = new Tracks();
-
+//echo " test_1 ";
             $time_regex = $form->getValue('tracks_time_regex');
             $time = (int)strtr($time_regex, ':', '');
-            $track->setTracksTime($time);
-            $track->setTracksAccepted(true); // do testów
-            $track->setProfiles(ProfilesPeer::getCurrentProfile());
-            $track->save();
+//            $track->setTracksTime($time);
+            $form->updateObject(array('tracks_time' => $time, 'profiles_id' => $profile->getProfilesId()));
+            $form->updateObject(array('tracks_accepted' => true));
+//echo " test_2 ";
+            $track = $form->save();
+//            $form->
+//            $track = new Tracks();
+//echo " test_3 ";
+
+            
+//            $track->setTracksAccepted(true); // do testów
+//            $track->setProfilesId(ProfilesPeer::getCurrentProfileId());
+//            $track->save();
 
             $file_tracks_preview = $form->getValue('tracks_preview');
             if(is_object($file_tracks_preview)) { // musi być po $track->save(); - potrzebny TracksId
-                $filename_tracks_preview = sfConfig::get('sf_upload_tracks_preview_dir').DIRECTORY_SEPARATOR.$profile->getProfilesPath().'-'.$track->getTracksTitle().'mp3';
+                $filename_tracks_preview = sfConfig::get('sf_upload_tracks_preview_dir').DIRECTORY_SEPARATOR.$track->getTracksPath().'.mp3';
                 $file_tracks_preview->save($filename_tracks_preview);
             }
 
             $file_full_track = $form->getValue('full_track');
             if(is_object($file_full_track)) { // musi być po $track->save(); - potrzebny TracksId
-                $filename_full_track = sfConfig::get('sf_upload_full_track_dir').DIRECTORY_SEPARATOR.$profile->getProfilesPath().'-'.$track->getTracksTitle().'mp3';
+                $filename_full_track = sfConfig::get('sf_upload_full_track_dir').DIRECTORY_SEPARATOR.$track->getTracksPath().'.mp3';
                 $file_full_track->save($filename_full_track);
             }
 

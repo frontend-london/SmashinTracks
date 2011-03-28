@@ -76,8 +76,7 @@ class Tracks extends BaseTracks {
 
         public function save(PropelPDO $con = null) {
             if ($this->isNew()) $this->setTracksDate(time());
-//            $path = $this->generateTracksPath($this->getProfiles()->getProfilesPath().'-'.$this->getTracksTitle());
-            $path = $this->generateTracksPath($this->getTracksTitle());
+            $path = $this->generateTracksPath($this->getTracksArtist().'-'.$this->getTracksTitle());
             $this->setTracksPath($path);
         
             return parent::save($con);
