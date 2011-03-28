@@ -85,6 +85,14 @@ class TracksForm extends BaseTracksForm
     $field_name = 'genre_2';
     $this->validatorSchema[$field_name] = new sfValidatorPropelChoice(array('model' => GenresPeer::TABLE_NAME, 'criteria' => new Criteria(), 'column' => 'genres_name', 'required' => false), array('required' => "$field can not be empty.", 'invalid' => "$field is invalid."));
 
+//    $this->validatorSchema[$field_name] = new sfValidatorAnd(array(
+//        new sfValidatorPropelChoice(array('model' => GenresPeer::TABLE_NAME, 'criteria' => new Criteria(), 'column' => 'genres_name', 'required' => false), array('required' => "$field can not be empty.", 'invalid' => "$field is invalid.")),
+//        new sfValidatorSchemaCompare('genre_1', sfValidatorSchemaCompare::NOT_EQUAL, 'genre_2',
+//            array('throw_global_error' => false),
+//            array('invalid' => 'Genres must be diffrent.')
+//        ),
+//    ));
+
     $field = 'Genre 3';
     $field_name = 'genre_3';
     $this->validatorSchema[$field_name] = new sfValidatorPropelChoice(array('model' => GenresPeer::TABLE_NAME, 'criteria' => new Criteria(), 'column' => 'genres_name', 'required' => false), array('required' => "$field can not be empty.", 'invalid' => "$field is invalid."));
@@ -93,6 +101,31 @@ class TracksForm extends BaseTracksForm
     $field_name = 'terms';
     $this->validatorSchema[$field_name] = new sfValidatorBoolean(array('required' => true), array('invalid' => 'Please read and accept the terms first.', 'required' => 'Please read and accept the terms first.'));
 
+
+    $this->validatorSchema->setPostValidator(
+        new sfValidatorAnd(array(
+            $this->validatorSchema->getPostValidator(),
+            new sfValidatorSchemaCompare('genre_2', sfValidatorSchemaCompare::NOT_EQUAL, 'genre_1',
+                array('throw_global_error' => false),
+                array('invalid' => 'Genres must be diffrent.')
+            ),
+            new sfValidatorSchemaCompare('genre_3', sfValidatorSchemaCompare::NOT_EQUAL, 'genre_1',
+                array('throw_global_error' => false),
+                array('invalid' => 'Genres must be diffrent.')
+            ),
+            new sfValidatorOr(array(
+                new sfValidatorSchemaCompare('genre_3', sfValidatorSchemaCompare::EQUAL, '',
+                    array('throw_global_error' => false)
+                ),
+                new sfValidatorSchemaCompare('genre_3', sfValidatorSchemaCompare::NOT_EQUAL, 'genre_2',
+                    array('throw_global_error' => false),
+                    array('invalid' => 'Genres must be diffrent.')
+                )
+            )),
+
+
+        ))
+    );
 
   }
 }
