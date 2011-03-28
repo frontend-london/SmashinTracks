@@ -978,7 +978,8 @@ div.track-row2-long { width:465px; height:24px; float:left;}
 div.track-name { font-size:12px; font-weight:bold; float:left;}
 div.track-time {font-size:9px; font-weight:bold; float:left; padding-top:2px; padding-left:4px;}
 a.track-star { display:block; width:13px; height:12px; background:url(../images/icons/track-star.gif) no-repeat; float:left; margin-top:2px; margin-left:2px;}
-a.track-star.ts-active { background:url(../images/icons/track-star-active.gif) no-repeat;}
+a.track-star:hover, a.track-star.ts-active { background:url(../images/icons/track-star-active.gif) no-repeat;}
+a.track-star.ts-active:hover  { background:url(../images/icons/track-star.gif) no-repeat;}
 a.track-bin2 { display:block; width:9px; height:12px; background:url(../images/icons/track-bin2.gif) no-repeat; float:left; margin-top:2px; margin-left:5px;}
 a.track-bin3 { display:block; width:9px; height:12px; background:url(../images/icons/track-bin3.gif) no-repeat;}
 a.track-r { display:block; width:11px; height:11px; background:url(../images/icons/track-r.gif) no-repeat; float:left; margin-top:3px; margin-left:5px;}

@@ -54,6 +54,17 @@ class Tracks extends BaseTracks {
             return((time() - 86400 * sfConfig::get('app_track_new_period'))<$track_date);
         }
 
+        public function isInWishlist() {
+            $profile = ProfilesPeer::getCurrentProfile(); // wishlist jest tylko dla zalogwoanych
+            if(is_object($profile)) {
+                $criteria = new Criteria();
+                $criteria->add(ProfilesWishlistsPeer::PROFILES_ID, $profile->getProfilesId());
+                $criteria->add(ProfilesWishlistsPeer::TRACKS_ID, $this->getTracksId());
+                return ProfilesWishlistsPeer::doCount($criteria);
+            }
+            return false;
+        }
+
         /*
          * Generuje unikalny URL
          */

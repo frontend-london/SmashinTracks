@@ -67,7 +67,11 @@
                                                 <a href="<?=url_for('members_my-wishlist_by_artist_remove', $track)?>" class="track-bin2"></a>
                                             <?endif;?>
                                         <?elseif($icon_wishlist):?>
-                                            <a href="<?=url_for('members_my-wishlist_add', $track)?>" class="track-star"></a>
+                                                <?if($track->isInWishlist()):?>
+                                                    <a href="<?=url_for('members_my-wishlist_remove', $track)?>" class="track-star ts-active"></a>
+                                                <?else:?>
+                                                    <a href="<?=url_for('members_my-wishlist_add', $track)?>" class="track-star"></a>
+                                                <?endif;?>
                                         <?endif;?>
                                         <div class="track-added">Added: <?=$track->getTracksDate('Y-m-d'); ?></div>
                                         <div class="clear"></div>
