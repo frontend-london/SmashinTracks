@@ -19,28 +19,18 @@ class membersUploadTrackActions extends sfActions
   {
       $profile = ProfilesPeer::getCurrentProfile();
       $form = new TracksForm();
-//      print_r(GenresPeer::getGenresNames());
+      $upload_track_complete = false;
       if ($request->isMethod('post') && $request->hasParameter('tracks'))
       {
         $form->bind($request->getParameter('tracks'), $request->getFiles('tracks'));
         if ($form->isValid())
         {
-//echo " test_1 ";
             $time_regex = $form->getValue('tracks_time_regex');
-            $time = (int)strtr($time_regex, ':', '');
-//            $track->setTracksTime($time);
+            $time = (int)strtr($time_regex, array(':' => ''));
             $form->updateObject(array('tracks_time' => $time, 'profiles_id' => $profile->getProfilesId()));
             $form->updateObject(array('tracks_accepted' => true));
-//echo " test_2 ";
             $track = $form->save();
-//            $form->
-//            $track = new Tracks();
-//echo " test_3 ";
 
-            
-//            $track->setTracksAccepted(true); // do testów
-//            $track->setProfilesId(ProfilesPeer::getCurrentProfileId());
-//            $track->save();
 
             $file_tracks_preview = $form->getValue('tracks_preview');
             if(is_object($file_tracks_preview)) { // musi być po $track->save(); - potrzebny TracksId
@@ -55,8 +45,8 @@ class membersUploadTrackActions extends sfActions
             }
 
             for($i=1;$i<=3;$i++) {
-                if($form->getValue('genre'.$i)) {
-                    $genre[$i] = GenresPeer::getGenreByName($form->getValue('genre'.$i));
+                if($form->getValue('genre_'.$i)) {
+                    $genre[$i] = GenresPeer::getGenreByName($form->getValue('genre_'.$i));
                     $track_genre[$i] = new TracksGenres();
                     $track_genre[$i]->setGenres($genre[$i]);
                     $track_genre[$i]->setTracks($track);
@@ -64,8 +54,14 @@ class membersUploadTrackActions extends sfActions
                 }
             }
 
+            $form = new TracksForm();
+            $upload_track_complete = true;
+
+            
+
         }
       }
       $this->form = $form;
+      $this->upload_track_complete = $upload_track_complete;
   }
 }

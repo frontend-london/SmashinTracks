@@ -154,3 +154,28 @@
                 </div>
 
                 <?php include_partial('metadata/footer', array('share' => false)) ?>
+
+                <?if($upload_track_complete):?>
+                    <? slot('box-message'); ?>
+                        <div id="bm5-container">
+                            <div id="box-message">
+                                <div id="bm5-outer">
+                                    <div id="bm5-inner">
+                                        <img src="images/texts/upload-completed.gif" alt="Upload Completed" id="bm5-img1" />
+                                        <div id="bm5-div1">
+                                            Twoj track zostal pomyslnie zuploadowany. W przeciagu 24 godzin od wyslania track zostanie zaakceptowany i dodany do sklepu. Kliknij button <strong>OK</strong> aby zamknąć to okno.
+                                        </div>
+                                        <div class="button-ok">
+                                            <div class="button-left"></div>
+                                            <div class="button-right"></div>
+                                            <a href="#" id="bm5-a-close">OK</a>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                                <div id="bm5-bgr-top"></div>
+                                <div id="bm5-bgr-bottom"></div>
+                            </div>
+                        </div>
+                    <? end_slot(); ?>
+                <?endif;?>
