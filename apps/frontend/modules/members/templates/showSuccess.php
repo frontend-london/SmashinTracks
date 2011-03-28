@@ -41,12 +41,12 @@
                         </div>
                     </div>
                     <div class="box-zalogowany bz-right bz-c1">
-                    	<a href="#"><img src="images/texts/upload-track.gif" alt="Upload Track" /></a>
+                    	<a href="<?=url_for('members_upload-track');?>"><img src="images/texts/upload-track.gif" alt="Upload Track" /></a>
                         <span>Uploaduj swoje tracki na <a href="http://smashintracks.com/" class="underline">Smashintracks.com</a> i zacznij od tego momentu na nich zarabiac!</span>
                         <div class="button-check">
                             <div class="button-left"></div>
                             <div class="button-right"></div>
-                            <a href="#">Check</a>
+                            <a href="<?=url_for('members_upload-track');?>">Check</a>
                         </div>
                     </div>
                 	<div class="box-zalogowany bz-left">
@@ -77,12 +77,12 @@
                         </div>
                     </div>
                     <div class="box-zalogowany bz-right bz-c3">
-                    	<a href="#"><img src="images/texts/my-profile.gif" alt="My Profile" /></a>
-						<span>Tutaj mozesz zedytowac swoje dane takie jak zmiana hasla, maila, profil artysty, fota etc...</span>
+                    	<a href="<?=url_for('members_my-profile');?>"><img src="images/texts/my-profile.gif" alt="My Profile" /></a>
+                        <span>Tutaj mozesz zedytowac swoje dane takie jak zmiana hasla, maila, profil artysty, fota etc...</span>
                         <div class="button-check">
                             <div class="button-left"></div>
                             <div class="button-right"></div>
-                            <a href="#">Check</a>
+                            <a href="<?=url_for('members_my-profile');?>">Check</a>
                         </div>
                     </div>
                     <div class="clear"></div>
