@@ -18,7 +18,7 @@ class membersUploadTrackActions extends sfActions
   public function executeShow(sfWebRequest $request)
   {
       $profile = ProfilesPeer::getCurrentProfile();
-      $form = new TracksForm();
+      $form = new TracksForm();//array('tracks_artist' => $profile->getProfilesName())
       $upload_track_complete = false;
       $upload_track_limit = false;
 
@@ -26,8 +26,7 @@ class membersUploadTrackActions extends sfActions
 
       if($num_today_uploaded>=sfConfig::get('app_max_upload_day_limit')) {
         $upload_track_limit = true;
-      } elseif ($request->isMethod('post') && $request->hasParameter('tracks'))
-      {
+      } elseif ($request->isMethod('post') && $request->hasParameter('tracks')) {
         $form->bind($request->getParameter('tracks'), $request->getFiles('tracks'));
         if ($form->isValid())
         {

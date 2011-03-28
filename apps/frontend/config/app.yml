@@ -28,7 +28,7 @@ all:
   # maksymalna długość opisu artysty na podstronie Artists
   max_profile_short_text_length: 80
   # maksymalna ilość wgranych tracków w ciągu dnia przez usera
-  max_upload_day_limit: 5
+  max_upload_day_limit: 6
   # liczba gatunków przy profilu
   profile_genres_amount: 2
   # contact form mail from

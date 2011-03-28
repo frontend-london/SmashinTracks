@@ -52,6 +52,7 @@ class TracksForm extends BaseTracksForm
     $this->getValidator($field_name)->setMessage('max_length',"$field is too long (max %max_length% characters).");
     $this->getValidator($field_name)->setMessage('required',"$field can not be empty.");
     $this->getValidator($field_name)->setMessage('invalid',"$field is invalid.");
+    $this->setDefault($field_name, ProfilesPeer::getCurrentProfile()->getProfilesName());
 
     $field = 'Track preview';
     $field_name = 'tracks_preview';

@@ -26,9 +26,9 @@
                                 </div>
                                 <div class="clear"></div>
                             </div>
-                            <?php if ($form['tracks_title']->hasError()): ?>
+                            <?php if ($form['tracks_artist']->hasError()): ?>
                                 <div class="div-error-message">
-                                    <?php echo $form['tracks_title']->renderError() ?>
+                                    <?php echo $form['tracks_artist']->renderError() ?>
                                 </div>
                             <?php endif; ?>
                             <div id="bu-div4">
