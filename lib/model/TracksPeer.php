@@ -28,6 +28,13 @@ class TracksPeer extends BaseTracksPeer {
         return self::doCount(self::addActiveTracksCriteria($criteria));
     }
 
+    static public function countTodayUploadedTracks(Profiles $profile) {
+        $criteria = new Criteria();
+        $criteria->add(self::PROFILES_ID, $profile->getProfilesId());
+        $criteria->add(self::TRACKS_DATE, '%'.date('Y-m-d').'%', Criteria::LIKE);//2011-03-18
+        return self::doCount($criteria);
+    }
+
 
     static public function addActiveTracksCriteria(Criteria $criteria = null)
     {

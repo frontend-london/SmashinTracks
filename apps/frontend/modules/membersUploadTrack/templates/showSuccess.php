@@ -178,4 +178,25 @@
                             </div>
                         </div>
                     <? end_slot(); ?>
+                <?elseif($upload_track_limit):?>
+                    <div id="bm5-container">
+                        <div id="box-message">
+                            <div id="bm5-outer">
+                                <div id="bm5-inner">
+                                    <img src="images/texts/sorry.gif" alt="Sorry" id="bm5-img1" />
+                                    <div id="bm5-div1">
+                                        <strong>Niestety ale dzisiaj wykorzystales juz caly dostepny limit uploadowanych trackow <span class="blue">(<?=sfConfig::get('app_max_upload_day_limit')?> na dobe)</span>. Zapraszamy za kilkanascie godzin.</strong>
+                                    </div>
+                                    <div class="button-close">
+                                        <div class="button-left"></div>
+                                        <div class="button-right"></div>
+                                        <a href="<?=url_for('members')?>" id="bm5-a1-close">CLOSE</a>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                            <div id="bm5-bgr-top"></div>
+                            <div id="bm5-bgr-bottom"></div>
+                        </div>
+                    </div>
                 <?endif;?>

@@ -20,7 +20,13 @@ class membersUploadTrackActions extends sfActions
       $profile = ProfilesPeer::getCurrentProfile();
       $form = new TracksForm();
       $upload_track_complete = false;
-      if ($request->isMethod('post') && $request->hasParameter('tracks'))
+      $upload_track_limit = false;
+
+      $num_today_uploaded = TracksPeer::countTodayUploadedTracks($profile);
+
+      if($num_today_uploaded>=sfConfig::get('app_max_upload_day_limit')) {
+        $upload_track_limit = true;
+      } elseif ($request->isMethod('post') && $request->hasParameter('tracks'))
       {
         $form->bind($request->getParameter('tracks'), $request->getFiles('tracks'));
         if ($form->isValid())
@@ -63,5 +69,6 @@ class membersUploadTrackActions extends sfActions
       }
       $this->form = $form;
       $this->upload_track_complete = $upload_track_complete;
+      $this->upload_track_limit = $upload_track_limit;
   }
 }
