@@ -3,7 +3,7 @@
                         <form action="<?php echo url_for('members_upload-track') ?>" method="POST" id="form_upload_track" name="form_upload_track" enctype="multipart/form-data">
                             <img src="images/texts/upload-track.gif" alt="Upload Track" id="bu-img1" />
                             <div id="bu-div1">
-                                W tym miejscu mozesz uploadowac swoje tracki. Limit wynosi <span class="blue">4 tracki w ciagu dnia.</span><br />
+                                W tym miejscu mozesz uploadowac swoje tracki. Limit wynosi <span class="blue"><?=sfConfig::get('app_max_upload_day_limit')?> tracki w ciagu dnia.</span><br />
                                 W przeciagu <span class="blue">24 godzin</span> od wyslania track zostanie <span class="blue">zaakceptowany i dodany do sklepu.</span><br />
                                 Milej zabawy.
                             </div>
@@ -45,7 +45,7 @@
                                 <div class="clear"></div>
                             </div>
                             <div id="bu-div5">
-                                Maxymalnie 120 sekund w jakosci 128kbps!
+                                Maxymalnie 120 sekund w jakosci 128kbps! (max <?=sfConfig::get('app_maxsize_track_preview')/1048576?> MB)
                             </div>
                             <?php if ($form['tracks_preview']->hasError()): ?>
                                 <div class="div-error-message">
@@ -66,7 +66,7 @@
                                 <div class="clear"></div>
                             </div>
                             <div id="bu-div7">
-                                Akceptujemy tylko mp3 w formacie 320kbps
+                                Akceptujemy tylko mp3 w formacie 320kbps (max <?=sfConfig::get('app_maxsize_full_track')/1048576?> MB)
                             </div>
                             <?php if ($form['full_track']->hasError()): ?>
                                 <div class="div-error-message">

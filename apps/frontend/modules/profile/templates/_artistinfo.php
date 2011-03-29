@@ -1,4 +1,6 @@
-
+<?
+    if(!isset($profile_page)) $profile_page = false;
+?>
                 <div id="artistpage-top<?if(!$profile->isContent()):?>-nocontent<?endif;?>">
                     <h1><?=$profile->getProfilesName();?></h1><?if($profile->isContent()):?><br /><?endif;?>
                     <?if($profile->getProfilesPhoto()):?>
@@ -10,7 +12,7 @@
                                 <?=html_entity_decode($profile->getProfilesText());?><br />
                             <?endif;?>
                             <?foreach($profile->getProfilesUrlss() as $profileurl):?><a class="at-url" target="_blank" href="<?=$profileurl->getProfilesUrlsUrl();?>"><?echo $profileurl->getProfilesUrlsUrl();?></a><?endforeach;?>
-                            <?if($profile->getProfilesId()==ProfilesPeer::getCurrentProfileId()):?>
+                            <?if($profile_page && $profile->getProfilesId()==ProfilesPeer::getCurrentProfileId()):?>
                                 <div class="button-editprofile" id="at-edytuj">
                                     <div class="button-left"></div>
                                     <div class="button-right"></div>

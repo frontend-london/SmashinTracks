@@ -70,6 +70,8 @@ class membersCheckoutActions extends sfActions
             $transaction->save();
             $oUser->setAttribute('transaction_id',$transaction->getTransactionsId());
 
+            $admin_profile = ProfilesPeer::getAdminProfile();
+
             foreach($tracks as $track) {
                 $transaction_track = new TransactionsTracks();
                 $transaction_track->setTransactions($transaction);
@@ -93,15 +95,24 @@ class membersCheckoutActions extends sfActions
                 $transactions_saldo[2]->setTransactionsSaldoValue(Smashin::generate_default_prize_int()/2);
                 $transactions_saldo[2]->save();
 
+                $seller_profile = $track->getProfiles();
+                $seller_profile->setProfilesBalance($seller_profile->getProfilesBalance()+(Smashin::generate_default_prize_int()/2));
+                $seller_profile->save();
+
+
                 /* admin */
                 $transactions_saldo[3] = new TransactionsSaldo();
                 $transactions_saldo[3]->setTransactionsTracks($transaction_track);
                 $transactions_saldo[3]->setProfilesId(sfConfig::get('app_admin_profile_id'));
                 $transactions_saldo[3]->setTransactionsSaldoValue(Smashin::generate_default_prize_int()/2);
                 $transactions_saldo[3]->save();
+
+                $admin_profile->setProfilesBalance($admin_profile->getProfilesBalance()+(Smashin::generate_default_prize_int()/2));
+                
             }
 
             $profile->save();
+            $admin_profile->save();
 
             /*
              * pobrać basket, dodać do saldo i tracks itd, dodać zabezpiecenie gdy nie ma środków

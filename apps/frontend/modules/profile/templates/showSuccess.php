@@ -1,4 +1,4 @@
-                <?php include_partial('profile/artistinfo', array('profile' => $profile)) ?>
+                <?php include_partial('profile/artistinfo', array('profile' => $profile, 'profile_page' => true)) ?>
 
                 <div class="box-white" id="box-mymusic">
                     <?if($pager->getResults()->count()):?>

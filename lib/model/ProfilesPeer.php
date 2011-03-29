@@ -117,6 +117,11 @@ class ProfilesPeer extends BaseProfilesPeer {
         }
     }
 
+    public static function getAdminProfile() {
+        $profiles_id = sfConfig::get('app_admin_profile_id');
+        return self::getProfileById($profiles_id);
+    }
+
     public static function getCurrentProfileId() {
         $oUser = sfContext::getInstance()->getUser();
         if($oUser->hasAttribute('profile_id')) {
