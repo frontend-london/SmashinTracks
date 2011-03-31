@@ -412,7 +412,7 @@ if (!$fp) {
                                   * CUSTOMER ACCOUNT
                                   */
                                  if($profiles_id) {
-                                     $struery5 = "INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '$transactions_tracks_id[$i]', '$profiles_id[$i]', '-".TRACK_PRIZE."');";
+                                     $struery5 = "INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '$transactions_tracks_id[$i]', '$profiles_id', '-".TRACK_PRIZE."');";
                                  } else {
                                      $struery5 = "INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '$transactions_tracks_id[$i]', NULL, '-".TRACK_PRIZE."');";
                                  }

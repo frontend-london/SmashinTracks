@@ -17,9 +17,16 @@ class orderActions extends sfActions
   */
   public function executeShow(sfWebRequest $request)
   {
-    $this->transaction = $this->getRoute()->getObject();
-    $this->forward404Unless($this->transaction->getTransactionsDone());
-    $this->tracks = $this->transaction->getTransactionsTrackssJoinTracks();
+    $transaction = $this->getRoute()->getObject();
+    $this->forward404Unless($transaction->getTransactionsDone());
+    if($request->getParameter('registered')) {
+        if(!ProfilesPeer::getCurrentProfileId()) $this->forward404(); // strona tylko dla zalogowanych
+        if($transaction->getProfilesId()!=ProfilesPeer::getCurrentProfileId()) $this->redirect ('members_my-downloads');
+    }
+    if(!$transaction->isTransactionActive()) $this->redirect ('members_my-downloads');
+    $this->transaction = $transaction;
+    $this->tracks = $transaction->getTransactionsTrackssJoinTracks();
     $this->profile = ProfilesPeer::getCurrentProfile();
+    
   }
 }

@@ -173,7 +173,7 @@ order_registered:
   url:     /order/:transactions_id
   class:   sfPropelRoute
   options: { model: Transactions, type: object }
-  param: { module: order, action: show, section: order }
+  param: { module: order, action: show, section: order, registered: true }
   requirements:
     sf_method: [get]
 
@@ -181,7 +181,7 @@ order_unregistered:
   url:     /order/:transactions_id/:transactions_path
   class:   sfPropelRoute
   options: { model: Transactions, type: object }
-  param: { module: order, action: show, section: order }
+  param: { module: order, action: show, section: order, registered: false }
   requirements:
     sf_method: [get]
 
