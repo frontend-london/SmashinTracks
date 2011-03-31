@@ -11,7 +11,11 @@
                         <div class="button-download" id="bw-download">
                             <div class="button-left"></div>
                             <div class="button-right"></div>
-                            <a href="<?=url_for('order_unregistered', $transaction);?>">DOWNLOAD TRACKS</a>
+                            <?if($transaction->getProfilesId()):?>
+                                <a href="<?=url_for('order_registered', $transaction);?>">DOWNLOAD TRACKS</a>
+                            <?else:?>
+                                <a href="<?=url_for('order_unregistered', $transaction);?>">DOWNLOAD TRACKS</a>
+                            <?endif;?>
                         </div>
                     </div>
                 </div>

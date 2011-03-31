@@ -450,7 +450,7 @@ div#artistpage-top div#at-left { float:left; width:220px; padding-right:29px;}
 div#artistpage-top div#at-right { float:left; width:285px; font-size:12px; line-height:18px; }
 div#artistpage-top div#at-both { font-size:12px; line-height:18px; }
 div#artistpage-top a.at-url { display:block; text-transform:lowercase; font-weight: bold; font-size:11px;}
-div#artistpage-top div#at-edytuj { float:right; margin-top:42px;}
+div#artistpage-top div#at-edytuj, div#artistpage-top-nocontent div#at-edytuj { float:right; margin-top:42px;}
 
 div.box-silver {
 	width:570px;

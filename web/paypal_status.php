@@ -1,8 +1,8 @@
 <?php
 
 define('ADMIN_PROFILE', 1);
-define('TRACK_PRIZE_HALF', 1);
-define('TRACK_PRIZE', 2);
+define('TRACK_PRIZE_HALF', 1); // 700
+define('TRACK_PRIZE', 2); // 1400
 define('SERVER_ADDRESS', 'http://modul.ayz.pl');
 
 //DB connect creds and email
@@ -66,6 +66,12 @@ function saveLog() {
     if($is_log) {
         file_put_contents($filename_log, $log); // na końcu
     }
+}
+
+function dieLog($message) {
+    addToLog($message);
+    saveLog();
+    die();
 }
 
 function mail_attachment_text($mailto, $from_mail, $from_name, $subject, $message, $attachment_name, $attachment_content) {
@@ -261,19 +267,11 @@ if (!$fp) {
             addToLog('Req: '.$res." - line ".__LINE__);
             //create MySQL connection
             $Connect = @mysql_connect($DB_Server, $DB_Username, $DB_Password);
-            if(!$Connect) {
-                addToLog("DB CONNECTION ERROR". mysql_error() . " - " . mysql_errno(). " - line ".__LINE__);
-                saveLog();
-                die();
-            }
+            if(!$Connect) dieLog("DB CONNECTION ERROR". mysql_error() . " - " . mysql_errno(). " - line ".__LINE__);
 
             //select database
             $Db = @mysql_select_db($DB_DBName, $Connect);
-            if(!$Db) {
-                addToLog("DB SELECT ERROR". mysql_error() . " - " . mysql_errno(). " - line ".__LINE__);
-                saveLog();
-                die();
-            }
+            if(!$Db) dieLog("DB SELECT ERROR". mysql_error() . " - " . mysql_errno(). " - line ".__LINE__);
 
             $fecha = date("m")."/".date("d")."/".date("Y");
             $fecha = date("Y").date("m").date("d");
@@ -281,11 +279,8 @@ if (!$fp) {
             //check if transaction ID has been processed before
             $checkquery = "select txnid from paypal_payment_info where txnid='".$txn_id."'";
             $sihay = mysql_query($checkquery);
-            if(!$sihay) {
-                addToLog("Duplicate txn id check query failed: " . mysql_error() . " - " . mysql_errno(). " - line ".__LINE__);
-                saveLog();
-                die();
-            }
+            if(!$sihay) dieLog("Duplicate txn id check query failed: " . mysql_error() . " - " . mysql_errno(). " - line ".__LINE__);
+
             $nm = mysql_num_rows($sihay);
 
             if ($nm == 0){ //execute query
@@ -304,13 +299,8 @@ if (!$fp) {
                  addToLog("txn_type = $txn_type - line ".__LINE__);
                  $strQuery = "insert into paypal_payment_info(paymentstatus,buyer_email,firstname,lastname,street,city,state,zipcode,country,mc_gross,mc_fee,memo,paymenttype,paymentdate,txnid,pendingreason,reasoncode,tax,datecreation) values ('".$payment_status."','".$payer_email."','".$first_name."','".$last_name."','".$address_street."','".$address_city."','".$address_state."','".$address_zip."','".$address_country."','".$mc_gross."','".$mc_fee."','".$memo."','".$payment_type."','".$payment_date."','".$txn_id."','".$pending_reason."','".$reason_code."','".$tax."','".$fecha."')";
                  $result = mysql_query($strQuery);
-                 if(!$result) {
-                     addToLog("Cart - paypal_payment_info, insert query failed: " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
-                     saveLog();
-                     die();
-                 } else {
-                     addToLog("INSERT SUCCESS: $strQuery - rows: ".mysql_affected_rows()." - line ".__LINE__);
-                 }
+                 if(!$result) dieLog("Cart - paypal_payment_info, insert query failed: " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
+                 else addToLog("INSERT SUCCESS: $strQuery - rows: ".mysql_affected_rows()." - line ".__LINE__);
 
                 /* DODANIE INFORMACJI O TRANSAKCJI START */
                 if(!$error) {
@@ -364,13 +354,8 @@ if (!$fp) {
 
                      $struery = "insert into paypal_cart_info(txnid,itemnumber,itemname,os0,on0,os1,on1,quantity,invoice,custom) values ('".$txn_id."','".$_POST[$itemnumber]."','".$_POST[$itemname]."','".$_POST[$on0]."','".$_POST[$os0]."','".$_POST[$on1]."','".$_POST[$os1]."','".$_POST[$quantity]."','".$invoice."','".$custom."')";
                      $result = mysql_query($struery);
-                     if(!$result) {
-                         addToLog("Cart - paypal_cart_info, Query failed: " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
-                         saveLog();
-                         die();
-                     } else {
-                         addToLog("INSERT SUCCESS: $struery - rows: ".mysql_affected_rows()." - line ".__LINE__);
-                     }
+                     if(!$result) dieLog("Cart - paypal_cart_info, Query failed: " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
+                     else addToLog("INSERT SUCCESS: $struery - rows: ".mysql_affected_rows()." - line ".__LINE__);
 
                      /* DODANIE INFORMACJI O TRANSAKCJI START */
                      if(!$error) {
@@ -384,55 +369,56 @@ if (!$fp) {
 
                              $checkquery2 = "SELECT `tracks_id` FROM `tracks` WHERE `tracks_id` = '$track_id[$i]' AND `profiles_id` = '$artist_id[$i]' LIMIT 1";
                              $sihay2 = mysql_query($checkquery2);
-                             if(!$sihay2) {
-                                 addToLog("Artist id check query failed: sql - $checkquery2 - " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
-                                 saveLog();
-                                 die();
-                             }
+                             if(!$sihay2) dieLog("Artist id check query failed: sql - $checkquery2 - " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
+
                              $nm = mysql_num_rows($sihay2);
                              if ($nm == 1){
                                  $transactions_tracks_path[$i] = generate_random_pass(32);
                                  $struery2 = "INSERT INTO `transactions_tracks` (`transactions_tracks_id`, `transactions_id`, `tracks_id`, `transactions_tracks_path`) VALUES (NULL, '$invoice', '$track_id[$i]', '$transactions_tracks_path[$i]');";
                                  $result2 = mysql_query($struery2);
-                                 if(!$result2) {
-                                     addToLog("Transactions tracks insert query failed: sql - $struery2 - " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
-                                     saveLog();
-                                     die();
-                                 } else {
-                                    addToLog("INSERT SUCCESS: $struery2 - rows: ".mysql_affected_rows()." - line ".__LINE__);
-                                 }
+                                 if(!$result2) dieLog("Transactions tracks insert query failed: sql - $struery2 - " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
+                                 else addToLog("INSERT SUCCESS: $struery2 - rows: ".mysql_affected_rows()." - line ".__LINE__);
+
                                  $transactions_tracks_id[$i] = mysql_insert_id();
+
+                                 /*
+                                  * ARTIST ACCOUNT
+                                  */
                                  $struery3 = "INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '$transactions_tracks_id[$i]', '$artist_id[$i]', '".TRACK_PRIZE_HALF."');";
                                  $result3=mysql_query($struery3);
-                                 if(!$result3) {
-                                     addToLog("Transactions saldo(1) insert query failed: sql - $struery3 - " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
-                                     saveLog();
-                                     die();
-                                 } else {
-                                    addToLog("INSERT SUCCESS: $struery3 - rows: ".mysql_affected_rows()." - line ".__LINE__);
-                                 }
+                                 if(!$result3) dieLog("Transactions saldo(1) insert query failed: sql - $struery3 - " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
+                                 else addToLog("INSERT SUCCESS: $struery3 - rows: ".mysql_affected_rows()." - line ".__LINE__);
+
+                                 $struery3_2 = "UPDATE `profiles` SET `profiles_balance` = `profiles_balance` + '".TRACK_PRIZE_HALF."'  WHERE `profiles_id` = '$artist_id[$i]' LIMIT 1;";
+                                 $result3_2=mysql_query($struery3_2);
+                                 if(!$result3_2) dieLog("Profiles balance(1) update query failed: sql - $struery3_2 - " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
+                                 else addToLog("UPDATE SUCCESS: $struery3_2 - rows: ".mysql_affected_rows()." - line ".__LINE__);
+                                 
+
+                                 /*
+                                  * ADMIN ACCOUNT
+                                  */
                                  $struery4 = "INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '$transactions_tracks_id[$i]', '".ADMIN_PROFILE."', '".TRACK_PRIZE_HALF."');";
                                  $result4=mysql_query($struery4);
-                                 if(!$result4) {
-                                     addToLog("Transactions saldo(2) insert query failed: sql - $struery4 - " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
-                                     saveLog();
-                                     die();
-                                 } else {
-                                    addToLog("INSERT SUCCESS: $struery4 - rows: ".mysql_affected_rows()." - line ".__LINE__);
-                                 }
+                                 if(!$result4) dieLog("Transactions saldo(2) insert query failed: sql - $struery4 - " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
+                                 else addToLog("INSERT SUCCESS: $struery4 - rows: ".mysql_affected_rows()." - line ".__LINE__);
+                                 
+                                 $struery4_2 = "UPDATE `profiles` SET `profiles_balance` = `profiles_balance` + '".TRACK_PRIZE_HALF."'  WHERE `profiles_id` = '".ADMIN_PROFILE."' LIMIT 1;";
+                                 $result4_2=mysql_query($struery4_2);
+                                 if(!$result4_2) dieLog("Profiles balance(2) update query failed: sql - $struery4_2 - " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
+                                 else addToLog("UPDATE SUCCESS: $struery4_2 - rows: ".mysql_affected_rows()." - line ".__LINE__);
+
+                                 /*
+                                  * CUSTOMER ACCOUNT
+                                  */
                                  if($profiles_id) {
                                      $struery5 = "INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '$transactions_tracks_id[$i]', '$profiles_id[$i]', '-".TRACK_PRIZE."');";
                                  } else {
                                      $struery5 = "INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '$transactions_tracks_id[$i]', NULL, '-".TRACK_PRIZE."');";
                                  }
                                  $result5=mysql_query($struery5);
-                                 if(!$result5) {
-                                     addToLog("Transactions saldo(3) insert query failed: sql - $struery5 - " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
-                                     saveLog();
-                                     die();
-                                 } else {
-                                    addToLog("INSERT SUCCESS: $struery5 - rows: ".mysql_affected_rows()." - line ".__LINE__);
-                                 }
+                                 if(!$result5) dieLog("Transactions saldo(3) insert query failed: sql - $struery5 - " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
+                                 else addToLog("INSERT SUCCESS: $struery5 - rows: ".mysql_affected_rows()." - line ".__LINE__);
                              } else {
                                  addToLog("Artist id check query wrong num rows: sql - $checkquery2 - rows - $nm - line ".__LINE__);
                              }
@@ -466,13 +452,8 @@ if (!$fp) {
             if ( $txn_type == "subscr_signup"  ||  $txn_type == "subscr_payment"  ) { //subscription handling branch
               $strQuery = "insert into paypal_payment_info(paymentstatus,buyer_email,firstname,lastname,street,city,state,zipcode,country,mc_gross,mc_fee,memo,paymenttype,paymentdate,txnid,pendingreason,reasoncode,tax,datecreation) values ('".$payment_status."','".$payer_email."','".$first_name."','".$last_name."','".$address_street."','".$address_city."','".$address_state."','".$address_zip."','".$address_country."','".$mc_gross."','".$mc_fee."','".$memo."','".$payment_type."','".$payment_date."','".$txn_id."','".$pending_reason."','".$reason_code."','".$tax."','".$fecha."')";
               $result = mysql_query($strQuery); // insert subscriber payment info into paypal_payment_info table
-              if(!$result) {
-                addToLog("Subscription - paypal_payment_info, Query failed: sql - $strQuery - " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
-                saveLog();
-                die();
-              } else {
-                addToLog("INSERT SUCCESS: $strQuery - rows: ".mysql_affected_rows()." - line ".__LINE__);
-              }
+              if(!$result) dieLog("Subscription - paypal_payment_info, Query failed: sql - $strQuery - " . mysql_error() . " - " . mysql_errno()." - line ".__LINE__);
+              else addToLog("INSERT SUCCESS: $strQuery - rows: ".mysql_affected_rows()." - line ".__LINE__);
 
               $strQuery2 = "insert into paypal_subscription_info(subscr_id , sub_event, subscr_date ,subscr_effective,period1,period2, period3, amount1 ,amount2 ,amount3,  mc_amount1,  mc_amount2,  mc_amount3, recurring, reattempt,retry_at, recur_times, username ,password, payment_txn_id, subscriber_emailaddress, datecreation) values ('".$subscr_id."', '".$txn_type."','".$subscr_date."','".$subscr_effective."','".$period1."','".$period2."','".$period3."','".$amount1."','".$amount2."','".$amount3."','".$mc_amount1."','".$mc_amount2."','".$mc_amount3."','".$recurring."','".$reattempt."','".$retry_at."','".$recur_times."','".$username."','".$password."', '".$txn_id."','".$payer_email."','".$fecha."')";
               $result = mysql_query($strQuery2); // insert subscriber info into paypal_subscription_info table

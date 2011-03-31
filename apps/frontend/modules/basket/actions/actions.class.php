@@ -37,14 +37,13 @@ class basketActions extends sfActions
             $oUser->setAttribute('basket',$basket);
             $transaction = new Transactions();
         }
-        $transaction->setTransactionsDate('now');
-        $transaction->save();
     } else {
         $transaction = new Transactions();
-        $transaction->setTransactionsDate('now');
-        $transaction->save();
-        $oUser->setAttribute('transaction_id',$transaction->getTransactionsId());
     }
+    $transaction->setTransactionsDate('now');
+    $transaction->setProfilesId(ProfilesPeer::getCurrentProfileId()); // id lub null
+    $transaction->save();
+    $oUser->setAttribute('transaction_id',$transaction->getTransactionsId());
     $this->transaction = $transaction;
     $this->tracks = TracksPeer::getBasketTracks($basket);
     $this->prize = Smashin::generate_prize(count($this->tracks)*sfConfig::get('app_default_prize'));
@@ -82,9 +81,9 @@ class basketActions extends sfActions
 
   public function executePayPalCheckout(sfWebRequest $request) {
       $transaction = $this->getRoute()->getObject();
-      $tx = $request->getParameter('tx');
-      if($transaction->getTransactionsPaypalTxnid()!=$tx) $this->forward404();
       if($transaction->getTransactionsDone()) {
+        $tx = $request->getParameter('tx');
+        if($transaction->getTransactionsPaypalTxnid()!=$tx) $this->forward404(); // zabezpieczenie przed nieuprawnionym dostępem
         $this->transaction = $transaction;
         return sfView::SUCCESS;
       } else {
