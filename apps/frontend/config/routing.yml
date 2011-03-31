@@ -201,6 +201,10 @@ register_welcome:
   url:     /register/welcome
   param: { module: register, action: welcome, section: register }
 
+search:
+  url:     /search
+  param: { module: search, action: show, section: search }
+
 sign-out:
   url:     /sign-out
   param: { module: metadata, action: signOut, section: home }

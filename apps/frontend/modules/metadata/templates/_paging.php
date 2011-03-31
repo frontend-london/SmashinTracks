@@ -1,9 +1,11 @@
 <?
     if(!isset($border)) $border = false;
+    if(!isset($noborder)) $noborder = false;
+    if(!isset($path)) $path = '';
     if(!isset($route_object)) $route_object = null;
 ?>
                     <?php if ($pager->haveToPaginate()): ?>
-                        <div class="bw-div3" <?if($border):?>id="bw-div3-border"<?endif;?>>
+                        <div class="bw-div3" <?if($border):?>id="bw-div3-border"<?elseif($noborder):?>id="bw-div3-noborder"<?endif;?>>
                             <div class="bw-div3-inner">
                                 <ul>
                                    <?
@@ -23,14 +25,14 @@
                                         <li class="button-back" id="bw-back">
                                             <div class="button-left"></div>
                                             <div class="button-right"></div>
-                                            <a href="<?php echo Smashin::generate_url_for($route_name, $route_object) ?>?page=<?=$pager->getPreviousPage()?>">BACK</a>
+                                            <a href="<?php echo Smashin::generate_url_for($route_name, $route_object) ?>?page=<?=$pager->getPreviousPage().$path?>">BACK</a>
                                         </li>
                                     <?endif;?>
                                     <?if($pages_show[0]):?>
-                                        <li><a href="<?php echo Smashin::generate_url_for($route_name, $route_object) ?>?page=1">1</a></li>
+                                        <li><a href="<?php echo Smashin::generate_url_for($route_name, $route_object) ?>?page=1<?=$path?>">1</a></li>
                                     <?endif;?>
                                     <?if($pages_show[1]):?>
-                                        <li><a href="<?php echo Smashin::generate_url_for($route_name, $route_object) ?>?page=2">2</a></li>
+                                        <li><a href="<?php echo Smashin::generate_url_for($route_name, $route_object) ?>?page=2<?=$path?>">2</a></li>
                                     <?endif;?>
                                     <?if($pages_show[2]):?>
                                         <li><span class="bw-ellipsis">...</span></li>
@@ -39,7 +41,7 @@
 
 
                                     <?php foreach ($pages as $page): ?>
-                                        <li><a<?if($page==$pager->getPage()):?> class="active"<?endif;?> href="<?php echo Smashin::generate_url_for($route_name, $route_object) ?>?page=<?=$page?>"><?=$page?></a></li>
+                                        <li><a<?if($page==$pager->getPage()):?> class="active"<?endif;?> href="<?php echo Smashin::generate_url_for($route_name, $route_object) ?>?page=<?=$page.$path?>"><?=$page?></a></li>
                                     <?php endforeach; ?>
 
 
@@ -48,16 +50,16 @@
                                         <li><span class="bw-ellipsis">...</span></li>
                                     <?endif;?>
                                     <?if($pages_show[4]):?>
-                                        <li><a href="<?php echo Smashin::generate_url_for($route_name, $route_object) ?>?page=<?=$pager->getLastPage()-1?>"><?=$pager->getLastPage()-1?></a></li>
+                                        <li><a href="<?php echo Smashin::generate_url_for($route_name, $route_object) ?>?page=<?=($pager->getLastPage()-1).$path?>"><?=$pager->getLastPage()-1?></a></li>
                                     <?endif;?>
                                     <?if($pages_show[5]):?>
-                                        <li><a href="<?php echo Smashin::generate_url_for($route_name, $route_object) ?>?page=<?=$pager->getLastPage()?>"><?=$pager->getLastPage()?></a></li>
+                                        <li><a href="<?php echo Smashin::generate_url_for($route_name, $route_object) ?>?page=<?=$pager->getLastPage().$path?>"><?=$pager->getLastPage()?></a></li>
                                     <?endif;?>
                                     <?if(!$pager->isLastPage()):?>
                                         <li class="button-next" id="bw-next">
                                             <div class="button-left"></div>
                                             <div class="button-right"></div>
-                                            <a href="<?php echo Smashin::generate_url_for($route_name, $route_object) ?>?page=<?=$pager->getNextPage()?>">NEXT</a>
+                                            <a href="<?php echo Smashin::generate_url_for($route_name, $route_object) ?>?page=<?=$pager->getNextPage().$path?>">NEXT</a>
                                         </li>
                                     <?endif;?>
                                 </ul>

@@ -32,10 +32,10 @@
                         <li<?if($sf_request->getParameter('section')=='faq'):?> class="active"<?endif;?>><a href="<?=url_for('faq')?>">Faq</a></li>
                     </ul>
                     <div id="search-top">
-                        <form name="#" action="#" method="get">
-                            <input type="text" id="st-text" name="#" value="" />
+                        <form name="form_search" action="<?=url_for('search');?>" method="get">
+                            <input type="text" id="st-text" name="k" value="<? if($sf_request->getParameter('section')=='search') echo $sf_request->getParameter('k')?>" />
                             <input type="submit" id="st-submit-fake" value="Search" />
-                            <a href="#" id="st-submit">Search</a>
+                            <a href="javascript: document.form_search.submit();" id="st-submit">Search</a>
                         </form>
                     </div>
                     <? include_component('metadata', 'submenu'); ?>
