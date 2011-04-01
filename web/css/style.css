@@ -187,6 +187,7 @@ div#loginbox div#lb-div8 { margin-bottom:19px; line-height:19px; font-weight:nor
 div#loginbox div#lb-div9 { padding-top:13px; padding-bottom:10px;}
 div#loginbox div#lb-div10, div#loginbox div#lb-div12 { font-weight:normal; padding-left:169px; width:197px;}
 div#loginbox div#lb-div12 { width:210px;}
+div#loginbox div#lb-div13 { text-align: center; padding: 40px 0px;}
 
 div#bm5-container, div#bm5-container-loginbox { width: 100%; height: 100%; background:url(../images/bgr/trans.png) repeat top left; position: fixed; top:0px; left:0px; z-index:40; /*display: none;*/}
 div#bm5-container-loginbox { display: none;}

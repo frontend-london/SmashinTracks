@@ -1,6 +1,14 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+ajax_forget-password:
+  url:     /ajax/forget-password
+  param: { module: ajax, action: forgetPassword }
+
+ajax_forget-password_submit:
+  url:     /ajax/forget-password/submit
+  param: { module: ajax, action: forgetPasswordSubmit }
+
 artists:
   url:     /artists
   param: { module: artists, action: show, section: artists }
@@ -34,6 +42,14 @@ basket_paypal_checkout:
   class:   sfPropelRoute
   options: { model: Transactions, type: object }
   param: { module: basket, action: payPalCheckout, section: basket }
+  requirements:
+    sf_method: [get]
+
+change-password:
+  url:     /change-password/:profiles_id/:profiles_password_url
+  class:   sfPropelRoute
+  options: { model: Profiles, type: object }
+  param: { module: changePassword, action: show, section: change-password }
   requirements:
     sf_method: [get]
 

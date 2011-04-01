@@ -63,6 +63,18 @@ class ProfilesPeer extends BaseProfilesPeer {
         return self::doSelectOne($criteria);
     }
 
+    public static function getProfileByEmail($profiles_email, $criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria();
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+        $criteria->add(self::PROFILES_EMAIL, $profiles_email);
+        return self::doSelectOne($criteria);
+    }
+
     public static function isProfileById($profiles_id, $criteria = null) {
         if ($criteria === null) {
                 $criteria = new Criteria();

@@ -14,7 +14,7 @@ default:
 
   stylesheets:    [style.css]
 
-  javascripts:    [jquery/jquery.js, jquery/jquery-ui-1.8.7.custom.min.js, jquery/jquery.select_drop_down.js, swfobject/swfobject.js, mp3player.js, common.js]
+  javascripts:    [jquery/jquery.js, jquery/jquery-ui-1.8.7.custom.min.js, jquery/jquery.select_drop_down.js, jquery/jquery.form.js, swfobject/swfobject.js, mp3player.js, common.js]
 
   has_layout:     true
   layout:         layout

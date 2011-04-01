@@ -1,5 +1,84 @@
+function validateEmail(email) {
+   var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+   return (reg.test(email) != false);
+}
+
 function closeMp3Player() {
     $('div#mp3player').css("display", "none");
+}
+
+function loginBoxClose(reset, box) {
+    $("a#a-loginbox-close").click(function(event){
+        event.preventDefault();
+        $("a#a-loginbox").parent().removeClass("active");
+        $("div#lb-div10").css("display", "none");
+        $("div#lb-inner input").removeClass("input-err");
+        $("div#bm5-container-loginbox").fadeOut(400, function() {
+            if(reset) {
+                $('#lb-divs').html(box);
+                loginBoxPassword();
+                loginBoxClose(false, '');
+            }
+        });
+    });
+
+    $("a#a-forget-password-submit").click(function(event){
+        event.preventDefault();
+        $('#form_forget_password').submit();
+    });
+
+
+
+
+    function showRequestForgetPassword(formData, jqForm, options) {
+//        alert('t1');
+            emailToVal = $("#forget_password_email").val();
+            err = false;
+
+            if(emailToVal == '' || !validateEmail(emailToVal)) {
+                $("#lb-div12").fadeIn();
+                err = true;
+            } else {
+                $("#lb-div12").fadeOut();
+            }
+
+            return !err;
+    }
+
+    function showResponseForgetPassword(responseText, statusText, xhr, $form)  {
+        if(responseText=='ERROR') {
+            $("#lb-div12").fadeOut();
+            $("#lb-div12").html('Email address not found please try again.');
+            $("#lb-div12").fadeIn();
+        } else {
+            $('#lb-divs').hide();
+            $('#lb-divs').html(responseText);
+            $('#lb-divs').fadeIn('slow');
+            loginBoxClose(true, loginBoxSnapshot); // snapshot zachowany przez loginBoxPassword()
+        }
+    }
+
+     var options = {
+        beforeSubmit:  showRequestForgetPassword,  // pre-submit callback
+        success:       showResponseForgetPassword  // post-submit callback
+    };
+
+    $('#form_forget_password').ajaxForm(options);
+
+}
+var loginBoxSnapshot = '';
+function loginBoxPassword() {
+    $("a#a-forget-password").click(function(event){
+        event.preventDefault();
+        loginBoxSnapshot = $('#lb-divs').html();
+        $('#lb-divs').html('<div id="lb-div13"><img src="images/icons/loader.gif" alt="LOADING.." /></div>')
+        $.get('ajax/forget-password', function(data) {
+            $('#lb-divs').hide();
+            $('#lb-divs').html(data);
+            $('#lb-divs').fadeIn('slow');
+            loginBoxClose(true, loginBoxSnapshot);
+        });
+    });
 }
 
 $(window).load (
@@ -175,15 +254,7 @@ $(window).load (
                     $("div#bm5-container-loginbox").fadeIn();
 		});
 
-		$("a#a-loginbox-close").click(function(event){
-                    event.preventDefault();
-                    //$("div#bm5-container-hidden").css("display", "none");
-                    $("a#a-loginbox").parent().removeClass("active");
-                    $("div#lb-div10").css("display", "none");
-                    $("div#lb-inner input").removeClass("input-err");
-                    $("div#bm5-container-loginbox").fadeOut();
-                    $("div#tmp-text").css("display", "none");
-		});
+                loginBoxClose(false, '');
 
 		$("a#a-loginbox-tmp-submit").click(function(event){
                     event.preventDefault();
@@ -208,6 +279,8 @@ $(window).load (
                     $('input#profile_profiles_url_edit_action').val(1);
                     $('#form_myprofile').submit();
 		});
+
+                loginBoxPassword();
 
 	}
 );
