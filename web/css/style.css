@@ -506,7 +506,7 @@ div#box-changepassword div#bc-div2 { margin-top:16px; padding-top:35px; border: 
 div#box-changepassword div#bc-div4 { padding-left:193px; padding-bottom:45px; width:228px;}
 div#box-changepassword div#bc-div4 div.button-silver-cancel { float:left;}
 div#box-changepassword div#bc-div4 div.button-submit { float:right; }
-div#box-changepassword div#bc-div5 { margin-bottom:16px; padding-top:0px; margin-top:-5px;}
+div#box-changepassword div#bc-div5, div#box-changepassword div#bc-div6 { margin-bottom:16px; padding-top:0px; margin-top:-5px;}
 
 div#box-order { margin-bottom:16px; padding-bottom:12px}
 div#box-order img#bo-img1 { padding-top:28px; float:left}

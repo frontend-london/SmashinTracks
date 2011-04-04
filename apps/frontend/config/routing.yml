@@ -51,7 +51,7 @@ change-password:
   options: { model: Profiles, type: object }
   param: { module: changePassword, action: show, section: change-password }
   requirements:
-    sf_method: [get]
+    sf_method: [get,post]
 
 charts:
   url:     /charts

@@ -17,7 +17,7 @@ class changePasswordActions extends sfActions
   */
   public function executeShow(sfWebRequest $request)
   {
-    $this->profile = $this->getRoute()->getObject();
+    $profile = $this->getRoute()->getObject();
 
     $form = new ChangePasswordForm();
 
@@ -26,7 +26,7 @@ class changePasswordActions extends sfActions
         $form->bind($request->getParameter('change_password'));
         if ($form->isValid())
         {
-            $profile = new Profiles();
+//            $profile = new Profiles();
             $profile->setProfilesPasswordUrl(null);
             $profile->setProfilesPassword($form->getValue('password'));
             $profile->save();
@@ -34,5 +34,6 @@ class changePasswordActions extends sfActions
         }
     }
     $this->form = $form;
+    $this->profile = $profile;
   }
 }
