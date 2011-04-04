@@ -18,7 +18,7 @@ class registerActions extends sfActions
 
   private function sendEmail() {
 
-      if(sfConfig::get('sf_environment')!='dev') {
+      if(sfConfig::get('app_send_mail')) {
       
         $mail = $this->form->getValue('profiles_email');
         $mail_name = $this->form->getValue('profiles_name');

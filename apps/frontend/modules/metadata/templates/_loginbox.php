@@ -2,13 +2,13 @@
                 <div id="loginbox">
                     <div id="lb-outer">
                         <div id="lb-inner">
-                            <form action="<?php echo url_for('homepage') ?>" method="POST" id="form_login" name="form_login">
-                                <img src="images/texts/log-in.gif" alt="Log In" id="lb-img1" />
-                                <div id="lb-div1">
-                                    Not a member yet? <a href="<?=url_for('register')?>">Sign up here</a>
-                                </div>
-                                <div id="lb-div2"></div>
-                                <div id="lb-divs">
+                            <img src="images/texts/log-in.gif" alt="Log In" id="lb-img1" />
+                            <div id="lb-div1">
+                                Not a member yet? <a href="<?=url_for('register')?>">Sign up here</a>
+                            </div>
+                            <div id="lb-div2"></div>
+                            <div id="lb-divs">
+                                <form action="<?php echo url_for('homepage') ?>" method="POST" id="form_login" name="form_login">
                                     <div id="lb-div3">
                                         <div class="lb-left">
                                             <?php echo $form['email']->renderLabel('Your email address:') ?>
@@ -57,8 +57,8 @@
                                     <div id="lb-div7">
                                         <a href="#" id="a-forget-password">Forgot password?</a>
                                     </div>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
                     <div id="lb-bgr-top"></div>

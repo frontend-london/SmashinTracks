@@ -15,8 +15,24 @@ class changePasswordActions extends sfActions
   *
   * @param sfRequest $request A request object
   */
-  public function executeIndex(sfWebRequest $request)
+  public function executeShow(sfWebRequest $request)
   {
-    $this->forward('default', 'module');
+    $this->profile = $this->getRoute()->getObject();
+
+    $form = new ChangePasswordForm();
+
+    if ($request->isMethod('post') && $request->hasParameter('change_password'))
+    {
+        $form->bind($request->getParameter('change_password'));
+        if ($form->isValid())
+        {
+            $profile = new Profiles();
+            $profile->setProfilesPasswordUrl(null);
+            $profile->setProfilesPassword($form->getValue('password'));
+            $profile->save();
+            $this->redirect('homepage');
+        }
+    }
+    $this->form = $form;
   }
 }

@@ -32,17 +32,24 @@ class ajaxActions extends sfActions
             $profile->setProfilesPasswordUrl($password_url);
             $profile->save();
 
-            $message = $this->getMailer()->compose();
-            $message->setSubject('Smashintracks.com - Reset Password Link');
-            $message->setTo($profile->getProfilesEmail());
-            $message->setFrom(array(sfConfig::get('app_contact_form_mail_from') => 'Smashintracks.com'));
+            if(sfConfig::get('app_send_mail')) {
 
-            $html = $this->getPartial('ajax/forgetPasswordEmailHtml', array('profile' => $profile));
-            $message->setBody($html, 'text/html');
-            $text = $this->getPartial('ajax/forgetPasswordEmailPlain', array('profile' => $profile));
-            $message->addPart($text, 'text/plain');
+                $message = $this->getMailer()->compose();
+                $message->setSubject('Smashintracks.com - Reset Password Link');
+                $message->setTo($profile->getProfilesEmail());
+                $message->setFrom(array(sfConfig::get('app_contact_form_mail_from') => 'Smashintracks.com'));
 
-            $this->getMailer()->send($message);
+                $html = $this->getPartial('ajax/forgetPasswordEmailHtml', array('profile' => $profile));
+                $message->setBody($html, 'text/html');
+                $text = $this->getPartial('ajax/forgetPasswordEmailPlain', array('profile' => $profile));
+                $message->addPart($text, 'text/plain');
+
+                $this->getMailer()->send($message);
+
+                $this->logMessage('Email (Forget Password URL) send', 'info');
+            } else {
+                $this->logMessage('Email (Forget Password URL) not send', 'alert');
+            }
 
       } else {
         return sfView::ERROR;
