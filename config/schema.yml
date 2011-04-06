@@ -174,10 +174,9 @@ propel:
     _attributes: { phpName: TracksPlayed }
     tracks_played_id: { phpName: TracksPlayedId, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
     tracks_id: { phpName: TracksId, type: INTEGER, size: '11', required: true, foreignTable: tracks, foreignReference: tracks_id, onDelete: RESTRICT, onUpdate: RESTRICT }
-    profiles_id: { phpName: ProfilesId, type: INTEGER, size: '11', required: false, foreignTable: profiles, foreignReference: profiles_id, onDelete: RESTRICT, onUpdate: RESTRICT }
-    tracks_played_ip_address: { phpName: TracksPlayedIpAddress, type: VARCHAR, size: '15', required: false }
+    tracks_played_ip_address: { phpName: TracksPlayedIpAddress, type: VARCHAR, size: '15', required: true }
     tracks_played_date: { phpName: TracksPlayedDate, type: TIMESTAMP, required: true }
-    _indexes: { fk_tp_tracks_id: [tracks_id], fk_tp_profiles_id: [profiles_id] }
+    _indexes: { fk_tp_tracks_id: [tracks_id] }
   tracks_recommends:
     _attributes: { phpName: TracksRecommends }
     tracks_recommends_id: { phpName: TracksRecommendsId, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }

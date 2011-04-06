@@ -93,23 +93,22 @@ class Tracks extends BaseTracks {
             return parent::save($con);
         }
 
-        public function setTracksPath($v)
-	{
-		if ($v !== null) {
-			$v = (string) $v;
-		}
+        public function addStats() {
+            $ip_address = $_SERVER['REMOTE_ADDR'];
 
-//                $big_old = sfConfig::get('sf_images_profiles_big_dir').DIRECTORY_SEPARATOR.$this->profiles_path.'.jpg';
-//		if (($this->profiles_path !== $v) && file_exists($big_old)) {
-//                    $big_new = sfConfig::get('sf_images_profiles_big_dir').DIRECTORY_SEPARATOR.$v.'.jpg';
-//                    $small_old = sfConfig::get('sf_images_profiles_small_dir').DIRECTORY_SEPARATOR.$this->profiles_path.'.jpg';
-//                    $small_new = sfConfig::get('sf_images_profiles_small_dir').DIRECTORY_SEPARATOR.$v.'.jpg';
-//                    rename($big_old, $big_new);
-//                    rename($small_old, $small_new);
-//		}
-
-		return parent::setTracksPath($v);
-	}
+            $criteria = new Criteria();
+            $criteria->add(TracksPlayedPeer::TRACKS_ID, $this->getTracksId());
+            $criteria->add(TracksPlayedPeer::TRACKS_PLAYED_DATE, date('Y-m-d'), Criteria::GREATER_EQUAL); // dziś, nowsze niż
+            $criteria->add(TracksPlayedPeer::TRACKS_PLAYED_IP_ADDRESS, $ip_address);
+            $amount = TracksPlayedPeer::doCount($criteria);
+            if(!$amount) {
+                $played = new TracksPlayed();
+                $played->setTracksPlayedDate(date('U'));
+                $played->setTracksPlayedIpAddress($ip_address);
+                $played->setTracks($this);
+                $played->save();
+            }
+        }
 
 
 

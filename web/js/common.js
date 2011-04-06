@@ -216,9 +216,11 @@ $(window).load (
                     fp_address=$(".fp_address",this).attr('title');
                     fp_title=$(".fp_title",this).attr('title');
                     fp_prize=$(".fp_prize",this).attr('title');
+                    fp_item_id=$(".fp_item_id",this).attr('title');
                     fp_add_wishlist=$(".fp_add_wishlist",this).attr('title');
                     fp_remove_wishlist=$(".fp_remove_wishlist",this).attr('title');
-                    
+
+                    $.get('/ajax/track-played/'+fp_item_id);
 
                      $('div#mp3player').show(1, function() {
                         document.getElementById('smashinPlayer').playSample(fp_src,fp_ico,fp_artist,fp_address,fp_add_wishlist,fp_remove_wishlist,fp_title,fp_prize);

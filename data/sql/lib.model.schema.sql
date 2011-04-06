@@ -389,20 +389,13 @@ CREATE TABLE `tracks_played`
 (
 	`tracks_played_id` INTEGER(11)  NOT NULL AUTO_INCREMENT,
 	`tracks_id` INTEGER(11)  NOT NULL,
-	`profiles_id` INTEGER(11),
-	`tracks_played_ip_address` VARCHAR(15),
+	`tracks_played_ip_address` VARCHAR(15)  NOT NULL,
 	`tracks_played_date` DATETIME  NOT NULL,
 	PRIMARY KEY (`tracks_played_id`),
 	KEY `fk_tp_tracks_id`(`tracks_id`),
-	KEY `fk_tp_profiles_id`(`profiles_id`),
 	CONSTRAINT `tracks_played_FK_1`
 		FOREIGN KEY (`tracks_id`)
 		REFERENCES `tracks` (`tracks_id`)
-		ON UPDATE RESTRICT
-		ON DELETE RESTRICT,
-	CONSTRAINT `tracks_played_FK_2`
-		FOREIGN KEY (`profiles_id`)
-		REFERENCES `profiles` (`profiles_id`)
 		ON UPDATE RESTRICT
 		ON DELETE RESTRICT
 )Type=InnoDB;

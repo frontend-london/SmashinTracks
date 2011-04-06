@@ -9,6 +9,14 @@ ajax_forget-password_submit:
   url:     /ajax/forget-password/submit
   param: { module: ajax, action: forgetPasswordSubmit }
 
+ajax_track_played:
+  url:     /ajax/track-played/:tracks_id
+  class:   sfPropelRoute
+  options: { model: Tracks, type: object }
+  param: { module: ajax, action: trackPlayed }
+  requirements:
+    sf_method: [get]
+
 artists:
   url:     /artists
   param: { module: artists, action: show, section: artists }

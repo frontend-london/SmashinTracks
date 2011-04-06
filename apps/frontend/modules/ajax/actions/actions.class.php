@@ -56,4 +56,12 @@ class ajaxActions extends sfActions
       }
 
   }
+
+  public function executeTrackPlayed(sfWebRequest $request)
+  {
+      $this->setLayout(false);
+      $track = $this->getRoute()->getObject();
+      $track->addStats();
+
+  }
 }
