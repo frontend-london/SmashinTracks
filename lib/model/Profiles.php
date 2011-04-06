@@ -391,4 +391,27 @@ class Profiles extends BaseProfiles {
             return $this->getTransactionssActive($criteria);
         }
 
+        public function addStats() {
+            $ip_address = $_SERVER['REMOTE_ADDR'];
+
+            $criteria = new Criteria();
+            $criteria->add(ProfilesViewedPeer::PROFILES_ID, $this->getProfilesId());
+            $criteria->add(ProfilesViewedPeer::PROFILES_VIEWED_DATE, date('Y-m-d'), Criteria::GREATER_EQUAL); // dziś, nowsze niż
+            $criteria->add(ProfilesViewedPeer::PROFILES_VIEWED_IP_ADDRESS, $ip_address);
+            $amount = ProfilesViewedPeer::doCount($criteria);
+            if(!$amount) {
+                $viewed = new ProfilesViewed();
+                $viewed->setProfilesViewedDate(date('U'));
+                $viewed->setProfilesViewedIpAddress($ip_address);
+                $viewed->setProfiles($this);
+                $viewed->save();
+            }
+        }
+
+        public function getProfilesViewedTimes() {
+            $criteria = new Criteria();
+            $criteria->add(ProfilesViewedPeer::PROFILES_ID, $this->getProfilesId());
+            return ProfilesViewedPeer::doCount($criteria);
+        }
+
 } // Profiles

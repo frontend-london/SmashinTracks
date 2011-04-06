@@ -22,11 +22,15 @@ class profileActions extends sfActions
 
   public function executeShow(sfWebRequest $request)
   {
-    $this->profile = $this->getRoute()->getObject();
+    $profile = $this->getRoute()->getObject();
+    $profile->addStats();
     
-    $this->pager = new sfPropelPager('Tracks',sfConfig::get('app_max_tracks_on_list'));
-    $this->pager->setCriteria($this->profile->getActiveTracksCriteriaOrderByDate());
-    $this->pager->setPage($request->getParameter('page', 1)); // 1 = domyślna wartość
-    $this->pager->init();
+    $pager = new sfPropelPager('Tracks',sfConfig::get('app_max_tracks_on_list'));
+    $pager->setCriteria($profile->getActiveTracksCriteriaOrderByDate());
+    $pager->setPage($request->getParameter('page', 1)); // 1 = domyślna wartość
+    $pager->init();
+
+    $this->profile = $profile;
+    $this->pager = $pager;
   }
 }

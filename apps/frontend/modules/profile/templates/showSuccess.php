@@ -12,7 +12,7 @@
                     </div>
                     <?php include_partial('metadata/paging', array('pager' => $pager, 'route_object' => $profile, 'route_name' => 'profile', 'border' => true)) ?>
                     <div class="bw-div5">
-                        This profile has been viewed <strong>77 times</strong>  / <strong>6 added</strong> to favorites
+                        This profile has been viewed <strong><?=$profile->getProfilesViewedTimes()?> times</strong>
                     </div>
                 </div>
                 <?php include_partial('metadata/footer', array('border' => true)) ?>

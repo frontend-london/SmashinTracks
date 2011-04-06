@@ -26,7 +26,6 @@ class changePasswordActions extends sfActions
         $form->bind($request->getParameter('change_password'));
         if ($form->isValid())
         {
-//            $profile = new Profiles();
             $profile->setProfilesPasswordUrl(null);
             $profile->setProfilesPassword($form->getValue('password'));
             $profile->save();

@@ -127,11 +127,10 @@ propel:
   profiles_viewed:
     _attributes: { phpName: ProfilesViewed }
     profiles_viewed_id: { phpName: ProfilesViewedId, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
-    artists_id: { phpName: ArtistsId, type: INTEGER, size: '11', required: true, foreignTable: profiles, foreignReference: profiles_id, onDelete: RESTRICT, onUpdate: RESTRICT }
-    profiles_id: { phpName: ProfilesId, type: INTEGER, size: '11', required: false, foreignTable: profiles, foreignReference: profiles_id, onDelete: RESTRICT, onUpdate: RESTRICT }
+    profiles_id: { phpName: ProfilesId, type: INTEGER, size: '11', required: true, foreignTable: profiles, foreignReference: profiles_id, onDelete: RESTRICT, onUpdate: RESTRICT }
     profiles_viewed_ip_address: { phpName: ProfilesViewedIpAddress, type: VARCHAR, size: '15', required: false }
     profiles_viewed_date: { phpName: ProfilesViewedDate, type: TIMESTAMP, required: true }
-    _indexes: { fk_pv_artists_id: [artists_id], fk_pv_profiles_id: [profiles_id] }
+    _indexes: { fk_pv_profiles_id: [profiles_id] }
   profiles_wishlists:
     _attributes: { phpName: ProfilesWishlists }
     profiles_wishlists_id: { phpName: ProfilesWishlistsId, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }

@@ -249,19 +249,12 @@ DROP TABLE IF EXISTS `profiles_viewed`;
 CREATE TABLE `profiles_viewed`
 (
 	`profiles_viewed_id` INTEGER(11)  NOT NULL AUTO_INCREMENT,
-	`artists_id` INTEGER(11)  NOT NULL,
-	`profiles_id` INTEGER(11),
+	`profiles_id` INTEGER(11)  NOT NULL,
 	`profiles_viewed_ip_address` VARCHAR(15),
 	`profiles_viewed_date` DATETIME  NOT NULL,
 	PRIMARY KEY (`profiles_viewed_id`),
-	KEY `fk_pv_artists_id`(`artists_id`),
 	KEY `fk_pv_profiles_id`(`profiles_id`),
 	CONSTRAINT `profiles_viewed_FK_1`
-		FOREIGN KEY (`artists_id`)
-		REFERENCES `profiles` (`profiles_id`)
-		ON UPDATE RESTRICT
-		ON DELETE RESTRICT,
-	CONSTRAINT `profiles_viewed_FK_2`
 		FOREIGN KEY (`profiles_id`)
 		REFERENCES `profiles` (`profiles_id`)
 		ON UPDATE RESTRICT

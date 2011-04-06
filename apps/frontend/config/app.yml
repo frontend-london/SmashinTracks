@@ -42,4 +42,4 @@ all:
   # z ilu ostatnich dniach pokazuje bestsellery na głównej
   homepage_bestsellers_period: 7
   # czy wysyłać mejle
-  send_mail: 0
+  send_mail: 1
