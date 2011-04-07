@@ -40,11 +40,11 @@
                 <?if($withdraw_nomoney_alert):?>
                     <? slot('box-message'); ?>
                         <div id="bm5-container">
-                            <div id="box-message">
-                                <div id="bm5-outer">
-                                    <div id="bm5-inner">
-                                        <img src="images/texts/sorry.gif" alt="Sorry" id="bm5-img1" />
-                                        <div id="bm5-div1">
+                            <div class="box-message">
+                                <div class="bm5-outer">
+                                    <div class="bm5-inner">
+                                        <img src="images/texts/sorry.gif" alt="Sorry" class="bm5-img1" />
+                                        <div class="bm5-div1">
                                             Sorry but the minimum withrawal limit is <strong>£10</strong>
                                         </div>
                                         <div class="button-close">
@@ -55,8 +55,8 @@
                                         <div class="clear"></div>
                                     </div>
                                 </div>
-                                <div id="bm5-bgr-top"></div>
-                                <div id="bm5-bgr-bottom"></div>
+                                <div class="bm5-bgr-top"></div>
+                                <div class="bm5-bgr-bottom"></div>
                             </div>
                         </div>
                     <? end_slot(); ?>

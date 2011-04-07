@@ -247,7 +247,7 @@ $(window).load (
 
 		$("a#bm5-a1-close").click(function(event){
                     //event.preventDefault();
-                    $("div#bm5-container").css("display", "none");
+                    //$("div#bm5-container").css("display", "none");
 		});
 
 		$("a#a-loginbox").click(function(event){
@@ -283,6 +283,12 @@ $(window).load (
 		});
 
                 loginBoxPassword();
+
+		$("a#a-upload-track-submit").click(function(event){
+                    event.preventDefault();
+                    $("div#bm5-container2").fadeIn();
+                    $('#form_upload_track').submit();
+		});
 
 	}
 );

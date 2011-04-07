@@ -144,7 +144,7 @@
                                 <div class="button-upload">
                                     <div class="button-left"></div>
                                     <div class="button-right"></div>
-                                    <a href="javascript: document.form_upload_track.submit();">UPLOAD TRACK</a>
+                                    <a href="#" id="a-upload-track-submit">UPLOAD TRACK</a>
                                 </div>
                                 <div class="clear"></div>
                             </div>
@@ -158,11 +158,11 @@
                 <?if($upload_track_complete):?>
                     <? slot('box-message'); ?>
                         <div id="bm5-container">
-                            <div id="box-message">
-                                <div id="bm5-outer">
-                                    <div id="bm5-inner">
-                                        <img src="images/texts/upload-completed.gif" alt="Upload Completed" id="bm5-img1" />
-                                        <div id="bm5-div1">
+                            <div class="box-message">
+                                <div class="bm5-outer">
+                                    <div class="bm5-inner">
+                                        <img src="images/texts/upload-completed.gif" alt="Upload Completed" class="bm5-img1" />
+                                        <div class="bm5-div1">
                                             Twoj track zostal pomyslnie zuploadowany. W przeciagu 24 godzin od wyslania track zostanie zaakceptowany i dodany do sklepu. Kliknij button <strong>OK</strong> aby zamknąć to okno.
                                         </div>
                                         <div class="button-ok">
@@ -173,18 +173,18 @@
                                         <div class="clear"></div>
                                     </div>
                                 </div>
-                                <div id="bm5-bgr-top"></div>
-                                <div id="bm5-bgr-bottom"></div>
+                                <div class="bm5-bgr-top"></div>
+                                <div class="bm5-bgr-bottom"></div>
                             </div>
                         </div>
                     <? end_slot(); ?>
                 <?elseif($upload_track_limit):?>
                     <div id="bm5-container">
-                        <div id="box-message">
-                            <div id="bm5-outer">
-                                <div id="bm5-inner">
-                                    <img src="images/texts/sorry.gif" alt="Sorry" id="bm5-img1" />
-                                    <div id="bm5-div1">
+                        <div class="box-message">
+                            <div class="bm5-outer">
+                                <div class="bm5-inner">
+                                    <img src="images/texts/sorry.gif" alt="Sorry" class="bm5-img1" />
+                                    <div class="bm5-div1">
                                         <strong>Niestety ale dzisiaj wykorzystales juz caly dostepny limit uploadowanych trackow <span class="blue">(<?=sfConfig::get('app_max_upload_day_limit')?> na dobe)</span>. Zapraszamy za kilkanascie godzin.</strong>
                                     </div>
                                     <div class="button-close">
@@ -195,8 +195,31 @@
                                     <div class="clear"></div>
                                 </div>
                             </div>
-                            <div id="bm5-bgr-top"></div>
-                            <div id="bm5-bgr-bottom"></div>
+                            <div class="bm5-bgr-top"></div>
+                            <div class="bm5-bgr-bottom"></div>
                         </div>
                     </div>
                 <?endif;?>
+
+                <div id="bm5-container2" style="display:none;">
+                    <div class="box-message">
+                        <div class="bm5-outer">
+                            <div class="bm5-inner">
+                                <img src="images/texts/wait-a-moment.gif" alt="Wait a moment" class="bm5-img1" />
+                                <div class="bm5-div1">
+                                    <div class="bm5-div3">
+                                        <img src="images/icons/loader.gif" alt="" />
+                                    </div>
+                                </div>
+                                <div class="button-silver-cancel">
+                                    <div class="button-silver-left"></div>
+                                    <div class="button-silver-right"></div>
+                                    <a href="<?=url_for('members_upload-track')?>">CANCEL</a>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="bm5-bgr-top"></div>
+                        <div class="bm5-bgr-bottom"></div>
+                    </div>
+                </div>

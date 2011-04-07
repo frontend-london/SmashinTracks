@@ -136,7 +136,7 @@ class Profiles extends BaseProfiles {
 
         public function getProfilesViewedCount() {
             $criteria = new Criteria();
-            $criteria->add(ProfilesViewedPeer::ARTISTS_ID, $this->getProfilesId());
+            $criteria->add(ProfilesViewedPeer::PROFILES_ID, $this->getProfilesId());
             return ProfilesViewedPeer::doCount($criteria);
         }
 

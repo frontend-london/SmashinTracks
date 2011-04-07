@@ -110,6 +110,17 @@ class Tracks extends BaseTracks {
             }
         }
 
+        public function setTracksTitle($v)
+	{
+		if ($v !== null) {
+			$v = (string) $v;
+                        $v = ucwords($v); // z dużych liter każde słowo
+		}
+
+
+		return parent::setTracksTitle($v);
+	} // setTracksTitle()
+
 
 
 } // Tracks
