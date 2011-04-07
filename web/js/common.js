@@ -4,7 +4,9 @@ function validateEmail(email) {
 }
 
 function closeMp3Player() {
-    $('div#mp3player').css("display", "none");
+//    $('div#mp3player').css("display", "none");
+//    $('div#mp3player').css("visibility", "hidden");
+    $('div#mp3player').css('height', '1px');
 }
 
 function loginBoxClose(reset, box) {
@@ -222,9 +224,14 @@ $(window).load (
 
                     $.get('/ajax/track-played/'+fp_item_id);
 
-                     $('div#mp3player').show(1, function() {
+//                    $('div#mp3player').css('visibility', 'visible');
+                    $('div#mp3player').css('height', '102px');
+//: 102px;
+
+//                     $('div#mp3player').show(1, function() {});
                         document.getElementById('smashinPlayer').playSample(fp_src,fp_ico,fp_artist,fp_address,fp_add_wishlist,fp_remove_wishlist,fp_title,fp_prize);
-                      });
+                        
+                      
                     
 		});
 

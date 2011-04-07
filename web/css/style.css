@@ -370,22 +370,25 @@ ul#leftmenu li, ul#leftmenu-nopadding li {
 	line-height:19px;
 	height:19px;
 	width:191px;
-	width:171px;
+	/*width:171px;
+
 	padding-left:12px;
-	padding-right:8px;
+	padding-right:8px;*/
 }
 
 ul#leftmenu li a, ul#leftmenu-nopadding li a {
 	color:#3e3e3e;
-	display:block;	
+	display:block;
+	padding-left:12px;
+	padding-right:8px;
 }
 
 ul#leftmenu li.lm-new a, ul#leftmenu-nopadding li.lm-new a {
 	background:url(../images/icons/leftmenu-new.gif) no-repeat;
-	background-position: 140px 5px;	
+	background-position: 152px 5px;
 }
 
-ul#leftmenu li a:hover, ul#leftmenu li.active a, ul#leftmenu-nopadding li a:hover, ul#leftmenu-nopadding li.active a {
+ul#leftmenu li:hover a, ul#leftmenu li a:hover, ul#leftmenu li.active a, ul#leftmenu-nopadding li a:hover, ul#leftmenu-nopadding li.active a {
 	text-decoration:none;	
 	color:#fff;
 }
@@ -401,7 +404,7 @@ ul#leftmenu li span.lm-nr, ul#leftmenu-nopadding li span.lm-nr {
 	color:#bbbbbb;
 }
 
-ul#leftmenu li a:hover span.lm-nr, ul#leftmenu li.active a span.lm-nr, ul#leftmenu-nopadding li a:hover span.lm-nr, ul#leftmenu-nopadding li.active a span.lm-nr {
+ul#leftmenu li:hover a span.lm-nr, ul#leftmenu li a:hover span.lm-nr, ul#leftmenu li.active a span.lm-nr, ul#leftmenu-nopadding li a:hover span.lm-nr, ul#leftmenu-nopadding li.active a span.lm-nr {
 	color:#fff;	
 }
 
@@ -1389,7 +1392,9 @@ div#mp3player {
     bottom:0px;
     left:0px;
     z-index:30;
-    display:none;
+    height:1px;
+    /*display:none;*/
+    /*visibility: hidden;*/
 }
 
 div#mp3player a#mp-close {

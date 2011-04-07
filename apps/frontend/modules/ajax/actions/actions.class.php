@@ -17,11 +17,13 @@ class ajaxActions extends sfActions
   */
   public function executeForgetPassword(sfWebRequest $request)
   {
+      $this->forward404Unless($request->isXmlHttpRequest()); // tylko ajax
       $this->setLayout(false);
   }
 
   public function executeForgetPasswordSubmit(sfWebRequest $request)
   {
+      $this->forward404Unless($request->isXmlHttpRequest()); // tylko ajax
       $this->setLayout(false);
 
       $email = $request->getParameter('forget_password_email');
@@ -59,6 +61,7 @@ class ajaxActions extends sfActions
 
   public function executeTrackPlayed(sfWebRequest $request)
   {
+      $this->forward404Unless($request->isXmlHttpRequest()); // tylko ajax
       $this->setLayout(false);
       $track = $this->getRoute()->getObject();
       $track->addStats();
