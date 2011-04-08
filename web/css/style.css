@@ -1126,6 +1126,9 @@ div#bf-facebook { float:left; width:531px; height:259px; padding-top:14px; /* 27
 div#box-top { padding-top:0px;}
 div#box-mymusic { margin-bottom:16px;}
 div#box-mymusic div.bw-tracks { padding-top:17px;}
+div#box-404 { padding-top: 5px; text-align: center;}
+div#box-404 p {font-size: 13px; margin-top: 18px;}
+div#box-404 div.button-silver-back { margin: 27px auto;}
 
 input.input-290px, input.input-399px, input.input-79px, input.input-349px, input.input-230px {
 	height:25px;

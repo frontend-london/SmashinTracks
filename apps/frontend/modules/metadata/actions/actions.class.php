@@ -10,19 +10,15 @@
  */
 class metadataActions extends sfActions
 {
- /**
-  * Executes index action
-  *
-  * @param sfRequest $request A request object
-  */
-  public function executeIndex(sfWebRequest $request)
-  {
-    $this->forward('default', 'module');
-  }
 
   public function executeSignOut(sfWebRequest $request)
   {
       Smashin::signOut();
       $this->redirect('homepage');
+  }
+
+  public function executeShowErrorPage(sfWebRequest $request)
+  {
+
   }
 }
