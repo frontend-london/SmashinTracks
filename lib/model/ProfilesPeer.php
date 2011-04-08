@@ -103,15 +103,32 @@ class ProfilesPeer extends BaseProfilesPeer {
         return self::doCount($criteria);
     }
 
-    public static function isCookiePassCorrect($id, $cookie_pass) {
-        if(!is_int($id)) return 0;
+    public static function isCookiePassCorrect($cookie_pass) {
+        $cookie_pass_array = unserialize(base64_decode($cookie_pass));
+//        print_r($cookie_pass_array);
+        $id = (int)$cookie_pass_array[0];
+//        echo $id;
+        $pass = $cookie_pass_array[1];
+//        echo ' '.$pass.' ';
         $criteria = new Criteria();
         $criteria->add(self::PROFILES_ID, $id);
         $profile = ProfilesPeer::doSelectOne($criteria);
+//        echo (int)is_object($profile);
         if(!is_object($profile)) return 0;
-        $pass = $profile->getProfilesPassword();
-        $generate_pass = Smashin::generateCookieHash($pass);
-        return ($cookie_pass==$generate_pass);
+        $current_pass = $profile->getProfilesPassword();
+//        echo ' '.$current_pass.' ';
+        $generate_pass = Smashin::generateRememberMePass($current_pass);
+//        echo ' '.$generate_pass.' ';
+        return ($pass==$generate_pass);
+    }
+
+    public static function getProfileByCookiePass($cookie_pass, $check_profile = true) {
+        if($check_profile && !$this->isCookiePassCorrect($cookie_pass)) return null;
+        $cookie_pass_array = unserialize(base64_decode($cookie_pass));
+        $id = (int)$cookie_pass_array[0];
+        $criteria = new Criteria();
+        $criteria->add(self::PROFILES_ID, $id);
+        return ProfilesPeer::doSelectOne($criteria);
     }
 
     public static function getProfileIfLoginCorrect($email, $pass) {

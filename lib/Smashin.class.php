@@ -92,11 +92,15 @@ class Smashin
         return hash('sha256',$pass); // sha256 = char(64)
     }
 
-    public static function generateCookieHash($pass) {
+    public static function generateRememberMePass($pass) {
       $user_browser = $_SERVER['HTTP_USER_AGENT'];
       $hash = sfConfig::get('app_remember_me_hash');
       $user_cookie_array = array($user_browser, $pass, $hash);
       return hash('sha256',serialize($user_cookie_array));
+    }
+
+    public static function generateRememberMeValue($id, $pass) {
+        return base64_encode(serialize(array($id, self::generateRememberMePass($pass))));
     }
 
     public static function signOut() {
@@ -105,7 +109,6 @@ class Smashin
       sfContext::getInstance()->getUser()->getAttributeHolder()->remove('transaction_id');
       sfContext::getInstance()->getUser()->setAuthenticated(false);
       sfContext::getInstance()->getUser()->removeCredential('user');
-      sfContext::getInstance()->getResponse()->setCookie('user_id', null, time(), '/');
       sfContext::getInstance()->getResponse()->setCookie('remember_me', null, time(), '/');
     }
 
@@ -115,9 +118,7 @@ class Smashin
       sfContext::getInstance()->getUser()->setAttribute('transaction_id',$profile->getProfilesTransactionId());
       sfContext::getInstance()->getUser()->addCredential('user');
       if($remember_me) {
-          $user_id = $profile->getProfilesId();
-          if(!isset($cookie_hash)) $cookie_hash = Smashin::generateCookieHash($profile->getProfilesPassword());
-          sfContext::getInstance()->getResponse()->setCookie('user_id', $user_id, time()+60*60*24*sfConfig::get('app_remember_me_period'), '/');
+          if(!isset($cookie_hash)) $cookie_hash = self::generateRememberMeValue($profile->getProfilesId(), $profile->getProfilesPassword());
           sfContext::getInstance()->getResponse()->setCookie('remember_me', $cookie_hash, time()+60*60*24*sfConfig::get('app_remember_me_period'), '/');
       }
     }
