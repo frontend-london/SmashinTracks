@@ -24,7 +24,8 @@
        if ($this->form->isValid())
        {
            $profile = ProfilesPeer::getProfileIfLoginCorrect($this->form->getValue('email'), $this->form->getValue('password'));
-           Smashin::signIn($profile);
+           $remember_me = $this->form->getValue('remember_me');
+           Smashin::signIn($profile, $remember_me);
            $this->getContext()->getActionStack()->getLastEntry()->getActionInstance()->redirect('homepage');
        }
      }

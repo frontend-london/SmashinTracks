@@ -4,8 +4,6 @@ function validateEmail(email) {
 }
 
 function closeMp3Player() {
-//    $('div#mp3player').css("display", "none");
-//    $('div#mp3player').css("visibility", "hidden");
     $('div#mp3player').css('height', '1px');
 }
 
@@ -32,7 +30,6 @@ function loginBoxClose(reset, box) {
 
 
     function showRequestForgetPassword(formData, jqForm, options) {
-//        alert('t1');
             emailToVal = $("#forget_password_email").val();
             err = false;
 
@@ -304,19 +301,6 @@ $(document).ready
 		$('a').focus(function() {
 		  this.blur();
 		});
-
-//		$("a.fancybox").fancybox();
-		
-	
-		/*$('.bf1d-question .bf1d-title').click(function() {
-			//$(this).next().toggle();
-			$(this).next().slideToggle('slow');
-			return false;
-		}).next().hide()	*/
-
-		//$( ".bf1d-question" ).accordion( "option", "animated", 'bounceslide',  "option", "header", 'h3'  );
-
-                //alert(screen.height);
 
 		$("#bf1-questions").accordion({ 
 			active: 0,

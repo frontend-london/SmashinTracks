@@ -26,9 +26,9 @@ all:
   .actions:
     error_404_module: metadata
     error_404_action: showErrorPage
-#  .actions:
-#    login_module: default
-#    login_action: login
+    login_module: login
+    login_action: show
+
   .settings:
     # Form security secret (CSRF protection)
     csrf_secret:            c7adbe3134436cafbfa2f1e621a0e7553e1813a9

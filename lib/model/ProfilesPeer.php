@@ -103,6 +103,17 @@ class ProfilesPeer extends BaseProfilesPeer {
         return self::doCount($criteria);
     }
 
+    public static function isCookiePassCorrect($id, $cookie_pass) {
+        if(!is_int($id)) return 0;
+        $criteria = new Criteria();
+        $criteria->add(self::PROFILES_ID, $id);
+        $profile = ProfilesPeer::doSelectOne($criteria);
+        if(!is_object($profile)) return 0;
+        $pass = $profile->getProfilesPassword();
+        $generate_pass = Smashin::generateCookieHash($pass);
+        return ($cookie_pass==$generate_pass);
+    }
+
     public static function getProfileIfLoginCorrect($email, $pass) {
         $criteria = new Criteria();
         $criteria->add(self::PROFILES_EMAIL, $email);

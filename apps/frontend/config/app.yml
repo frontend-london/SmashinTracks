@@ -43,3 +43,7 @@ all:
   homepage_bestsellers_period: 7
   # czy wysyłać mejle
   send_mail: 1
+  # jak długo ma zapamiętać usera opcja remember me, w dniach
+  remember_me_period: 14
+  # hash do zaszyfrowania opcji rememeber me w cookie, zmiana jego wyloguje wszystkie profile
+  remember_me_hash: 62YR70ZngQMqIGSKbu43Y7M8CGdOImdLwlly

@@ -92,19 +92,34 @@ class Smashin
         return hash('sha256',$pass); // sha256 = char(64)
     }
 
+    public static function generateCookieHash($pass) {
+      $user_browser = $_SERVER['HTTP_USER_AGENT'];
+      $hash = sfConfig::get('app_remember_me_hash');
+      $user_cookie_array = array($user_browser, $pass, $hash);
+      return hash('sha256',serialize($user_cookie_array));
+    }
+
     public static function signOut() {
       sfContext::getInstance()->getUser()->getAttributeHolder()->remove('profile_id');
       sfContext::getInstance()->getUser()->getAttributeHolder()->remove('basket');
       sfContext::getInstance()->getUser()->getAttributeHolder()->remove('transaction_id');
       sfContext::getInstance()->getUser()->setAuthenticated(false);
-      sfContext::getInstance()->getUser()->removeCredential('user');      
+      sfContext::getInstance()->getUser()->removeCredential('user');
+      sfContext::getInstance()->getResponse()->setCookie('user_id', null, time(), '/');
+      sfContext::getInstance()->getResponse()->setCookie('remember_me', null, time(), '/');
     }
 
-    public static function signIn($profile) {
+    public static function signIn($profile, $remember_me = false, $cookie_hash = null) {
       sfContext::getInstance()->getUser()->setAuthenticated(true);
       sfContext::getInstance()->getUser()->setAttribute('profile_id',$profile->getProfilesId());
       sfContext::getInstance()->getUser()->setAttribute('transaction_id',$profile->getProfilesTransactionId());
       sfContext::getInstance()->getUser()->addCredential('user');
+      if($remember_me) {
+          $user_id = $profile->getProfilesId();
+          if(!isset($cookie_hash)) $cookie_hash = Smashin::generateCookieHash($profile->getProfilesPassword());
+          sfContext::getInstance()->getResponse()->setCookie('user_id', $user_id, time()+60*60*24*sfConfig::get('app_remember_me_period'), '/');
+          sfContext::getInstance()->getResponse()->setCookie('remember_me', $cookie_hash, time()+60*60*24*sfConfig::get('app_remember_me_period'), '/');
+      }
     }
 
     public static function generate_random_pass($length) {
