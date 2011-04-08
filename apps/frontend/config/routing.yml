@@ -93,6 +93,10 @@ genre:
   requirements:
     sf_method: [get]
 
+login:
+  url:     /login
+  param: { module: login, action: show, section: login }
+
 members:
   url:     /members
   param: { module: members, action: show, section: members }

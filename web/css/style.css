@@ -625,6 +625,20 @@ div#box-rejestracja div#br3-div10 div.button-ok { float:right; margin-right:18px
 div#box-rejestracja div#br3-div11 { width:532px; border:solid #cecece; border-width:1px 0px 0px 0px; padding-top:20px; margin-top:20px; margin-bottom:21px;}
 div#box-rejestracja div#br3-div11 div.button-zapisz { float:right;}
 
+
+div#box-logowanie {}
+div#box-logowanie img#bl-img1 { padding-top:28px; float: left;}
+div#box-logowanie div#bl-div5 { float: right; padding-top: 28px; padding-right:29px; font-size:13px; font-weight: bold;}
+div#box-logowanie div#bl-div5 a {color:#00b9e1;}
+div#box-logowanie div#bl-div6 { margin-top:16px; border:solid #cecece; border-width:1px 0px 0px 0px; margin-right:24px; padding-bottom: 16px;}
+div#box-logowanie div#bl-div1, div#box-logowanie div#bl-div2 { width:532px; margin-left:2px; padding-top:20px;  }
+div#box-logowanie div#bl-div3 { padding-left:136px; font-size:13px; padding-top:15px; line-height:17px; }
+div#box-logowanie div#bl-div4 { padding-left:136px; width:290px; padding-top:25px; padding-bottom:20px;}
+div#box-logowanie div#bl-div4 div.button-silver-back { float:left; }
+div#box-logowanie div#bl-div4 div.button-login { float:right; }
+div#box-logowanie div#bl-div7 { text-align: right; border:solid #cecece; border-width:1px 0px 0px 0px; padding-top:10px; padding-bottom:10px; font-size:13px; font-weight: bold; margin-right:24px;  }
+div#box-logowanie div#bl-div7 a { color:#00b9e1; }
+
 div#box-ustawienianew {}
 div#box-ustawienianew img#bu2-img1 { padding-top:28px;}
 div#box-ustawienianew div#bu2-div1 {font-size:13px; line-height:17px; padding-top:15px; font-weight:bold; padding-right:50px;}

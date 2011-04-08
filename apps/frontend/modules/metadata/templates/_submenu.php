@@ -11,6 +11,6 @@
                             <li class="last right"><a href="<?=url_for('sign-out')?>">SIGN OUT</a></li>
                         <?else:?>
                             <li class="last right<?if($sf_request->getParameter('section')=='register'):?> active<?endif;?>"><a href="<?=url_for('register')?>">Register</a></li>
-                            <li class="right"><a href="#" id="a-loginbox">Login</a></li>
+                            <li class="right<?if($sf_request->getParameter('section')=='login'):?> active<?endif;?>"><a href="#" id="a-loginbox">Login</a></li>
                         <?endif;?>
                     </ul>

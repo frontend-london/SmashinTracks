@@ -12,7 +12,6 @@ function closeMp3Player() {
 function loginBoxClose(reset, box) {
     $("a#a-loginbox-close").click(function(event){
         event.preventDefault();
-        $("a#a-loginbox").parent().removeClass("active");
         $("div#lb-div10").css("display", "none");
         $("div#lb-inner input").removeClass("input-err");
         $("div#bm5-container-loginbox").fadeOut(400, function() {
@@ -73,6 +72,7 @@ function loginBoxPassword() {
     $("a#a-forget-password").click(function(event){
         event.preventDefault();
         loginBoxSnapshot = $('#lb-divs').html();
+        $("div#bm5-container-loginbox").fadeIn();
         $('#lb-divs').html('<div id="lb-div13"><img src="images/icons/loader.gif" alt="LOADING.." /></div>')
         $.get('ajax/forget-password', function(data) {
             $('#lb-divs').hide();
@@ -224,11 +224,9 @@ $(window).load (
 
                     $.get('/ajax/track-played/'+fp_item_id);
 
-//                    $('div#mp3player').css('visibility', 'visible');
                     $('div#mp3player').css('height', '102px');
-//: 102px;
 
-//                     $('div#mp3player').show(1, function() {});
+                     //$('div#mp3player').show(1, function() {});
                         document.getElementById('smashinPlayer').playSample(fp_src,fp_ico,fp_artist,fp_address,fp_add_wishlist,fp_remove_wishlist,fp_title,fp_prize);
                         
                       
@@ -259,7 +257,6 @@ $(window).load (
 
 		$("a#a-loginbox").click(function(event){
                     event.preventDefault();
-                    $("a#a-loginbox").parent().addClass("active");
                     $("div#bm5-container-loginbox").fadeIn();
 		});
 
