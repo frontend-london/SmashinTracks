@@ -115,7 +115,6 @@ class Smashin
     public static function signIn($profile, $remember_me = false, $cookie_hash = null) {
       sfContext::getInstance()->getUser()->setAuthenticated(true);
       sfContext::getInstance()->getUser()->setAttribute('profile_id',$profile->getProfilesId());
-      sfContext::getInstance()->getUser()->setAttribute('transaction_id',$profile->getProfilesTransactionId());
       sfContext::getInstance()->getUser()->addCredential('user');
       if($remember_me) {
           if(!isset($cookie_hash)) $cookie_hash = self::generateRememberMeValue($profile->getProfilesId(), $profile->getProfilesPassword());

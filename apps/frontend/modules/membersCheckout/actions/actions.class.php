@@ -41,18 +41,6 @@ class membersCheckoutActions extends sfActions
         $form->bind($request->getParameter('checkout'));
         if ($form->isValid())
         {
-            /*$withdraw = new Withdraws();
-            $withdraw->setProfiles($profile);
-            $withdraw->setWithdrawsPaypalAddress($form->getValue('email'));
-            $withdraw->setWithdrawsDate(date('U'));
-            $withdraw->setWithdrawsSaldoValue($profile->getProfilesBalance());
-            $withdraw->save();
-            $profile->setProfilesBalance(0);
-            $profile->save();*/
-
-
-
-
             if($oUser->hasAttribute('transaction_id')) {
                 $transaction_id = $oUser->getAttribute('transaction_id');
                 $transaction = TransactionsPeer::getTransactionById($transaction_id);
@@ -114,22 +102,11 @@ class membersCheckoutActions extends sfActions
             $profile->save();
             $admin_profile->save();
 
-            /*
-             * pobrać basket, dodać do saldo i tracks itd, dodać zabezpiecenie gdy nie ma środków
-             */
+            $oUser->setFlash('order_complete', true);
+            $oUser->setFlash('profile_balance', $this->profile_balance);
+            $oUser->setFlash('basket_prize', $this->basket_prize);
+            $oUser->setFlash('new_balance', $this->new_balance);
 
-
-
-
-
-
-
-
-            //echo 't';
-            $this->getUser()->setFlash('order_complete', true);
-            $this->getUser()->setFlash('profile_balance', $this->profile_balance);
-            $this->getUser()->setFlash('basket_prize', $this->basket_prize);
-            $this->getUser()->setFlash('new_balance', $this->new_balance);
             $this->redirect('members_checkout_complete');
         }
     }
@@ -140,9 +117,14 @@ class membersCheckoutActions extends sfActions
 
   public function executeComplete(sfWebRequest $request)
   {
-    $order_complete = $this->getUser()->getFlash('order_complete', false); // powinno przyjąć true
 
     $oUser = $this->getUser();
+
+    $order_complete = $oUser->getFlash('order_complete', false); // powinno przyjąć true
+
+    $this->getLogger()->alert('Order complete '.(int)$order_complete);
+
+    $this->getLogger()->alert('transaction_id get'.$oUser->getAttribute('transaction_id'));
 
     if($oUser->hasAttribute('transaction_id')) {
         $transaction_id = $oUser->getAttribute('transaction_id');
@@ -154,16 +136,16 @@ class membersCheckoutActions extends sfActions
 
 
     if($order_complete) {
-        $this->profile_balance = $this->getUser()->getFlash('profile_balance');
-        $this->basket_prize = $this->getUser()->getFlash('basket_prize');
-        $this->new_balance = $this->getUser()->getFlash('new_balance');
+        $this->profile_balance = $oUser->getFlash('profile_balance');
+        $this->basket_prize = $oUser->getFlash('basket_prize');
+        $this->new_balance = $oUser->getFlash('new_balance');
         $this->transaction = $transaction;
 
         /* NIE ZMIENIA STRONY PO NACISNIECIU F5: */
-        $this->getUser()->setFlash('order_complete', true);
-        $this->getUser()->setFlash('profile_balance', $this->profile_balance);
-        $this->getUser()->setFlash('basket_prize', $this->basket_prize);
-        $this->getUser()->setFlash('new_balance', $this->new_balance);
+        $oUser->setFlash('order_complete', true);
+        $oUser->setFlash('profile_balance', $this->profile_balance);
+        $oUser->setFlash('basket_prize', $this->basket_prize);
+        $oUser->setFlash('new_balance', $this->new_balance);
     } else {
         $this->redirect('basket');
     }
