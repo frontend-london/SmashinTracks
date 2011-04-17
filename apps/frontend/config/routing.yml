@@ -213,7 +213,7 @@ order_unregistered:
   requirements:
     sf_method: [get]
 
-panelHome:
+panel_home:
   url:     /panel/home
   param: { module: panelHome, action: show, section: panel-home }
 

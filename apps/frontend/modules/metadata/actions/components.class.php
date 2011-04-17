@@ -8,9 +8,15 @@
       $this->genre_path = $this->getRequestParameter('genres_path');
     }
 
+    public function executeMainmenu(sfWebRequest $request)
+    {
+      $this->isAdmin = ProfilesPeer::isAdminProfile();
+    }
+
     public function executeSubmenu(sfWebRequest $request)
     {
-      $this->profile = ProfilesPeer::getCurrentProfile();
+      $this->isProfile = ProfilesPeer::isCurrentProfile();
+      $this->isAdmin = ProfilesPeer::isAdminProfile();
     }
 
     public function executeLoginbox(sfWebRequest $request)

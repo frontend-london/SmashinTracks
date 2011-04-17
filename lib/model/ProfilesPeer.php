@@ -63,6 +63,18 @@ class ProfilesPeer extends BaseProfilesPeer {
         return self::doSelectOne($criteria);
     }
 
+    public static function getActiveProfileById($profiles_id, $criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria();
+        }
+        elseif ($criteria instanceof Criteria) {
+                $criteria = clone $criteria;
+        }
+        $criteria->add(self::PROFILES_BLOCKED, false);
+        $criteria->add(self::PROFILES_DELETED, false);
+        return self::getProfileById($profiles_id, $criteria);
+    }
+
     public static function getProfileByEmail($profiles_email, $criteria = null) {
         if ($criteria === null) {
                 $criteria = new Criteria();
@@ -133,11 +145,24 @@ class ProfilesPeer extends BaseProfilesPeer {
         return self::doSelectOne($criteria);
     }
 
+    public static function isActiveProfileById($profiles_id, $criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria();
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+        $criteria->add(self::PROFILES_BLOCKED, false);
+        $criteria->add(self::PROFILES_DELETED, false);
+        return ProfilesPeer::isProfileById($profiles_id, $criteria);
+    }
+
     public static function isCurrentProfile() {
-      $oUser = $this->getUser();
+      $oUser = sfContext::getInstance()->getUser();
       if($oUser->hasAttribute('profile_id')) {
           $profile_id = $oUser->getAttribute('profile_id');
-          $this->profile = ProfilesPeer::getProfileById($profile_id);
+          return ProfilesPeer::isActiveProfileById($profile_id);
       }
     }
 
@@ -145,9 +170,19 @@ class ProfilesPeer extends BaseProfilesPeer {
         $oUser = sfContext::getInstance()->getUser();
         if($oUser->hasAttribute('profile_id')) {
           $profile_id = $oUser->getAttribute('profile_id');
-          return self::getProfileById($profile_id);
+          return self::getActiveProfileById($profile_id);
         } else {
             return null;
+        }
+    }
+
+    public static function isAdminProfile() {
+        $oUser = sfContext::getInstance()->getUser();
+        if($oUser->hasAttribute('profile_id')) {
+          $profile_id = $oUser->getAttribute('profile_id');
+          return ($profile_id == sfConfig::get('app_admin_profile_id'));
+        } else {
+          return false;
         }
     }
 

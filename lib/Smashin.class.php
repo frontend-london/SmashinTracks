@@ -116,6 +116,9 @@ class Smashin
       sfContext::getInstance()->getUser()->setAuthenticated(true);
       sfContext::getInstance()->getUser()->setAttribute('profile_id',$profile->getProfilesId());
       sfContext::getInstance()->getUser()->addCredential('user');
+      if($profile->isAdmin()) {
+        sfContext::getInstance()->getUser()->addCredential('admin');
+      }
       if($remember_me) {
           if(!isset($cookie_hash)) $cookie_hash = self::generateRememberMeValue($profile->getProfilesId(), $profile->getProfilesPassword());
           sfContext::getInstance()->getResponse()->setCookie('remember_me', $cookie_hash, time()+60*60*24*sfConfig::get('app_remember_me_period'), '/');

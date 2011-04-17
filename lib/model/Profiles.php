@@ -69,6 +69,14 @@ class Profiles extends BaseProfiles {
             if($this->getProfilesText() || !empty($urls) || $this->getProfilesPhoto()) return true; else return false;
         }
 
+        public function isAdmin() {
+            return $this->isAdminProfile();
+        }
+
+        public function isAdminProfile() {
+            return($this->getProfilesId() == sfConfig::get('app_admin_profile_id'));
+        }
+
         public function getProfilesNameFirstLetter() {
             return substr($this->getProfilesName(), 0, 1);
         }
