@@ -213,6 +213,10 @@ order_unregistered:
   requirements:
     sf_method: [get]
 
+panelHome:
+  url:     /panel/home
+  param: { module: panelHome, action: show, section: panel-home }
+
 profile:
   url:     /profile/:profiles_path
   class:   sfPropelRoute
