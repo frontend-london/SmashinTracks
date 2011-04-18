@@ -2,7 +2,7 @@
                         <?if($isProfile):?>
                             <?if($isAdmin):?>
                                 <li id="submenu-hi">Hi, <strong>Admin</strong></li>
-                                <li class="active"><a href="#">DODAJ/EDYTUJ GATUNKI</a></li>
+                                <li><a href="#">DODAJ/EDYTUJ GATUNKI</a></li>
                                 <li><a href="#">USTAWIENIA ETYKIETY ‘NEW’</a></li>
                                 <li><a href="#">HISTORIA SPRZEDAŻY</a></li>
                                 <li><a href="#">TEKSTY</a></li>
