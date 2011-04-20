@@ -81,7 +81,7 @@ class TracksPeer extends BaseTracksPeer {
         return self::doSelect(self::addNewTracksCriteria($criteria, $amount));
     }
 
-    static public function getNotAcceptedTracks(Criteria $criteria = null, $amount = null) {
+    static public function getNotAcceptedTracksCriteria(Criteria $criteria = null, $amount = null) {
 
         if ($criteria === null) {
                 $criteria = new Criteria(TracksPeer::DATABASE_NAME);
@@ -92,9 +92,15 @@ class TracksPeer extends BaseTracksPeer {
         }
 
         $criteria->addDescendingOrderByColumn(TracksPeer::TRACKS_DATE);
+        if($amount!=null) $criteria->setLimit($amount);
         $criteria->add(self::TRACKS_ACCEPTED, false);
+        $criteria->add(self::TRACKS_DELETED, false); // nie pokazuje usuniętych
 
-        return self::doSelect($criteria);
+        return $criteria;
+    }
+
+    static public function getNotAcceptedTracks(Criteria $criteria = null, $amount = null) {
+        return self::doSelect(self::getNotAcceptedTracksCriteria($criteria, $amount));
     }
 
     static public function getBestsellersTracks($period = null, $amount = 30) {

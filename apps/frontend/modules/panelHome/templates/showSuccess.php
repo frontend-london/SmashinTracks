@@ -6,46 +6,18 @@
                         </div>
 
                         <div id="bt2-tracks">
-                            <!-- <div class="track">
-                                <a href="#" class="track-player"><img src="images/tmp/track6.gif" alt="" /></a>
-                                <div class="track-row1">
-                                    <div class="track-artist"><a href="#">NEFTI</a></div>
-                                    <div class="track-brand"><a href="#">OLD SKOOL</a>, <a href="#">HARDCORE BREAKS</a>, <a href="#">PIANO</a></div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="track-right">
-                                    <div class="track-edit-320">
-                                        <a href="#" class="track-edit">EDIT</a>
-                                        <a href="#" class="track-320">320</a>
-                                    </div>
-                                    <div class="button-ok-big">
-                                        <div class="button-left-28px"></div>
-                                        <div class="button-right-28px"></div>
-                                        <a href="#">OK</a>
-                                    </div>
-                                </div>
-                                <div class="track-row2">
-                                    <div class="track-name"><a href="#">Strike It Up (VIP Mix)</a></div>
-                                    <div class="track-time">5:41</div>
-                                    <a href="#" class="track-bin2"></a>
-                                    <div class="track-added">2010-10-24</div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div> -->
-
                             <?$counter=0; foreach ($not_accepted as $track):?>
-                                <?php include_partial('metadata/record', array('track' => $track)) ?>
+                                <?php include_partial('metadata/record', array('track' => $track, 'not_accepted' => true, 'not_accepted_url_accept' => 'panel_home_accept_track', 'not_accepted_url_disapprove' => 'panel_home_disapprove_track')) ?>
                             <?$counter++; endforeach;?>
 
                             <div class="clear"></div>
 
                         </div>
-						<div id="bt2-div2">
+                        <div id="bt2-div2">
                             <div class="button-fulllist">
                                 <div class="button-left"></div>
                                 <div class="button-right"></div>
-                                <a href="#">Full List</a>
+                                <a href="<?=url_for('panel_acceptances')?>">Full List</a>
                             </div>
                             <div class="clear"></div>
                         </div>
@@ -53,7 +25,7 @@
                     <div class="bs-bgr-bottom"></div>
                 </div>
 
-				<div class="box-silver" id="box-ostatniosprzedane">
+                <div class="box-silver" id="box-ostatniosprzedane">
                     <div class="bs-inner">
                         <img src="images/texts/ostatnio-sprzedane.gif" alt="Ostatnio Sprzedane" id="bo2-img1" />
                         <div id="bo2-div1">

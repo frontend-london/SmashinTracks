@@ -6,6 +6,7 @@
     $DB_DBName = "modul_smashin"; //your MySQL Database Name
 */
     define('TRACK_NEW_PERIOD', 1); // czas na ściągnięcie w dniach
+    define('ADMIN_ACCESS_PASS', '13Ucgn7o0P7X12EJQuP5TFPf2JXxAtEXfovU'); // czas na ściągnięcie w dniach
 
     $DB_Server = "localhost"; //your MySQL Server
     $DB_Username = "root"; //your MySQL User Name
@@ -63,28 +64,47 @@
         return $w['tracks_path'];
     }
 
+    function getFilenameAdmin($tracks_id) {
+        $sql = "select t.tracks_path from tracks t where t.tracks_id = '$tracks_id' limit 1";
+        $result = mysql_query($sql);
+        $w = mysql_fetch_array($result);
+        return $w['tracks_path'];
+    }
+
     /* DB CONNECTION */
     $Connect = @mysql_connect($DB_Server, $DB_Username, $DB_Password);
     $Db = @mysql_select_db($DB_DBName, $Connect);
 
-    /* CHECK DB */
-    $directory = substr($_SERVER["SCRIPT_NAME"], 0, -strlen('index.php'));
-    $path = explode('/',$directory);
-    unset($path[sizeof($path)-1]);
-    $dirname = implode('/', $path);
-    $url = trim(substr($_SERVER["REQUEST_URI"], strlen($directory)), '/');
-    $first_url = substr($url, 0, strpos($url, '/'));
-    $second_url = substr(strstr($url, '/'), 1);
-    $transactions_tracks_id = (int)$first_url;
-    $transactions_tracks_path = $second_url;
-    if(urlencode($transactions_tracks_path)!=$transactions_tracks_path) die('Error '.__LINE__);
-    checkDb($transactions_tracks_id, $transactions_tracks_path);
+    /* ADMIN ACCESS */
+    $admin = $_GET['admin'];
+    $pass = $_GET['pass'];
+    if($admin==1 && $pass == ADMIN_ACCESS_PASS) {
+        $tracks_id = $_GET['id'];
+        $is_admin = true;
+    } else $is_admin = false;
 
+
+    /* CHECK DB */
+    if($is_admin) {
+        $trackname = getFilenameAdmin($tracks_id).'.mp3';
+    } else {
+        $directory = substr($_SERVER["SCRIPT_NAME"], 0, -strlen('index.php'));
+        $path = explode('/',$directory);
+        unset($path[sizeof($path)-1]);
+        $dirname = implode('/', $path);
+        $url = trim(substr($_SERVER["REQUEST_URI"], strlen($directory)), '/');
+        $first_url = substr($url, 0, strpos($url, '/'));
+        $second_url = substr(strstr($url, '/'), 1);
+        $transactions_tracks_id = (int)$first_url;
+        $transactions_tracks_path = $second_url;
+        if(urlencode($transactions_tracks_path)!=$transactions_tracks_path) die('Error '.__LINE__);
+        checkDb($transactions_tracks_id, $transactions_tracks_path);
+        $trackname = getFilename($transactions_tracks_id).'.mp3';
+    }
 
     /* GENERATE & OUTPUT FILE */
-    $trackname = getFilename($transactions_tracks_id).'.mp3';
-    $realpath = '../../../music/'.$trackname;
-    //$realpath = '../'.$trackname;
+    $realpath = '../../../music/'.$trackname; //$realpath = '../'.$trackname; - demo
+    
     if(!file_exists($realpath)) die('Error: File not found.');
     $filename = $trackname;
     $mtime = ($mtime = filemtime($realpath)) ? $mtime : gmtime();
@@ -124,9 +144,10 @@
       readfile($realpath);
     }
 
-    /* UPDATE DB */
-    updateDb($transactions_tracks_id);
-
+    if(!$is_admin) {
+        /* UPDATE DB */
+        updateDb($transactions_tracks_id);
+    }
     // Exit successfully. We could just let the script exit
     // normally at the bottom of the page, but then blank lines
     // after the close of the script code would potentially cause

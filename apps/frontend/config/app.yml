@@ -47,3 +47,5 @@ all:
   remember_me_period: 14
   # hash do zaszyfrowania opcji rememeber me w cookie, zmiana jego wyloguje wszystkie profile
   remember_me_hash: 62YR70ZngQMqIGSKbu43Y7M8CGdOImdLwlly
+  # hasło do nieograniczonego dostępu do tracka z poziomu admina
+  fullmp3_admin_access_pass: 13Ucgn7o0P7X12EJQuP5TFPf2JXxAtEXfovU

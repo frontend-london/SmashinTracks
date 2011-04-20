@@ -213,9 +213,45 @@ order_unregistered:
   requirements:
     sf_method: [get]
 
+panel_acceptances:
+  url:     /panel/acceptances
+  param: { module: panelAcceptances, action: show, section: panel-acceptances }
+
+panel_acceptances_accept_track:
+  url:     /panel/acceptances/accept/:tracks_id
+  class:   sfPropelRoute
+  options: { model: Tracks, type: object }
+  param: { module: panelAcceptances, action: accept, section: panel-acceptances }
+  requirements:
+    sf_method: [get]
+
+panel_acceptances_disapprove_track:
+  url:     /panel/acceptances/disapprove/:tracks_id
+  class:   sfPropelRoute
+  options: { model: Tracks, type: object }
+  param: { module: panelAcceptances, action: disapprove, section: panel-acceptances }
+  requirements:
+    sf_method: [get]
+
 panel_home:
   url:     /panel/home
   param: { module: panelHome, action: show, section: panel-home }
+
+panel_home_accept_track:
+  url:     /panel/home/accept/:tracks_id
+  class:   sfPropelRoute
+  options: { model: Tracks, type: object }
+  param: { module: panelHome, action: accept, section: panel-home }
+  requirements:
+    sf_method: [get]
+
+panel_home_disapprove_track:
+  url:     /panel/home/disapprove/:tracks_id
+  class:   sfPropelRoute
+  options: { model: Tracks, type: object }
+  param: { module: panelHome, action: disapprove, section: panel-home }
+  requirements:
+    sf_method: [get]
 
 profile:
   url:     /profile/:profiles_path
@@ -256,7 +292,7 @@ track:
 # default rules
 homepage:
   url:   /
-  param: { module: home, action: index, section: home, facebook: true }
+  param: { module: home, action: show, section: home, facebook: true }
 
 # generic rules
 # please, remove them by adding more specific rules

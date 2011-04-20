@@ -33,7 +33,7 @@ class membersUploadTrackActions extends sfActions
             $time_regex = $form->getValue('tracks_time_regex');
             $time = (int)strtr($time_regex, array(':' => ''));
             $form->updateObject(array('tracks_time' => $time, 'profiles_id' => $profile->getProfilesId()));
-            $form->updateObject(array('tracks_accepted' => true));
+//            $form->updateObject(array('tracks_accepted' => true));
             $track = $form->save();
 
 

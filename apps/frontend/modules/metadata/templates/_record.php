@@ -7,6 +7,9 @@
     if(!isset($my_tracks_in_wishlists)) $my_tracks_in_wishlists = false;
     if(!isset($transactions_tracks)) $transactions_tracks = false;
     if(!isset($wishlist)) $wishlist = false;
+    if(!isset($not_accepted)) $not_accepted = false;
+    if(!isset($not_accepted_url_accept)) $not_accepted_url_accept = false;
+    if(!isset($not_accepted_url_disapprove)) $not_accepted_url_disapprove = false;
 
     if(!isset($subsection)) $subsection = null;
     if(!isset($icon_wishlist)) $icon_wishlist = true;
@@ -50,6 +53,18 @@
                                                 </div>
                                             </div>
                                         <?endif;?>
+                                    <?elseif($not_accepted):?>
+                                        <div class="track-right">
+                                            <div class="track-edit-320">
+                                                <a href="#" class="track-edit">EDIT</a>
+                                                <a href="<?='mp3/download/?id='.$track->getTracksId().'&admin=1&pass='.sfConfig::get('app_fullmp3_admin_access_pass')?>" class="track-320">320</a>
+                                            </div>
+                                            <div class="button-ok-big">
+                                                <div class="button-left-28px"></div>
+                                                <div class="button-right-28px"></div>
+                                                <a href="<?=url_for($not_accepted_url_accept, $track)?>">OK</a>
+                                            </div>
+                                        </div>
                                     <?else:?>
                                         <a href="<?=url_for('basket_add', $track)?>" class="track-right">
                                             <span class="track-cart"></span>
@@ -66,6 +81,8 @@
                                             <?else:?>
                                                 <a href="<?=url_for('members_my-wishlist_by_artist_remove', $track)?>" class="track-bin2"></a>
                                             <?endif;?>
+                                        <?elseif($not_accepted):?>
+                                            <a href="<?=url_for($not_accepted_url_disapprove, $track)?>" class="track-bin2"></a>
                                         <?elseif($icon_wishlist):?>
                                                 <?if($track->isInWishlist()):?>
                                                     <a href="<?=url_for('members_my-wishlist_remove', $track)?>" class="track-star ts-active"></a>
