@@ -17,6 +17,6 @@ class panelHomeActions extends sfActions
   */
   public function executeShow(sfWebRequest $request)
   {
-      
+      $this->not_accepted = TracksPeer::getNotAcceptedTracks();
   }
 }
