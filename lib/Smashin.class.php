@@ -56,6 +56,27 @@ class Smashin
         return $r;
     }
 
+    public static function capitalizeWords($words, $charList = null) {
+        // Use ucwords if no delimiters are given
+        if (!isset($charList)) {
+         return ucwords($words);
+        }
+
+        // Go through all characters
+        $capitalizeNext = true;
+
+        for ($i = 0, $max = strlen($words); $i < $max; $i++) {
+         if (strpos($charList, $words[$i]) !== false) {
+             $capitalizeNext = true;
+         } else if ($capitalizeNext) {
+             $capitalizeNext = false;
+             $words[$i] = strtoupper($words[$i]);
+         }
+        }
+
+        return $words;
+    }
+
     /*
      * Zamienia wszystkie znaki spoza podstawowych a-z 0-9 A-Z na podstawowe
      * Przykład

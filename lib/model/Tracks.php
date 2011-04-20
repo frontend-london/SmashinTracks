@@ -114,7 +114,7 @@ class Tracks extends BaseTracks {
 	{
 		if ($v !== null) {
 			$v = (string) $v;
-                        $v = ucwords($v); // z dużych liter każde słowo
+                        $v = Smashin::capitalizeWords($v, ' -(.,'); // z dużych liter każde słowo
 		}
 
 

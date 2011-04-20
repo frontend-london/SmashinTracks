@@ -18,9 +18,23 @@
  */
 class ProfilesUrls extends BaseProfilesUrls {
 
-  public function __toString()
-  {
-    return $this->getProfilesUrlsUrl();
-  }
+    public function __toString()
+    {
+        return $this->getProfilesUrlsUrl();
+    }
+
+    public function setProfilesUrlsUrl($v)
+    {
+            if ($v !== null) {
+                    $v = (string) $v;
+
+                    if((substr($v,0,7)!='http://') && (substr($v,0,8)!='https://') && (substr($v,0,6)!='ftp://')  && (substr($v,0,7)!='ftps://')) {
+                        $v = 'http://'.$v;
+                    }
+
+            }
+
+            return parent::setProfilesUrlsUrl($v);
+    }
 
 } // ProfilesUrls

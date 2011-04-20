@@ -17,6 +17,7 @@
     {
       $this->isProfile = ProfilesPeer::isCurrentProfile();
       $this->isAdmin = ProfilesPeer::isAdminProfile();
+      $this->profile = ProfilesPeer::getCurrentProfile();
     }
 
     public function executeLoginbox(sfWebRequest $request)

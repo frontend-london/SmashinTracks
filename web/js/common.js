@@ -287,8 +287,9 @@ $(window).load (
 
 		$("a#a-upload-track-submit").click(function(event){
                     event.preventDefault();
-                    $("div#bm5-container2").fadeIn();
-                    $('#form_upload_track').submit();
+                    $("div#bm5-container2").fadeIn(400, function() {
+                        $('#form_upload_track').submit();
+                    });
 		});
 
 	}
