@@ -269,6 +269,11 @@ $(window).load (
                     $(this).parent().parent().next().toggle();
 		});
 
+                $("a.a-transactiontrack-info").click(function(event){
+                    event.preventDefault();
+                    $(this).parent().parent().parent().next().toggle();
+		});
+
 		$("a#a-url-add-submit").click(function(event){
                     event.preventDefault();
                     $('input#profile_profiles_url_add_action').val(1);
@@ -303,13 +308,13 @@ $(document).ready
 		  this.blur();
 		});
 
-		$("#bf1-questions").accordion({ 
-			active: 0,
-			collapsible: true,
-			autoHeight: false,
-			header: '.bf1d-title', 
-			animated: 'easeslide'
-		});		
+//		$("#bf1-questions").accordion({
+//			active: 0,
+//			collapsible: true,
+//			autoHeight: false,
+//			header: '.bf1d-title',
+//			animated: 'easeslide'
+//		});
 	}
 )
 	

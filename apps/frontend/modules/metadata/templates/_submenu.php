@@ -4,7 +4,7 @@
                                 <li id="submenu-hi">Hi, <strong>Admin</strong></li>
                                 <li><a href="#">DODAJ/EDYTUJ GATUNKI</a></li>
                                 <li><a href="#">USTAWIENIA ETYKIETY ‘NEW’</a></li>
-                                <li><a href="#">HISTORIA SPRZEDAŻY</a></li>
+                                <li<?if($sf_request->getParameter('section')=='panel-transactions-history'):?> class="active"<?endif;?>><a href="<?=url_for('panel_transactions-history')?>">HISTORIA SPRZEDAŻY</a></li>
                                 <li><a href="#">TEKSTY</a></li>
                                 <li class="last"><a href="#">WYPŁATY</a></li>
                             <?else:?>

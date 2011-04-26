@@ -764,8 +764,11 @@ div#box-ostatniosprzedane div#bo2-div2 { padding-right:21px; padding-top:6px; }
 div#box-ostatniosprzedane div#bo2-div2 div.button-fulllist { float:right}
 div#box-ostatniosprzedane div.track-plays { text-align:right; font-size:12px;}
 div#box-ostatniosprzedane div.track-plays span { text-decoration:underline; font-size:11px;}
+div#box-ostatniosprzedane div.track-plays a { text-decoration:underline; font-size:11px; color: #3e3e3e; float: right; font-weight: 700;}
+div#box-ostatniosprzedane div.track-plays a:hover { text-decoration: none;}
 div#box-ostatniosprzedane div#bo2-tracks div.track.nomargin { margin-bottom:0px; padding-bottom:0px;}
 div#box-ostatniosprzedane div#bo2-tracks div.track.nomargin div.track-row2 { height:19px;}
+div#box-ostatniosprzedane div.tracksale { display:none;}
 
 div#box-zgloszeniadowyplaty { margin-top:18px; padding-bottom:12px; }
 div#box-zgloszeniadowyplaty img#bz2-img1 { padding-top:28px;}

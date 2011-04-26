@@ -69,8 +69,8 @@
                                     <?elseif($transaction_list):?>
                                         <div class="track-right">
                                             <div class="track-plays">
-                                                <?=Smashin::generate_prize(sfConfig::get('app_default_prize'))?><br />
-                                                <span>#<?=$transactions_tracks->getTransactionsTracksId()?></span>
+                                                <?=$transactions_tracks->getTransactionsTracksValue();?><br />
+                                                <a href="#" class="a-transactiontrack-info">#<?=$transactions_tracks->getTransactionsTracksId()?></a>
                                             </div>
                                         </div>
                                     <?else:?>
@@ -107,12 +107,8 @@
                                 </div>
                                 <?if($transaction_list):?>
                                     <?
-                                    if(false) $transactions_tracks = new TransactionsTracks();
-                                    $transactions = $transactions_tracks->getTransactions();
-                                    if(false) $transactions = new Transactions();
-                                    if($transactions->getTransactionsPaymethod()=='1') $transactions_paypal = true; else $transactions_paypal = false;
-
-                                    
+                                        $transactions = $transactions_tracks->getTransactions();
+                                        if($transactions->getTransactionsPaymethod()=='1') $transactions_paypal = true; else $transactions_paypal = false;
                                     ?>
                                     <div class="tracksale">
                                         <div class="tracksale-row1">
@@ -133,7 +129,12 @@
                                             <div class="clear"></div>
                                         </div>
                                         <div class="tracksale-row2">
-                                                Metoda: <strong><?if($transactions_paypal):?>PAYPAL<?else:?>SMASHIN TRACKS<?endif?></strong>  &nbsp; l &nbsp;  Ściągnięte: <strong>1 (16:01) - 2 (18:20) - 3 (8:04)</strong>
+                                                Metoda: <strong><?if($transactions_paypal):?>PAYPAL<?else:?>SMASHIN TRACKS<?endif?></strong>  &nbsp; l &nbsp;  
+                                                Ściągnięte: <strong>
+                                                    <?$counter2 = 0; foreach($transactions_tracks->getTransactionsTracksDownloadss() as $download): $counter2++;?>
+                                                        <?if($counter2>1) echo '-';?> <?=$counter2?> (<?=$download->getTransactionsTracksDownloadsDate('H:i')?>)
+                                                    <?endforeach;?>
+                                                </strong>
                                         </div>
                                     </div>
 

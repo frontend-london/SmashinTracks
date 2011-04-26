@@ -253,6 +253,10 @@ panel_home_disapprove_track:
   requirements:
     sf_method: [get]
 
+panel_transactions-history:
+  url:     /panel/transactions-history
+  param: { module: panelTransactionsHistory, action: show, section: panel-transactions-history }
+
 profile:
   url:     /profile/:profiles_path
   class:   sfPropelRoute

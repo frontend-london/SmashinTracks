@@ -25,6 +25,8 @@ all:
   max_tracks_on_list: 10
   # lista transakcji na stronie My Sales - do stronicowania
   max_transactions_on_list: 10
+  # lista transakcji na stronie Historia Sprzedaży w panelu - do stronicowania
+  max_transactions_on_panel_list: 10
   # maksymalna długość opisu artysty na podstronie Artists
   max_profile_short_text_length: 80
   # maksymalna ilość wgranych tracków w ciągu dnia przez usera

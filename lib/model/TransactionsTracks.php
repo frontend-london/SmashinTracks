@@ -17,5 +17,14 @@
  * @package    lib.model
  */
 class TransactionsTracks extends BaseTransactionsTracks {
-
+    public function getTransactionsTracksValue() {
+        $criteria = new Criteria();
+        $criteria->add(TransactionsSaldoPeer::TRANSACTIONS_TRACKS_ID, $this->getTransactionsTracksId());
+        $criteria->add(TransactionsSaldoPeer::TRANSACTIONS_SALDO_VALUE, 0, Criteria::GREATER_THAN);
+        $criteria->addSelectColumn('SUM('.TransactionsSaldoPeer::TRANSACTIONS_SALDO_VALUE.')');
+        $smtm = TransactionsSaldoPeer::doSelectStmt($criteria);
+        $row = $smtm->fetch(PDO::FETCH_NUM);
+        $saldo = $row[0];
+        return Smashin::generate_prize($saldo/100);
+    }
 } // TransactionsTracks

@@ -29,7 +29,7 @@ class TransactionsPeer extends BaseTransactionsPeer {
         return self::doSelectOne($criteria);
     }
 
-    public static function getLastDoneTransactions($amount = null, $criteria = null) {
+    public static function getLastDoneTransactionsCriteria($amount = null, $criteria = null) {
         if ($criteria === null) {
                 $criteria = new Criteria();
         }
@@ -40,6 +40,10 @@ class TransactionsPeer extends BaseTransactionsPeer {
         if($amount!=null) $criteria->setLimit($amount); // limit dla transakcji a nie dla tracków, zakładam więc najbardziej pesymistyczny przypadek - 1 transkakcja = 1  track
         $criteria->add(TransactionsPeer::TRANSACTIONS_DONE, true);
         $criteria->addDescendingOrderByColumn(TransactionsPeer::TRANSACTIONS_DATE);
-        return self::doSelect($criteria);
+        return $criteria;
+    }
+
+    public static function getLastDoneTransactions($amount = null, $criteria = null) {
+        return self::doSelect(self::getLastDoneTransactionsCriteria($amount, $criteria));
     }
 } // TransactionsPeer
