@@ -6,6 +6,10 @@
     {   
       $this->menuleft = GenresPeer::doSelect(new Criteria());
       $this->genre_path = $this->getRequestParameter('genres_path');
+
+      $this->isAdmin = ProfilesPeer::isAdminProfile();
+      $this->tracks_amount = TracksPeer::countActiveTracks();
+      $this->profiles_amount = ProfilesPeer::countActiveProfiles();
     }
 
     public function executeMainmenu(sfWebRequest $request)

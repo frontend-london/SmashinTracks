@@ -75,6 +75,18 @@ class ProfilesPeer extends BaseProfilesPeer {
         return self::getProfileById($profiles_id, $criteria);
     }
 
+    public static function countActiveProfiles($criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria();
+        }
+        elseif ($criteria instanceof Criteria) {
+                $criteria = clone $criteria;
+        }
+        $criteria->add(self::PROFILES_BLOCKED, false);
+        $criteria->add(self::PROFILES_DELETED, false);
+        return self::doCount($criteria);
+    }
+
     public static function getProfileByEmail($profiles_email, $criteria = null) {
         if ($criteria === null) {
                 $criteria = new Criteria();
