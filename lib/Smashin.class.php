@@ -34,6 +34,29 @@ class Smashin
         return intval(sfConfig::get('app_default_prize')*100);
     }
 
+    public static function generateMonthInPolish($m) {
+        $m = (int)$m;
+        $months = array(null, 'styczeń', 'luty', 'marzec', 'kwiecień', 'maj', 'czerwiec', 'lipiec', 'sierpień', 'wrzesień', 'październik', 'listopad', 'grudzień');
+        return $months[$m];
+    }
+
+    public static function generateWeekdayInPolish($d) {
+        $d = (int)$d;
+        $weekday = array(null, 'poniedziałek', 'wtorek', 'środa', 'czwartek', 'piątek', 'sobota', 'niedziela');
+        return $weekday[$d];
+    }
+
+    public static function generateDateInPolish(DateTime $dt) {
+        $format = 'Y-m-d';
+
+        $day = $dt->format('j');
+        $year = $dt->format('Y');
+        $month = self::generateMonthInPolish($dt->format('m'));
+        $weekday = self::generateWeekdayInPolish($dt->format('N'));
+
+        return "$day $month $year, $weekday"; // np. 2 stycznia 2010, wtorek
+    }
+
     /*
      * Zamienia wszyskie litery specjalne na ich odpowiedniki w ASCII np. ą na a itd.
      */

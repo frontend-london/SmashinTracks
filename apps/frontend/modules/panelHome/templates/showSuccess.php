@@ -32,11 +32,97 @@
                             Lista <span class="blue">10 ostatnio sprzedanych trackow.</span> Aby obejrzec pelna liste kliknij w button <br /><span class="blue">FULL LIST.</span>
                         </div>
 
-						<div id="bo2-tracks">
-
-                        	<div class="track-date">
+                        <div id="bo2-tracks">
+                            <div class="track-date">
                             	2 stycznia 2010, wtorek
                             </div>
+
+                            <?$last_date = ''; $counter = 0; foreach ($last_sold_trancations as $transaction):?>
+                                <?if($last_date!=$transaction->getTransactionsDatePolish()):?>
+                                    <div class="track-date">
+                                        <?$last_date = $transaction->getTransactionsDatePolish(); echo $last_date;?>
+                                    </div>
+                                <?endif?>
+                                <?foreach($transaction->getTransactionsTrackssJoinTracks() as $transaction_track): $counter++; if($counter>4) break;?>
+                                    <?php include_partial('metadata/record', array('transaction_list' => true, 'transactions_tracks' => $transaction_track, 'track' => $transaction_track->getTracks(), 'icon_wishlist' => false)) ?>
+                                <?endforeach;?>
+
+                            <?endforeach;?>
+
+                            <div class="track nomargin">
+                                <a href="#" class="track-player"><img src="images/tmp/track6.gif" alt="" /></a>
+                                <div class="track-row1">
+                                    <div class="track-artist"><a href="#">NEFTI</a></div>
+                                    <div class="track-brand"><a href="#">OLD SKOOL</a>, <a href="#">HARDCORE BREAKS</a>, <a href="#">PIANO</a></div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="track-right">
+                                    <div class="track-plays">
+                                        £7.50<br />
+                                        <span>#149001314</span>
+                                    </div>
+                                </div>
+                                <div class="track-row2">
+                                    <div class="track-name"><a href="#">Strike It Up (VIP Mix)</a></div>
+                                    <div class="track-time">5:41</div>
+                                    <div class="track-added">2010-10-24</div>
+                                    <a href="#" class="track-r"></a>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="tracksale">
+                                    <div class="tracksale-row1">
+                                    	<div class="ts1-div1">
+	                                    	Kupiony przez: <a href="#" class="bold">madogz@o2.pl</a>
+                                        </div>
+                                        <div class="ts1-div2">
+	                                        &nbsp; l &nbsp; 14:00  <br />
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="tracksale-row2">
+	                                    Metoda: <strong>PAYPAL</strong>  &nbsp; l &nbsp;  Ściągnięte: <strong>1 (14:01)</strong>
+                                    </div>
+                            </div>
+
+                            <div class="track nomargin">
+                                <a href="#" class="track-player"><img src="images/tmp/track7.gif" alt="" /></a>
+                                <div class="track-row1">
+                                    <div class="track-artist"><a href="#">URBAN IMPULZ</a></div>
+                                    <div class="track-brand"><a href="#">BASSLINE HOUSE</a>, <a href="#">ORGAN</a></div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="track-right">
+                                    <div class="track-plays">
+                                        £7.50<br />
+                                        <span>#149001314</span>
+                                    </div>
+                                </div>
+                                <div class="track-row2">
+                                    <div class="track-name"><a href="#">Missing U</a></div>
+                                    <div class="track-time">6:50</div>
+                                    <div class="track-added">2010-10-24</div>
+                                    <a href="#" class="track-r"></a>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="tracksale">
+                                    <div class="tracksale-row1">
+                                    	<div class="ts1-div1">
+	                                    	Kupiony przez: <a href="#" class="bold">johnybravo_usa@yahoo.com</a>
+                                        </div>
+										<a href="#" class="track-profil">Profil</a>
+                                        <div class="ts1-div2">
+	                                        &nbsp; l &nbsp; 16:00   <br />
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="tracksale-row2">
+	                                    Metoda: <strong>SMASHIN TRACKS</strong>  &nbsp; l &nbsp;  Ściągnięte: <strong>1 (16:01) - 2 (18:20) - 3 (8:04)</strong>
+                                    </div>
+                            </div> 
 
                             <div class="track">
                                 <a href="#" class="track-player"><img src="images/tmp/track6.gif" alt="" /></a>
@@ -153,7 +239,7 @@
                                 <div class="clear"></div>
                             </div>
 
-                        	<div class="track-date">
+                            <div class="track-date">
                             	1 stycznia 2010, wtorek
                             </div>
 
@@ -275,7 +361,7 @@
                             <div class="clear"></div>
 
                         </div>
-						<div id="bo2-div2">
+                        <div id="bo2-div2">
                             <div class="button-fulllist">
                                 <div class="button-left"></div>
                                 <div class="button-right"></div>

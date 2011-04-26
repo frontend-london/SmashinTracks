@@ -34,4 +34,9 @@ class Transactions extends BaseTransactions {
         $transaction_date = $this->getTransactionsDate('U');
         return((time() - 86400 * sfConfig::get('app_track_download_period'))<$transaction_date);
     }
+
+    public function getTransactionsDatePolish() {
+        return Smashin::generateDateInPolish($this->getTransactionsDate(null));
+    }
+
 } // Transactions

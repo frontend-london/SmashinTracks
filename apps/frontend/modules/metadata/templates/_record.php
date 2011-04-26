@@ -10,6 +10,7 @@
     if(!isset($not_accepted)) $not_accepted = false;
     if(!isset($not_accepted_url_accept)) $not_accepted_url_accept = false;
     if(!isset($not_accepted_url_disapprove)) $not_accepted_url_disapprove = false;
+    if(!isset($transaction_list)) $transaction_list = false;
 
     if(!isset($subsection)) $subsection = null;
     if(!isset($icon_wishlist)) $icon_wishlist = true;
@@ -65,6 +66,13 @@
                                                 <a href="<?=url_for($not_accepted_url_accept, $track)?>">OK</a>
                                             </div>
                                         </div>
+                                    <?elseif($transaction_list):?>
+                                        <div class="track-right">
+                                            <div class="track-plays">
+                                                <?=Smashin::generate_prize(sfConfig::get('app_default_prize'))?><br />
+                                                <span>#<?=$transactions_tracks->getTransactionsTracksId()?></span>
+                                            </div>
+                                        </div>
                                     <?else:?>
                                         <a href="<?=url_for('basket_add', $track)?>" class="track-right">
                                             <span class="track-cart"></span>
@@ -84,14 +92,51 @@
                                         <?elseif($not_accepted):?>
                                             <a href="<?=url_for($not_accepted_url_disapprove, $track)?>" class="track-bin2"></a>
                                         <?elseif($icon_wishlist):?>
-                                                <?if($track->isInWishlist()):?>
-                                                    <a href="<?=url_for('members_my-wishlist_remove', $track)?>" class="track-star ts-active"></a>
-                                                <?else:?>
-                                                    <a href="<?=url_for('members_my-wishlist_add', $track)?>" class="track-star"></a>
-                                                <?endif;?>
+                                            <?if($track->isInWishlist()):?>
+                                                <a href="<?=url_for('members_my-wishlist_remove', $track)?>" class="track-star ts-active"></a>
+                                            <?else:?>
+                                                <a href="<?=url_for('members_my-wishlist_add', $track)?>" class="track-star"></a>
+                                            <?endif;?>
+                                        <?elseif($transaction_list):?>
+                                            <a href="#" class="track-r"></a>
                                         <?endif;?>
                                         <div class="track-added">Added: <?=$track->getTracksDate('Y-m-d'); ?></div>
                                         <div class="clear"></div>
                                     </div>
                                     <div class="clear"></div>
                                 </div>
+                                <?if($transaction_list):?>
+                                    <?
+                                    if(false) $transactions_tracks = new TransactionsTracks();
+                                    $transactions = $transactions_tracks->getTransactions();
+                                    if(false) $transactions = new Transactions();
+                                    if($transactions->getTransactionsPaymethod()=='1') $transactions_paypal = true; else $transactions_paypal = false;
+
+                                    
+                                    ?>
+                                    <div class="tracksale">
+                                        <div class="tracksale-row1">
+                                            <div class="ts1-div1">
+                                                Kupiony przez:
+                                                <?if($transactions_paypal):?>
+                                                <a href="mailto:<?=$transactions->getPaypalPaymentInfo()->getBuyerEmail()?>" class="bold"><?=$transactions->getPaypalPaymentInfo()->getBuyerEmail()?></a>
+                                                <?elseif($transactions->getProfiles()):?>
+                                                    <a href="mailto:<?=$transactions->getProfiles()->getProfilesEmail();?>" class="bold"><?=$transactions->getProfiles()->getProfilesEmail();?></a>
+                                                <?else:?>
+                                                    Brak danych
+                                                <?endif?>
+                                            </div>
+                                            <?if($transactions->getProfiles()):?><a href="<?=url_for('profile', $transactions->getProfiles())?>" class="track-profil">Profil</a><?endif;?>
+                                            <div class="ts1-div2">
+                                                    &nbsp; l &nbsp; <?=$transactions->getTransactionsDate('H:i')?>  <br />
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                        <div class="tracksale-row2">
+                                                Metoda: <strong><?if($transactions_paypal):?>PAYPAL<?else:?>SMASHIN TRACKS<?endif?></strong>  &nbsp; l &nbsp;  Ściągnięte: <strong>1 (16:01) - 2 (18:20) - 3 (8:04)</strong>
+                                        </div>
+                                    </div>
+
+                                    
+
+                                <?endif;?>

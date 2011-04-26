@@ -30,5 +30,6 @@ class panelHomeActions extends sfActions
   public function executeShow(sfWebRequest $request)
   {
       $this->not_accepted = TracksPeer::getNotAcceptedTracks(null, 10);
+      $this->last_sold_trancations = TransactionsPeer::getLastDoneTransactions(10);
   }
 }
