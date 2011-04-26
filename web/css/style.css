@@ -484,7 +484,7 @@ div#box-recommends2 { margin-top:24px;}
 div#box-recommends img#br-img1, div#box-recommends2 img#br-img1 { padding-top:28px;}
 div#box-recommends div#br-div1, div#box-recommends2 div#br-div1 {font-size:13px; line-height:17px; padding-top:15px; font-weight:bold; padding-right:50px;}
 div#box-recommends div#br-tracks, div#box-recommends2 div#br-tracks { padding-left:2px; padding-top:25px;}
-div#box-recommends div#br-hidden { display: none;}
+div#box-recommends div#br-hidden, div#box-recommends2 div#br-hidden { display: none;}
 
 div#box-paymethod { margin-top:11px;}
 div#box-paymethod form { display: inline;}

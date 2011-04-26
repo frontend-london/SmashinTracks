@@ -31,5 +31,12 @@ class panelHomeActions extends sfActions
   {
       $this->not_accepted = TracksPeer::getNotAcceptedTracks(null, 10);
       $this->last_sold_trancations = TransactionsPeer::getLastDoneTransactions(10);
+
+    $this->recommended = TracksRecommendsPeer::getActiveTracksRecommends();
+
+    $this->newtracks = TracksPeer::getNewTracks(null, 10);
+    $this->newtracks_genres = GenresPeer::getNewTracksGenres();
+
+    $this->bestsellerstracks = TracksPeer::getBestsellersTracks(sfConfig::get('app_homepage_bestsellers_period'), 10);
   }
 }

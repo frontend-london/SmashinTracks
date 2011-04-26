@@ -59,91 +59,22 @@
 					</div>
                     <div class="bs-bgr-bottom"></div>
                 </div>
+
                 <div class="box-silver" id="box-recommends2">
                     <div class="bs-inner">
                         <img src="images/texts/recommends-10-smashin-tracks.gif" alt="Recommends 10 Smashin Tracks" id="br-img1" />
                         <div id="br-div1">Here's a hand picked selection of smashing tracks personally recommended by <a href="#" class="underline">Smashintracks.com</a> in this week.</div>
                         <div id="br-tracks">
 
-                            <div class="track">
-                                <a href="#" class="track-player tp-new"><img src="images/tmp/track1.gif" alt="" /></a>
-                                <div class="track-row1">
-                                    <div class="track-artist"><a href="#">NEFTI</a></div>
-                                    <div class="track-brand"><a href="#">OLD SKOOL</a>, <a href="#">HARDCORE BREAKS</a>, <a href="#">PIANO</a></div>
-                                    <div class="clear"></div>
+                            <?$counter=0; $hidden_recom = false; foreach ($recommended as $recom):?>
+                                <?if($counter==5): $hidden_recom = true;?>
+                                    <div id="br-hidden">
+                                <?endif;?>
+                                <?php include_partial('metadata/record', array('track' => $recom->getTracks())) ?>
+                            <?$counter++; endforeach;?>
+                            <?if($hidden_recom):?>
                                 </div>
-                                <div class="track-row2">
-                                    <div class="track-name"><a href="#">Strike It Up (VIP Mix)</a></div>
-                                    <div class="track-time">5:41</div>
-                                    <div class="track-added">2010-10-24</div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <div class="track">
-                                <a href="#" class="track-player"><img src="images/tmp/track2.gif" alt="" /></a>
-                                <div class="track-row1">
-                                    <div class="track-artist"><a href="#">URBAN IMPULZ</a></div>
-                                    <div class="track-brand"><a href="#">BASSLINE HOUSE</a>, <a href="#">ORGAN</a></div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="track-row2">
-                                    <div class="track-name"><a href="#">Missing U</a></div>
-                                    <div class="track-time">6:50</div>
-                                    <div class="track-added">2010-10-24</div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <div class="track">
-                                <a href="#" class="track-player tp-new"><img src="images/tmp/track3.gif" alt="" /></a>
-                                <div class="track-row1">
-                                    <div class="track-artist"><a href="#">CJ REIGN</a></div>
-                                    <div class="track-brand"><a href="#">BASSLINE 4x4</a>, <a href="#">GARAGE</a></div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="track-row2">
-                                    <div class="track-name"><a href="#">Garridge Bassline</a></div>
-                                    <div class="track-time">5:41</div>
-                                    <div class="track-added">2010-10-24</div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <div class="track">
-                                <a href="#" class="track-player"><img src="images/tmp/track4.gif" alt="" /></a>
-                                <div class="track-row1">
-                                    <div class="track-artist"><a href="#">SURANG</a></div>
-                                    <div class="track-brand"><a href="#">BASSLINE HOUSE</a>, <a href="#">ORGAN</a>, <a href="#">ELECTROLINE</a></div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="track-row2">
-                                    <div class="track-name"><a href="#">Bubblin</a></div>
-                                    <div class="track-time">6:50</div>
-                                    <div class="track-added">2010-10-24</div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <div class="track">
-                                <a href="#" class="track-player tp-new"><img src="images/tmp/track5.gif" alt="" /></a>
-                                <div class="track-row1">
-                                    <div class="track-artist"><a href="#">MADOGZ</a></div>
-                                    <div class="track-brand"><a href="#">BASSLINE HOUSE</a>, <a href="#">ORGAN</a>, <a href="#">ELECTROLINE</a></div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="track-row2">
-                                    <div class="track-name"><a href="#">Pussy Marijuana (Bassline 2 Donkline...</a></div>
-                                    <div class="track-time">6:50</div>
-                                    <div class="track-added">2010-10-24</div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
+                            <?endif;?>
 
                             <div class="clear"></div>
 
@@ -152,8 +83,7 @@
                     </div>
                     <div class="bs-bgr-bottom"></div>
                 </div>
-
-				<div class="box-white">
+                <div class="box-white">
                     <img src="images/texts/new-tracks.gif" alt="New Tracks" />
                     <div class="bw-div1">
                         Here are the latest <span class="blue">10 tunes</span> on <a href="#" class="underline">Smashintracks.com</a><br />
@@ -162,182 +92,46 @@
 
                         <div class="bw-tracks">
 
-                            <div class="track">
-                                <a href="#" class="track-player tp-new"><img src="images/tmp/track6.gif" alt="" /></a>
-                                <div class="track-row1">
-                                    <div class="track-artist"><a href="#">NEFTI</a></div>
-                                    <div class="track-brand"><a href="#">OLD SKOOL</a>, <a href="#">HARDCORE BREAKS</a>, <a href="#">PIANO</a></div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="track-row2">
-                                    <div class="track-name"><a href="#">Strike It Up (VIP Mix)</a></div>
-                                    <div class="track-time">5:41</div>
-                                    <div class="track-added">2010-10-24</div>
-                                    <a href="#" class="track-r"></a>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <div class="track">
-                                <a href="#" class="track-player tp-new"><img src="images/tmp/track7.gif" alt="" /></a>
-                                <div class="track-row1">
-                                    <div class="track-artist"><a href="#">URBAN IMPULZ</a></div>
-                                    <div class="track-brand"><a href="#">BASSLINE HOUSE</a>, <a href="#">ORGAN</a></div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="track-row2">
-                                    <div class="track-name"><a href="#">Missing U</a></div>
-                                    <div class="track-time">6:50</div>
-                                    <div class="track-added">2010-10-24</div>
-                                    <a href="#" class="track-r"></a>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <div class="track">
-                                <a href="#" class="track-player tp-new"><img src="images/tmp/track8.gif" alt="" /></a>
-                                <div class="track-row1">
-                                    <div class="track-artist"><a href="#">CJ REIGN</a></div>
-                                    <div class="track-brand"><a href="#">BASSLINE 4x4</a>, <a href="#">GARAGE</a></div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="track-row2">
-                                    <div class="track-name"><a href="#">Garridge Bassline</a></div>
-                                    <div class="track-time">5:41</div>
-                                    <div class="track-added">2010-10-24</div>
-                                    <a href="#" class="track-r"></a>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <div class="track">
-                                <a href="#" class="track-player tp-new"><img src="images/tmp/track9.gif" alt="" /></a>
-                                <div class="track-row1">
-                                    <div class="track-artist"><a href="#">SURANG</a></div>
-                                    <div class="track-brand"><a href="#">BASSLINE HOUSE</a>, <a href="#">ORGAN</a>, <a href="#">ELECTROLINE</a></div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="track-row2">
-                                    <div class="track-name"><a href="#">Bubblin</a></div>
-                                    <div class="track-time">6:50</div>
-                                    <div class="track-added">2010-10-24</div>
-                                    <a href="#" class="track-r"></a>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <div class="track">
-                                <a href="#" class="track-player tp-new"><img src="images/tmp/track10.gif" alt="" /></a>
-                                <div class="track-row1">
-                                    <div class="track-artist"><a href="#">MADOGZ</a></div>
-                                    <div class="track-brand"><a href="#">BASSLINE HOUSE</a>, <a href="#">ORGAN</a>, <a href="#">ELECTROLINE</a></div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="track-row2">
-                                    <div class="track-name"><a href="#">Pussy Marijuana (Bassline 2 Donkline...</a></div>
-                                    <div class="track-time">6:50</div>
-                                    <div class="track-added">2010-10-24</div>
-                                    <a href="#" class="track-r"></a>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <div class="track">
-                                <a href="#" class="track-player tp-new"><img src="images/tmp/track1.gif" alt="" /></a>
-                                <div class="track-row1">
-                                    <div class="track-artist"><a href="#">NEFTI</a></div>
-                                    <div class="track-brand"><a href="#">OLD SKOOL</a>, <a href="#">HARDCORE BREAKS</a>, <a href="#">PIANO</a></div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="track-row2">
-                                    <div class="track-name"><a href="#">Strike It Up (VIP Mix)</a></div>
-                                    <div class="track-time">5:41</div>
-                                    <div class="track-added">2010-10-24</div>
-                                    <a href="#" class="track-r"></a>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <div class="track">
-                                <a href="#" class="track-player tp-new"><img src="images/tmp/track2.gif" alt="" /></a>
-                                <div class="track-row1">
-                                    <div class="track-artist"><a href="#">URBAN IMPULZ</a></div>
-                                    <div class="track-brand"><a href="#">BASSLINE HOUSE</a>, <a href="#">ORGAN</a></div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="track-row2">
-                                    <div class="track-name"><a href="#">Missing U</a></div>
-                                    <div class="track-time">6:50</div>
-                                    <div class="track-added">2010-10-24</div>
-                                    <a href="#" class="track-r"></a>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <div class="track">
-                                <a href="#" class="track-player tp-new"><img src="images/tmp/track3.gif" alt="" /></a>
-                                <div class="track-row1">
-                                    <div class="track-artist"><a href="#">CJ REIGN</a></div>
-                                    <div class="track-brand"><a href="#">BASSLINE 4x4</a>, <a href="#">GARAGE</a></div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="track-row2">
-                                    <div class="track-name"><a href="#">Garridge Bassline</a></div>
-                                    <div class="track-time">5:41</div>
-                                    <div class="track-added">2010-10-24</div>
-                                    <a href="#" class="track-r"></a>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <div class="track">
-                                <a href="#" class="track-player tp-new"><img src="images/tmp/track4.gif" alt="" /></a>
-                                <div class="track-row1">
-                                    <div class="track-artist"><a href="#">SURANG</a></div>
-                                    <div class="track-brand"><a href="#">BASSLINE HOUSE</a>, <a href="#">ORGAN</a>, <a href="#">ELECTROLINE</a></div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="track-row2">
-                                    <div class="track-name"><a href="#">Bubblin</a></div>
-                                    <div class="track-time">6:50</div>
-                                    <div class="track-added">2010-10-24</div>
-                                    <a href="#" class="track-r"></a>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <div class="track">
-                                <a href="#" class="track-player tp-new"><img src="images/tmp/track5.gif" alt="" /></a>
-                                <div class="track-row1">
-                                    <div class="track-artist"><a href="#">MADOGZ</a></div>
-                                    <div class="track-brand"><a href="#">BASSLINE HOUSE</a>, <a href="#">ORGAN</a>, <a href="#">ELECTROLINE</a></div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="track-row2">
-                                    <div class="track-name"><a href="#">Pussy Marijuana (Bassline 2 Donkline...</a></div>
-                                    <div class="track-time">6:50</div>
-                                    <div class="track-added">2010-10-24</div>
-                                    <a href="#" class="track-r"></a>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
+                            <?$counter=0; foreach ($newtracks as $track):?>
+                                <?php include_partial('metadata/record', array('track' => $track)) ?>
+                            <?$counter++; endforeach;?>
 
                             <div class="clear"></div>
 
                         </div>
                         <div class="bw-div2">
                             <div class="bw-div2-text">
-                                <strong>New tracks in:</strong>  <a href="#">BASSLINE HOUSE</a>, <a href="#">ORGAN</a>, <a href="#">ELECTROLINE</a>, <a href="#">HARDCORE BREAKS</a>
+                                <strong>New tracks in:</strong>
+                                <?$counter=0; foreach($newtracks_genres as $genre):?><?if($counter>0):?>, <?endif;?><a href="<?=url_for('genre', $genre)?>"><?echo $genre->getGenresName();?></a><?$counter++; endforeach;?>
+                            </div>
+                            <div class="button-fulllist bw-div2-button">
+                                <div class="button-left"></div>
+                                <div class="button-right"></div>
+                                <a href="<?=url_for('new-tracks')?>">Full List</a>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                </div>
+
+                <div class="box-white">
+                    <img src="images/texts/bestsellers-tracks.gif" alt="Bestsellers Tracks" />
+                    <div class="bw-div1">
+                        Here are <span class="blue">10 most popular tracks</span> on <a href="#" class="underline">Smashintracks.com</a> from latest week.<br />
+                        Click the button 'FULL LIST' if you want see lists of new more charts.
+                    </div>
+
+                        <div class="bw-tracks">
+
+                            <?$counter=0; foreach ($bestsellerstracks as $track):?>
+                                <?php include_partial('metadata/record', array('track' => $track)) ?>
+                            <?$counter++; endforeach;?>
+
+                            <div class="clear"></div>
+
+                        </div>
+                        <div class="bw-div2">
+                            <div class="bw-div2-text">
+                                <strong>See also:</strong>  <a href="#">CHARTS</a>, <a href="#">TOP ARTISTS</a>, <a href="#">NEW TRACKS</a>
                             </div>
                             <div class="button-fulllist bw-div2-button">
                                 <div class="button-left"></div>
@@ -347,198 +141,3 @@
                             <div class="clear"></div>
                         </div>
                 </div>
-
-				<div class="box-white">
-                    <img src="images/texts/bestsellers-tracks.gif" alt="Bestsellers Tracks" />
-                    <div class="bw-div1">
-                        Here are <span class="blue">10 most popular tracks</span> on <a href="#" class="underline">Smashintracks.com</a> from latest week.<br />
-                        Click the button 'FULL LIST' if you want see lists of new more charts.
-                    </div>
-
-                        <div class="bw-tracks">
-
-                            <div class="track">
-                                <a href="#" class="track-player tp-new"><img src="images/tmp/track6.gif" alt="" /></a>
-                                <div class="track-row1">
-                                    <div class="track-artist"><a href="#">NEFTI</a></div>
-                                    <div class="track-brand"><a href="#">OLD SKOOL</a>, <a href="#">HARDCORE BREAKS</a>, <a href="#">PIANO</a></div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="track-row2">
-                                    <div class="track-name"><a href="#">Strike It Up (VIP Mix)</a></div>
-                                    <div class="track-time">5:41</div>
-                                    <div class="track-added">2010-10-24</div>
-                                    <a href="#" class="track-r"></a>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <div class="track">
-                                <a href="#" class="track-player"><img src="images/tmp/track7.gif" alt="" /></a>
-                                <div class="track-row1">
-                                    <div class="track-artist"><a href="#">URBAN IMPULZ</a></div>
-                                    <div class="track-brand"><a href="#">BASSLINE HOUSE</a>, <a href="#">ORGAN</a></div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="track-row2">
-                                    <div class="track-name"><a href="#">Missing U</a></div>
-                                    <div class="track-time">6:50</div>
-                                    <div class="track-added">2010-10-24</div>
-                                    <a href="#" class="track-r"></a>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <div class="track">
-                                <a href="#" class="track-player tp-new"><img src="images/tmp/track8.gif" alt="" /></a>
-                                <div class="track-row1">
-                                    <div class="track-artist"><a href="#">CJ REIGN</a></div>
-                                    <div class="track-brand"><a href="#">BASSLINE 4x4</a>, <a href="#">GARAGE</a></div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="track-row2">
-                                    <div class="track-name"><a href="#">Garridge Bassline</a></div>
-                                    <div class="track-time">5:41</div>
-                                    <div class="track-added">2010-10-24</div>
-                                    <a href="#" class="track-r"></a>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <div class="track">
-                                <a href="#" class="track-player"><img src="images/tmp/track9.gif" alt="" /></a>
-                                <div class="track-row1">
-                                    <div class="track-artist"><a href="#">SURANG</a></div>
-                                    <div class="track-brand"><a href="#">BASSLINE HOUSE</a>, <a href="#">ORGAN</a>, <a href="#">ELECTROLINE</a></div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="track-row2">
-                                    <div class="track-name"><a href="#">Bubblin</a></div>
-                                    <div class="track-time">6:50</div>
-                                    <div class="track-added">2010-10-24</div>
-                                    <a href="#" class="track-r"></a>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <div class="track">
-                                <a href="#" class="track-player"><img src="images/tmp/track10.gif" alt="" /></a>
-                                <div class="track-row1">
-                                    <div class="track-artist"><a href="#">MADOGZ</a></div>
-                                    <div class="track-brand"><a href="#">BASSLINE HOUSE</a>, <a href="#">ORGAN</a>, <a href="#">ELECTROLINE</a></div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="track-row2">
-                                    <div class="track-name"><a href="#">Pussy Marijuana (Bassline 2 Donkline...</a></div>
-                                    <div class="track-time">6:50</div>
-                                    <div class="track-added">2010-10-24</div>
-                                    <a href="#" class="track-r"></a>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <div class="track">
-                                <a href="#" class="track-player tp-new"><img src="images/tmp/track1.gif" alt="" /></a>
-                                <div class="track-row1">
-                                    <div class="track-artist"><a href="#">NEFTI</a></div>
-                                    <div class="track-brand"><a href="#">OLD SKOOL</a>, <a href="#">HARDCORE BREAKS</a>, <a href="#">PIANO</a></div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="track-row2">
-                                    <div class="track-name"><a href="#">Strike It Up (VIP Mix)</a></div>
-                                    <div class="track-time">5:41</div>
-                                    <div class="track-added">2010-10-24</div>
-                                    <a href="#" class="track-r"></a>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <div class="track">
-                                <a href="#" class="track-player"><img src="images/tmp/track2.gif" alt="" /></a>
-                                <div class="track-row1">
-                                    <div class="track-artist"><a href="#">URBAN IMPULZ</a></div>
-                                    <div class="track-brand"><a href="#">BASSLINE HOUSE</a>, <a href="#">ORGAN</a></div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="track-row2">
-                                    <div class="track-name"><a href="#">Missing U</a></div>
-                                    <div class="track-time">6:50</div>
-                                    <div class="track-added">2010-10-24</div>
-                                    <a href="#" class="track-r"></a>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <div class="track">
-                                <a href="#" class="track-player"><img src="images/tmp/track3.gif" alt="" /></a>
-                                <div class="track-row1">
-                                    <div class="track-artist"><a href="#">CJ REIGN</a></div>
-                                    <div class="track-brand"><a href="#">BASSLINE 4x4</a>, <a href="#">GARAGE</a></div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="track-row2">
-                                    <div class="track-name"><a href="#">Garridge Bassline</a></div>
-                                    <div class="track-time">5:41</div>
-                                    <div class="track-added">2010-10-24</div>
-                                    <a href="#" class="track-r"></a>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <div class="track">
-                                <a href="#" class="track-player"><img src="images/tmp/track4.gif" alt="" /></a>
-                                <div class="track-row1">
-                                    <div class="track-artist"><a href="#">SURANG</a></div>
-                                    <div class="track-brand"><a href="#">BASSLINE HOUSE</a>, <a href="#">ORGAN</a>, <a href="#">ELECTROLINE</a></div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="track-row2">
-                                    <div class="track-name"><a href="#">Bubblin</a></div>
-                                    <div class="track-time">6:50</div>
-                                    <div class="track-added">2010-10-24</div>
-                                    <a href="#" class="track-r"></a>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <div class="track">
-                                <a href="#" class="track-player tp-new"><img src="images/tmp/track5.gif" alt="" /></a>
-                                <div class="track-row1">
-                                    <div class="track-artist"><a href="#">MADOGZ</a></div>
-                                    <div class="track-brand"><a href="#">BASSLINE HOUSE</a>, <a href="#">ORGAN</a>, <a href="#">ELECTROLINE</a></div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="track-row2">
-                                    <div class="track-name"><a href="#">Pussy Marijuana (Bassline 2 Donkline...</a></div>
-                                    <div class="track-time">6:50</div>
-                                    <div class="track-added">2010-10-24</div>
-                                    <a href="#" class="track-r"></a>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <div class="clear"></div>
-
-                        </div>
-                        <div class="bw-div2">
-                            <div class="bw-div2-text">
-                                <strong>See also:</strong>  <a href="#">CHARTS</a>, <a href="#">TOP ARTISTS</a>, <a href="#">OUR RECOMENNDS TRACKS</a>, <a href="#">NEW TRACKS</a>
-                            </div>
-                            <div class="button-fulllist bw-div2-button">
-                                <div class="button-left"></div>
-                                <div class="button-right"></div>
-                                <a href="#">Full List</a>
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-				</div>
