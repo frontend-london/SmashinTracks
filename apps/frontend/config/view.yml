@@ -10,7 +10,7 @@ default:
     description:  SmashinTracks.com - Tracks you won't find anywhere else
     keywords:     SmashinTracks.com, SmashinTracks
     language:     en
-    robots:       index, follow
+    robots:       noindex, nofollow
 
   stylesheets:    [style.css]
 

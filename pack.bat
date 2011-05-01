@@ -1,3 +1,4 @@
+call wersja.bat
 7za u sm_full.zip apps\
 7za u sm_full.zip config\
 7za u sm_full.zip data\

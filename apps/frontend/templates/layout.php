@@ -42,15 +42,7 @@
                     <?php echo $sf_content ?>
                 </div>
                 <div id="rightside">
-                    <div id="box-basket">
-                        <div class="box-silver2">
-                            <div class="bs2-inner">
-                                <a href="<?=url_for('basket')?>"><img src="images/texts/your-basket.gif" alt="Your Basket" id="bb-img1" /></a>
-                                <div id="bb-empty">Your basket is empty...</div>
-                            </div>
-                            <div class="bs2-bgr-bottom"></div>
-                        </div>
-                    </div>
+                    <?php include_component('metadata', 'basketsales') ?>
                     <a href="#"><img src="images/banners/smashin-tracks.gif" alt="SmashinTracks.com" width="192" height="75" id="banner1" /></a>
                     <a href="#"><img src="images/banners/bassline-classics.gif" alt="Bassline Classics" width="192" height="123" id="banner2" /></a>
                     <a href="#"><img src="images/banners/cj-reign.gif" alt="Cj Reign" width="192" height="123" id="banner3" /></a>

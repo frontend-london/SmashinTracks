@@ -39,7 +39,7 @@
                                         <?$last_date = $transaction->getTransactionsDatePolish(); echo $last_date;?>
                                     </div>
                                 <?endif?>
-                                <?foreach($transaction->getTransactionsTrackssJoinTracks() as $transaction_track): $counter++; if($counter>10) break;?>
+                                <?foreach($transaction->getTransactionsTrackssJoinTracks() as $transaction_track): $counter++; if($counter>10) break(2);?>
                                     <?php include_partial('metadata/record', array('transaction_list' => true, 'transactions_tracks' => $transaction_track, 'track' => $transaction_track->getTracks(), 'icon_wishlist' => false)) ?>
                                 <?endforeach;?>
 

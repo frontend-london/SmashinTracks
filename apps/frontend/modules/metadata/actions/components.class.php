@@ -24,6 +24,16 @@
       $this->profile = ProfilesPeer::getCurrentProfile();
     }
 
+    public function executeBasketsales(sfWebRequest $request)
+    {
+      $this->isAdmin = ProfilesPeer::isAdminProfile();
+      $this->day_tracks = TransactionsPeer::getTracksSoldTodayAmount();
+      $this->day_profit = TransactionsPeer::getTracksSoldTodayProfit();
+
+      $this->month_tracks = TransactionsPeer::getTracksSoldThisMonthAmount();
+      $this->month_profit = TransactionsPeer::getTracksSoldThisMonthProfit();
+    }
+
     public function executeLoginbox(sfWebRequest $request)
     {
      $this->form = new LoginForm();

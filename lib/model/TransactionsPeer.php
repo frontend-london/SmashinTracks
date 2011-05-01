@@ -46,4 +46,44 @@ class TransactionsPeer extends BaseTransactionsPeer {
     public static function getLastDoneTransactions($amount = null, $criteria = null) {
         return self::doSelect(self::getLastDoneTransactionsCriteria($amount, $criteria));
     }
+
+    public static function getTracksSoldLastPeriodAmount($from) {
+        $criteria = self::getLastDoneTransactionsCriteria();
+        $criteria->add(self::TRANSACTIONS_DATE, date('Y-m-01'), Criteria::GREATER_EQUAL);
+        return self::doCount($criteria);
+    }
+
+    public static function getTracksSoldLastPeriodProfit($from) {
+        $criteria = self::getLastDoneTransactionsCriteria();
+        if(0) $criteria = new Criteria();
+        $criteria->add(self::TRANSACTIONS_DATE, $from, Criteria::GREATER_EQUAL);
+        $criteria->add(TransactionsSaldoPeer::PROFILES_ID, ProfilesPeer::getAdminProfileId());
+        $criteria->addJoin(TransactionsTracksPeer::TRANSACTIONS_ID, TransactionsPeer::TRANSACTIONS_ID);
+        $criteria->addJoin(TransactionsSaldoPeer::TRANSACTIONS_TRACKS_ID, TransactionsTracksPeer::TRANSACTIONS_TRACKS_ID);
+        $criteria->addSelectColumn('SUM('.TransactionsSaldoPeer::TRANSACTIONS_SALDO_VALUE.')');
+        $smtm = TransactionsSaldoPeer::doSelectStmt($criteria);
+        $row = $smtm->fetch(PDO::FETCH_NUM);
+        $saldo = $row[0];
+        return Smashin::generate_prize($saldo/100);
+    }
+
+    public static function getTracksSoldTodayAmount() {
+        $from = date('Y-m-d');
+        return self::getTracksSoldLastPeriodAmount($from);
+    }
+
+    public static function getTracksSoldTodayProfit() {
+        $from = date('Y-m-d');
+        return self::getTracksSoldLastPeriodProfit($from);
+    }
+
+    public static function getTracksSoldThisMonthAmount() {
+        $from = date('Y-m-01');
+        return self::getTracksSoldLastPeriodAmount($from);
+    }
+
+    public static function getTracksSoldThisMonthProfit() {
+        $from = date('Y-m-01');
+        return self::getTracksSoldLastPeriodProfit($from);
+    }
 } // TransactionsPeer

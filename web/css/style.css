@@ -1011,6 +1011,7 @@ div.track-joined { float:left; padding-top:1px;}
 div.artist-desc {}
 
 .track-right { float:right; width:75px; padding-right:6px; display:block; }
+.track-right:hover { text-decoration: none;}
 
 .track-cart { display:block; background:url(../images/icons/track-cart.gif) no-repeat; width:16px; height:15px; float:left; margin-top:13px;}
 .track-bin { display:block; background:url(../images/icons/track-bin.gif) no-repeat; width:12px; height:15px; float:left; margin-top:13px; margin-left:3px; margin-right:1px;}
