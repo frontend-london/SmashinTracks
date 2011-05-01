@@ -50,7 +50,8 @@ class TransactionsPeer extends BaseTransactionsPeer {
     public static function getTracksSoldLastPeriodAmount($from) {
         $criteria = self::getLastDoneTransactionsCriteria();
         $criteria->add(self::TRANSACTIONS_DATE, date('Y-m-01'), Criteria::GREATER_EQUAL);
-        return self::doCount($criteria);
+        $criteria->addJoin(TransactionsTracksPeer::TRANSACTIONS_ID, TransactionsPeer::TRANSACTIONS_ID);
+        return TransactionsTracksPeer::doCount($criteria);
     }
 
     public static function getTracksSoldLastPeriodProfit($from) {
