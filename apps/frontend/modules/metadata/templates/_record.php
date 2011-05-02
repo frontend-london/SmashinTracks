@@ -96,7 +96,7 @@
                                         </div>
                                     <?elseif($recommends_inactive):?>
                                         <div class="track-right">
-                                            <input type="checkbox" name="#" value="#" class="br2-checkbox" />
+                                            <input type="checkbox" name="accept_recommends[<?=$tracks_recommends->getTracksRecommendsId()?>]" value="1" class="br2-checkbox" />
                                         </div>
                                     <?else:?>
                                         <a href="<?=url_for('basket_add', $track)?>" class="track-right">
@@ -118,7 +118,7 @@
                                         <?elseif($not_accepted):?>
                                             <a href="<?=url_for($not_accepted_url_disapprove, $track)?>" class="track-bin2"></a>
                                         <?elseif($recommends_inactive):?>
-                                            <a href="#" class="track-bin2"></a>
+                                            <a href="<?=url_for('panel_recommends_delete', $tracks_recommends)?>" class="track-bin2"></a>
                                         <?elseif(!$no_icon_wishlist):?>
                                             <?if($track->isInWishlist()):?>
                                                 <a href="<?=url_for('members_my-wishlist_remove', $track)?>" class="track-star ts-active"></a>
@@ -126,7 +126,7 @@
                                                 <a href="<?=url_for('members_my-wishlist_add', $track)?>" class="track-star"></a>
                                             <?endif;?>
                                         <?elseif($transaction_list):?>
-                                            <a href="#" class="track-r"></a>
+                                            <a href="<?=url_for('panel_recommends_add', $track)?>" class="track-r"></a>
                                         <?endif;?>
                                         <div class="track-added">Added: <?=$track->getTracksDate('Y-m-d'); ?></div>
                                         <div class="clear"></div>

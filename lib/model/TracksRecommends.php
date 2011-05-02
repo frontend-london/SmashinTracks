@@ -28,5 +28,11 @@ class TracksRecommends extends BaseTracksRecommends {
 		// is where any default values for this object are set.
 		parent::__construct();
 	}
+        
+        public function save(PropelPDO $con = null) {
+            $max = TracksRecommendsPeer::getMaxTracksRecommendsOrder();
+            $this->setTracksRecommendsOrder($max+1);
+            return parent::save($con);
+        }
 
 } // TracksRecommends

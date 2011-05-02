@@ -30,7 +30,11 @@ class TracksRecommendsPeer extends BaseTracksRecommendsPeer {
         if(!is_null($active)) {
             $criteria->add(TracksRecommendsPeer::TRACKS_RECOMMENDS_ACTIVE, $active);
         }
-        $criteria->setLimit($amount);
+        
+        if(!is_null($amount)) {
+            $criteria->setLimit($amount);
+        }
+        
         return self::doSelect($criteria);
     }
 
@@ -40,6 +44,20 @@ class TracksRecommendsPeer extends BaseTracksRecommendsPeer {
 
     public static function getInactiveTracksRecommends($criteria = null, $amount = 10) {
         return self::getTracksRecommends($criteria, $amount, false);
+    }
+
+    public static function getMaxTracksRecommendsOrder($criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria();
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+        $criteria->addSelectColumn('MAX('.self::TRACKS_RECOMMENDS_ORDER.')');
+        $smtm = self::doSelectStmt($criteria);
+        $row = $smtm->fetch(PDO::FETCH_NUM);
+        return $row[0];
     }
 
     public static function getTracksRecommendsById($tracks_recommends_id, $criteria = null) {
