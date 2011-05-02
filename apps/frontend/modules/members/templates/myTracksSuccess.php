@@ -28,7 +28,7 @@
                         <div class="bw-tracks">
 
                             <?foreach ($tracks as $track):?>
-                                <?php include_partial('metadata/record', array('track' => $track, 'my_tracks' => true, 'icon_wishlist' => false, 'my_tracks_in_wishlists' => $in_wishlists)) ?>
+                                <?php include_partial('metadata/record', array('track' => $track, 'my_tracks' => true, 'no_icon_wishlist' => true, 'my_tracks_in_wishlists' => $in_wishlists)) ?>
                             <?endforeach;?>
 
                             <div class="clear"></div>

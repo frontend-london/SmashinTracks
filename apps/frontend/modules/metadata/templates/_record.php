@@ -13,9 +13,13 @@
     if(!isset($transaction_list)) $transaction_list = false;
     if(!isset($recommends_active)) $recommends_active = false;
     if(!isset($recommends_inactive)) $recommends_inactive = false;
+    if(!isset($no_icon_wishlist)) $no_icon_wishlist = false;
 
     if(!isset($subsection)) $subsection = null;
-    if(!isset($icon_wishlist)) $icon_wishlist = true;
+    if(!isset($tracks_recommends)) $tracks_recommends = false;
+    if(!isset($recommends_active_next)) $recommends_active_next = null;
+    if(!isset($recommends_active_prev)) $recommends_active_prev = null;
+    
 
 ?>
                                 <div class="track">
@@ -81,11 +85,18 @@
                                     <?elseif($recommends_active):?>
                                         <div class="track-right">
                                             <div class="br2-arrows">
-                                                <!--<a href="#" class="arrow-bottom arrow-bottom-first"></a>-->
-                                                <a href="#" class="arrow-top"></a>
-                                                <a href="#" class="arrow-bottom"></a>
+                                                <?if($recommends_active_prev):?>
+                                                    <a href="<?=url_for('panel_recommends_order', array('tracks_recommends_id' => $tracks_recommends->getTracksRecommendsId(), 'second_tracks_recommends_id' => $recommends_active_prev))?>" class="arrow-top"></a>
+                                                <?endif;?>
+                                                <?if($recommends_active_next):?>
+                                                    <a href="<?=url_for('panel_recommends_order', array('tracks_recommends_id' => $tracks_recommends->getTracksRecommendsId(), 'second_tracks_recommends_id' => $recommends_active_next))?>" class="arrow-bottom<?if(!$recommends_active_prev):?> arrow-bottom-first<?endif;?>"></a>
+                                                <?endif;?>
                                             </div>
-                                                <input type="checkbox" name="#" value="#" class="br2-checkbox" />
+                                            <input type="checkbox" name="delete_recommends[<?=$tracks_recommends->getTracksRecommendsId()?>]" value="1" class="br2-checkbox" />
+                                        </div>
+                                    <?elseif($recommends_inactive):?>
+                                        <div class="track-right">
+                                            <input type="checkbox" name="#" value="#" class="br2-checkbox" />
                                         </div>
                                     <?else:?>
                                         <a href="<?=url_for('basket_add', $track)?>" class="track-right">
@@ -106,7 +117,9 @@
                                             <?endif;?>
                                         <?elseif($not_accepted):?>
                                             <a href="<?=url_for($not_accepted_url_disapprove, $track)?>" class="track-bin2"></a>
-                                        <?elseif($icon_wishlist):?>
+                                        <?elseif($recommends_inactive):?>
+                                            <a href="#" class="track-bin2"></a>
+                                        <?elseif(!$no_icon_wishlist):?>
                                             <?if($track->isInWishlist()):?>
                                                 <a href="<?=url_for('members_my-wishlist_remove', $track)?>" class="track-star ts-active"></a>
                                             <?else:?>

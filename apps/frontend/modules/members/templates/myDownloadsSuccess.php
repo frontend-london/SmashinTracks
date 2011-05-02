@@ -1,4 +1,3 @@
-<div id="centerside">
                 <div class="box-white" id="box-top">
                     <img src="images/texts/my-downloads.gif" alt="My Downloads" />
                     <div class="bw-div1">
@@ -20,9 +19,9 @@
                                     <td colspan="3" class="tm-col4">
                                         <?foreach($transaction->getTransactionsTrackssJoinTracks() as $transaction_track):?>
                                             <?if($transaction->isTransactionActive()):?>
-                                                <?php include_partial('metadata/record', array('download' => true, 'transactions_tracks' => $transaction_track, 'track' => $transaction_track->getTracks(), 'icon_wishlist' => false, )) ?>
+                                                <?php include_partial('metadata/record', array('download' => true, 'transactions_tracks' => $transaction_track, 'track' => $transaction_track->getTracks(), 'no_icon_wishlist' => true, )) ?>
                                             <?else:?>
-                                                <?php include_partial('metadata/record', array('track' => $transaction_track->getTracks(), 'icon_wishlist' => false, )) ?>
+                                                <?php include_partial('metadata/record', array('track' => $transaction_track->getTracks(), 'no_icon_wishlist' => true, )) ?>
                                             <?endif;?>
                                         <?endforeach;?>
                                     </td>
@@ -34,5 +33,3 @@
                 </div>
 
                 <?php include_partial('metadata/footer', array('share' => false)) ?>
-
-            </div>

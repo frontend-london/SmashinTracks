@@ -41,5 +41,17 @@ class TracksRecommendsPeer extends BaseTracksRecommendsPeer {
     public static function getInactiveTracksRecommends($criteria = null, $amount = 10) {
         return self::getTracksRecommends($criteria, $amount, false);
     }
+
+    public static function getTracksRecommendsById($tracks_recommends_id, $criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria();
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+        $criteria->add(self::TRACKS_RECOMMENDS_ID, $tracks_recommends_id);
+        return self::doSelectOne($criteria);
+    }
     
 } // TracksRecommendsPeer

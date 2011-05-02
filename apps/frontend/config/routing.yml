@@ -257,6 +257,15 @@ panel_recommends:
   url:     /panel/recommends
   param: { module: panelRecommends, action: show, section: panel-recommends }
 
+panel_recommends_order:
+  url:     /panel/recommends/order/:tracks_recommends_id/:second_tracks_recommends_id
+  class:   sfPropelRoute
+  options: { model: TracksRecommends, type: object }
+  param: { module: panelRecommends, action: changeOrder, section: panel-recommends }
+  requirements:
+    sf_method: [get]
+    second_tracks_recommends_id: \d+
+
 panel_transactions-history:
   url:     /panel/transactions-history
   param: { module: panelTransactionsHistory, action: show, section: panel-transactions-history }

@@ -6,15 +6,23 @@
 							Zaznacz checkbox aby usunac dany track i zastapic go nowym z <span class="blue">listy propozycji.</span>
                         </div>
 
-                        <a href="#" class="track-bin3"></a>
+                        <form name="tracks_recommends_delete" id="tracks_recommends_delete" method="post" action="<?=url_for('panel_recommends')?>">
+
+                        <a href="javascript: document.tracks_recommends_delete.submit()" class="track-bin3"></a>
 
                         <div id="br2-tracks">
-                            <?foreach ($active_recommends as $recom):?>
-                                <?php include_partial('metadata/record', array('track' => $recom->getTracks(), 'recommends_active' => true)) ?>
-                            <?endforeach;?>
+                            <?$counter = 0; foreach ($active_recommends as $recom):?>
+                                <?
+                                    if($counter!=0) $recommends_active_prev = $active_recommends[$counter-1]->getTracks()->getTracksId(); else $recommends_active_prev = null;
+                                    if($counter!=(count($active_recommends)-1)) $recommends_active_next = $active_recommends[$counter+1]->getTracks()->getTracksId(); else $recommends_active_next = null;
+                                ?>
+                                <?php include_partial('metadata/record', array('track' => $recom->getTracks(), 'tracks_recommends' => $recom, 'recommends_active' => true, 'no_icon_wishlist' => true, 'recommends_active_prev' => $recommends_active_prev, 'recommends_active_next' => $recommends_active_next,)) ?>
+                            <?$counter++; endforeach;?>
 
                             <div class="clear"></div>
                         </div>
+
+                        </form>
 
                         <img src="images/texts/nowe-propozycje.gif" alt="Nowe Propozycje" id="br2-img2" />
                         <div id="br2-div2">
@@ -23,86 +31,9 @@
                         </div>
 
                         <div id="br2-tracks2">
-
-                            <div class="track">
-                                <a href="#" class="track-player tp-new"><img src="images/tmp/track1.gif" alt="" /></a>
-                                <div class="track-row1">
-                                    <div class="track-artist"><a href="#">NEFTI</a></div>
-                                    <div class="track-brand"><a href="#">OLD SKOOL</a>, <a href="#">HARDCORE BREAKS</a>, <a href="#">PIANO</a></div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="track-right">
-                                	<input type="checkbox" name="#" value="#" class="br2-checkbox" />
-                                </div>
-                                <div class="track-row2">
-                                    <div class="track-name"><a href="#">Strike It Up (VIP Mix)</a></div>
-                                    <div class="track-time">5:41</div>
-                                    <div class="track-added">2010-10-24</div>
-                                    <a href="#" class="track-bin2"></a>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <div class="track">
-                                <a href="#" class="track-player"><img src="images/tmp/track2.gif" alt="" /></a>
-                                <div class="track-row1">
-                                    <div class="track-artist"><a href="#">URBAN IMPULZ</a></div>
-                                    <div class="track-brand"><a href="#">BASSLINE HOUSE</a>, <a href="#">ORGAN</a></div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="track-right">
-                                	<input type="checkbox" name="#" value="#" class="br2-checkbox" />
-                                </div>
-                                <div class="track-row2">
-                                    <div class="track-name"><a href="#">Missing U</a></div>
-                                    <div class="track-time">6:50</div>
-                                    <div class="track-added">2010-10-24</div>
-                                    <a href="#" class="track-bin2"></a>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <div class="track">
-                                <a href="#" class="track-player tp-new"><img src="images/tmp/track3.gif" alt="" /></a>
-                                <div class="track-row1">
-                                    <div class="track-artist"><a href="#">CJ REIGN</a></div>
-                                    <div class="track-brand"><a href="#">BASSLINE 4x4</a>, <a href="#">GARAGE</a></div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="track-right">
-                                	<input type="checkbox" name="#" value="#" class="br2-checkbox" />
-                                </div>
-                                <div class="track-row2">
-                                    <div class="track-name"><a href="#">Garridge Bassline</a></div>
-                                    <div class="track-time">5:41</div>
-                                    <div class="track-added">2010-10-24</div>
-                                    <a href="#" class="track-bin2"></a>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <div class="track">
-                                <a href="#" class="track-player"><img src="images/tmp/track4.gif" alt="" /></a>
-                                <div class="track-row1">
-                                    <div class="track-artist"><a href="#">SURANG</a></div>
-                                    <div class="track-brand"><a href="#">BASSLINE HOUSE</a>, <a href="#">ORGAN</a>, <a href="#">ELECTROLINE</a></div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="track-right">
-                                	<input type="checkbox" name="#" value="#" class="br2-checkbox" />
-                                </div>
-                                <div class="track-row2">
-                                    <div class="track-name"><a href="#">Bubblin</a></div>
-                                    <div class="track-time">6:50</div>
-                                    <div class="track-added">2010-10-24</div>
-                                    <a href="#" class="track-bin2"></a>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
+                            <?foreach ($inactive_recommends as $recom):?>
+                                <?php include_partial('metadata/record', array('track' => $recom->getTracks(), 'recommends_inactive' => true, 'no_icon_wishlist' => true,)) ?>
+                            <?endforeach;?>
 
                             <div class="track">
                                 <a href="#" class="track-player tp-new"><img src="images/tmp/track5.gif" alt="" /></a>
@@ -123,7 +54,9 @@
                                 </div>
                                 <div class="clear"></div>
                             </div>
-						</div>
+
+                            <div class="clear"></div>
+                        </div>
 
                         <div id="br2-div4">
                             <div class="button-aktualizuj">
