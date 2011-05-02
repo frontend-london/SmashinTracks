@@ -11,15 +11,19 @@
     if(!isset($not_accepted_url_accept)) $not_accepted_url_accept = false;
     if(!isset($not_accepted_url_disapprove)) $not_accepted_url_disapprove = false;
     if(!isset($transaction_list)) $transaction_list = false;
+    if(!isset($recommends_active)) $recommends_active = false;
+    if(!isset($recommends_inactive)) $recommends_inactive = false;
 
     if(!isset($subsection)) $subsection = null;
     if(!isset($icon_wishlist)) $icon_wishlist = true;
 
 ?>
                                 <div class="track">
+<?/* FLASH PLAYER */?>
                                     <a href="mp3/<?=$track->getTracksPath(); ?>.mp3" class="track-player<?if($charts):?> tp-num tp-num-<?=$charts_num?><?elseif($track->isTrackNew()):?> tp-new<?endif;?>">
                                         <span class="fp_src" title="mp3/<?=$track->getTracksPath(); ?>.mp3"></span><span class="fp_ico" title="<?=$track->getProfiles()->getProfilesPhotoPath();?>"></span><span class="fp_artist" title="<?=$track->getTracksArtistUppercase(); ?>"></span><span class="fp_address" title="<?=url_for('basket_add', $track)?>"></span><span class="fp_title" title="<?=$track->getTracksTitle(); ?>"></span><span class="fp_prize" title="<?=Smashin::generate_prize(sfConfig::get('app_default_prize'))?>"></span><span class="fp_add_wishlist" title="<?=url_for('members_my-wishlist_add', $track)?>"></span><span class="fp_remove_wishlist" title="<?=url_for('members_my-wishlist_remove', $track)?>"></span><span class="fp_item_id" title="<?=$track->getTracksId();?>"></span><img src="images/icons/player-off.png" style="background-image:url('<?=$track->getProfiles()->getProfilesPhotoPath();?>');" alt="" />
                                     </a>
+<?/* TRACK ROW 1 */?>
                                     <div class="track-row1">
                                         <div class="track-artist"><a href="<?=url_for('profile', $track->getProfiles())?>"><?=$track->getTracksArtistUppercase(); ?></a></div>
                                         <div class="track-brand">
@@ -28,6 +32,7 @@
                                         <?if($charts && $track->isTrackNew()):?><div class="track-new"></div><?endif;?>
                                         <div class="clear"></div>
                                     </div>
+<?/* TRACK RIGHT */?>
                                     <?if($basket):?>
                                         <a href="<?=url_for('basket_remove', $track)?>" class="track-right">
                                             <div class="track-bin"></div>
@@ -73,6 +78,15 @@
                                                 <a href="#" class="a-transactiontrack-info">#<?=$transactions_tracks->getTransactionsTracksId()?></a>
                                             </div>
                                         </div>
+                                    <?elseif($recommends_active):?>
+                                        <div class="track-right">
+                                            <div class="br2-arrows">
+                                                <!--<a href="#" class="arrow-bottom arrow-bottom-first"></a>-->
+                                                <a href="#" class="arrow-top"></a>
+                                                <a href="#" class="arrow-bottom"></a>
+                                            </div>
+                                                <input type="checkbox" name="#" value="#" class="br2-checkbox" />
+                                        </div>
                                     <?else:?>
                                         <a href="<?=url_for('basket_add', $track)?>" class="track-right">
                                             <span class="track-cart"></span>
@@ -80,6 +94,7 @@
                                             <span class="track-prize"><?=Smashin::generate_prize(sfConfig::get('app_default_prize'))?></span>
                                         </a>
                                     <?endif;?>
+<?/* TRACK ROW 2 */?>
                                     <div class="track-row2">
                                         <div class="track-name"><a href="<?=url_for('track', $track)?>"><?=$track->getTracksTitleShorted(); ?></a></div>
                                         <div class="track-time"><?=$track->getTracksTimeFormatted(); ?></div>
@@ -105,6 +120,7 @@
                                     </div>
                                     <div class="clear"></div>
                                 </div>
+<?/* TRANSACTION LIST */?>
                                 <?if($transaction_list):?>
                                     <?
                                         $transactions = $transactions_tracks->getTransactions();
@@ -137,7 +153,4 @@
                                                 </strong>
                                         </div>
                                     </div>
-
-                                    
-
                                 <?endif;?>

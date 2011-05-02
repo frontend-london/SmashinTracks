@@ -253,6 +253,10 @@ panel_home_disapprove_track:
   requirements:
     sf_method: [get]
 
+panel_recommends:
+  url:     /panel/recommends
+  param: { module: panelRecommends, action: show, section: panel-recommends }
+
 panel_transactions-history:
   url:     /panel/transactions-history
   param: { module: panelTransactionsHistory, action: show, section: panel-transactions-history }

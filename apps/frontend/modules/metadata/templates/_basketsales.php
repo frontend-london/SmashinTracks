@@ -5,13 +5,13 @@
                 <img src="images/texts/dzisiejsza-sprzedaz.gif" alt="Dzisiejsza Sprzedaż" id="bb-img1" />
                 <dl id="bb-dl1">
                     <dt>Tracków:</dt>	<dd><?=$day_tracks;?></dd>
-                    <dt>Kasa:</dt>		<dd><?=$day_profit?></dd>
+                    <dt>Kasa:</dt>      <dd><?=$day_profit?></dd>
                     <div class="clear"></div>
                 </dl>
                 <img src="images/texts/caly-miesiac.gif" alt="Cały miesiąc" id="bb-img2" />
                 <dl id="bb-dl2">
-                    <dt>Tracków:</dt>	<dd><?=$month_tracks;?></dd>
-                    <dt>Kasa sklepu:</dt>		<dd><?=$month_profit;?></dd>
+                    <dt>Tracków:</dt>       <dd><?=$month_tracks;?></dd>
+                    <dt>Kasa sklepu:</dt>   <dd><?=$month_profit;?></dd>
                     <div class="clear"></div>
                 </dl>
             </div>

@@ -37,7 +37,7 @@ class TransactionsPeer extends BaseTransactionsPeer {
         {
                 $criteria = clone $criteria;
         }
-        if($amount!=null) $criteria->setLimit($amount); // limit dla transakcji a nie dla tracków, zakładam więc najbardziej pesymistyczny przypadek - 1 transkakcja = 1  track
+        if($amount!=null) $criteria->setLimit($amount); // limit dla transakcji a nie dla trackĂłw, zakĹ‚adam wiÄ™c najbardziej pesymistyczny przypadek - 1 transkakcja = 1  track
         $criteria->add(TransactionsPeer::TRANSACTIONS_DONE, true);
         $criteria->addDescendingOrderByColumn(TransactionsPeer::TRANSACTIONS_DATE);
         return $criteria;
@@ -49,7 +49,7 @@ class TransactionsPeer extends BaseTransactionsPeer {
 
     public static function getTracksSoldLastPeriodAmount($from) {
         $criteria = self::getLastDoneTransactionsCriteria();
-        $criteria->add(self::TRANSACTIONS_DATE, date('Y-m-01'), Criteria::GREATER_EQUAL);
+        $criteria->add(self::TRANSACTIONS_DATE, $from, Criteria::GREATER_EQUAL);
         $criteria->addJoin(TransactionsTracksPeer::TRANSACTIONS_ID, TransactionsPeer::TRANSACTIONS_ID);
         return TransactionsTracksPeer::doCount($criteria);
     }
