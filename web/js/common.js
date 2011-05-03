@@ -308,13 +308,13 @@ $(document).ready
 		  this.blur();
 		});
 
-//		$("#bf1-questions").accordion({
-//			active: 0,
-//			collapsible: true,
-//			autoHeight: false,
-//			header: '.bf1d-title',
-//			animated: 'easeslide'
-//		});
+		$("#bf1-questions").accordion({
+			active: 0,
+			collapsible: true,
+			autoHeight: false,
+			header: '.bf1d-title',
+			animated: 'easeslide'
+		});
 	}
 )
 	

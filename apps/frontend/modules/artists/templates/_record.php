@@ -1,5 +1,6 @@
 <?
     if(!isset($panel)) $panel = false;
+    if(!isset($panel_blocked)) $panel_blocked = false;
 ?>
                                 <div class="track">
                                     <span class="track-player">
@@ -13,12 +14,26 @@
                                     </div>
                                     <?if($panel):?>
                                         <a href="#" class="track-edit">EDIT</a>
+                                    <?elseif($panel_blocked):?>
+                                        <div class="track-right">
+                                            <div class="track-edit-320">
+                                                <a href="#" class="track-edit">EDIT</a>
+                                            </div>
+                                            <a href="#" class="button-accept"></a>
+                                        </div>
                                     <?else:?>
                                         <a href="<?=url_for('profile', $artist)?>" class="track-check">CHECK</a>
                                     <?endif;?>
-                                    <div class="track-row2-long">
+                                    <?if($panel_blocked):?>
+                                        <div class="track-row2">
+                                            <a href="#" class="track-bin2"></a>
+                                            <div class="clear"></div>
+                                        </div>
+                                    <?else:?>
+                                        <div class="track-row2-long">
                                             <div class="artist-desc"><?=$artist->getProfilesTextShorted()?> </div>
-                                        <div class="clear"></div>
-                                    </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                    <?endif;?>
                                     <div class="clear"></div>
                                 </div>

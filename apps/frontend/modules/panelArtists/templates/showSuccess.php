@@ -5,13 +5,19 @@
                     </div>
                     <div class="bw-div8">
                     	<div class="bookmark bookmark-active">
-                        	<a href="#">OSTATNIO DODANI</a>
+                            <a href="<?=url_for('panel_artists')?>">OSTATNIO DODANI</a>
+                            <div class="bookmark-bgr-left"></div>
+                            <div class="bookmark-bgr-right"></div>
+                        </div>
+
+                    	<div class="bookmark">
+                            <a href="<?=url_for('panel_artists_alphabetically')?>">WSZYSCY</a>
                             <div class="bookmark-bgr-left"></div>
                             <div class="bookmark-bgr-right"></div>
                         </div>
 
                     	<div class="bookmark bookmark-nobgr-right">
-							<a href="#">WSZYSCY</a>
+                            <a href="<?=url_for('panel_artists_blocked')?>">ZABLOKOWANI</a>
                             <div class="bookmark-bgr-left"></div>
                             <div class="bookmark-bgr-right"></div>
                         </div>

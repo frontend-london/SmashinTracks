@@ -13,12 +13,30 @@ class panelArtistsActions extends sfActions
 
   public function executeShow(sfWebRequest $request)
   {
-//    $this->artists = ProfilesPeer::getProfilesOrderByDate();
-
     $pager = new sfPropelPager('Profiles',sfConfig::get('app_max_tracks_on_list'));
     $pager->setCriteria(ProfilesPeer::getProfilesOrderByDateCriteria());
     $pager->setPage($request->getParameter('page', 1)); // 1 = domyślna wartość
     $pager->init();
     $this->pager = $pager;
+  }
+
+  public function executeShowAlphabetically(sfWebRequest $request)
+  {
+    $this->artists = ProfilesPeer::getProfilesAscending();
+  }
+
+  public function executeShowBlocked(sfWebRequest $request)
+  {
+//    $this->artists = ProfilesPeer::getProfilesAscending();
+    $pager = new sfPropelPager('Profiles',sfConfig::get('app_max_tracks_on_list'));
+    $pager->setCriteria(ProfilesPeer::getProfilesOrderByDateCriteria());
+    $pager->setPage($request->getParameter('page', 1)); // 1 = domyślna wartość
+    $pager->init();
+    $this->pager = $pager;
+  }
+
+  public function executeShowBlockedAlphabetically(sfWebRequest $request)
+  {
+//    $this->artists = ProfilesPeer::getProfilesAscending();
   }
 }
