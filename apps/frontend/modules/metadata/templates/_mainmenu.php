@@ -2,7 +2,7 @@
                         <?if($isAdmin):?>
                             <li<?if($sf_request->getParameter('section')=='panel-home'):?> class="active"<?endif;?>><a href="<?=url_for('panel_home')?>">Home</a></li>
                             <li<?if($sf_request->getParameter('section')=='panel-recommends'):?> class="active"<?endif;?>><a href="<?=url_for('panel_recommends')?>">Rekomendacje</a></li>
-                            <li><a href="#">Artyści</a></li>
+                            <li<?if($sf_request->getParameter('section')=='panel-artists'):?> class="active"<?endif;?>><a href="<?=url_for('panel_artists')?>">Artyści</a></li>
                             <li><a href="#">Banery</a></li>
                             <li><a href="#">Mailing</a></li>
                         <?else:?>

@@ -422,4 +422,8 @@ class Profiles extends BaseProfiles {
             return ProfilesViewedPeer::doCount($criteria);
         }
 
+        public function getProfilesDatePolish() {
+            return Smashin::generateDateInPolish($this->getProfilesDate(null));
+        }
+
 } // Profiles

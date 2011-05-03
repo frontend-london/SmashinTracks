@@ -31,6 +31,23 @@ class ProfilesPeer extends BaseProfilesPeer {
         return self::doSelect($criteria);
     }
 
+    public static function getProfilesOrderByDateCriteria($criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria(self::DATABASE_NAME);
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+
+        $criteria->addDescendingOrderByColumn(self::PROFILES_DATE);
+        return $criteria;
+    }
+
+    public static function getProfilesOrderByDate($criteria = null) {
+        return self::doSelect(self::getProfilesOrderByDateCriteria($criteria));
+    }
+
     public static function getMostPopularProfiles($criteria = null) {
         if ($criteria === null) {
                 $criteria = new Criteria(self::DATABASE_NAME);

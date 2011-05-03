@@ -233,6 +233,22 @@ panel_acceptances_disapprove_track:
   requirements:
     sf_method: [get]
 
+panel_artists:
+  url:     /panel/artists
+  param: { module: panelArtists, action: show, section: panel-artists }
+
+panel_artists_alphabetically:
+  url:     /panel/artists/alphabetically
+  param: { module: panelArtists, action: showAlphabetically, section: panel-artists }
+
+panel_artists_blocked:
+  url:     /panel/artists/blocked
+  param: { module: panelArtists, action: showBlocked, section: panel-artists }
+
+panel_artists_blocked_alphabetically:
+  url:     /panel/artists/blocked/alphabetically
+  param: { module: panelArtists, action: showBlockedAlphabetically, section: panel-artists }
+
 panel_home:
   url:     /panel/home
   param: { module: panelHome, action: show, section: panel-home }

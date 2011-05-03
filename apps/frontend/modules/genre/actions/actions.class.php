@@ -24,11 +24,10 @@ class genreActions extends sfActions
   {
     $this->genres = $this->getRoute()->getObject();
     $this->seeAlsoGenres = GenresPeer::getRandomGenres($this->genres);
-    //$this->tracks = $this->genres->getTracksGenressJoinTracksDescending(); // wersja bez stronicowania
-    $this->pager = new sfPropelPager('Tracks',sfConfig::get('app_max_tracks_on_list'));
-    $this->pager->setCriteria($this->genres->getActiveTracksCriteriaOrderByDate());
-    $this->pager->setPage($request->getParameter('page', 1)); // 1 = domyślna wartość
-    $this->pager->init();
-//    $this->forward404Unless($this->genres); // niepotrzebne bo route pilnuje
+    $pager = new sfPropelPager('Tracks',sfConfig::get('app_max_tracks_on_list'));
+    $pager->setCriteria($this->genres->getActiveTracksCriteriaOrderByDate());
+    $pager->setPage($request->getParameter('page', 1)); // 1 = domyślna wartość
+    $pager->init();
+    $this->pager = $pager;
   }  
 }
