@@ -249,6 +249,38 @@ panel_artists_blocked_alphabetically:
   url:     /panel/artists/blocked/alphabetically
   param: { module: panelArtists, action: showBlockedAlphabetically, section: panel-artists }
 
+panel_artists_accept_blocked:
+  url:     /panel/artists/blocked/accept/:profiles_id
+  class:   sfPropelRoute
+  options: { model: Profiles, type: object }
+  param: { module: panelArtists, action: acceptBlocked, section: panel-artists }
+  requirements:
+    sf_method: [get]
+
+panel_artists_accept_blocked_alphabetically:
+  url:     /panel/artists/blocked/alphabetically/accept/:profiles_id
+  class:   sfPropelRoute
+  options: { model: Profiles, type: object }
+  param: { module: panelArtists, action: acceptBlockedAlphabetically, section: panel-artists }
+  requirements:
+    sf_method: [get]
+
+panel_artists_delete_blocked:
+  url:     /panel/artists/blocked/delete/:profiles_id
+  class:   sfPropelRoute
+  options: { model: Profiles, type: object }
+  param: { module: panelArtists, action: deleteBlocked, section: panel-artists }
+  requirements:
+    sf_method: [get]
+
+panel_artists_delete_blocked_alphabetically:
+  url:     /panel/artists/blocked/alphabetically/delete/:profiles_id
+  class:   sfPropelRoute
+  options: { model: Profiles, type: object }
+  param: { module: panelArtists, action: deleteBlockedAlphabetically, section: panel-artists }
+  requirements:
+    sf_method: [get]
+
 panel_home:
   url:     /panel/home
   param: { module: panelHome, action: show, section: panel-home }

@@ -1,6 +1,8 @@
 <?
     if(!isset($panel)) $panel = false;
     if(!isset($panel_blocked)) $panel_blocked = false;
+    if(!isset($panel_accept_route)) $panel_accept_route = null;
+    if(!isset($panel_delete_route)) $panel_delete_route = null;
 ?>
                                 <div class="track">
                                     <span class="track-player">
@@ -19,14 +21,14 @@
                                             <div class="track-edit-320">
                                                 <a href="#" class="track-edit">EDIT</a>
                                             </div>
-                                            <a href="#" class="button-accept"></a>
+                                            <a href="<?=url_for($panel_accept_route, $artist)?>" class="button-accept"></a>
                                         </div>
                                     <?else:?>
                                         <a href="<?=url_for('profile', $artist)?>" class="track-check">CHECK</a>
                                     <?endif;?>
                                     <?if($panel_blocked):?>
                                         <div class="track-row2">
-                                            <a href="#" class="track-bin2"></a>
+                                            <a href="<?=url_for($panel_delete_route, $artist)?>" class="track-bin2"></a>
                                             <div class="clear"></div>
                                         </div>
                                     <?else:?>

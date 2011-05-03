@@ -39,12 +39,4 @@
 
                         <div class="clear"></div>
                     </div>
-                    <div class="bw-div2">
-                        <div class="bw-div2-text">
-                            <strong>See also:</strong>  <a href="<?=url_for('artists')?>">30 MOST POPULAR</a>, <a href="<?=url_for('charts')?>">CHARTS</a>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
                 </div>
-
-                <?php include_partial('metadata/footer') ?>

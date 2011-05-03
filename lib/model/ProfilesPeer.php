@@ -27,8 +27,33 @@ class ProfilesPeer extends BaseProfilesPeer {
                 $criteria = clone $criteria;
         }
 
+        $criteria->add(self::PROFILES_DELETED, false);
         $criteria->addAscendingOrderByColumn(self::PROFILES_NAME);
         return self::doSelect($criteria);
+    }
+
+    public static function getActiveProfilesAscending($criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria(self::DATABASE_NAME);
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+        $criteria->add(self::PROFILES_BLOCKED, false);
+        return self::getProfilesAscending($criteria);
+    }
+
+    public static function getBlockedProfilesAscending($criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria(self::DATABASE_NAME);
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+        $criteria->add(self::PROFILES_BLOCKED, true);
+        return self::getProfilesAscending($criteria);
     }
 
     public static function getProfilesOrderByDateCriteria($criteria = null) {
@@ -40,7 +65,20 @@ class ProfilesPeer extends BaseProfilesPeer {
                 $criteria = clone $criteria;
         }
 
+        $criteria->add(self::PROFILES_DELETED, false);
         $criteria->addDescendingOrderByColumn(self::PROFILES_DATE);
+        return $criteria;
+    }
+
+    public static function getActiveProfilesOrderByDateCriteria($criteria = null) {
+        $criteria = self::getProfilesOrderByDateCriteria($criteria);
+        $criteria->add(self::PROFILES_BLOCKED, false);
+        return $criteria;
+    }
+
+    public static function getBlockedProfilesOrderByDateCriteria($criteria = null) {
+        $criteria = self::getProfilesOrderByDateCriteria($criteria);
+        $criteria->add(self::PROFILES_BLOCKED, true);
         return $criteria;
     }
 
