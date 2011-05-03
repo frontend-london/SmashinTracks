@@ -4,7 +4,7 @@
     
     public function executeMenuleft(sfWebRequest $request)   
     {   
-      $this->menuleft = GenresPeer::doSelect(new Criteria());
+      $this->menuleft = GenresPeer::getGenres();
       $this->genre_path = $this->getRequestParameter('genres_path');
 
       $this->isAdmin = ProfilesPeer::isAdminProfile();

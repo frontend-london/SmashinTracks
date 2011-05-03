@@ -281,6 +281,26 @@ panel_artists_delete_blocked_alphabetically:
   requirements:
     sf_method: [get]
 
+panel_genres:
+  url:     /panel/genres
+  param: { module: panelGenres, action: show, section: panel-genres }
+
+panel_genres_delete:
+  url:     /panel/genres/delete/:genres_id
+  class:   sfPropelRoute
+  options: { model: Genres, type: object }
+  param: { module: panelGenres, action: delete, section: panel-genres }
+  requirements:
+    sf_method: [get]
+
+panel_genres_edit:
+  url:     /panel/genres/edit/:genres_id
+  class:   sfPropelRoute
+  options: { model: Genres, type: object }
+  param: { module: panelGenres, action: edit, section: panel-genres }
+  requirements:
+    sf_method: [get]
+
 panel_home:
   url:     /panel/home
   param: { module: panelHome, action: show, section: panel-home }

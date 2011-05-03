@@ -75,6 +75,33 @@ class GenresPeer extends BaseGenresPeer {
             return self::doSelectOne($criteria);
         }
 
+        public static function getGenres($criteria = null) {
+            if ($criteria === null) {
+                    $criteria = new Criteria(self::DATABASE_NAME);
+            }
+            elseif ($criteria instanceof Criteria)
+            {
+                    $criteria = clone $criteria;
+            }
+            return self::doSelect($criteria);
+        }
+
+        public static function getGenresFirstHalf() {
+            $criteria = new Criteria();
+            $amount = GenresPeer::doCount($criteria);
+            $half = ceil($amount/2);
+            $criteria->setLimit($half);
+            return self::getGenres($criteria);
+        }
+
+        public static function getGenresSecondHalf() {
+            $criteria = new Criteria();
+            $amount = GenresPeer::doCount($criteria);
+            $half = ceil($amount/2);
+            $criteria->setOffset($half);
+            return self::getGenres($criteria);
+        }
+
 
 
 } // GenresPeer
