@@ -299,7 +299,7 @@ panel_genres_edit:
   options: { model: Genres, type: object }
   param: { module: panelGenres, action: edit, section: panel-genres }
   requirements:
-    sf_method: [get]
+    sf_method: [get, post]
 
 panel_home:
   url:     /panel/home

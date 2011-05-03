@@ -75,6 +75,13 @@ class GenresPeer extends BaseGenresPeer {
             return self::doSelectOne($criteria);
         }
 
+        public static function getGenreById($id = null) {
+            if($id == null) return null;
+            $criteria = new Criteria();
+            $criteria->add(self::GENRES_ID, $id);
+            return self::doSelectOne($criteria);
+        }
+
         public static function getGenres($criteria = null) {
             if ($criteria === null) {
                     $criteria = new Criteria(self::DATABASE_NAME);

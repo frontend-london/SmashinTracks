@@ -108,8 +108,8 @@ class MyProfileMySettingsForm extends BaseProfilesForm
                 $post_validator->setMessage('invalid', 'Selected email is already in use.');
             }
         }
-
     }
+
     $this->validatorSchema->setPostValidator(
         new sfValidatorAnd(array(
             $this->validatorSchema->getPostValidator(),

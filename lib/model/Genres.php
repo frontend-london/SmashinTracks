@@ -60,6 +60,35 @@ class Genres extends BaseGenres {
         $criteria->addDescendingOrderByColumn(TracksPeer::TRACKS_DATE);
         return $this->getActiveTracksCriteria($criteria);
     }
+    
+    /*
+     * Generuje unikalny URL
+     */
+    public function generateGenresPath($string) {
+        $path_size = GenresPeer::getTableMap()->getColumn(GenresPeer::GENRES_PATH)->getSize();
+        $path = Smashin::generate_url($string, $path_size);
+        $counter=1;
+        while(true) {
+            $criteria = new Criteria(GenresPeer::DATABASE_NAME);
+            if($this->getGenresId()) $criteria->add(GenresPeer::GENRES_ID, $this->getGenresId(), Criteria::ALT_NOT_EQUAL);
+            $criteria->add(GenresPeer::GENRES_PATH, $path);
+            if(GenresPeer::doSelectOne($criteria)) {
+                $add_end = '-'.$counter;
+                $path = Smashin::generate_url($string, $path_size-strlen($add_end)).$add_end;
+                $counter++;
+            } else break;
+        }
+        return $path;
+
+    }
+
+    public function save(PropelPDO $con = null)
+    {
+        $path = $this->generateGenresPath($this->getGenresName());
+        $this->setGenresPath($path);
+
+        return parent::save($con);
+    }
 
     
 
