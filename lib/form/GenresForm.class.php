@@ -45,7 +45,7 @@ class GenresForm extends BaseGenresForm
                                             'required' => false,
                                           ));
 
-    /*$post_validators = $this->validatorSchema->getPostValidator()->getValidators();
+    $post_validators = $this->validatorSchema->getPostValidator()->getValidators();
     foreach($post_validators as $post_validator) {
         if(get_class($post_validator)=='sfValidatorPropelUnique') {
             $columns = $post_validator->getOption('column');
@@ -53,7 +53,7 @@ class GenresForm extends BaseGenresForm
                 $post_validator->setMessage('invalid', 'Nazwa gatunku w użyciu.');
             }
         }
-    }*/
+    }
 
   }
 }

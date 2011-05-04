@@ -90,6 +90,7 @@ class GenresPeer extends BaseGenresPeer {
             {
                     $criteria = clone $criteria;
             }
+            $criteria->addAscendingOrderByColumn(self::GENRES_NAME);
             return self::doSelect($criteria);
         }
 
