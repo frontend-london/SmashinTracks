@@ -34,11 +34,17 @@ class Genres extends BaseGenres {
 
     public function countNewActiveTracks() {
         $criteria = new Criteria();
-        $criteria->add(TracksPeer::TRACKS_DATE, time() - 86400 * sfConfig::get('app_track_new_period'), Criteria::GREATER_THAN);
+        $criteria->add(TracksPeer::TRACKS_DATE, time() - 86400 * ConfigurationsPeer::getNewLabelPeriod(), Criteria::GREATER_THAN);
         $criteria->add(TracksGenresPeer::GENRES_ID, $this->getGenresId());
         $criteria->addJoin(TracksPeer::TRACKS_ID, TracksGenresPeer::TRACKS_ID);
         return TracksPeer::countActiveTracks($criteria);
-        //return self::countTracksGenress($criteria, true);
+    }
+
+    public function countActiveTracks() {
+        $criteria = new Criteria();
+        $criteria->add(TracksGenresPeer::GENRES_ID, $this->getGenresId());
+        $criteria->addJoin(TracksPeer::TRACKS_ID, TracksGenresPeer::TRACKS_ID);
+        return TracksPeer::countActiveTracks($criteria);
     }
 
     public function getActiveTracksCriteria($criteria = null) {

@@ -51,7 +51,7 @@ class Tracks extends BaseTracks {
 
         public function isTrackNew() {
             $track_date = $this->getTracksDate('U');
-            return((time() - 86400 * sfConfig::get('app_track_new_period'))<$track_date);
+            return((time() - 86400 * ConfigurationsPeer::getNewLabelPeriod())<$track_date);
         }
 
         public function isInWishlist() {

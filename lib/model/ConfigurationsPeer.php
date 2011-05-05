@@ -18,4 +18,18 @@
  */
 class ConfigurationsPeer extends BaseConfigurationsPeer {
 
+    public static function getNewLabelPeriodRecord() {
+        $criteria = new Criteria();
+        $criteria->add(self::CONFIGURATIONS_NAME, 'newtracks_time');
+        $record = self::doSelectOne($criteria);
+        return self::doSelectOne($criteria);
+    }
+
+    public static function getNewLabelPeriod() {
+        $record = self::getNewLabelPeriodRecord();
+        return $record->getConfiguratkonsValue();
+    }
+
+
+
 } // ConfigurationsPeer
