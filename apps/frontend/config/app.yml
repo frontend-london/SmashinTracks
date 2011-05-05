@@ -17,8 +17,6 @@ all:
   default_prize: 0.02
   # minimalna wartość wypłaty w £
   min_withdraw: 10
-  # okres w dniach kiedy track jest nowy
-  track_new_period: 10
   # okres w dniach kiedy można ściągnąć kupiony track - zmień również web/mp3/download/index.php - define('TRACK_NEW_PERIOD', 1);
   track_download_period: 1
   # lista tracków na stronie - do stronicowania

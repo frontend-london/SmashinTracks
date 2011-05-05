@@ -23,5 +23,7 @@ class trackActions extends sfActions
     $this->pager->setCriteria($criteria);
     $this->pager->setPage($request->getParameter('page', 1)); // 1 = domyślna wartość
     $this->pager->init();
+
+    $this->isAdmin = ProfilesPeer::isAdminProfile();
   }
 }

@@ -281,6 +281,22 @@ panel_artists_delete_blocked_alphabetically:
   requirements:
     sf_method: [get]
 
+panel_delete_track:
+  url:     /panel/delete-track/:tracks_id
+  class:   sfPropelRoute
+  options: { model: Tracks, type: object }
+  param: { module: panelHome, action: deleteTrack, section: panel-home }
+  requirements:
+    sf_method: [get]
+
+panel_edit-artist:
+  url:     /panel/edit-artist/:profiles_id
+  class:   sfPropelRoute
+  options: { model: Profiles, type: object }
+  param: { module: panelEditArtist, action: show, section: panel-edit-artist }
+  requirements:
+    sf_method: [get]
+
 panel_genres:
   url:     /panel/genres
   param: { module: panelGenres, action: show, section: panel-genres }

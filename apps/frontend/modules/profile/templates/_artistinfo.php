@@ -1,5 +1,6 @@
 <?
     if(!isset($profile_page)) $profile_page = false;
+    if(!isset($isAdmin)) $isAdmin = false;
 ?>
                 <div id="artistpage-top<?if(!$profile->isContent()):?>-nocontent<?endif;?>">
                     <h1><?=$profile->getProfilesName();?></h1><?if($profile->isContent()):?><br /><?endif;?>
@@ -18,6 +19,12 @@
                                     <div class="button-right"></div>
                                     <a href="<?=url_for('members_my-profile')?>">EDIT PROFILE</a>
                                 </div>
+                            <?elseif($profile_page && $isAdmin):?>
+                                <div class="button-edytuj" id="at-edytuj">
+                                    <div class="button-left"></div>
+                                    <div class="button-right"></div>
+                                    <a href="<?=url_for('panel_edit-artist', $profile)?>">EDYTUJ</a>
+                                </div>
                             <?endif;?>
                         </div>
                     <?else:?>
@@ -31,6 +38,12 @@
                                     <div class="button-left"></div>
                                     <div class="button-right"></div>
                                     <a href="<?=url_for('members_my-profile')?>">EDIT PROFILE</a>
+                                </div>
+                            <?elseif($profile_page && $isAdmin):?>
+                                <div class="button-edytuj" id="at-edytuj">
+                                    <div class="button-left"></div>
+                                    <div class="button-right"></div>
+                                    <a href="<?=url_for('panel_edit-artist', $profile)?>">EDYTUJ</a>
                                 </div>
                             <?endif;?>
                         </div>

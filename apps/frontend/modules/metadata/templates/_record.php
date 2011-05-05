@@ -1,19 +1,20 @@
 <?
+    if(!isset($admin_icons)) $admin_icons = false;
     if(!isset($charts)) $charts = false;
     if(!isset($charts_num)) $charts_num = false;
     if(!isset($basket)) $basket = false;
     if(!isset($download)) $download = false;
     if(!isset($my_tracks)) $my_tracks = false;
     if(!isset($my_tracks_in_wishlists)) $my_tracks_in_wishlists = false;
-    if(!isset($transactions_tracks)) $transactions_tracks = false;
-    if(!isset($wishlist)) $wishlist = false;
+    if(!isset($no_icon_wishlist)) $no_icon_wishlist = false;
     if(!isset($not_accepted)) $not_accepted = false;
     if(!isset($not_accepted_url_accept)) $not_accepted_url_accept = false;
     if(!isset($not_accepted_url_disapprove)) $not_accepted_url_disapprove = false;
-    if(!isset($transaction_list)) $transaction_list = false;
     if(!isset($recommends_active)) $recommends_active = false;
     if(!isset($recommends_inactive)) $recommends_inactive = false;
-    if(!isset($no_icon_wishlist)) $no_icon_wishlist = false;
+    if(!isset($transaction_list)) $transaction_list = false;
+    if(!isset($transactions_tracks)) $transactions_tracks = false;
+    if(!isset($wishlist)) $wishlist = false;
 
     if(!isset($subsection)) $subsection = null;
     if(!isset($tracks_recommends)) $tracks_recommends = false;
@@ -57,7 +58,7 @@
                                             </div>
                                         <?else:?>
                                             <div class="track-right">
-                                                    <div class="track-plays">
+                                                <div class="track-plays">
                                                     Plays: <span><?=$track->countTracksPlayeds()?></span><br />
                                                     Bought: <span><?=$track->countTransactionsTrackss()?></span>
                                                 </div>
@@ -98,6 +99,13 @@
                                         <div class="track-right">
                                             <input type="checkbox" name="accept_recommends[<?=$tracks_recommends->getTracksRecommendsId()?>]" value="1" class="br2-checkbox" />
                                         </div>
+                                    <?elseif($admin_icons):?>
+                                        <div class="track-right">
+                                            <div class="track-plays">
+                                                Plays: <span><?=$track->countTracksPlayeds()?></span><br />
+                                                Bought: <span><?=$track->countTransactionsTrackss()?></span>
+                                            </div>
+                                        </div>
                                     <?else:?>
                                         <a href="<?=url_for('basket_add', $track)?>" class="track-right">
                                             <span class="track-cart"></span>
@@ -127,6 +135,10 @@
                                             <?endif;?>
                                         <?elseif($transaction_list):?>
                                             <a href="<?=url_for('panel_recommends_add', $track)?>" class="track-r"></a>
+                                        <?elseif($admin_icons):?>
+                                            <a href="<?=url_for('panel_recommends_add', $track)?>" class="track-r"></a>
+                                            <a href="#" class="track-e"></a>
+                                            <a href="<?=url_for('panel_delete_track', $track)?>" class="track-bin2"></a>
                                         <?endif;?>
                                         <div class="track-added">Added: <?=$track->getTracksDate('Y-m-d'); ?></div>
                                         <div class="clear"></div>

@@ -18,6 +18,15 @@ class panelHomeActions extends sfActions
     $track->save();
     $this->redirect('panel_home');
   }
+
+  public function executeDeleteTrack(sfWebRequest $request)
+  {
+    $track = $this->getRoute()->getObject();
+    $track->setTracksDeleted(1);
+    $track->save();
+    $profile = $track->getProfiles();
+    $this->redirect('profile', $profile);
+  }
   
   public function executeDisapprove(sfWebRequest $request)
   {

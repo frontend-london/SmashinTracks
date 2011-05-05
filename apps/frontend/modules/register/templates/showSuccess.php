@@ -21,11 +21,11 @@
                                 </div>
                                 <div class="clear"></div>
                             </div>
-                        <?php if ($form['profiles_email']->hasError()): ?>
-                            <div class="div-error-message">
-                                <?php echo $form['profiles_email']->renderError() ?>
-                            </div>
-                        <?php endif; ?>
+                            <?php if ($form['profiles_email']->hasError()): ?>
+                                <div class="div-error-message">
+                                    <?php echo $form['profiles_email']->renderError() ?>
+                                </div>
+                            <?php endif; ?>
                             <div id="br3-div3">
                                     <div class="bm3-left"><?php echo $form['profiles_password']->renderLabel('Password:') ?></div>
                                 <div class="bm3-right">

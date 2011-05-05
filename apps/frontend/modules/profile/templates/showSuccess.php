@@ -1,4 +1,4 @@
-                <?php include_partial('profile/artistinfo', array('profile' => $profile, 'profile_page' => true)) ?>
+                <?php include_partial('profile/artistinfo', array('profile' => $profile, 'profile_page' => true, 'isAdmin' => $isAdmin)) ?>
 
                 <div class="box-white" id="box-mymusic">
                     <?if($pager->getResults()->count()):?>
@@ -6,7 +6,7 @@
                     <?endif;?>
                     <div class="bw-tracks">
                         <?foreach ($pager->getResults() as $track):?>
-                            <?php include_partial('metadata/record', array('track' => $track)) ?>
+                            <?php include_partial('metadata/record', array('track' => $track, 'admin_icons' => $isAdmin, 'no_icon_wishlist' => $isAdmin)) ?>
                         <?endforeach;?>
                         <div class="clear"></div>
                     </div>

@@ -23,5 +23,6 @@ class profileActions extends sfActions
 
     $this->profile = $profile;
     $this->pager = $pager;
+    $this->isAdmin = ProfilesPeer::isAdminProfile();
   }
 }
