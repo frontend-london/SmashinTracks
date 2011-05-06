@@ -295,7 +295,7 @@ panel_edit-artist:
   options: { model: Profiles, type: object }
   param: { module: panelEditArtist, action: show, section: panel-edit-artist }
   requirements:
-    sf_method: [get]
+    sf_method: [get, post]
 
 panel_genres:
   url:     /panel/genres

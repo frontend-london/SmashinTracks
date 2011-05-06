@@ -150,8 +150,44 @@ class ProfilesPeer extends BaseProfilesPeer {
         {
                 $criteria = clone $criteria;
         }
-        $criteria->add(self::PROFILES_EMAIL, $profiles_email);
+        $criteria->add(self::PROFILES_EMAIL, $profiles_email, Criteria::LIKE);
         return self::doSelectOne($criteria);
+    }
+
+    public static function isProfileByEmail($profiles_email, $criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria();
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+        $criteria->add(self::PROFILES_EMAIL, $profiles_email, Criteria::LIKE);
+        return self::doCount($criteria);
+    }
+
+    public static function getProfileByName($profiles_name, $criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria();
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+        $criteria->add(self::PROFILES_NAME, strtoupper($profiles_name), Criteria::LIKE);
+        return self::doSelectOne($criteria);
+    }
+
+    public static function isProfileByName($profiles_name, $criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria();
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+        $criteria->add(self::PROFILES_NAME, strtoupper($profiles_name), Criteria::LIKE);
+        return self::doCount($criteria);
     }
 
     public static function isProfileById($profiles_id, $criteria = null) {
@@ -271,5 +307,6 @@ class ProfilesPeer extends BaseProfilesPeer {
             return null;
         }
     }
+
 
 } // ProfilesPeer

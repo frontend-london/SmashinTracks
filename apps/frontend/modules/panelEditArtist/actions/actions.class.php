@@ -25,7 +25,7 @@ class panelEditArtistActions extends sfActions
         $tmp_pr = $request->getParameter('profile');
         $this->url_edit_id = $tmp_pr['profiles_url_edit_id'];
     }
-    $form = new EditProfileForm(array('profiles_name' => $profile->getProfilesName(), 'profiles_text' => $profile->getProfilesText(), 'profiles_email' => $profile->getProfilesEmail(), 'profiles_photo_delete' => false));
+    $form = new EditProfileForm(array('profiles_id' => $profile->getProfilesId(), 'profiles_name' => $profile->getProfilesName(), 'profiles_text' => $profile->getProfilesText(), 'profiles_email' => $profile->getProfilesEmail(), 'profiles_photo_delete' => false));
     $this->added_url = false;
 
     if ($request->isMethod('post') && $request->hasParameter('profile'))
@@ -51,7 +51,12 @@ class panelEditArtistActions extends sfActions
                 }
             } else {
 
+//                echo "ID: ".$form->getValue('profiles_id');
+
+                $profile->setProfilesName($form->getValue('profiles_name'));
                 $profile->setProfilesText($form->getValue('profiles_text'));
+                $profile->setProfilesEmail($form->getValue('profiles_email'));
+
 
                 if($form->getValue('profiles_photo_delete')) {
                     $profile->setProfilesPhoto(false);

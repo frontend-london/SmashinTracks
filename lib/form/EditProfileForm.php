@@ -1,18 +1,25 @@
 <?php
 
-function passValidatorExtended($validator, $values)
+function uniqueValidatorExtended($validator, $values)
 {
   if($values['profiles_url_add_action'] || $values['profiles_url_edit_action']) { // przypadek, gdy hasło do profilu nie jest sprawdzane
       return $values; 
-  } else {
+  } else {      
+      $profile = ProfilesPeer::getProfileById($values['profiles_id']);
+
+      if(($profile->getProfilesName() != $values['profiles_name']) && ProfilesPeer::isProfileByName($values['profiles_name'])) {
+          //throw new sfValidatorError($validator, 'invalid');
+          $error = new sfValidatorError($validator, 'invalid');
+          throw new sfValidatorErrorSchema($validator, array('profiles_name' => $error));
+      }
+
+      if(($profile->getProfilesEmail() != $values['profiles_email']) && ProfilesPeer::isProfileByEmail($values['profiles_email'])) {
+//          throw new sfValidatorError($validator, 'invalid');
+            $error = new sfValidatorError($validator, 'invalid');
+            throw new sfValidatorErrorSchema($validator, array('profiles_email' => $error));
+      }
+      
       return $values;
-//      $profile = ProfilesPeer::getCurrentProfile();
-//      if(!empty($values['profiles_password']) && ProfilesPeer::isPassCorrect($profile->getProfilesId(), $values['profiles_password']))
-//      {
-//        return $values;
-//      } else {
-//        throw new sfValidatorError($validator, 'invalid');
-//      }
   }
 }
 
@@ -21,6 +28,7 @@ class EditProfileForm extends BaseForm
   public function configure()
   {
     $this->setWidgets(array(
+      'profiles_id' => new sfWidgetFormInputHidden(),
       'profiles_name' => new sfWidgetFormInputText(),
       'profiles_text' => new sfWidgetFormTextarea(),
       'profiles_photo' => new sfWidgetFormInputFile(),
@@ -36,6 +44,7 @@ class EditProfileForm extends BaseForm
     $this->widgetSchema->setNameFormat('profile[%s]');
 
     $this->setValidators(array(
+      'profiles_id' => new sfValidatorInteger(array('required' => true)),
       'profiles_name' => new sfValidatorString(array('required' => true)),
       'profiles_text'   => new sfValidatorString(array('required' => false)),
       'profiles_photo'  => new sfValidatorFile(array(
@@ -57,8 +66,8 @@ class EditProfileForm extends BaseForm
     ));
 
     $this->validatorSchema->setPostValidator(new sfValidatorCallback(
-        array('callback'  => 'passValidatorExtended',),
-        array('invalid'  => 'You have specified an incorrect password. <br />Please check your password and try again.')
+        array('callback'  => 'uniqueValidatorExtended',),
+        array('invalid'  => 'Podana wartość istnieje już w bazie, musi być unikatowa')
     ));
   }
 
