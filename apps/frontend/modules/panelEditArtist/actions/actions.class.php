@@ -17,13 +17,15 @@ class panelEditArtistActions extends sfActions
   */
   public function executeShow(sfWebRequest $request)
   {
-    $profile = $this->getRoute()->getObject();
-
-    $this->url_edit_id = $this->getUser()->getFlash('url_edit_id');
+    $this->url_edit_id = $this->getUser()->getFlash('url_edit_id'); 
     $this->getUser()->setFlash('url_edit_id', null);
     if(empty($this->url_edit_id)) {
         $tmp_pr = $request->getParameter('profile');
         $this->url_edit_id = $tmp_pr['profiles_url_edit_id'];
+        $profile = $this->getRoute()->getObject();
+    } else {
+        $url_edit = ProfilesUrlsPeer::getProfilesUrlsById($this->url_edit_id);
+        $profile = $url_edit->getProfiles();
     }
     $form = new EditProfileForm(array('profiles_id' => $profile->getProfilesId(), 'profiles_name' => $profile->getProfilesName(), 'profiles_text' => $profile->getProfilesText(), 'profiles_email' => $profile->getProfilesEmail(), 'profiles_photo_delete' => false));
     $this->added_url = false;
@@ -50,9 +52,6 @@ class panelEditArtistActions extends sfActions
                     $url->save();
                 }
             } else {
-
-//                echo "ID: ".$form->getValue('profiles_id');
-
                 $profile->setProfilesName($form->getValue('profiles_name'));
                 $profile->setProfilesText($form->getValue('profiles_text'));
                 $profile->setProfilesEmail($form->getValue('profiles_email'));
@@ -95,4 +94,37 @@ class panelEditArtistActions extends sfActions
     $this->form = $form;
     $this->profile = $profile;
   }
+
+  public function executeUrlEdit(sfWebRequest $request)
+  {
+      $url_edit = $this->getRoute()->getObject();
+      $this->getUser()->setFlash('url_edit_id', $url_edit->getProfilesUrlsId());
+      $this->forward('panelEditArtist', 'show');
+  }
+
+  public function executeUrlDelete(sfWebRequest $request)
+  {
+    $url_delete = $this->getRoute()->getObject();
+    $profile = $url_delete->getProfiles();
+    $url_delete->delete();
+    $this->redirect('panel_edit-artist', $profile);
+
+  }
+
+  public function executeBlock(sfWebRequest $request)
+  {
+      $profile = $this->getRoute()->getObject();
+      $profile->setProfilesBlocked(true);
+      $profile->save();
+      $this->redirect('homepage');
+  }
+
+  public function executeDelete(sfWebRequest $request)
+  {
+      $profile = $this->getRoute()->getObject();
+      $profile->setProfilesDeleted(true);
+      $profile->save();
+      $this->redirect('homepage');
+  }
+
 }

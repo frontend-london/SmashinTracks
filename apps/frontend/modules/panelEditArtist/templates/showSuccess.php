@@ -147,12 +147,12 @@
                                             <div class="button-edit">
                                                 <div class="button-left"></div>
                                                 <div class="button-right"></div>
-                                                <a href="<?=url_for('members_my-profile_url_edit',$url)?>">Edit</a>
+                                                <a href="<?=url_for('panel_edit-artist-url',$url)?>">Edit</a>
                                             </div>
                                             <div class="button-delete">
                                                 <div class="button-left"></div>
                                                 <div class="button-right"></div>
-                                                <a href="<?=url_for('members_my-profile_url_delete',$url)?>">Delete</a>
+                                                <a href="<?=url_for('panel_delete-artist-url',$url)?>">Delete</a>
                                             </div>
                                         </div>
                                     <?endif;?>
@@ -170,13 +170,13 @@
                                 <div class="button-red-delete" id="bm3-div8-div1">
                                     <div class="button-red-left"></div>
                                     <div class="button-red-right"></div>
-                                    <a href="#">DELETE PROFILE</a>
+                                    <a href="<?=url_for('panel_delete-artist', $profile)?>">DELETE PROFILE</a>
                                 </div>
 
                                 <div class="button-blokuj" id="bm3-div8-div2">
                                     <div class="button-left"></div>
                                     <div class="button-right"></div>
-                                    <a href="#">BLOKUJ</a>
+                                    <a href="<?=url_for('panel_block-artist', $profile)?>">BLOKUJ</a>
                                 </div>
 
                                 <div class="button-save" id="bm3-div8-div3">

@@ -114,6 +114,7 @@ class membersMyProfileActions extends sfActions
   public function executeUrlEdit(sfWebRequest $request)
   {
       $url_edit = $this->getRoute()->getObject();
+      if($url_edit->getProfilesId()!=ProfilesPeer::getCurrentProfileId()) $this->redirect('members_my-profile');
       $this->getUser()->setFlash('url_edit_id', $url_edit->getProfilesUrlsId());
       $this->forward('membersMyProfile', 'show');
   }
@@ -122,7 +123,6 @@ class membersMyProfileActions extends sfActions
   {
     $url_delete = $this->getRoute()->getObject();
     if($url_delete->getProfilesId()==ProfilesPeer::getCurrentProfileId()) $url_delete->delete();
-//    $this->forward('membersMyProfile', 'show');
     $this->redirect('members_my-profile');
     
   }

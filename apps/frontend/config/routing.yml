@@ -297,6 +297,39 @@ panel_edit-artist:
   requirements:
     sf_method: [get, post]
 
+panel_block-artist:
+  url:     /panel/block-artist/:profiles_id
+  class:   sfPropelRoute
+  options: { model: Profiles, type: object }
+  param: { module: panelEditArtist, action: block, section: panel-edit-artist }
+  requirements:
+    sf_method: [get]
+
+panel_delete-artist:
+  url:     /panel/delete-artist/:profiles_id
+  class:   sfPropelRoute
+  options: { model: Profiles, type: object }
+  param: { module: panelEditArtist, action: delete, section: panel-edit-artist }
+  requirements:
+    sf_method: [get]
+
+panel_edit-artist-url:
+  url:     /panel/edit-artist-url/:profiles_urls_id
+  class:   sfPropelRoute
+  options: { model: ProfilesUrls, type: object }
+  param: { module: panelEditArtist, action: urlEdit, section: panel-edit-artist }
+  requirements:
+    sf_method: [get]
+
+panel_delete-artist-url:
+  url:     /panel/delete-artist-url/:profiles_urls_id
+  class:   sfPropelRoute
+  options: { model: ProfilesUrls, type: object }
+  param: { module: panelEditArtist, action: urlDelete, section: panel-edit-artist }
+  requirements:
+    sf_method: [get]
+
+
 panel_genres:
   url:     /panel/genres
   param: { module: panelGenres, action: show, section: panel-genres }

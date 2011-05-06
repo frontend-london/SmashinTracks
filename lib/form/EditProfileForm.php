@@ -8,13 +8,11 @@ function uniqueValidatorExtended($validator, $values)
       $profile = ProfilesPeer::getProfileById($values['profiles_id']);
 
       if(($profile->getProfilesName() != $values['profiles_name']) && ProfilesPeer::isProfileByName($values['profiles_name'])) {
-          //throw new sfValidatorError($validator, 'invalid');
           $error = new sfValidatorError($validator, 'invalid');
           throw new sfValidatorErrorSchema($validator, array('profiles_name' => $error));
       }
 
       if(($profile->getProfilesEmail() != $values['profiles_email']) && ProfilesPeer::isProfileByEmail($values['profiles_email'])) {
-//          throw new sfValidatorError($validator, 'invalid');
             $error = new sfValidatorError($validator, 'invalid');
             throw new sfValidatorErrorSchema($validator, array('profiles_email' => $error));
       }

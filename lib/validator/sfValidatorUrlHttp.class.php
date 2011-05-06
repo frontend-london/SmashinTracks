@@ -19,6 +19,7 @@
 class sfValidatorUrlHttp extends sfValidatorRegex
 {
   const REGEX_URL_FORMAT = '~^
+      ((%s)://)?                              # protocol
       (
         ([a-z0-9-]+\.)+[a-z]{2,6}             # a domain name
           |                                   #  or
@@ -53,7 +54,6 @@ class sfValidatorUrlHttp extends sfValidatorRegex
    */
   public function generateRegex()
   {
-//    return sprintf(self::REGEX_URL_FORMAT, implode('|', $this->getOption('protocols')));
-    return self::REGEX_URL_FORMAT;
+    return sprintf(self::REGEX_URL_FORMAT, implode('|', $this->getOption('protocols')));
   }
 }
