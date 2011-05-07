@@ -7,7 +7,7 @@
 
                         <div id="bt2-tracks">
                             <?$counter=0; foreach ($not_accepted as $track):?>
-                                <?php include_partial('metadata/record', array('track' => $track, 'not_accepted' => true, 'not_accepted_url_accept' => 'panel_home_accept_track', 'not_accepted_url_disapprove' => 'panel_home_disapprove_track')) ?>
+                                <?php include_component('metadata', 'record', array('track' => $track, 'not_accepted' => true, 'not_accepted_url_accept' => 'panel_home_accept_track', 'not_accepted_url_disapprove' => 'panel_home_disapprove_track')) ?>
                             <?$counter++; endforeach;?>
 
                             <div class="clear"></div>
@@ -40,7 +40,7 @@
                                     </div>
                                 <?endif?>
                                 <?foreach($transaction->getTransactionsTrackssJoinTracks() as $transaction_track): $counter++; if($counter>10) break(2);?>
-                                    <?php include_partial('metadata/record', array('transaction_list' => true, 'transactions_tracks' => $transaction_track, 'track' => $transaction_track->getTracks(), 'no_icon_wishlist' => true)) ?>
+                                    <?php include_component('metadata', 'record', array('transaction_list' => true, 'transactions_tracks' => $transaction_track, 'track' => $transaction_track->getTracks(), 'no_icon_wishlist' => true)) ?>
                                 <?endforeach;?>
 
                             <?endforeach;?>
@@ -70,7 +70,7 @@
                                 <?if($counter==5): $hidden_recom = true;?>
                                     <div id="br-hidden">
                                 <?endif;?>
-                                <?php include_partial('metadata/record', array('track' => $recom->getTracks())) ?>
+                                <?php include_component('metadata', 'record', array('track' => $recom->getTracks())) ?>
                             <?$counter++; endforeach;?>
                             <?if($hidden_recom):?>
                                 </div>
@@ -93,7 +93,7 @@
                         <div class="bw-tracks">
 
                             <?$counter=0; foreach ($newtracks as $track):?>
-                                <?php include_partial('metadata/record', array('track' => $track)) ?>
+                                <?php include_component('metadata', 'record', array('track' => $track)) ?>
                             <?$counter++; endforeach;?>
 
                             <div class="clear"></div>
@@ -123,7 +123,7 @@
                         <div class="bw-tracks">
 
                             <?$counter=0; foreach ($bestsellerstracks as $track):?>
-                                <?php include_partial('metadata/record', array('track' => $track)) ?>
+                                <?php include_component('metadata', 'record', array('track' => $track)) ?>
                             <?$counter++; endforeach;?>
 
                             <div class="clear"></div>

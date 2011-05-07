@@ -4,7 +4,7 @@
                     <div class="bs-inner">
                         <h1><?=$profile->getProfilesName()?> - <?=$track->getTracksTitle()?></h1><br />
                         <div id="bt-tracks">
-                            <?php include_partial('metadata/record', array('track' => $track, 'admin_icons' => $isAdmin, 'no_icon_wishlist' => $isAdmin)) ?>
+                            <?php include_component('metadata', 'record', array('track' => $track, 'admin_icons' => $isAdmin, 'no_icon_wishlist' => $isAdmin)) ?>
                             <div class="clear"></div>
                         </div>
                     </div>
@@ -18,7 +18,7 @@
 
                     <div class="bw-tracks">
                         <?foreach ($pager->getResults() as $track):?>
-                            <?php include_partial('metadata/record', array('track' => $track, 'admin_icons' => $isAdmin, 'no_icon_wishlist' => $isAdmin)) ?>
+                            <?php include_component('metadata', 'record', array('track' => $track, 'admin_icons' => $isAdmin, 'no_icon_wishlist' => $isAdmin)) ?>
                         <?endforeach;?>
                         <div class="clear"></div>
                     </div>

@@ -10,8 +10,8 @@
             wmode:"transparent"
     };
     var attributes = {
-            id:"smashinPlayerPanel",
-            name:"smashinPlayerPanel"
+            id:"smashinPlayer",
+            name:"smashinPlayer"
     };
     
     swfobject.embedSWF("swf/mainLoader_v01.swf", "mp3player-inner", "100%", "102", "10.0.0", "expressInstall.swf",flashvars,params,attributes);

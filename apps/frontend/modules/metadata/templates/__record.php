@@ -20,13 +20,13 @@
     if(!isset($tracks_recommends)) $tracks_recommends = false;
     if(!isset($recommends_active_next)) $recommends_active_next = null;
     if(!isset($recommends_active_prev)) $recommends_active_prev = null;
-
+    
 
 ?>
                                 <div class="track">
 <?/* FLASH PLAYER */?>
                                     <a href="mp3/<?=$track->getTracksPath(); ?>.mp3" class="track-player<?if($charts):?> tp-num tp-num-<?=$charts_num?><?elseif($track->isTrackNew()):?> tp-new<?endif;?>">
-                                        <span class="fp_src" title="mp3/<?=$track->getTracksPath(); ?>.mp3"></span><span class="fp_ico" title="<?=$track->getProfiles()->getProfilesPhotoPath();?>"></span><span class="fp_artist" title="<?=$track->getTracksArtistUppercase(); ?>"></span><span class="fp_address" title="<?if($isAdmin):?><?='mp3/download/?id='.$track->getTracksId().'&admin=1&pass='.sfConfig::get('app_fullmp3_admin_access_pass')?><?else:?><?=url_for('basket_add', $track)?><?endif;?>"></span><span class="fp_title" title="<?=$track->getTracksTitle(); ?>"></span><span class="fp_prize" title="<?=Smashin::generate_prize(sfConfig::get('app_default_prize'))?>"></span><span class="fp_add_wishlist" title="<?=url_for('members_my-wishlist_add', $track)?>"></span><span class="fp_remove_wishlist" title="<?=url_for('members_my-wishlist_remove', $track)?>"></span><span class="fp_item_id" title="<?=$track->getTracksId();?>"></span><img src="images/icons/player-off.png" style="background-image:url('<?=$track->getProfiles()->getProfilesPhotoPath();?>');" alt="" />
+                                        <span class="fp_src" title="mp3/<?=$track->getTracksPath(); ?>.mp3"></span><span class="fp_ico" title="<?=$track->getProfiles()->getProfilesPhotoPath();?>"></span><span class="fp_artist" title="<?=$track->getTracksArtistUppercase(); ?>"></span><span class="fp_address" title="<?=url_for('basket_add', $track)?>"></span><span class="fp_title" title="<?=$track->getTracksTitle(); ?>"></span><span class="fp_prize" title="<?=Smashin::generate_prize(sfConfig::get('app_default_prize'))?>"></span><span class="fp_add_wishlist" title="<?=url_for('members_my-wishlist_add', $track)?>"></span><span class="fp_remove_wishlist" title="<?=url_for('members_my-wishlist_remove', $track)?>"></span><span class="fp_item_id" title="<?=$track->getTracksId();?>"></span><img src="images/icons/player-off.png" style="background-image:url('<?=$track->getProfiles()->getProfilesPhotoPath();?>');" alt="" />
                                     </a>
 <?/* TRACK ROW 1 */?>
                                     <div class="track-row1">
@@ -170,7 +170,7 @@
                                             <div class="clear"></div>
                                         </div>
                                         <div class="tracksale-row2">
-                                                Metoda: <strong><?if($transactions_paypal):?>PAYPAL<?else:?>SMASHIN TRACKS<?endif?></strong>  &nbsp; l &nbsp;
+                                                Metoda: <strong><?if($transactions_paypal):?>PAYPAL<?else:?>SMASHIN TRACKS<?endif?></strong>  &nbsp; l &nbsp;  
                                                 Ściągnięte: <strong>
                                                     <?$counter2 = 0; foreach($transactions_tracks->getTransactionsTracksDownloadss() as $download): $counter2++;?>
                                                         <?if($counter2>1) echo '-';?> <?=$counter2?> (<?=$download->getTransactionsTracksDownloadsDate('H:i')?>)

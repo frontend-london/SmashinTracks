@@ -7,7 +7,7 @@
 
                         <div id="bs-tracks">
                             <?foreach ($pager->getResults() as $track):?>
-                                <?php include_partial('metadata/record', array('track' => $track)) ?>
+                                <?php include_component('metadata', 'record', array('track' => $track)) ?>
                             <?endforeach;?>
                             <div class="clear"></div>
                         </div>

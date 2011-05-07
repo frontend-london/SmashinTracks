@@ -17,7 +17,7 @@
                                 <?if($counter==5): $hidden_recom = true;?>
                                     <div id="br-hidden">
                                 <?endif;?>
-                                <?php include_partial('metadata/record', array('track' => $recom->getTracks())) ?>
+                                <?php include_component('metadata', 'record', array('track' => $recom->getTracks())) ?>
                             <?$counter++; endforeach;?>
                             <?if($hidden_recom):?>
                                 </div>
@@ -40,7 +40,7 @@
                         <div class="bw-tracks">
 
                             <?$counter=0; foreach ($newtracks as $track):?>
-                                <?php include_partial('metadata/record', array('track' => $track)) ?>
+                                <?php include_component('metadata', 'record', array('track' => $track)) ?>
                             <?$counter++; endforeach;?>
                             
                             <div class="clear"></div>
@@ -70,7 +70,7 @@
                         <div class="bw-tracks">
 
                             <?$counter=0; foreach ($bestsellerstracks as $track):?>
-                                <?php include_partial('metadata/record', array('track' => $track)) ?>
+                                <?php include_component('metadata', 'record', array('track' => $track)) ?>
                             <?$counter++; endforeach;?>
                             
                             <div class="clear"></div>

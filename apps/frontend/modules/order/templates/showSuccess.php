@@ -6,7 +6,7 @@
                         <div id="bo-div2">Ponizej tracki ktore kupiles <span class="blue">gotowe do sciagniecia.</span> Mozesz je sciagnac 3 razy, linki do nich beda dzialaly 24.</div>
                         <div id="bo-tracks">
                             <?foreach ($tracks as $track):?>
-                                <?php include_partial('metadata/record', array('track' => $track->getTracks(), 'download' => true, 'transactions_tracks' => $track)) ?>
+                                <?php include_component('metadata', 'record', array('track' => $track->getTracks(), 'download' => true, 'transactions_tracks' => $track)) ?>
                             <?endforeach;?>
                             <div class="clear"></div>
                         </div>

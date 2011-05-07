@@ -8,7 +8,7 @@
                         <div id="bt2-tracks">
 
                             <?foreach ($pager->getResults() as $track):?>
-                                <?php include_partial('metadata/record', array('track' => $track, 'not_accepted' => true, 'not_accepted_url_accept' => 'panel_acceptances_accept_track', 'not_accepted_url_disapprove' => 'panel_acceptances_disapprove_track')) ?>
+                                <?php include_component('metadata', 'record', array('track' => $track, 'not_accepted' => true, 'not_accepted_url_accept' => 'panel_acceptances_accept_track', 'not_accepted_url_disapprove' => 'panel_acceptances_disapprove_track')) ?>
                             <?endforeach;?>
 
                             <div class="clear"></div>

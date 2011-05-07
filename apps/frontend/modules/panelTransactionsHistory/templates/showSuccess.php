@@ -13,7 +13,7 @@
                                     </div>
                                 <?endif?>
                                 <?foreach($transaction->getTransactionsTrackssJoinTracks() as $transaction_track):?>
-                                    <?php include_partial('metadata/record', array('transaction_list' => true, 'transactions_tracks' => $transaction_track, 'track' => $transaction_track->getTracks(), 'no_icon_wishlist' => true)) ?>
+                                    <?php include_component('metadata', 'record', array('transaction_list' => true, 'transactions_tracks' => $transaction_track, 'track' => $transaction_track->getTracks(), 'no_icon_wishlist' => true)) ?>
                                 <?endforeach;?>
 
                             <?endforeach;?>

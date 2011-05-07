@@ -9,7 +9,7 @@
                         <div class="bw-tracks">
 
                             <?foreach ($tracks as $track):?>
-                                <?php include_partial('metadata/record', array('track' => $track, 'basket' => true)) ?>
+                                <?php include_component('metadata', 'record', array('track' => $track, 'basket' => true)) ?>
                             <?endforeach;?>
 
                             <div class="clear"></div>

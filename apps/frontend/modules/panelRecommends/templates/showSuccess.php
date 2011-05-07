@@ -16,7 +16,7 @@
                                         if($counter!=0) $recommends_active_prev = $active_recommends[$counter-1]->getTracksRecommendsId(); else $recommends_active_prev = null;
                                         if($counter!=(count($active_recommends)-1)) $recommends_active_next = $active_recommends[$counter+1]->getTracksRecommendsId(); else $recommends_active_next = null;
                                     ?>
-                                    <?php include_partial('metadata/record', array('track' => $recom->getTracks(), 'tracks_recommends' => $recom, 'recommends_active' => true, 'no_icon_wishlist' => true, 'recommends_active_prev' => $recommends_active_prev, 'recommends_active_next' => $recommends_active_next,)) ?>
+                                    <?php include_component('metadata', 'record', array('track' => $recom->getTracks(), 'tracks_recommends' => $recom, 'recommends_active' => true, 'no_icon_wishlist' => true, 'recommends_active_prev' => $recommends_active_prev, 'recommends_active_next' => $recommends_active_next,)) ?>
                                 <?$counter++; endforeach;?>
 
                                 <div class="clear"></div>
@@ -34,7 +34,7 @@
 
                             <div id="br2-tracks2">
                                 <?foreach ($inactive_recommends as $recom):?>
-                                    <?php include_partial('metadata/record', array('track' => $recom->getTracks(), 'tracks_recommends' => $recom, 'recommends_inactive' => true, 'no_icon_wishlist' => true,)) ?>
+                                    <?php include_component('metadata', 'record', array('track' => $recom->getTracks(), 'tracks_recommends' => $recom, 'recommends_inactive' => true, 'no_icon_wishlist' => true,)) ?>
                                 <?endforeach;?>
 
                                 <div class="clear"></div>

@@ -17,6 +17,11 @@
       $this->isAdmin = ProfilesPeer::isAdminProfile();
     }
 
+    public function executeFlashplayer(sfWebRequest $request)
+    {
+      $this->isAdmin = ProfilesPeer::isAdminProfile();
+    }
+
     public function executeSubmenu(sfWebRequest $request)
     {
       $this->isProfile = ProfilesPeer::isCurrentProfile();
@@ -51,4 +56,9 @@
        }
      }
   }
+
+    public function executeRecord(sfWebRequest $request)
+    {
+      $this->isAdmin = ProfilesPeer::isAdminProfile();
+    }
 }  

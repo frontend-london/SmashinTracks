@@ -28,7 +28,7 @@
                         <div class="bw-tracks">
 
                             <?$counter=1; foreach ($tracks as $track):?>
-                                <?php include_partial('metadata/record', array('track' => $track, 'charts' => true, 'charts_num' => $counter)) ?>
+                                <?php include_component('metadata', 'record', array('track' => $track, 'charts' => true, 'charts_num' => $counter)) ?>
                             <?$counter++; endforeach;?>
 
                             <div class="clear"></div>
