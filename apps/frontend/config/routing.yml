@@ -281,6 +281,27 @@ panel_artists_delete_blocked_alphabetically:
   requirements:
     sf_method: [get]
 
+panel_banners:
+  url:     /panel/banners
+  param: { module: panelBanners, action: show, section: panel-banners }
+
+panel_banners_delete:
+  url:     /panel/banners/delete/:banners_id
+  class:   sfPropelRoute
+  options: { model: Banners, type: object }
+  param: { module: panelBanners, action: delete, section: panel-banners }
+  requirements:
+    sf_method: [get]
+
+panel_banners_order:
+  url:     /panel/banners/order/:banners_id/:second_banners_id
+  class:   sfPropelRoute
+  options: { model: Banners, type: object }
+  param: { module: panelBanners, action: changeOrder, section: panel-banners }
+  requirements:
+    sf_method: [get]
+    second_banners_id: \d+
+
 panel_delete_track:
   url:     /panel/delete-track/:tracks_id
   class:   sfPropelRoute

@@ -18,4 +18,32 @@
  */
 class BannersPeer extends BaseBannersPeer {
 
+
+    public static function getBanners($type = null, $criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria(self::DATABASE_NAME);
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+
+        if(isset($type)) $criteria->add(self::BANNERS_TYPE, $type);
+        $criteria->addAscendingOrderByColumn(self::BANNERS_ORDER);
+        return self::doSelect($criteria);
+    }
+
+
+    public static function getBannersById($banners_id, $criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria();
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+        $criteria->add(self::BANNERS_ID, $banners_id);
+        return self::doSelectOne($criteria);
+    }
+
 } // BannersPeer

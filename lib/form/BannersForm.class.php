@@ -12,4 +12,7 @@ class BannersForm extends BaseBannersForm
   public function configure()
   {
   }
+
+  
+
 }
