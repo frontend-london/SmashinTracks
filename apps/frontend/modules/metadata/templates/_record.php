@@ -11,6 +11,7 @@
     if(!isset($not_accepted)) $not_accepted = false;
     if(!isset($not_accepted_url_accept)) $not_accepted_url_accept = false;
     if(!isset($not_accepted_url_disapprove)) $not_accepted_url_disapprove = false;
+    if(!isset($recommended_icon)) $recommended_icon = false;
     if(!isset($recommends_active)) $recommends_active = false;
     if(!isset($recommends_inactive)) $recommends_inactive = false;
     if(!isset($transaction_list)) $transaction_list = false;
@@ -140,6 +141,8 @@
                                                 <a href="<?=url_for('members_my-wishlist_add', $track)?>" class="track-star"></a>
                                             <?endif;?>
                                         <?elseif($transaction_list):?>
+                                            <a href="<?=url_for('panel_recommends_add', $track)?>" class="track-r"></a>
+                                        <?elseif($recommended_icon):?>
                                             <a href="<?=url_for('panel_recommends_add', $track)?>" class="track-r"></a>
                                         <?elseif($admin_icons):?>
                                             <a href="<?=url_for('panel_recommends_add', $track)?>" class="track-r"></a>

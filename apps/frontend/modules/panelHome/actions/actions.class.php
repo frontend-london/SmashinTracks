@@ -15,6 +15,7 @@ class panelHomeActions extends sfActions
   {
     $track = $this->getRoute()->getObject();
     $track->setTracksAccepted(true);
+    $track->setTracksDate(time());
     $track->save();
     $this->redirect('panel_home');
   }

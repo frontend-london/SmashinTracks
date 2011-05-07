@@ -52,7 +52,13 @@
            $profile = ProfilesPeer::getProfileIfLoginCorrect($this->form->getValue('email'), $this->form->getValue('password'));
            $remember_me = $this->form->getValue('remember_me');
            Smashin::signIn($profile, $remember_me);
-           $this->getContext()->getActionStack()->getLastEntry()->getActionInstance()->redirect('homepage');
+           if($profile->isAdmin()) {
+//              $this->redirect('panel_home');
+              $this->getContext()->getActionStack()->getLastEntry()->getActionInstance()->redirect('panel_home');
+           } else {
+              $this->getContext()->getActionStack()->getLastEntry()->getActionInstance()->redirect('homepage');
+           }
+           
        }
      }
   }

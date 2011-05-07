@@ -283,7 +283,15 @@ panel_artists_delete_blocked_alphabetically:
 
 panel_banners:
   url:     /panel/banners
-  param: { module: panelBanners, action: show, section: panel-banners }
+  param: { module: panelBanners, action: show, section: panel-banners, subsection: banners-show }
+
+panel_banners_edit:
+  url:     /panel/banners/edit/:banners_id
+  class:   sfPropelRoute
+  options: { model: Banners, type: object }
+  param: { module: panelBanners, action: show, section: panel-banners, subsection: banners-edit }
+  requirements:
+    sf_method: [get]
 
 panel_banners_delete:
   url:     /panel/banners/delete/:banners_id

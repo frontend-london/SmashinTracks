@@ -20,7 +20,7 @@ all:
   # okres w dniach kiedy można ściągnąć kupiony track - zmień również web/mp3/download/index.php - define('TRACK_NEW_PERIOD', 1);
   track_download_period: 1
   # lista tracków na stronie - do stronicowania
-  max_tracks_on_list: 10
+  max_tracks_on_list: 20
   # lista transakcji na stronie My Sales - do stronicowania
   max_transactions_on_list: 10
   # lista transakcji na stronie Historia Sprzedaży w panelu - do stronicowania
