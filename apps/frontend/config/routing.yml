@@ -329,6 +329,13 @@ panel_delete-artist-url:
   requirements:
     sf_method: [get]
 
+panel_edit-track:
+  url:     /panel/edit-track/:tracks_id
+  class:   sfPropelRoute
+  options: { model: Tracks, type: object }
+  param: { module: panelEditTrack, action: show, section: panel-edit-track }
+  requirements:
+    sf_method: [get, post]
 
 panel_genres:
   url:     /panel/genres

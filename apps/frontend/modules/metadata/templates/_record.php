@@ -4,6 +4,7 @@
     if(!isset($charts_num)) $charts_num = false;
     if(!isset($basket)) $basket = false;
     if(!isset($download)) $download = false;
+    if(!isset($edit_track)) $edit_track = false;
     if(!isset($my_tracks)) $my_tracks = false;
     if(!isset($my_tracks_in_wishlists)) $my_tracks_in_wishlists = false;
     if(!isset($no_icon_wishlist)) $no_icon_wishlist = false;
@@ -67,7 +68,7 @@
                                     <?elseif($not_accepted):?>
                                         <div class="track-right">
                                             <div class="track-edit-320">
-                                                <a href="#" class="track-edit">EDIT</a>
+                                                <a href="<?=url_for('panel_edit-track', $track)?>" class="track-edit">EDIT</a>
                                                 <a href="<?='mp3/download/?id='.$track->getTracksId().'&admin=1&pass='.sfConfig::get('app_fullmp3_admin_access_pass')?>" class="track-320">320</a>
                                             </div>
                                             <div class="button-ok-big">
@@ -106,6 +107,11 @@
                                                 Bought: <span><?=$track->countTransactionsTrackss()?></span>
                                             </div>
                                         </div>
+                                    <?elseif($edit_track):?>
+                                        <div class="track-right">
+                                                <a href="<?='mp3/download/?id='.$track->getTracksId().'&admin=1&pass='.sfConfig::get('app_fullmp3_admin_access_pass')?>" class="track-320">320</a>
+                                                <a href="mp3/<?=$track->getTracksPath(); ?>.mp3" class="track-prev">PREV</a>
+                                        </div>
                                     <?else:?>
                                         <a href="<?=url_for('basket_add', $track)?>" class="track-right">
                                             <span class="track-cart"></span>
@@ -137,7 +143,9 @@
                                             <a href="<?=url_for('panel_recommends_add', $track)?>" class="track-r"></a>
                                         <?elseif($admin_icons):?>
                                             <a href="<?=url_for('panel_recommends_add', $track)?>" class="track-r"></a>
-                                            <a href="#" class="track-e"></a>
+                                            <a href="<?=url_for('panel_edit-track', $track)?>" class="track-e"></a>
+                                            <a href="<?=url_for('panel_delete_track', $track)?>" class="track-bin2"></a>
+                                        <?elseif($edit_track):?>
                                             <a href="<?=url_for('panel_delete_track', $track)?>" class="track-bin2"></a>
                                         <?endif;?>
                                         <div class="track-added">Added: <?=$track->getTracksDate('Y-m-d'); ?></div>

@@ -121,6 +121,26 @@ class Tracks extends BaseTracks {
 		return parent::setTracksTitle($v);
 	} // setTracksTitle()
 
+        /**
+         *
+         * @param <int> $number od 1 do 3 - numer gatunku
+         */
+        public function getTracksGenresName($number) {
+            $criteria = new Criteria();
+            $criteria->setLimit(1);
+            $criteria->setOffset($number-1); // bo liczy od 0 a nie od 1
+            $genres = $this->getTracksGenress($criteria);
+            return $genres[0]->getGenres()->getGenresName();
+        }
+
+        public function getTracksGenresObject($number) {
+            $criteria = new Criteria();
+            $criteria->setLimit(1);
+            $criteria->setOffset($number-1); // bo liczy od 0 a nie od 1
+            $genres = $this->getTracksGenress($criteria);
+            return $genres[0];//->getGenres();
+        }
+
 
 
 } // Tracks

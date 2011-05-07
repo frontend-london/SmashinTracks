@@ -33,6 +33,16 @@ class TracksForm extends BaseTracksForm
       'terms'                 => new sfWidgetFormInputCheckbox(),
     ));
 
+    if(!$this->getObject()->isNew()) {
+        $this->getWidget('tracks_time_regex')->addOption('default', $this->getObject()->getTracksTimeFormatted());
+        $this->getWidget('genre_1')->addOption('default', $this->getObject()->getTracksGenresName(1));
+        $this->getWidget('genre_2')->addOption('default', $this->getObject()->getTracksGenresName(2));
+        $this->getWidget('genre_3')->addOption('default', $this->getObject()->getTracksGenresName(3));
+        $this->setWidget('terms', new sfWidgetFormInputHidden(array('default' => true)));
+    }
+
+
+
     $this->widgetSchema->setNameFormat('tracks[%s]');
 
     $field = 'Track title';
@@ -62,6 +72,10 @@ class TracksForm extends BaseTracksForm
                                               'required' => true,
                                           ), array('required' => "$field can not be empty."));
 
+    if(!$this->getObject()->isNew()) {
+        $this->getValidator($field_name)->addOption('required', false);
+    }
+
     $field = 'Full track';
     $field_name = 'full_track';
     $this->validatorSchema[$field_name] = new sfValidatorFile(array(
@@ -69,6 +83,10 @@ class TracksForm extends BaseTracksForm
                                               'mime_types' => array('audio/mpeg'),
                                               'required' => true,
                                           ), array('required' => "$field can not be empty."));
+
+    if(!$this->getObject()->isNew()) {
+        $this->getValidator($field_name)->addOption('required', false);
+    }
 
     $field = 'Time';
     $field_name = 'tracks_time_regex';
