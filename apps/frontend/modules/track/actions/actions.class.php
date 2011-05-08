@@ -13,17 +13,20 @@ class trackActions extends sfActions
 
   public function executeShow(sfWebRequest $request)
   {
-    $this->track = $this->getRoute()->getObject();
-    $this->profile = $this->track->getProfiles();
+    $track = $this->getRoute()->getObject();
+    $isAdmin = ProfilesPeer::isAdminProfile();
+    if(!$isAdmin && ($track->getTracksDeleted() || !$track->getTracksAccepted())) $this->redirect404();
+    $this->profile = $track->getProfiles();
 
     $this->pager = new sfPropelPager('Tracks',sfConfig::get('app_max_tracks_on_list'));
     $criteria = new Criteria();
     $criteria = $this->profile->getActiveTracksCriteriaOrderByDate();
-    $criteria->add(TracksPeer::TRACKS_ID, $this->track->getTracksId(), Criteria::ALT_NOT_EQUAL);
+    $criteria->add(TracksPeer::TRACKS_ID, $track->getTracksId(), Criteria::ALT_NOT_EQUAL);
     $this->pager->setCriteria($criteria);
     $this->pager->setPage($request->getParameter('page', 1)); // 1 = domyślna wartość
     $this->pager->init();
 
-    $this->isAdmin = ProfilesPeer::isAdminProfile();
+    $this->track = $track;
+    $this->isAdmin = $isAdmin;
   }
 }

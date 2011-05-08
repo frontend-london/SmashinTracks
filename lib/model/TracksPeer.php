@@ -106,6 +106,7 @@ class TracksPeer extends BaseTracksPeer {
     static public function getBestsellersTracks($period = null, $amount = 30) {
         $criteria = new Criteria();
         $criteria->addJoin(TracksPeer::TRACKS_ID, TransactionsTracksPeer::TRACKS_ID);
+        $criteria = TracksPeer::addActiveTracksCriteria($criteria);
         if($period!=null) {
             $criteria->addJoin(TransactionsTracksPeer::TRANSACTIONS_ID, TransactionsPeer::TRANSACTIONS_ID);
             $criteria->add(TransactionsPeer::TRANSACTIONS_DATE, time() - 86400 * $period, Criteria::GREATER_THAN);
@@ -120,7 +121,7 @@ class TracksPeer extends BaseTracksPeer {
     }
 
     static public function getTracksIn($set, $order = null) {
-        $criteria = new Criteria();
+        $criteria = self::addActiveTracksCriteria();
         $criteria->add(self::TRACKS_ID, $set, Criteria::IN);
         if(isset($order)) {
             $criteria->addAscendingOrderByColumn($order);

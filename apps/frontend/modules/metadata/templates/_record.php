@@ -113,7 +113,7 @@
                                                 <a href="<?='mp3/download/?id='.$track->getTracksId().'&admin=1&pass='.sfConfig::get('app_fullmp3_admin_access_pass')?>" class="track-320">320</a>
                                                 <a href="mp3/<?=$track->getTracksPath(); ?>.mp3" class="track-prev">PREV</a>
                                         </div>
-                                    <?else:?>
+                                    <?elseif($track->isTrackActive()):?>
                                         <a href="<?=url_for('basket_add', $track)?>" class="track-right">
                                             <span class="track-cart"></span>
                                             <span class="track-buy">BUY NOW</span>
@@ -122,7 +122,11 @@
                                     <?endif;?>
 <?/* TRACK ROW 2 */?>
                                     <div class="track-row2">
-                                        <div class="track-name"><a href="<?=url_for('track', $track)?>"><?=$track->getTracksTitleShorted(); ?></a></div>
+                                        <?if($isAdmin || $track->isTrackActive()):?>
+                                            <div class="track-name"><a href="<?=url_for('track', $track)?>"><?=$track->getTracksTitleShorted(); ?></a></div>
+                                        <?else:?>
+                                            <div class="track-name"><?=$track->getTracksTitleShorted(); ?></div>
+                                        <?endif;?>
                                         <div class="track-time"><?=$track->getTracksTimeFormatted(); ?></div>
                                         <?if($wishlist):?>
                                             <?if($subsection=='last_added'):?>
@@ -151,7 +155,7 @@
                                         <?elseif($edit_track):?>
                                             <a href="<?=url_for('panel_delete_track', $track)?>" class="track-bin2"></a>
                                         <?endif;?>
-                                        <div class="track-added">Added: <?=$track->getTracksDate('Y-m-d'); ?></div>
+                                        <div class="track-added"><?if(!$isAdmin):?>Added: <?endif;?><?=$track->getTracksDate('Y-m-d'); ?></div>
                                         <div class="clear"></div>
                                     </div>
                                     <div class="clear"></div>

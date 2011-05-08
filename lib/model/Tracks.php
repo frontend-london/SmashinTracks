@@ -54,6 +54,10 @@ class Tracks extends BaseTracks {
             return((time() - 86400 * ConfigurationsPeer::getNewLabelPeriod())<$track_date);
         }
 
+        public function isTrackActive() {
+            return ($this->getTracksAccepted() && !$this->getTracksDeleted());
+        }
+
         public function isInWishlist() {
             $profile = ProfilesPeer::getCurrentProfile(); // wishlist jest tylko dla zalogwoanych
             if(is_object($profile)) {

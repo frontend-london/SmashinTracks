@@ -27,6 +27,9 @@ class TracksRecommendsPeer extends BaseTracksRecommendsPeer {
                 $criteria = clone $criteria;
         }
         $criteria->addAscendingOrderByColumn(TracksRecommendsPeer::TRACKS_RECOMMENDS_ORDER);
+        $criteria->addJoin(self::TRACKS_ID, TracksPeer::TRACKS_ID);
+        $criteria = TracksPeer::addActiveTracksCriteria($criteria);
+
         if(!is_null($active)) {
             $criteria->add(TracksRecommendsPeer::TRACKS_RECOMMENDS_ACTIVE, $active);
         }
