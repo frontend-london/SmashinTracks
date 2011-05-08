@@ -15,11 +15,11 @@
                                         <div class="clear"></div>
                                     </div>
                                     <?if($panel):?>
-                                        <a href="#" class="track-edit">EDIT</a>
+                                        <a href="<?=url_for('panel_edit-artist', $artist)?>" class="track-edit">EDIT</a>
                                     <?elseif($panel_blocked):?>
                                         <div class="track-right">
                                             <div class="track-edit-320">
-                                                <a href="#" class="track-edit">EDIT</a>
+                                                <a href="<?=url_for('panel_edit-artist', $artist)?>" class="track-edit">EDIT</a>
                                             </div>
                                             <a href="<?=url_for($panel_accept_route, $artist)?>" class="button-accept"></a>
                                         </div>

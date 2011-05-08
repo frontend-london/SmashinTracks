@@ -15,7 +15,8 @@ class trackActions extends sfActions
   {
     $track = $this->getRoute()->getObject();
     $isAdmin = ProfilesPeer::isAdminProfile();
-    if(!$isAdmin && ($track->getTracksDeleted() || !$track->getTracksAccepted())) $this->redirect404();
+    $this->forward404Unless($isAdmin || $track->isTrackActive());
+
     $this->profile = $track->getProfiles();
 
     $this->pager = new sfPropelPager('Tracks',sfConfig::get('app_max_tracks_on_list'));

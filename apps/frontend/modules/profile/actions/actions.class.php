@@ -14,6 +14,7 @@ class profileActions extends sfActions
   public function executeShow(sfWebRequest $request)
   {
     $profile = $this->getRoute()->getObject();
+    $this->forward404Unless($profile->isActive());
     $profile->addStats();
     
     $pager = new sfPropelPager('Tracks',sfConfig::get('app_max_tracks_on_list'));

@@ -198,7 +198,7 @@ $(window).load (
 		});
 
 		$("a.track-player").mouseenter(function(event){
-			$("img", this).attr("src", 'images/icons/player-on.png');
+                    $("img", this).attr("src", 'images/icons/player-on.png');
 		});
 
 		$("a.track-player").mouseleave(function(event){

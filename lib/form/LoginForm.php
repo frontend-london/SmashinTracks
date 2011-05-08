@@ -2,7 +2,7 @@
 
 function loginValidator($validator, $values)
 {
-  if(ProfilesPeer::isLoginCorrect($values['email'], $values['password']))
+  if(ProfilesPeer::isLoginCorrect($values['email'], $values['password']) && ProfilesPeer::isActiveProfileByEmail($values['email']))
   {
     return $values;
   } else {

@@ -73,6 +73,10 @@ class Profiles extends BaseProfiles {
             return $this->isAdminProfile();
         }
 
+        public function isActive() {
+            return (!$this->getProfilesBlocked() && !$this->getProfilesDeleted());
+        }
+
         public function isAdminProfile() {
             return($this->getProfilesId() == sfConfig::get('app_admin_profile_id'));
         }

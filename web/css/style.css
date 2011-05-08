@@ -905,21 +905,23 @@ div.tracksale div.ts1-div1 { float:left;}
 div.tracksale div.ts1-div2 { float:left;}
 div.tracksale a.track-profil { text-transform:uppercase; margin-top:3px;}
 
-.track-player {
-	display:block;	
-	height:40px;
-	width:40px;
-	padding-left:13px;
-	float:left;
-	margin-right:10px;
-	background-position:top left;
-	background-repeat:no-repeat;
-	background-color:#fff;
+.track-player, .track-player-inactive {
+    display:block;
+    height:40px;
+    width:40px;
+    padding-left:13px;
+    float:left;
+    margin-right:10px;
+    background-position:top left;
+    background-repeat:no-repeat;
+    background-color:#fff;
 }
 
-.track-player img {
-	background-position:top left;
-	background-repeat:no-repeat;
+.track-player img, .track-player-inactive img {
+    background-position:top left;
+    background-repeat:no-repeat;
+    width:40px;
+    height:40px;
 }
 
 .track-player span { display: none;}
@@ -988,14 +990,6 @@ div#letter-w { background-position: 0px -550px; }
 div#letter-x { background-position: 0px -575px; }
 div#letter-y { background-position: 0px -600px; }
 div#letter-z { background-position: 0px -625px; }
-
-
-
-
-.track-player img {
-	width:40px;
-	height:40px;	
-}
 
 div.track-row1 { width:386px; height:21px; float:left;}
 div.track-artist { font-size:14px; float:left; padding-top:2px;}

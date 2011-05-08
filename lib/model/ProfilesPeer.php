@@ -204,7 +204,7 @@ class ProfilesPeer extends BaseProfilesPeer {
 
     public static function isLoginCorrect($email, $pass) {
         $criteria = new Criteria();
-        $criteria->add(self::PROFILES_EMAIL, $email);
+        $criteria->add(self::PROFILES_EMAIL, $email, Criteria::LIKE);
         $criteria->add(self::PROFILES_PASSWORD, Smashin::generateHash($pass));
         if(empty($email) || empty($pass)) return 0;
         return self::doCount($criteria);
@@ -259,6 +259,19 @@ class ProfilesPeer extends BaseProfilesPeer {
         $criteria->add(self::PROFILES_BLOCKED, false);
         $criteria->add(self::PROFILES_DELETED, false);
         return ProfilesPeer::isProfileById($profiles_id, $criteria);
+    }
+
+    public static function isActiveProfileByEmail($profiles_email, $criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria();
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+        $criteria->add(self::PROFILES_BLOCKED, false);
+        $criteria->add(self::PROFILES_DELETED, false);
+        return ProfilesPeer::isProfileByEmail($profiles_email, $criteria);
     }
 
     public static function isCurrentProfile() {

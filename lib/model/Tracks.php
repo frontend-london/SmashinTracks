@@ -55,7 +55,8 @@ class Tracks extends BaseTracks {
         }
 
         public function isTrackActive() {
-            return ($this->getTracksAccepted() && !$this->getTracksDeleted());
+            $profile = $this->getProfiles();
+            return ($this->getTracksAccepted() && !$this->getTracksDeleted() && $profile->isActive());
         }
 
         public function isInWishlist() {

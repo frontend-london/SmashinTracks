@@ -48,8 +48,9 @@ class TracksPeer extends BaseTracksPeer {
 
         $criteria->add(self::TRACKS_DELETED, false, Criteria::EQUAL);
         $criteria->add(self::TRACKS_ACCEPTED, true, Criteria::EQUAL);
-        //$criteria->addDescendingOrderByColumn(self::CREATED_AT);
-
+        $criteria->add(ProfilesPeer::PROFILES_BLOCKED, false);
+        $criteria->add(ProfilesPeer::PROFILES_DELETED, false);
+        $criteria->addJoin(self::PROFILES_ID, ProfilesPeer::PROFILES_ID);
         return $criteria;
     }
 
@@ -167,16 +168,9 @@ class TracksPeer extends BaseTracksPeer {
         $keyword = trim($keyword);
         $keyword = strtr($keyword, array(' ' => '%'));
         $keyword = '%'.$keyword.'%';
-        $criteria = new Criteria();
         $criteria = self::addActiveTracksCriteria();
-        $where = self::TRACKS_TITLE." LIKE '$keyword' OR ".self::TRACKS_ARTIST." LIKE '$keyword'";
+        $where = '('.self::TRACKS_TITLE." LIKE '$keyword' OR ".self::TRACKS_ARTIST." LIKE '$keyword')";
         $criteria->add(self::TRACKS_TITLE, $where, Criteria::CUSTOM);
-// self::TRACKS_TITLE like '%$keyword%' or self::TRACKS_ARTIST like '%$keyword%'
-//        $criteria->addOr(self::TRACKS_TITLE, $keyword, Criteria::LIKE);
-//        $criteria->addOr(self::TRACKS_ARTIST, $keyword, Criteria::LIKE);
-//        $criteria->a
-        
-//        return self::addActiveTracksCriteria($criteria);
         return $criteria;
     }
 
