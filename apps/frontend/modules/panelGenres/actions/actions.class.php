@@ -32,14 +32,14 @@ class panelGenresActions extends sfActions
         $form->bind($request->getParameter('genres'), $request->getFiles('genres'));
         if ($form->isValid())
         {
-          $id = $form->getValue('genres_id');
-          $genre = GenresPeer::getGenreById($id);
-          if(!is_object($genre)) $genre = new Genres();
+            $id = $form->getValue('genres_id');
+            $genre = GenresPeer::getGenreById($id);
+            if(!is_object($genre)) $genre = new Genres();
 
-          $name = $form->getValue('genres_name');
-          $genre->setGenresName($name);
+            $name = $form->getValue('genres_name');
+            $genre->setGenresName($name);
 
-          $genre->save();
+            $genre->save();
 
             $file = $form->getValue('genres_photo');
             if(is_object($file)) {

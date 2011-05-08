@@ -18,20 +18,24 @@
  */
 class Banners extends BaseBanners {
 
-    public function setBannersUrl($v)
+        public function setBannersUrl($v)
 	{
-                
+            if($v=='') $v = null;
             if ($v !== null) {
                     $v = (string) $v;
-
                     if((substr($v,0,7)!='http://') && (substr($v,0,8)!='https://') && (substr($v,0,6)!='ftp://')  && (substr($v,0,7)!='ftps://')) {
                         $v = 'http://'.$v;
                     }
-
             }
-
             return parent::setBannersUrl($v);                
-                
 	} // setBannersUrl()
+
+        public function save(PropelPDO $con = null) {
+            if($this->isNew()) {
+                $max = BannersPeer::getMaxBannersOrder();
+                $this->setBannersOrder($max+1);
+            }
+            return parent::save($con);
+        }
 
 } // Banners

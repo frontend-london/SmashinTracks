@@ -29,6 +29,16 @@
       $this->profile = ProfilesPeer::getCurrentProfile();
     }
 
+    public function executeBannertop(sfWebRequest $request)
+    {
+        $this->banner = BannersPeer::getRandBanner(1);
+    }
+
+    public function executeBannersside(sfWebRequest $request)
+    {
+        $this->banners = BannersPeer::getBannersSide();
+    }
+
     public function executeBasketsales(sfWebRequest $request)
     {
       $this->isAdmin = ProfilesPeer::isAdminProfile();

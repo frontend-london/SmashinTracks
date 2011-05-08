@@ -62,9 +62,59 @@ class panelBannersActions extends sfActions
 
     }
 
-//    foreach($banners_top as $banner) {
-//
-//    }
+    if($request->getParameter('form_banners_top_send') && !$request->getParameter('banners_top_edit_action')) {
+        $banners_top_active = $request->getParameter('banners_top_active');
+        foreach($banners_top as $banner) {
+            $active = (int)$request->getParameter('banners_top_active_'.$banner->getBannersId());
+            $banner->setBannersActive($active);
+            $banner->save();
+        }
+
+        $file = $request->getFiles('banners_top_image');
+        if($file['size']) {
+            $banner = new Banners();
+            $path = Smashin::generate_random_pass(32);
+            $banner->setBannersPath($path);
+            $banner->setBannersType(1);
+            $banner->save();
+            $filename_upload = sfConfig::get('sf_images_banners_dir').DIRECTORY_SEPARATOR.$path.'.jpg';
+            $thumbnail = new sfThumbnail(460, 70, false);
+            $thumbnail->loadFile($file['tmp_name']);
+            $thumbnail->save($filename_upload, 'image/jpeg');
+            unset($thumbnail);
+
+            $banners_top = BannersPeer::getBanners(1); // zresetowanie - bo doszedł nowy obiekt
+        }
+
+
+    }
+
+    if($request->getParameter('form_banners_side_send') && !$request->getParameter('banners_side_edit_action')) {
+        $banners_side_active = $request->getParameter('banners_side_active');
+        foreach($banners_side as $banner) {
+            $active = (int)$request->getParameter('banners_side_active_'.$banner->getBannersId());
+            $banner->setBannersActive($active);
+            $banner->save();
+        }
+
+        $file = $request->getFiles('banners_side_image');
+        if($file['size']) {
+            $banner = new Banners();
+            $path = Smashin::generate_random_pass(32);
+            $banner->setBannersPath($path);
+            $banner->setBannersType(2);
+            $banner->save();
+            $filename_upload = sfConfig::get('sf_images_banners_dir').DIRECTORY_SEPARATOR.$path.'.jpg';
+            $thumbnail = new sfThumbnail(192, 123, false);
+            $thumbnail->loadFile($file['tmp_name']);
+            $thumbnail->save($filename_upload, 'image/jpeg');
+            unset($thumbnail);
+
+            $banners_side = BannersPeer::getBanners(2); // zresetowanie - bo doszedł nowy obiekt
+        }
+    }
+
+
 
     $this->banners_top = $banners_top;
     $this->banners_side = $banners_side;

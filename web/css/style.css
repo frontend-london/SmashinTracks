@@ -222,6 +222,18 @@ a#logo {
 	left:25px;
 }
 
+div#banner-top {
+    position: absolute;
+    width: 460px;
+    height: 70px;
+    left:491px;
+    top:64px;
+}
+
+div#banner-top img {
+    width: 460px;
+    height: 70px;
+}
 
 ul#mainmenu {
 	position:absolute;
@@ -1378,10 +1390,8 @@ div.bb-item a.bbi-artist:hover { color:#00b9e1; text-decoration:none;}
 div.bb-item a.bbi-name { font-size:10px; color:#3e3e3e; font-weight:bold; display:block; line-height:12px;}
 div.bb-item a.bbi-name:hover { color:#00b9e1; text-decoration:none;}
 
-div#rightside img#banner1 { margin-top:30px;}
-div#rightside img#banner2 { margin-top:34px;}
-div#rightside img#banner3 { margin-top:15px;}
-div#rightside img#banner4 { margin-top:32px;}
+div#rightside div.banner-side { margin-top:20px; width:192px; height: 123px;}
+div#rightside div.banner-side img { width:192px; height: 123px;}
 
 
 /* FOOTER STYLE

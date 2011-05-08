@@ -26,6 +26,7 @@
             <div id="wrap-inner">
                 <div id="header">
                     <a href="<?=url_for('homepage')?>" id="logo">SmashinTracks.com - Tracks you won't find anywhere else</a>
+                    <? include_component('metadata', 'bannertop'); ?>
                     <? include_component('metadata', 'mainmenu'); ?>
                     <div id="search-top">
                         <form name="form_search" action="<?=url_for('search');?>" method="get">
@@ -44,10 +45,7 @@
                 </div>
                 <div id="rightside">
                     <?php include_component('metadata', 'basketsales') ?>
-                    <a href="#"><img src="images/banners/smashin-tracks.gif" alt="SmashinTracks.com" width="192" height="75" id="banner1" /></a>
-                    <a href="#"><img src="images/banners/bassline-classics.gif" alt="Bassline Classics" width="192" height="123" id="banner2" /></a>
-                    <a href="#"><img src="images/banners/cj-reign.gif" alt="Cj Reign" width="192" height="123" id="banner3" /></a>
-                    <a href="#"><img src="images/banners/intensive-recordings.gif" alt="Intensive Recordings" width="192" height="69" id="banner4" /></a>
+                    <?php include_component('metadata', 'bannersside') ?>
                 </div>
                 <div class="clear"></div>
             </div>

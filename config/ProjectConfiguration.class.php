@@ -22,5 +22,6 @@ class ProjectConfiguration extends sfProjectConfiguration
     sfConfig::set('sf_images_profiles_small_dir', sfConfig::get('sf_images_profiles_dir').DIRECTORY_SEPARATOR.'small');
 
     sfConfig::set('sf_images_genres_dir', sfConfig::get('sf_web_dir').DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'genres');
+    sfConfig::set('sf_images_banners_dir', sfConfig::get('sf_web_dir').DIRECTORY_SEPARATOR.'images'.DIRECTORY_SEPARATOR.'banners');
   }
 }

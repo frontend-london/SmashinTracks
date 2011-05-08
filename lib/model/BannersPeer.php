@@ -33,6 +33,27 @@ class BannersPeer extends BaseBannersPeer {
         return self::doSelect($criteria);
     }
 
+    public static function getBannersSide() {
+        $criteria = new Criteria();
+        $criteria->add(self::BANNERS_ACTIVE, 1);
+        return self::getBanners(2, $criteria);
+    }
+
+    public static function getRandBanner($type = null, $criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria(self::DATABASE_NAME);
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+
+        if(isset($type)) $criteria->add(self::BANNERS_TYPE, $type);
+        $criteria->add(self::BANNERS_ACTIVE, 1);
+        $criteria->addAscendingOrderByColumn('RAND()');
+        return self::doSelectOne($criteria);
+    }
+
 
     public static function getBannersById($banners_id, $criteria = null) {
         if ($criteria === null) {
@@ -44,6 +65,20 @@ class BannersPeer extends BaseBannersPeer {
         }
         $criteria->add(self::BANNERS_ID, $banners_id);
         return self::doSelectOne($criteria);
+    }
+
+    public static function getMaxBannersOrder($criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria();
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+        $criteria->addSelectColumn('MAX('.self::BANNERS_ORDER.')');
+        $smtm = self::doSelectStmt($criteria);
+        $row = $smtm->fetch(PDO::FETCH_NUM);
+        return $row[0];
     }
 
 } // BannersPeer

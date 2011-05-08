@@ -279,6 +279,18 @@ $(window).load (
                     $('input#profile_profiles_url_add_action').val(1);
                     $('#form_myprofile').submit();
 		});
+                
+		$("a#a-banners-top-edit-submit").click(function(event){
+                    event.preventDefault();
+                    $('input#banners_top_edit_action').val(1);
+                    $('#form_banners_top').submit();
+		});
+
+		$("a#a-banners-side-edit-submit").click(function(event){
+                    event.preventDefault();
+                    $('input#banners_side_edit_action').val(1);
+                    $('#form_banners_side').submit();
+		});
 
 		$("a#a-url-edit-submit").click(function(event){
                     event.preventDefault();
