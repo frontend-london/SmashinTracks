@@ -468,6 +468,7 @@ div#artistpage-top div#at-right { float:left; width:285px; font-size:12px; line-
 div#artistpage-top div#at-both { font-size:12px; line-height:18px; }
 div#artistpage-top a.at-url { display:block; text-transform:lowercase; font-weight: bold; font-size:11px;}
 div#artistpage-top div#at-edytuj, div#artistpage-top-nocontent div#at-edytuj { float:right; margin-top:42px;}
+div#artistpage-top div#at-sprzedaz, div#artistpage-top-nocontent div#at-sprzedaz { float:right; margin-top:42px; margin-right: 10px;}
 
 div.box-silver {
 	width:570px;
@@ -1099,8 +1100,8 @@ div.button-red-left { position:absolute; top:0px; left:0px; background:url(../im
 div.button-red-right { position:absolute; top:0px; right:0px; background:url(../images/buttons/red-corner.gif); width:1px; height:26px;}
 div.button-silver-left { position:absolute; top:0px; left:0px; background:url(../images/buttons/silver-corner.gif); width:1px; height:26px;}
 div.button-silver-right { position:absolute; top:0px; right:0px; background:url(../images/buttons/silver-corner.gif); width:1px; height:26px;}
-div.button-fulllist a, .button-next a, .button-back a, div.button-checkout a, div.button-download a, div.button-membershomepage a, div.button-withdrawmoney a, div.button-withdrawmoneytopaypal a, div.button-paynow a, div.button-check a, div.button-withdraw a, div.button-add a, div.button-add span, div.button-addnewurl a, div.button-save a, div.button-send a, div.button-upload a, div.button-red-delete a, div.button-red-ok a, div.button-blokuj a, div.button-edytuj a, div.button-editprofile a, div.button-edit a, div.button-delete a, div.button-ok a, div.button-close a, div.button-ok-big a, div.button-zapisz a, div.button-aktualizuj a, div.button-submit a, div.button-silver-cancel a, div.button-silver-back a, div.button-login a, div.button-register a, div.button-wyplac a, div.button-ponow a  { width:100%; height:26px; line-height:26px; font-size:16px; font-weight:bold; color:#fff; text-transform:uppercase; display:block; text-align:center; }
-div.button-fulllist, .button-next, .button-back, div.button-checkout, div.button-download, div.button-membershomepage, div.button-withdrawmoney, div.button-withdrawmoneytopaypal, div.button-paynow, div.button-check, div.button-withdraw, div.button-add, div.button-addnewurl, div.button-save, div.button-send, div.button-upload, div.button-blokuj, div.button-edytuj, div.button-editprofile, div.button-edit, div.button-delete, div.button-ok, div.button-close, div.button-ok-big, div.button-zapisz, div.button-aktualizuj, div.button-submit, div.button-login, div.button-register, div.button-wyplac, div.button-ponow { height:26px; background:url(../images/buttons/blue-loop.gif) repeat-x; position:relative;}
+div.button-fulllist a, .button-next a, .button-back a, div.button-checkout a, div.button-download a, div.button-membershomepage a, div.button-withdrawmoney a, div.button-withdrawmoneytopaypal a, div.button-paynow a, div.button-check a, div.button-withdraw a, div.button-add a, div.button-add span, div.button-addnewurl a, div.button-save a, div.button-send a, div.button-upload a, div.button-red-delete a, div.button-red-ok a, div.button-blokuj a, div.button-edytuj a, div.button-sprzedaz a, div.button-editprofile a, div.button-edit a, div.button-delete a, div.button-ok a, div.button-close a, div.button-ok-big a, div.button-zapisz a, div.button-aktualizuj a, div.button-submit a, div.button-silver-cancel a, div.button-silver-back a, div.button-login a, div.button-register a, div.button-wyplac a, div.button-ponow a  { width:100%; height:26px; line-height:26px; font-size:16px; font-weight:bold; color:#fff; text-transform:uppercase; display:block; text-align:center; }
+div.button-fulllist, .button-next, .button-back, div.button-checkout, div.button-download, div.button-membershomepage, div.button-withdrawmoney, div.button-withdrawmoneytopaypal, div.button-paynow, div.button-check, div.button-withdraw, div.button-add, div.button-addnewurl, div.button-save, div.button-send, div.button-upload, div.button-blokuj, div.button-edytuj, div.button-sprzedaz, div.button-editprofile, div.button-edit, div.button-delete, div.button-ok, div.button-close, div.button-ok-big, div.button-zapisz, div.button-aktualizuj, div.button-submit, div.button-login, div.button-register, div.button-wyplac, div.button-ponow { height:26px; background:url(../images/buttons/blue-loop.gif) repeat-x; position:relative;}
 div.button-red-delete, div.button-red-ok { height:26px; background:url(../images/buttons/red-loop.gif) repeat-x; position:relative;}
 div.button-silver-cancel, div.button-silver-back { height:26px; background:url(../images/buttons/silver-loop.gif) repeat-x; position:relative;}
 
@@ -1123,6 +1124,7 @@ div.button-upload { width:155px;}
 div.button-red-delete { width:154px;}
 div.button-blokuj { width:91px;}
 div.button-edytuj { width:88px;}
+div.button-sprzedaz { width:100px;}
 div.button-edit { width:84px;}
 div.button-delete {width:84px;}
 div.button-editprofile { width:134px;}

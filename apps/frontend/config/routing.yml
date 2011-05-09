@@ -418,11 +418,11 @@ panel_payments_archive:
   url:     /panel/payments/archive
   param: { module: panelPayments, action: showArchive, section: panel-payments }
 
-panel_artists_problem:
+panel_payments_problem:
   url:     /panel/payments/problem
   param: { module: panelPayments, action: showProblem, section: panel-payments }
 
-panel_artists_set-problem:
+panel_payments_set-problem:
   url:     /panel/payments/set-problem/:withdraws_id
   class:   sfPropelRoute
   options: { model: Withdraws, type: object }
@@ -430,11 +430,19 @@ panel_artists_set-problem:
   requirements:
     sf_method: [get]
 
-panel_artists_set-done:
+panel_payments_set-done:
   url:     /panel/payments/set-done/:withdraws_id
   class:   sfPropelRoute
   options: { model: Withdraws, type: object }
   param: { module: panelPayments, action: setDone, section: panel-payments }
+  requirements:
+    sf_method: [get]
+
+panel_sales:
+  url:     /panel/sales/:profiles_id
+  class:   sfPropelRoute
+  options: { model: Profiles, type: object }
+  param: { module: panelSales, action: show, section: panel-sales }
   requirements:
     sf_method: [get]
 

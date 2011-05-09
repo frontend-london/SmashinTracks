@@ -89,12 +89,12 @@
                                                 <div class="button-red-ok">
                                                     <div class="button-red-left"></div>
                                                     <div class="button-red-right"></div>
-                                                    <a href="<?=url_for('panel_artists_set-done', $withdraw)?>">OK</a>
+                                                    <a href="<?=url_for('panel_payments_set-done', $withdraw)?>">OK</a>
                                                 </div>
                                             </div>
                                         <?else:?>
                                             <div class="track-right">
-                                                <a href="<?=url_for('panel_artists_set-problem', $withdraw)?>" class="track-problem">PROBLEM</a>
+                                                <a href="<?=url_for('panel_payments_set-problem', $withdraw)?>" class="track-problem">PROBLEM</a>
                                                 <div class="button-wyplac">
                                                     <div class="button-left"></div>
                                                     <div class="button-right"></div>
@@ -103,12 +103,12 @@
                                                 <div class="button-red-ok">
                                                     <div class="button-red-left"></div>
                                                     <div class="button-red-right"></div>
-                                                    <a href="<?=url_for('panel_artists_set-done', $withdraw)?>">OK</a>
+                                                    <a href="<?=url_for('panel_payments_set-done', $withdraw)?>">OK</a>
                                                 </div>
                                             </div>
                                         <?endif;?>
                                         <div class="tracksale-row2">
-                                            <a href="#" class="bold">HISTORIA SPRZEDAŻY</a>
+                                            <a href="<?=url_for('panel_sales', $artist)?>" class="bold">HISTORIA SPRZEDAŻY</a>
                                         </div>
                                         <div class="clear"></div>
                                     </div>   

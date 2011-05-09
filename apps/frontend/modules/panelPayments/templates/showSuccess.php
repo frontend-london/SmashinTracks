@@ -16,7 +16,7 @@
                                 <div class="bookmark-bgr-right"></div>
                             </div>
                             <div class="bookmark bookmark-nobgr-right">
-                                <a href="<?=url_for('panel_artists_problem')?>">PROBLEM</a>
+                                <a href="<?=url_for('panel_payments_problem')?>">PROBLEM</a>
                                 <div class="bookmark-bgr-left"></div>
                                 <div class="bookmark-bgr-right"></div>
                             </div>
