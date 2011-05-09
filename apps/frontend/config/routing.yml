@@ -475,6 +475,18 @@ panel_recommends_order:
     sf_method: [get]
     second_tracks_recommends_id: \d+
 
+panel_texts:
+  url:     /panel/texts
+  param: { module: panelTexts, action: show, section: panel-texts }
+
+panel_texts_edit:
+  url:     /panel/texts/edit/:texts_name
+  class:   sfPropelRoute
+  options: { model: Texts, type: object }
+  param: { module: panelTexts, action: edit, section: panel-texts }
+  requirements:
+    sf_method: [get]  
+
 panel_transactions-history:
   url:     /panel/transactions-history
   param: { module: panelTransactionsHistory, action: show, section: panel-transactions-history }
