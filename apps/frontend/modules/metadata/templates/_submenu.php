@@ -6,7 +6,7 @@
                                 <li<?if($sf_request->getParameter('section')=='panel-new-label-settings'):?> class="active"<?endif;?>><a href="<?=url_for('panel_new-label-settings')?>">USTAWIENIA ETYKIETY 'NEW'</a></li>
                                 <li<?if($sf_request->getParameter('section')=='panel-transactions-history'):?> class="active"<?endif;?>><a href="<?=url_for('panel_transactions-history')?>">HISTORIA SPRZEDAŻY</a></li>
                                 <li><a href="#">TEKSTY</a></li>
-                                <li class="last"><a href="#">WYPŁATY</a></li>
+                                <li class="last <?if($sf_request->getParameter('section')=='panel-payments'):?> active<?endif;?>"><a href="<?=url_for('panel_payments')?>">WYPŁATY</a></li>
                             <?else:?>
                                 <li id="submenu-hi">Hi, <a href="<?=url_for('profile', $profile)?>"><strong><?=$profile->getProfilesName()?></strong></a></li>
                                 <li<?if($sf_request->getParameter('section')=='members'):?> class="active"<?endif;?>><a href="<?=url_for('members')?>">HOME</a></li>

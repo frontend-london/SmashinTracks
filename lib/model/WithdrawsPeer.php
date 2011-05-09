@@ -18,4 +18,18 @@
  */
 class WithdrawsPeer extends BaseWithdrawsPeer {
 
+
+    public static function getLastDoneWithdrawsCriteria($status = -1, $criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria();
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+        if($status!=-1) $criteria->add(self::WITHDRAWS_STATUS, $status);
+        $criteria->addDescendingOrderByColumn(self::WITHDRAWS_DATE);
+        return $criteria;
+    }
+
 } // WithdrawsPeer

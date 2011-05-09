@@ -410,6 +410,34 @@ panel_new-label-settings:
   url:     /panel/new-label-settings
   param: { module: panelNewLabelSettings, action: show, section: panel-new-label-settings }
 
+panel_payments:
+  url:     /panel/payments
+  param: { module: panelPayments, action: show, section: panel-payments }
+
+panel_payments_archive:
+  url:     /panel/payments/archive
+  param: { module: panelPayments, action: showArchive, section: panel-payments }
+
+panel_artists_problem:
+  url:     /panel/payments/problem
+  param: { module: panelPayments, action: showProblem, section: panel-payments }
+
+panel_artists_set-problem:
+  url:     /panel/payments/set-problem/:withdraws_id
+  class:   sfPropelRoute
+  options: { model: Withdraws, type: object }
+  param: { module: panelPayments, action: setProblem, section: panel-payments }
+  requirements:
+    sf_method: [get]
+
+panel_artists_set-done:
+  url:     /panel/payments/set-done/:withdraws_id
+  class:   sfPropelRoute
+  options: { model: Withdraws, type: object }
+  param: { module: panelPayments, action: setDone, section: panel-payments }
+  requirements:
+    sf_method: [get]
+
 panel_recommends:
   url:     /panel/recommends
   param: { module: panelRecommends, action: show, section: panel-recommends }

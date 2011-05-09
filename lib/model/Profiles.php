@@ -426,6 +426,13 @@ class Profiles extends BaseProfiles {
             return ProfilesViewedPeer::doCount($criteria);
         }
 
+        /*
+         * Zwraca datę formatu YYYY-MM-DD (np. 2010-10-24)
+         */
+        public function getProfilesDateStandartFormat() {
+            return $this->getProfilesDate('Y-m-d');
+        }
+
         public function getProfilesDatePolish() {
             return Smashin::generateDateInPolish($this->getProfilesDate(null));
         }

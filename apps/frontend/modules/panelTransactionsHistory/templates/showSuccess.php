@@ -15,11 +15,9 @@
                                 <?foreach($transaction->getTransactionsTrackssJoinTracks() as $transaction_track):?>
                                     <?php include_component('metadata', 'record', array('transaction_list' => true, 'transactions_tracks' => $transaction_track, 'track' => $transaction_track->getTracks(), 'no_icon_wishlist' => true)) ?>
                                 <?endforeach;?>
-
                             <?endforeach;?>
-
                         </div>
-					</div>
+                    </div>
                     <div class="bs-bgr-bottom"></div>
                 </div>
                 <div class="box-white" id="box-top">

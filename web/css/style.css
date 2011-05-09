@@ -786,9 +786,9 @@ div#box-zgloszeniadowyplaty { margin-top:18px; padding-bottom:12px; }
 div#box-zgloszeniadowyplaty img#bz2-img1 { padding-top:28px;}
 div#box-zgloszeniadowyplaty div#bz2-div1 { font-size:13px; line-height:17px; padding-top:15px; font-weight:bold; padding-right:0px;}
 div#box-zgloszeniadowyplaty div#bz2-tracks { padding-left:2px; padding-top:25px;}
-div#box-zgloszeniadowyplaty div.track-row1 { width: 351px;}
-div#box-zgloszeniadowyplaty div.track-row2 { width: 351px;}
-div#box-zgloszeniadowyplaty div.track-right { width:110px;}
+div#box-zgloszeniadowyplaty div.track-row1 { width: 331px;}
+div#box-zgloszeniadowyplaty div.track-row2 { width: 331px;}
+div#box-zgloszeniadowyplaty div.track-right { width:130px;}
 div#box-zgloszeniadowyplaty div.track-saldo { text-align:right; font-size:12px; padding-top:4px; padding-bottom:1px;}
 div#box-zgloszeniadowyplaty div.track-saldo span { font-size:14px; font-weight:bold; color:#ff0000;}
 div#box-zgloszeniadowyplaty div.track-payment { float:right;}
