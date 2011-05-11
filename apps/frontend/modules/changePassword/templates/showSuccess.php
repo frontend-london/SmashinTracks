@@ -2,7 +2,7 @@
                     <div class="bs-inner">
                         <form name="form_reset_password" id="form_reset_password" action="<?=url_for('change-password', $profile)?>" method="post">
                             <img src="images/texts/change-your-password.gif" alt="Change your password" id="bc-img1" />
-                            <div id="bc-div1">Please select a clever new password below.</div>
+                            <div id="bc-div1"><?=TextsPeer::getTextValue('Zmiana-hasla-main-text')?></div>
                             <div id="bc-div2">
                                 <div class="bc-left"><?php echo $form['password']->renderLabel('Your new password:') ?></div>
                                 <div class="bc-right">

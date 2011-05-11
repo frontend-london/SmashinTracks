@@ -30,7 +30,7 @@ all:
   # maksymalna długość opisu artysty na podstronie Artists
   max_profile_short_text_length: 80
   # maksymalna ilość wgranych tracków w ciągu dnia przez usera
-  max_upload_day_limit: 5
+  max_upload_day_limit: 3
   # maksymalny rozmiar track preview - 5 MB
   maxsize_track_preview: 5242880
   # maksymalny rozmiar full track - 20 MB

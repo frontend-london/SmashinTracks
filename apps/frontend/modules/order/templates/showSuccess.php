@@ -3,7 +3,7 @@
                         <img src="images/texts/order.gif" alt="Order:" id="bo-img1" />
                         <div id="bo-div1"># <?=$transaction->getTransactionsId()?></div>
                         <div class="clear"></div>
-                        <div id="bo-div2">Ponizej tracki ktore kupiles <span class="blue">gotowe do sciagniecia.</span> Mozesz je sciagnac 3 razy, linki do nich beda dzialaly 24.</div>
+                        <div id="bo-div2"><?=TextsPeer::getTextValue('Koszyk-download-main-text')?></div>
                         <div id="bo-tracks">
                             <?foreach ($tracks as $track):?>
                                 <?php include_component('metadata', 'record', array('track' => $track->getTracks(), 'download' => true, 'transactions_tracks' => $track)) ?>

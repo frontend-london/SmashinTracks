@@ -1,10 +1,9 @@
                 <div class="box-white" id="box-top">
                     <img src="images/texts/my-downloads.gif" alt="My Downloads" />
                     <div class="bw-div1">
-                        Tutaj obejrzysz historie swoich zakupow. Jesli kupiles tracki w przeciagu 24 godzin
-                        w tym miejscu znajdziesz linki do ich pobrania.
+                        <?=TextsPeer::getTextValue('ZALOGOWANY-My-downloads-main-text')?>
                     </div>
-					<table id="table-mydownloads" cellpadding="0" cellspacing="0">
+                    <table id="table-mydownloads" cellpadding="0" cellspacing="0">
                         <thead>
                             <tr>
 	                            <th class="tm-col1">Date</th>  <th class="tm-col2">Details</th>  <th class="tm-col3">Value</th>

@@ -2,7 +2,7 @@
                 <div class="box-white" id="box-top">
                     <img src="images/genres/<?=$genres->getGenresPath();?>.gif" alt="<?=$genres->getGenresName();?>" />
                     <div class="bw-div1">                        
-                        Here are the latest <span class="blue"><?=$genres->getGenresName();?></span> tracks that have been uploaded through producers on <a href="#" class="underline">Smashintracks.com</a> Check this out!
+                        <?=Smashin::generate_injected_text(TextsPeer::getTextValue('Genre-list-main-text'), array('__GENRESNAME__' => $genres->getGenresName()));?>
                     </div>                
                     
                     <div class="bw-tracks">

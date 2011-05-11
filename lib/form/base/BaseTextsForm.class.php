@@ -17,12 +17,14 @@ abstract class BaseTextsForm extends BaseFormPropel
       'texts_id'    => new sfWidgetFormInputHidden(),
       'texts_name'  => new sfWidgetFormInputText(),
       'texts_value' => new sfWidgetFormTextarea(),
+      'texts_help'  => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
       'texts_id'    => new sfValidatorChoice(array('choices' => array($this->getObject()->getTextsId()), 'empty_value' => $this->getObject()->getTextsId(), 'required' => false)),
       'texts_name'  => new sfValidatorString(array('max_length' => 45)),
       'texts_value' => new sfValidatorString(),
+      'texts_help'  => new sfValidatorString(array('max_length' => 200)),
     ));
 
     $this->validatorSchema->setPostValidator(

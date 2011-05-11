@@ -1,8 +1,7 @@
                 <div class="box-white" id="box-faq">
                     <img src="images/texts/faq.gif" alt="FAQ" />
                     <div class="bw-div1">
-                        Tutaj znajdziesz odpowiedzi na wszytskie nurtujace cie pytania na temat <br />
-                        dzialania tej strony.
+                        <?=TextsPeer::getTextValue('FAQ-main-text')?>
                     </div>
                     <div id="bf1-questions">
                         <?$counter=1; foreach($faq as $question):?>

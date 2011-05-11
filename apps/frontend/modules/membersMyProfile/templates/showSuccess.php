@@ -24,9 +24,7 @@
                         <form action="<?php echo url_for('members_my-profile') ?>" method="POST" id="form_myprofile" name="form_myprofile" enctype="multipart/form-data">
                             <img src="images/texts/my-profile-on-smashintracks.gif" alt="My Profile on SmashinTracks.com" id="bm3-img1" />
                             <div id="bm3-div1">
-                                Jesli sprzedajesz tracki na <span class="blue">SmashinTracks.com</span> warto zaktualizowac swoj profil
-                                o <span class="blue">informacje o sobie, zdjecie/logo</span> - beda one widoczne przez wszystkich
-                                odwiedzajacych twoj profil.
+                                <?=TextsPeer::getTextValue('ZALOGOWANY-My-Profile-main-text')?>
                             </div>
                             <div id="bm3-div2">
                                 <div class="bm3-left"><?php echo $form['profiles_photo']->renderLabel('Your photo/logo:') ?></div>
@@ -164,7 +162,7 @@
                     <form action="<?php echo url_for('members_my-profile') ?>" method="POST" id="form_settings" name="form_settings">
                         <img src="images/texts/main-settings.gif" alt="Main Settings" />
                         <div class="bw-div1">
-                            Tutaj mozesz zmienic swoje podstawowe dane takie jak <span class="blue">artist name, e-mail, haslo.</span>
+                            <?=TextsPeer::getTextValue('ZALOGOWANY-My-Profile-main-settings')?>
                         </div>
                         <div id="bm4-div1">
                             <div class="bm3-left"><?php echo $form2['profiles_name']->renderLabel('Artist name:') ?></div>

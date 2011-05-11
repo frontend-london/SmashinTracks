@@ -13,7 +13,7 @@
                             <div class="clear"></div>
                         </div>
                         <div class="div-error-message" id="lb-div12" style="display:none;">
-                            Niepoprawny adres email
+                            Invalid email address
                         </div>
                         <div id="lb-div11">
                             <div class="button-silver-cancel">

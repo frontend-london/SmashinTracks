@@ -1,7 +1,7 @@
                 <div class="box-white" id="box-contactus">
                     <img src="images/texts/contact-us.gif" alt="Contact Us" />
                     <div class="bw-div1">
-                        Your message has been send.
+                        <?=TextsPeer::getTextValue('Kontakt-message-send')?>
                     </div>
                 </div>
 

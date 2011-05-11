@@ -2,8 +2,7 @@
                     <img src="images/texts/contact-us.gif" alt="Contact Us" />
                     <form action="<?php echo url_for('contact') ?>" method="POST" id="form_contact" name="form_contact">
                         <div class="bw-div1">
-                            Jesli chcesz skontaktowac sie z nami skorzystaj z formularza ponizej.<br />
-                            Jesli masz problem z realizacja kupionych trackow nie zapomnij o <span class="blue">kodzie zakupu</span>.
+                            <?=TextsPeer::getTextValue('Kontakt-main-text')?>
                         </div>
                         <div id="bc2-div2">
                             <div class="bm3-left"><?php echo $form['name']->renderLabel('Your name:') ?></div>

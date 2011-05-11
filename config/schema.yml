@@ -143,6 +143,7 @@ propel:
     texts_id: { phpName: TextsId, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
     texts_name: { phpName: TextsName, type: VARCHAR, size: '45', required: true }
     texts_value: { phpName: TextsValue, type: LONGVARCHAR, required: true }
+    texts_help: { phpName: TextsHelp, type: VARCHAR, size: '200', required: true }
     _uniques: { texts_U_1: [texts_name] }
   texts_faq:
     _attributes: { phpName: TextsFaq }

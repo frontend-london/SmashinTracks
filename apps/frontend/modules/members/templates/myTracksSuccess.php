@@ -1,8 +1,13 @@
                 <div class="box-white" id="box-top">
                     <img src="images/texts/my-tracks.gif" alt="My Tracks" />
                     <div class="bw-div1">
-                        W tej sekcji mozesz zobaczyc jak czesto sa przesluchiwane twoje tracki, <br />
-                        kupowane oraz dodawane do innych 'wishlist'.
+                        <?if($subsection=='all_tracks'):?>
+                            <?=TextsPeer::getTextValue('ZALOGOWANY-My-Tracks-All')?>
+                        <?elseif($subsection=='most_popular'):?>
+                            <?=TextsPeer::getTextValue('ZALOGOWANY-My-Tracks-Most-Popular')?>
+                        <?else:?>
+                            <?=TextsPeer::getTextValue('ZALOGOWANY-My-Tracks-in-wishlists')?>
+                        <?endif;?>
                     </div>
                     <div class="bw-div8">
                     	<div class="bookmark<?if($subsection=='all_tracks'):?> bookmark-active<?elseif($subsection=='most_popular'):?> bookmark-nobgr-right<?endif;?>">

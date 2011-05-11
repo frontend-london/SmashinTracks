@@ -3,9 +3,7 @@
                         <form action="<?php echo url_for('members_upload-track') ?>" method="POST" id="form_upload_track" name="form_upload_track" enctype="multipart/form-data">
                             <img src="images/texts/upload-track.gif" alt="Upload Track" id="bu-img1" />
                             <div id="bu-div1">
-                                W tym miejscu mozesz uploadowac swoje tracki. Limit wynosi <span class="blue"><?=sfConfig::get('app_max_upload_day_limit')?> tracki w ciagu dnia.</span><br />
-                                W przeciagu <span class="blue">24 godzin</span> od wyslania track zostanie <span class="blue">zaakceptowany i dodany do sklepu.</span><br />
-                                Milej zabawy.
+                                <?=Smashin::generate_injected_text(TextsPeer::getTextValue('ZALOGOWANY-Upload-Track-main-text'), array('__LIMIT__' => sfConfig::get('app_max_upload_day_limit')))?>
                             </div>
                             <div id="bu-div2">
                                 <div class="bm3-left"><?php echo $form['tracks_title']->renderLabel('Tytul tracka:') ?></div>
@@ -163,7 +161,7 @@
                                     <div class="bm5-inner">
                                         <img src="images/texts/upload-completed.gif" alt="Upload Completed" class="bm5-img1" />
                                         <div class="bm5-div1">
-                                            Twoj track zostal pomyslnie zuploadowany. W przeciagu 24 godzin od wyslania track zostanie zaakceptowany i dodany do sklepu. Kliknij button <strong>OK</strong> aby zamknąć to okno.
+                                            <?=TextsPeer::getTextValue('ZALOGOWANY-Upload-Track-sukces')?>
                                         </div>
                                         <div class="button-ok">
                                             <div class="button-left"></div>
@@ -185,7 +183,7 @@
                                 <div class="bm5-inner">
                                     <img src="images/texts/sorry.gif" alt="Sorry" class="bm5-img1" />
                                     <div class="bm5-div1">
-                                        <strong>Niestety ale dzisiaj wykorzystales juz caly dostepny limit uploadowanych trackow <span class="blue">(<?=sfConfig::get('app_max_upload_day_limit')?> na dobe)</span>. Zapraszamy za kilkanascie godzin.</strong>
+                                        <?=Smashin::generate_injected_text(TextsPeer::getTextValue('ZALOGOWANY-Upload-Track-limit'), array('__LIMIT__' => sfConfig::get('app_max_upload_day_limit')))?>
                                     </div>
                                     <div class="button-close">
                                         <div class="button-left"></div>

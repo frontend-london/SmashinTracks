@@ -17,8 +17,8 @@
                             <div class="bm5-outer">
                                 <div class="bm5-inner">
                                     <img src="images/texts/wait-a-moment.gif" alt="Wait a moment" class="bm5-img1" />
-                                    <div id="bm5-div1">
-                                        <strong>Transakcja jest w trakcie realizacji.</strong> Zaczekaj parę chwil i nie zamykaj tej strony. Za moment otrzymasz tutaj link do zakupionych  przez ciebie tracków...
+                                    <div class="bm5-div1">
+                                        <?=TextsPeer::getTextValue('Koszyk-Order-Oczekiwanie-main-text')?>
                                         <div class="bm5-div2">
                                             <img src="images/icons/loader.gif" alt="" />
                                         </div>

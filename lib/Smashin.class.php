@@ -162,7 +162,7 @@ class Smashin
             sfContext::getInstance()->getUser()->setAttribute('profile_id',$profile->getProfilesId());
             sfContext::getInstance()->getUser()->addCredential('user');
             if($profile->isAdmin()) {
-            sfContext::getInstance()->getUser()->addCredential('admin');
+                sfContext::getInstance()->getUser()->addCredential('admin');
             }
             if($remember_me) {
               if(!isset($cookie_hash)) $cookie_hash = self::generateRememberMeValue($profile->getProfilesId(), $profile->getProfilesPassword());
@@ -218,6 +218,10 @@ class Smashin
          {
              die('error in PHP_slashes (mixed,add | strip)');
          }
+     }
+
+     public static function generate_injected_text($text, $translation) {
+         return strtr($text, $translation);
      }
 }
 ?>

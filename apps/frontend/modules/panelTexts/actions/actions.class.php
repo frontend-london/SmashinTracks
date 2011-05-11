@@ -13,11 +13,20 @@ class panelTextsActions extends sfActions
 
   public function executeShow(sfWebRequest $request)
   {
+    $text_name = $request->getParameter('texts_name');
+    if($text_name!='') {
+        $text = TextsPeer::doSelectText($text_name);
+        if(is_object($text)) {
+            $text_value = $request->getParameter('texts_value');
+            $text->setTextsValue($text_value);
+            $text->save();
+        }
+    }
   }
 
   public function executeEdit(sfWebRequest $request)
   {
-      if(0) $text = new Texts();
       $text = $this->getRoute()->getObject();
+      $this->text = $text;
   }
 }

@@ -1,16 +1,11 @@
 
                 <div id="mainpage-top">
-                    <h1><span class="blue">Smashintracks.com</span> specialise in unique and unsigned music producers.</h1><br />
-                    <p><strong>Featuring Music you will not find anywhere else!</strong></p><br />
-                    <p>Downloading is simple, Register below then just add any number of tracks to your cart and pay securely using <strong>Paypal</strong>.</p><br />
-                    <p><strong>All mp3s are 'dj friendly' 320 Kbps Bitrate unless otherwise stated.</strong></p><br />
-                    <p>For any general enquiries, or if you are interested in selling your music at <a href="#" class="underline">Smashintracks.com</a> please register in the members section below</p><br />
-                    <p>ONLY BIG TUNE'S WILL BE FOR SALE ON THIS SITE!!!</p>
+                    <?=TextsPeer::getTextValue('Home-niezalogowany-welcome-text')?>
                 </div>
                 <div class="box-silver" id="box-recommends">
                     <div class="bs-inner">
                         <img src="images/texts/recommends-10-smashin-tracks.gif" alt="Recommends 10 Smashin Tracks" id="br-img1" />
-                        <div id="br-div1">Here's a hand picked selection of smashing tracks personally recommended by <a href="#" class="underline">Smashintracks.com</a> in this week.</div>
+                        <div id="br-div1"><?=TextsPeer::getTextValue('Home-niezalogowany-recommends-10-smashin-trac')?></div>
                         <div id="br-tracks">
 
                             <?$counter=0; $hidden_recom = false; foreach ($recommended as $recom):?>
@@ -33,8 +28,7 @@
                 <div class="box-white">
                     <img src="images/texts/new-tracks.gif" alt="New Tracks" />
                     <div class="bw-div1">
-                        Here are the latest <span class="blue">10 tunes</span> on <a href="#" class="underline">Smashintracks.com</a><br />
-                        Click the button 'FULL LIST' if you want see list of new tracks from latest months.
+                        <?=TextsPeer::getTextValue('Home-niezalogowany-new-tracks')?>
                     </div>                
                     
                         <div class="bw-tracks">
@@ -63,8 +57,7 @@
                 <div class="box-white">
                     <img src="images/texts/bestsellers-tracks.gif" alt="Bestsellers Tracks" />
                     <div class="bw-div1">
-                        Here are <span class="blue">10 most popular tracks</span> on <a href="#" class="underline">Smashintracks.com</a> from latest week.<br />
-                        Click the button 'FULL LIST' if you want see lists of new more charts.
+                        <?=TextsPeer::getTextValue('Home-niezalogowany-bestsellers-tracks')?>
                     </div>                
                     
                         <div class="bw-tracks">

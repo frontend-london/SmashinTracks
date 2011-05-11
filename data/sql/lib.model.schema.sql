@@ -301,6 +301,7 @@ CREATE TABLE `texts`
 	`texts_id` INTEGER(11)  NOT NULL AUTO_INCREMENT,
 	`texts_name` VARCHAR(45)  NOT NULL,
 	`texts_value` TEXT  NOT NULL,
+	`texts_help` VARCHAR(200)  NOT NULL,
 	PRIMARY KEY (`texts_id`),
 	UNIQUE KEY `texts_U_1` (`texts_name`)
 )Type=InnoDB;

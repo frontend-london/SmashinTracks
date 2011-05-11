@@ -1,7 +1,11 @@
                 <div class="box-white" id="box-top">
                     <img src="images/texts/my-wishlist.gif" alt="My Wishlist" />
                     <div class="bw-div1">
-                        W tym miejscu widzisz swoja liste <span class="blue">‘Wishlist’</span>. Dzieki niej mozesz zachowywac w pamieci swojego profilu tracki ktore chcialbys kupic w przyszlosci etc.
+                        <?if($subsection=='last_added'):?>
+                            <?=TextsPeer::getTextValue('ZALOGOWANY-My-Wishlist-last-added')?>
+                        <?else:?>
+                            <?=TextsPeer::getTextValue('ZALOGOWANY-My-Wishlist-by-artist')?>
+                        <?endif;?>
                     </div>
 
                     <div class="bw-div8">

@@ -12,6 +12,5 @@ class termsActions extends sfActions
 {
 
   public function executeShow(sfWebRequest $request) {
-    $this->terms = TextsPeer::doSelectText('terms');
   }
 }

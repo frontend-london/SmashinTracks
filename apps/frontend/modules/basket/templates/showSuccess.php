@@ -2,22 +2,18 @@
                 <div class="box-white" id="box-top">
                     <img src="images/texts/your-basket2.gif" alt="Your Basket" />
                     <div class="bw-div1">
-                        Gdy dokonasz zaplaty dostaniesz <span class="blue">unikalne linki</span> gotowe do sciagniecia trackow <br />
-                        ktore zakupiles. Mozesz <span class="blue">sciagnac 3 razy kazdy track</span>. Linki beda dzialaly <span class="blue">24 godziny.</span>
+                        <?=TextsPeer::getTextValue('Koszyk-main-text')?>
                     </div>
+                    <div class="bw-tracks">
+                        <?foreach ($tracks as $track):?>
+                            <?php include_component('metadata', 'record', array('track' => $track, 'basket' => true)) ?>
+                        <?endforeach;?>
 
-                        <div class="bw-tracks">
-
-                            <?foreach ($tracks as $track):?>
-                                <?php include_component('metadata', 'record', array('track' => $track, 'basket' => true)) ?>
-                            <?endforeach;?>
-
-                            <div class="clear"></div>
-
-                        </div>
-                        <div class="bw-div4">
-                            Total Amount:  <strong><?=$prize?></strong>
-                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="bw-div4">
+                        Total Amount:  <strong><?=$prize?></strong>
+                    </div>
                 </div>
 
                 <div class="box-silver" id="box-paymethod">
@@ -27,15 +23,15 @@
                             <input type="hidden" name="invoice" value="<?=$transaction->getTransactionsId();?>" />
                             <?$counter=1; foreach ($tracks as $track):?>
                                 <input type="hidden" name="item_name_<?=$counter?>" value="MP3 Download: <?=$track->getTracksTitle()?> - <?=$track->getTracksArtist()?>" />
-                                <input type="hidden" name="item_number_<?=$counter?>" value="<?=$transaction->getTransactionsId();?> <?=$track->getTracksId()?>-<?=$track->getProfilesId()?>" /> <!-- 150273464 / 124109-631  = id_faktury / id_tracka-id_artysty -->
+                                <input type="hidden" name="item_number_<?=$counter?>" value="<?=$transaction->getTransactionsId();?> <?=$track->getTracksId()?>-<?=$track->getProfilesId()?>" /> <?// 150273464 / 124109-631  = id_faktury / id_tracka-id_artysty ?>
                                 <input type="hidden" name="amount_<?=$counter?>" value="<?=sfConfig::get('app_default_prize')?>" />
                                 <input type="hidden" name="quantity_<?=$counter?>" value="1" />
                             <?$counter++; endforeach;?>
-                            <input type="hidden" name="discount_amount_cart" value="0.00" /> <!-- zniżka -->
-                            <input type="hidden" name="upload" value="1" /> <!-- ma powiązanie z cmd -->
-                            <input type="hidden" name="cmd" value="_cart" /> <!-- Its value determines which Website Payments Standard checkout experience you are using to obtain payment. -->
-                            <input type="hidden" name="no_shipping" value="2" /> <!--  prompt for an address, and require one-->
-                            <input type="hidden" name="no_note" value="1" /> <!-- Do not prompt payers to include a note with their payments -->
+                            <input type="hidden" name="discount_amount_cart" value="0.00" /> <?// zniżka ?>
+                            <input type="hidden" name="upload" value="1" /> <?// ma powiązanie z cmd ?>
+                            <input type="hidden" name="cmd" value="_cart" /> <?// Its value determines which Website Payments Standard checkout experience you are using to obtain payment. ?>
+                            <input type="hidden" name="no_shipping" value="2" /> <?//  prompt for an address, and require one?>
+                            <input type="hidden" name="no_note" value="1" /> <?// Do not prompt payers to include a note with their payments ?>
                             <input type="hidden" name="currency_code" value="GBP" />
                             <input type="hidden" name="lc" value="GB" />
                             <input type="hidden" name="return" value="http://<?=$_SERVER['SERVER_NAME'].$sf_request->getRelativeUrlRoot()?>/basket/paypal-checkout/<?=$transaction->getTransactionsId();?>" />

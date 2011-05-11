@@ -2,7 +2,7 @@
                     <div class="bs-inner">
                         <img src="images/texts/my-sales.gif" alt="My Sales" id="bm2-img1" />
                         <div class="clear"></div>
-                        <div id="bm2-div1">Jesli sprzedajesz tracki na <a href="#" class="underline">Smashintracks.com</a> tutaj mozesz obejrzec jak sie sprzedaja, ile juz zarobiles oraz wyplacic pieniadze.</div>
+                        <div id="bm2-div1"><?=TextsPeer::getTextValue('ZALOGOWANY-My-sales-main-text')?></div>
                         <div id="bm2-div2">
                         	<div id="bm2-div2-left">
                             	<img src="images/texts/your-balance.gif" alt="Your Balance" id="bm2-img2" />
@@ -18,7 +18,7 @@
                         </div>
                         <div id="bm2-div3">
                             <div id="bm2-div3-left">
-                                Minimalna kwota wyplaty to <strong><?=Smashin::generate_prize(sfConfig::get('app_min_withdraw'))?></strong>
+                                <?=Smashin::generate_injected_text(TextsPeer::getTextValue('ZALOGOWANY-My-sales-Minimalna-kwota-wyplaty'), array('__KWOTA__' => Smashin::generate_prize(sfConfig::get('app_min_withdraw'))))?>
                             </div>
                             <div id="bm2-div3-right">
                                 <div class="button-withdraw">

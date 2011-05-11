@@ -1,8 +1,13 @@
                 <div class="box-white" id="box-top">
                     <img src="images/texts/charts-top-30.gif" alt="Charts Top 30" />
                     <div class="bw-div1">
-                        Here are the list with <span class="blue">30</span> bestsellers in this week on <a href="http://smashintracks.com/" class="underline">Smashintracks.com</a><br />
-                        See also other ‘CHARTS’.
+                        <?if($subsection=='this_week'):?>
+                            <?=TextsPeer::getTextValue('Charts-This-Week-main-text')?>
+                        <?elseif($subsection=='last_3_months'):?>
+                            <?=TextsPeer::getTextValue('Charts-Last-3-months-main-text')?>
+                        <?else:?>
+                            <?=TextsPeer::getTextValue('Charts-All-time-main-text')?>
+                        <?endif;?>
                     </div>
                     <div class="bw-div8">
                     	<div class="bookmark<?if($subsection=='this_week'):?> bookmark-active<?elseif($subsection=='last_3_months'):?> bookmark-nobgr-right<?endif;?>">

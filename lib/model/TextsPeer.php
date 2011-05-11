@@ -24,4 +24,9 @@ class TextsPeer extends BaseTextsPeer {
       return TextsPeer::doSelectOne($criteria);
     }
 
+    static public function getTextValue($name) {
+      return self::doSelectText($name)->getTextsValue();
+    }
+
+
 } // TextsPeer
