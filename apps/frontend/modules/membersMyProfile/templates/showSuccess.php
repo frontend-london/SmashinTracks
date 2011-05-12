@@ -175,7 +175,7 @@
                                 <div class="div-error-message">
                                     <?php echo $form2['profiles_name']->renderError() ?>
                                 </div>
-                            <?php endif; ?>
+                        <?php endif; ?>
                         <div id="bm4-div2">
                             <div class="bm3-left"><?php echo $form2['profiles_email']->renderLabel('Your email:') ?></div>
                             <div class="bm3-right">

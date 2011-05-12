@@ -30,7 +30,7 @@
                                     <strong>3. ST-FAQ</strong><br />
                                     <ul>
                                     	<li><span>- main text</span>  <a href="<?=url_for('panel_texts_edit', array('texts_name' => 'FAQ-main-text'))?>" class="track-edit">EDIT</a></li>
-                                    	<li><span>- Treść</span>  <a href="#" class="track-edit">EDIT</a></li>
+                                    	<li><span>- Treść</span>  <a href="<?=url_for('panel_texts_faq')?>" class="track-edit">EDIT</a></li>
                                     </ul>
                                 </td>
                                 <td>

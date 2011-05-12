@@ -480,12 +480,41 @@ panel_texts:
   param: { module: panelTexts, action: show, section: panel-texts }
 
 panel_texts_edit:
-  url:     /panel/texts/edit/:texts_name
+  url:     /panel/texts/edit/:texts_faq_id
   class:   sfPropelRoute
   options: { model: Texts, type: object }
   param: { module: panelTexts, action: edit, section: panel-texts }
   requirements:
-    sf_method: [get]  
+    sf_method: [get]
+
+panel_texts_faq:
+  url:     /panel/texts/faq
+  param: { module: panelTextsFaq, action: show, section: panel-texts }
+
+panel_texts_faq_edit:
+  url:     /panel/texts/faq/edit/:texts_faq_id
+  class:   sfPropelRoute
+  options: { model: TextsFaq, type: object }
+  param: { module: panelTextsFaq, action: show, section: panel-texts, subsection: text-edit }
+  requirements:
+    sf_method: [get]
+
+panel_texts_faq_delete:
+  url:     /panel/texts/faq/delete/:texts_faq_id
+  class:   sfPropelRoute
+  options: { model: TextsFaq, type: object }
+  param: { module: panelTextsFaq, action: delete, section: panel-texts }
+  requirements:
+    sf_method: [get]
+
+panel_texts_faq_order:
+  url:     /panel/texts/faq/order/:texts_faq_id/:second_texts_faq_id
+  class:   sfPropelRoute
+  options: { model: TextsFaq, type: object }
+  param: { module: panelTextsFaq, action: changeOrder, section: panel-texts }
+  requirements:
+    sf_method: [get]
+    second_texts_faq_id: \d+
 
 panel_transactions-history:
   url:     /panel/transactions-history

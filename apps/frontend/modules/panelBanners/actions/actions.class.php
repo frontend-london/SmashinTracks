@@ -146,8 +146,6 @@ class panelBannersActions extends sfActions
     $banner->save();
     $second_banner->save();
     $this->redirect('panel_banners');
-
-
   }
 
 }

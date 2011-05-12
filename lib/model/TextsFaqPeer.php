@@ -18,4 +18,22 @@
  */
 class TextsFaqPeer extends BaseTextsFaqPeer {
 
+    static public function getTexts() {
+      $criteria = new Criteria();
+      $criteria->addAscendingOrderByColumn(self::TEXTS_FAQ_ORDER);
+      return self::doSelect($criteria);
+    }
+
+    public static function getTextById($text_id, $criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria();
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+        $criteria->add(self::TEXTS_FAQ_ID, $text_id);
+        return self::doSelectOne($criteria);
+    }
+
 } // TextsFaqPeer

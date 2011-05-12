@@ -53,11 +53,11 @@ Banners:
     banners_url: 'http://www.wp.pl'
     banners_order: '9'
     banners_active: '1'
-  Banners_17:
+  Banners_10:
     banners_type: '2'
     banners_path: 4ETr5i5c2lwQ2iWLIOmzX9BTzriLMoqj
     banners_url: ''
-    banners_order: '17'
+    banners_order: '10'
     banners_active: '1'
 Configurations:
   Configurations_1:
@@ -160,7 +160,7 @@ Genres:
   Genres_31:
     genres_name: Techno
     genres_path: techno
-  Genres_33:
+  Genres_32:
     genres_name: jnjnjn
     genres_path: jnjnjn
 PaypalPaymentInfo:
@@ -1176,7 +1176,7 @@ Profiles:
     profiles_email: production@enside.pl
     profiles_password: 123456
     profiles_text: '<p>teskst</p>'
-    profiles_date: '2011-04-06 20:29:12'
+    profiles_date: '2011-05-09 23:56:53'
     profiles_path: admin
     profiles_photo: '0'
     profiles_balance: '1542'
@@ -1188,7 +1188,7 @@ Profiles:
     profiles_email: modul008@gmail.com
     profiles_password: 123456
     profiles_text: '<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla facilisi. Sed dapibus ullamcorper nisl, eget posuere tortor elementum quis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam faucibus imperdiet sodales. Nunc dui dolor, tincidunt et bibendum et, viverra ac enim. Integer facilisis, velit et congue porttitor, libero lacus fermentum felis, ac egestas nisi nisl vitae sapien. Sed rhoncus bibendum purus </p>'
-    profiles_date: '2011-04-13 20:29:12'
+    profiles_date: '2011-05-09 23:56:53'
     profiles_path: modul
     profiles_photo: '1'
     profiles_balance: '1478'
@@ -1200,7 +1200,7 @@ Profiles:
     profiles_email: marti_no@o22.pl
     profiles_password: 123456
     profiles_text: '<p>teskst</p>'
-    profiles_date: '2011-04-06 20:29:12'
+    profiles_date: '2011-05-09 23:56:53'
     profiles_path: martino-b
     profiles_photo: '1'
     profiles_balance: '1500'
@@ -1212,7 +1212,7 @@ Profiles:
     profiles_email: bbbbbbbb
     profiles_password: 123456
     profiles_text: dddddddd
-    profiles_date: '2011-04-06 20:29:12'
+    profiles_date: '2011-05-09 23:56:53'
     profiles_path: aaaaaaa
     profiles_photo: '0'
     profiles_balance: '1522'
@@ -1224,7 +1224,7 @@ Profiles:
     profiles_email: cjreign@gmail.com
     profiles_password: 123456
     profiles_text: '<p>Sed suscipit feugiat ultrices. Cras sapien ligula, porttitor non vulputate eget, ultricies in elit. Nunc sit amet orci justo. Nullam viverra, felis sed feugiat eleifend, ligula libero placerat risus, in tempus magna risus vel mi. Maecenas posuere nibh vel eros tristique dictum. Pellentesque pellentesque lobortis imperdiet. Donec mollis ullamcorper convallis. Quisque a tempor nulla. Mauris eu elit enim, sit amet tempor leo. Donec ut felis augue, sed tempor mi. Donec tristique nunc quis arcu al'
-    profiles_date: '2011-04-06 20:29:12'
+    profiles_date: '2011-05-09 23:56:53'
     profiles_path: cj-reign
     profiles_photo: '1'
     profiles_balance: '1520'
@@ -1236,7 +1236,7 @@ Profiles:
     profiles_email: essex@gmail.com
     profiles_password: 123456
     profiles_text: '<p>Nulla varius lacus et turpis mollis sodales. Proin ullamcorper euismod eros vitae convallis. Integer varius malesuada suscipit. Curabitur felis elit, ultricies eu luctus a, euismod ut metus. Morbi in porta est. Nulla sit amet enim ut dolor interdum imperdiet eu ullamcorper velit. Sed sagittis, diam ut dignissim tincidunt, nulla mauris feugiat est, id cursus nisl elit eget ante. Suspendisse interdum sollicitudin enim vitae feugiat. Curabitur semper porta lacus, a tincidunt quam consectetur ac.'
-    profiles_date: '2011-04-06 20:29:12'
+    profiles_date: '2011-05-09 23:56:54'
     profiles_path: essex
     profiles_photo: '1'
     profiles_balance: '1500'
@@ -1248,7 +1248,7 @@ Profiles:
     profiles_email: surang2@gmail.com
     profiles_password: 123456
     profiles_text: '<p>Aenean nibh arcu, blandit ut adipiscing eget, dictum nec tortor. Sed tincidunt posuere gravida. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque placerat lacinia lacus non varius. Ut tellus odio, consectetur vel viverra at, mollis id nunc. Praesent ligula nulla, gravida sit amet gravida porta, tincidunt vitae erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam eu lacus elit, eget pharetra est. Praesent facilisis, tortor nec'
-    profiles_date: '2011-04-08 20:29:12'
+    profiles_date: '2011-05-09 23:56:54'
     profiles_path: surang2
     profiles_photo: '1'
     profiles_balance: '1500'
@@ -1260,7 +1260,7 @@ Profiles:
     profiles_email: jackiechan@gmail.com
     profiles_password: 123456
     profiles_text: '<p>Suspendisse dictum, lorem nec tincidunt egestas, eros libero auctor nisl, id malesuada ipsum augue sed quam. Aenean metus ligula, laoreet quis ullamcorper vel, tristique in nisl. Nunc pretium odio sed diam congue porttitor. Proin nec massa ac nisi lacinia tincidunt. Praesent purus orci, malesuada nec dapibus sit amet, auctor non tortor. Vivamus ut odio nunc. Vivamus cursus, justo id scelerisque pretium, quam ligula laoreet risus, id hendrerit lorem velit nec tellus. Phasellus augue neque, pre'
-    profiles_date: '2011-04-08 20:29:12'
+    profiles_date: '2011-05-09 23:56:54'
     profiles_path: jackie-chan
     profiles_photo: '0'
     profiles_balance: '1500'
@@ -1272,7 +1272,7 @@ Profiles:
     profiles_email: gregsinkey@gmail.com
     profiles_password: 123456
     profiles_text: '<p>Integer et erat in nibh sodales lobortis sit amet vitae libero. Maecenas sagittis risus id tellus laoreet et pulvinar nisi consequat. Mauris quis purus lectus. Donec vel mi erat, ut tempus neque. Sed eleifend tempus est, ac accumsan sem porttitor sed. Donec vel erat velit, non ultricies felis. Suspendisse sit amet justo sem, ut gravida nunc. Aliquam erat volutpat. Sed ac orci dolor, vel porta mauris. Integer lorem mi, rutrum sit amet dapibus vel, ornare vel lectus. Sed auctor, odio sit amet b'
-    profiles_date: '2011-04-16 20:29:12'
+    profiles_date: '2011-05-09 23:56:54'
     profiles_path: greg-sin-key
     profiles_photo: '0'
     profiles_balance: '1500'
@@ -1284,7 +1284,7 @@ Profiles:
     profiles_email: projectjacksparrow@gmail.com
     profiles_password: 123456
     profiles_text: '<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla facilisi. Sed dapibus ullamcorper nisl, eget posuere tortor elementum quis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam faucibus imperdiet sodales. Nunc dui dolor, tincidunt et bibendum et, viverra ac enim. Integer facilisis, velit et congue porttitor, libero lacus fermentum felis, ac egestas nisi nisl vitae sapien. Sed rhoncus bibendum purus id fac'
-    profiles_date: '2011-04-16 20:29:12'
+    profiles_date: '2011-05-09 23:56:54'
     profiles_path: project-jack-sparrow
     profiles_photo: '1'
     profiles_balance: '1500'
@@ -1296,7 +1296,7 @@ Profiles:
     profiles_email: zapp@gmail.com
     profiles_password: 123456
     profiles_text: '<p>Suspendisse rhoncus felis sit amet neque rhoncus ut mollis justo ultrices. Ut in dui at augue ornare tempor a a erat. Morbi lacinia pretium dui, vitae congue est rhoncus sit amet. Curabitur auctor eros at nulla aliquet facilisis. In nulla ante, fermentum in pretium in, malesuada rutrum nulla. Aenean pellentesque elit vulputate nulla ultricies id varius nisl euismod. Nam id leo quis lectus commodo gravida id nec libero. In vitae ornare lectus. Nulla arcu massa, faucibus et congue pretium, adip'
-    profiles_date: '2011-04-06 20:29:12'
+    profiles_date: '2011-05-09 23:56:54'
     profiles_path: zapp
     profiles_photo: '0'
     profiles_balance: '1500'
@@ -1308,7 +1308,7 @@ Profiles:
     profiles_email: toofer@gmail.com
     profiles_password: 123456
     profiles_text: '<p>Donec sapien dui, fringilla vel dictum at, consectetur ac ligula. Mauris convallis pharetra lacinia. Ut ultrices ligula quis mi pellentesque sit amet ullamcorper nulla malesuada. Nam eu risus eget ipsum egestas vestibulum non at ipsum. Sed dui odio, porttitor eget venenatis et, condimentum sed velit. Suspendisse et felis quis nisi consequat bibendum. Suspendisse feugiat viverra facilisis. Maecenas odio lacus, varius ac aliquam vitae, euismod quis nibh. Phasellus a metus eleifend lorem viverra'
-    profiles_date: '2011-04-06 20:29:12'
+    profiles_date: '2011-05-09 23:56:54'
     profiles_path: toofer
     profiles_photo: '1'
     profiles_balance: '1500'
@@ -1320,7 +1320,7 @@ Profiles:
     profiles_email: nefti@gmail.com
     profiles_password: 123456
     profiles_text: '<p>In accumsan, sapien ac faucibus ultrices, ipsum diam eleifend magna, a vestibulum mi tellus id nunc. Vivamus iaculis porta mattis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed hendrerit aliquet accumsan. Nunc porttitor venenatis fringilla. Pellentesque eget est nulla. Nulla facilisi. Proin tincidunt ligula vitae velit interdum sit amet tincidunt enim mattis. Curabitur vehicula quam eu magna volutpat nec rutrum orci condimentum. Aliquam feugiat maur'
-    profiles_date: '2011-04-06 20:29:12'
+    profiles_date: '2011-05-09 23:56:54'
     profiles_path: nefti
     profiles_photo: '0'
     profiles_balance: '1500'
@@ -1332,7 +1332,7 @@ Profiles:
     profiles_email: madogz@gmail.com
     profiles_password: 123456
     profiles_text: '<p>Nullam risus libero, cursus sed vulputate ac, laoreet ac lorem. Morbi ut molestie sapien. Curabitur sit amet justo in odio ultricies eleifend sed ut lectus. Nam pharetra lacinia orci sit amet vulputate. Etiam scelerisque dictum dolor sit amet suscipit. Fusce augue sapien, convallis sed condimentum nec, tincidunt eget ligula. Pellentesque tincidunt vehicula velit, non varius erat blandit eget. Vestibulum non porta lorem. Sed semper neque non massa fermentum id porta risus tristique. Donec ac l'
-    profiles_date: '2011-04-06 20:29:12'
+    profiles_date: '2011-05-09 23:56:54'
     profiles_path: madogz
     profiles_photo: '1'
     profiles_balance: '1500'
@@ -1344,7 +1344,7 @@ Profiles:
     profiles_email: drorgan@gmail.com
     profiles_password: 123456
     profiles_text: '<p>Nunc pretium tincidunt mi lacinia luctus. Proin justo odio, mollis nec aliquet sit amet, molestie sed enim. Fusce sed ipsum convallis nibh fringilla luctus. Proin tristique sem sed ipsum dignissim porttitor. Aliquam et dui ut nisl accumsan faucibus non nec sem. Donec in felis non ipsum tempor suscipit. Etiam faucibus viverra pretium. Maecenas commodo metus at massa varius vitae fermentum magna sodales. Praesent molestie, diam quis tempus semper, diam nunc laoreet nisi, eu luctus diam urna et '
-    profiles_date: '2011-04-06 20:29:12'
+    profiles_date: '2011-05-09 23:56:54'
     profiles_path: dr-organ
     profiles_photo: '0'
     profiles_balance: '1500'
@@ -1356,7 +1356,7 @@ Profiles:
     profiles_email: baseclub@gmail.com
     profiles_password: 123456
     profiles_text: '<p>Nam vitae orci ut velit tempus cursus varius vel eros. Nullam ac lorem quam. Pellentesque egestas interdum lacinia. Aenean faucibus mi malesuada dolor posuere in ullamcorper dui vulputate. Sed dictum condimentum diam, tempor pulvinar odio euismod eu. Proin at imperdiet nunc. Nam aliquet quam et lorem hendrerit sodales ac vel ante. Sed sagittis sagittis pulvinar. Proin non magna nec erat iaculis mattis. Integer non purus ut metus volutpat ultricies. Etiam viverra, urna sit amet consectetur mol'
-    profiles_date: '2011-04-06 20:29:12'
+    profiles_date: '2011-05-09 23:56:54'
     profiles_path: base-club
     profiles_photo: '0'
     profiles_balance: '1500'
@@ -1368,7 +1368,7 @@ Profiles:
     profiles_email: evenwhitervinyl@gmail.com
     profiles_password: 123456
     profiles_text: '<p>Aenean libero tellus, ultrices aliquet malesuada eu, adipiscing vitae felis. Etiam ut felis vehicula risus volutpat porttitor nec ut nibh. Sed elementum hendrerit velit sit amet imperdiet. Vestibulum elit lorem, pharetra vitae rhoncus id, faucibus quis ligula. Aliquam id metus et sem dignissim sagittis sed nec sem. Duis in sodales leo. Nulla commodo odio ut quam venenatis vel convallis turpis elementum. Nulla sit amet mauris neque. Suspendisse tincidunt interdum risus. Etiam cursus consectetu'
-    profiles_date: '2011-04-06 20:29:12'
+    profiles_date: '2011-05-09 23:56:54'
     profiles_path: even-whiter-vinyl
     profiles_photo: '0'
     profiles_balance: '1500'
@@ -1380,7 +1380,7 @@ Profiles:
     profiles_email: tonysoprano@gmail.com
     profiles_password: 123456
     profiles_text: '<p>Donec iaculis adipiscing hendrerit. Fusce elementum congue est, quis ultrices magna ultricies sit amet. Sed scelerisque consequat nibh eget mattis. Suspendisse scelerisque, elit at dapibus interdum, mauris diam laoreet elit, sit amet rhoncus tortor metus vel justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae iaculis neque. Pellentesque at pulvinar felis. Ut a mollis nunc. Suspendisse egestas scelerisque pulvinar. Ut ornare, massa cursus consectetur consequat, nibh augue'
-    profiles_date: '2011-04-06 20:29:12'
+    profiles_date: '2011-05-09 23:56:54'
     profiles_path: tony-soprano
     profiles_photo: '0'
     profiles_balance: '1500'
@@ -1392,7 +1392,7 @@ Profiles:
     profiles_email: markkrupp@gmail.com
     profiles_password: 123456
     profiles_text: '<p>Nulla elementum augue in eros condimentum a pretium diam mattis. Vestibulum quis erat ac libero scelerisque sodales sit amet eget ipsum. Donec iaculis pretium elit, eget venenatis ante tempus ut. Duis fermentum, lacus et semper malesuada, sem urna convallis est, a scelerisque odio odio malesuada felis. Sed a lorem mauris, sit amet bibendum purus. Etiam ac enim eu est porttitor dignissim. Ut porta velit ut massa volutpat semper. Cras ultrices scelerisque lacus, ut consequat augue volutpat eget'
-    profiles_date: '2011-04-06 20:29:12'
+    profiles_date: '2011-05-09 23:56:54'
     profiles_path: mark-krupp
     profiles_photo: '1'
     profiles_balance: '1500'
@@ -1404,7 +1404,7 @@ Profiles:
     profiles_email: koczkodan@gmail.com
     profiles_password: 123456
     profiles_text: '<p>Fusce sed libero quis neque vulputate ultricies. Vestibulum varius rutrum feugiat. Integer rhoncus laoreet mauris sed dictum. Nam gravida congue sapien et adipiscing. Etiam mollis consectetur velit non gravida. Sed luctus odio ut mi molestie in tristique ligula tristique. Aenean quam odio, viverra vitae posuere vel, facilisis non tortor. Nunc vulputate tempus nunc, eu dictum nunc lobortis in. Fusce vitae ligula at libero semper lacinia a posuere nisl. Praesent et velit condimentum lacus adipi'
-    profiles_date: '2011-04-06 20:29:12'
+    profiles_date: '2011-05-09 23:56:54'
     profiles_path: koczkodan
     profiles_photo: '0'
     profiles_balance: '1500'
@@ -1416,7 +1416,7 @@ Profiles:
     profiles_email: aldonazbalona@gmail.com
     profiles_password: 123456
     profiles_text: '<p>Mauris nibh elit, iaculis id blandit dignissim, blandit id ipsum. Cras ullamcorper urna non nisi gravida nec blandit purus pulvinar. Curabitur ac hendrerit nisi. Maecenas egestas nisl eu nibh malesuada volutpat. Vestibulum rhoncus velit nec nunc elementum vel pretium nisl euismod. Nullam quis nisi est. Proin at sem et elit pulvinar vehicula. Pellentesque sed nunc ac nisl rutrum consectetur ut id ligula. Aenean lacus elit, pretium a porta id, iaculis vel eros. Mauris eget massa quis mauris viv'
-    profiles_date: '2011-04-06 20:29:12'
+    profiles_date: '2011-05-09 23:56:54'
     profiles_path: aldona-z-balona
     profiles_photo: '0'
     profiles_balance: '1500'
@@ -1428,7 +1428,7 @@ Profiles:
     profiles_email: czarnymustafa@gmail.com
     profiles_password: 123456
     profiles_text: '<p>Sed tempor egestas diam a consectetur. Vestibulum mi nisl, mattis non ultricies at, dictum ac ante. Phasellus ultricies mattis gravida. Nulla convallis consectetur justo eu ornare. Suspendisse a mattis ligula. Morbi auctor lectus id neque volutpat pellentesque. Pellentesque dapibus sapien ut urna fermentum ut feugiat tortor adipiscing. Pellentesque velit quam, vehicula quis ullamcorper vitae, luctus tempus ligula. Duis nisi nulla, aliquet quis ultrices sed, placerat eget nisi. Suspendisse pre'
-    profiles_date: '2011-04-06 20:29:12'
+    profiles_date: '2011-05-09 23:56:54'
     profiles_path: czarny-mustafa
     profiles_photo: '0'
     profiles_balance: '1500'
@@ -1440,7 +1440,7 @@ Profiles:
     profiles_email: etamotam@gmail.com
     profiles_password: 123456
     profiles_text: '<p>Donec non sem orci, id condimentum enim. Curabitur libero nunc, scelerisque eget elementum quis, rutrum nec erat. Sed lobortis, ipsum vitae blandit laoreet, tortor arcu scelerisque elit, nec sollicitudin urna dolor nec metus. In fermentum lorem eu diam faucibus dignissim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque in diam nulla, quis aliquam urna. Suspendisse adipiscing urna at nisi consectetur elementum. Suspendisse potenti. Suspendisse congue laoreet tortor, eu ornare '
-    profiles_date: '2011-04-06 20:29:12'
+    profiles_date: '2011-05-09 23:56:54'
     profiles_path: etam-otam
     profiles_photo: '0'
     profiles_balance: '1500'
@@ -1452,7 +1452,7 @@ Profiles:
     profiles_email: grubaberta@gmail.com
     profiles_password: 123456
     profiles_text: '<p>Suspendisse rhoncus felis sit amet neque rhoncus ut mollis justo ultrices. Ut in dui at augue ornare tempor a a erat. Morbi lacinia pretium dui, vitae congue est rhoncus sit amet. Curabitur auctor eros at nulla aliquet facilisis. In nulla ante, fermentum in pretium in, malesuada rutrum nulla. Aenean pellentesque elit vulputate nulla ultricies id varius nisl euismod. Nam id leo quis lectus commodo gravida id nec libero. In vitae ornare lectus. Nulla arcu massa, faucibus et congue pretium, adip'
-    profiles_date: '2011-04-06 20:29:12'
+    profiles_date: '2011-05-09 23:56:54'
     profiles_path: gruba-berta
     profiles_photo: '0'
     profiles_balance: '1500'
@@ -1464,7 +1464,7 @@ Profiles:
     profiles_email: piotr@enside.pl
     profiles_password: 123456
     profiles_text: ''
-    profiles_date: '2011-04-06 20:29:12'
+    profiles_date: '2011-05-09 23:56:54'
     profiles_path: sssssss
     profiles_photo: '0'
     profiles_balance: '1500'
@@ -1476,7 +1476,7 @@ Profiles:
     profiles_email: piotr2@enside.pl
     profiles_password: 123456
     profiles_text: ''
-    profiles_date: '2011-04-06 20:29:12'
+    profiles_date: '2011-05-09 23:56:54'
     profiles_path: ssssssss2
     profiles_photo: '0'
     profiles_balance: '1500'
@@ -1488,7 +1488,7 @@ Profiles:
     profiles_email: piotr3@enside.pl
     profiles_password: 123456
     profiles_text: ''
-    profiles_date: '2011-04-06 20:29:12'
+    profiles_date: '2011-05-09 23:56:54'
     profiles_path: aafsaasfaf
     profiles_photo: '0'
     profiles_balance: '1500'
@@ -1500,7 +1500,7 @@ Profiles:
     profiles_email: piotr4@enside.pl
     profiles_password: 123456
     profiles_text: ''
-    profiles_date: '2011-04-06 20:29:12'
+    profiles_date: '2011-05-09 23:56:54'
     profiles_path: sssssssss2
     profiles_photo: '0'
     profiles_balance: '1500'
@@ -1512,7 +1512,7 @@ Profiles:
     profiles_email: piotr5@enside.pl
     profiles_password: 123456
     profiles_text: ''
-    profiles_date: '2011-04-06 20:29:12'
+    profiles_date: '2011-05-09 23:56:54'
     profiles_path: sssssss-fwfwf-wwww4
     profiles_photo: '0'
     profiles_balance: '1500'
@@ -1524,7 +1524,7 @@ Profiles:
     profiles_email: modul0018@gmail.com
     profiles_password: 123456
     profiles_text: ''
-    profiles_date: '2011-04-06 20:29:12'
+    profiles_date: '2011-05-09 23:56:54'
     profiles_path: anna-barbara
     profiles_photo: '0'
     profiles_balance: '1418'
@@ -1536,7 +1536,7 @@ Profiles:
     profiles_email: modul0019@gmail.com
     profiles_password: 123456
     profiles_text: ''
-    profiles_date: '2011-04-06 20:29:12'
+    profiles_date: '2011-05-09 23:56:54'
     profiles_path: anna-barbara-7
     profiles_photo: '0'
     profiles_balance: '1500'
@@ -1548,7 +1548,7 @@ Profiles:
     profiles_email: modul0034@gmail.com
     profiles_password: 123456
     profiles_text: ''
-    profiles_date: '2011-04-06 20:29:12'
+    profiles_date: '2011-05-09 23:56:54'
     profiles_path: krawawe-oko
     profiles_photo: '0'
     profiles_balance: '1500'
@@ -1560,7 +1560,7 @@ Profiles:
     profiles_email: piotr31@enside.pl
     profiles_password: 123456
     profiles_text: ''
-    profiles_date: '2011-04-06 20:29:12'
+    profiles_date: '2011-05-09 23:56:54'
     profiles_path: stefan-batory
     profiles_photo: '0'
     profiles_balance: '1500'
@@ -1572,7 +1572,7 @@ Profiles:
     profiles_email: modul007@gmail.com
     profiles_password: 123456
     profiles_text: ''
-    profiles_date: '2011-04-06 20:29:12'
+    profiles_date: '2011-05-09 23:56:54'
     profiles_path: dwanascie-osiem
     profiles_photo: '0'
     profiles_balance: '0'
@@ -1587,7 +1587,7 @@ Tracks:
     tracks_path: modul-strike-it-up-vip-mix
     tracks_time: '218'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:54'
     tracks_deleted: '0'
   Tracks_2:
     tracks_title: 'Missing U'
@@ -1596,7 +1596,7 @@ Tracks:
     tracks_path: even-whiter-vinyl-missing-u
     tracks_time: '304'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:54'
     tracks_deleted: '0'
   Tracks_3:
     tracks_title: 'Rudeboyz '
@@ -1605,7 +1605,7 @@ Tracks:
     tracks_path: martino-b-rudeboyz
     tracks_time: '123'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:54'
     tracks_deleted: '0'
   Tracks_4:
     tracks_title: 'Rudeboyz 2'
@@ -1614,7 +1614,7 @@ Tracks:
     tracks_path: martino-b-rudeboyz-2
     tracks_time: '123'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:54'
     tracks_deleted: '0'
   Tracks_5:
     tracks_title: 'Lodz City'
@@ -1623,7 +1623,7 @@ Tracks:
     tracks_path: aaaaaaaaa-lodz-city
     tracks_time: '125'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:54'
     tracks_deleted: '0'
   Tracks_6:
     tracks_title: 'We No Speak Americano'
@@ -1632,7 +1632,7 @@ Tracks:
     tracks_path: cj-reign-we-no-speak-americano
     tracks_time: '127'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:54'
     tracks_deleted: '0'
   Tracks_7:
     tracks_title: 'Say My Name (Special Dub Mix)'
@@ -1641,7 +1641,7 @@ Tracks:
     tracks_path: essex-say-my-name-special-dub-mix
     tracks_time: '129'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:54'
     tracks_deleted: '0'
   Tracks_8:
     tracks_title: 'Pussy Marijuana (Bassline Stomper VIP Mix)'
@@ -1650,7 +1650,7 @@ Tracks:
     tracks_path: surang-pussy-marijuana-bassline-stomper-vip-mix
     tracks_time: '131'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:54'
     tracks_deleted: '0'
   Tracks_9:
     tracks_title: 'Let It Go (Electroline Mix)'
@@ -1659,7 +1659,7 @@ Tracks:
     tracks_path: jackie-chan-let-it-go-electroline-mix
     tracks_time: '133'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:54'
     tracks_deleted: '0'
   Tracks_10:
     tracks_title: 'Live Together (Bassline Special Mix)'
@@ -1668,7 +1668,7 @@ Tracks:
     tracks_path: greg-sin-key-live-together-bassline-special-mix
     tracks_time: '135'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:54'
     tracks_deleted: '0'
   Tracks_11:
     tracks_title: 'Kickin The Beat (Bassline Mix)'
@@ -1677,7 +1677,7 @@ Tracks:
     tracks_path: project-jack-sparrow-kickin-the-beat-bassline-mix
     tracks_time: '137'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:54'
     tracks_deleted: '0'
   Tracks_12:
     tracks_title: 'In Control (Organ Mix)'
@@ -1686,7 +1686,7 @@ Tracks:
     tracks_path: zapp-in-control-organ-mix
     tracks_time: '139'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:54'
     tracks_deleted: '0'
   Tracks_13:
     tracks_title: 'Rollercoaster (Original Bounceline Mix)'
@@ -1695,7 +1695,7 @@ Tracks:
     tracks_path: toofer-rollercoaster-original-bounceline-mix
     tracks_time: '141'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:54'
     tracks_deleted: '0'
   Tracks_14:
     tracks_title: 'Gonna Get (2009 Refix)'
@@ -1704,7 +1704,7 @@ Tracks:
     tracks_path: nefti-gonna-get-2009-refix
     tracks_time: '143'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:54'
     tracks_deleted: '0'
   Tracks_15:
     tracks_title: 'Hit And Run (Silicon Organ Mix)'
@@ -1713,7 +1713,7 @@ Tracks:
     tracks_path: madogz-hit-and-run-silicon-organ-mix
     tracks_time: '145'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:54'
     tracks_deleted: '0'
   Tracks_16:
     tracks_title: Colours
@@ -1722,7 +1722,7 @@ Tracks:
     tracks_path: dr-organ-colours
     tracks_time: '147'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:55'
     tracks_deleted: '0'
   Tracks_17:
     tracks_title: 'Piano Mashup 001 (Organ Mix)'
@@ -1731,7 +1731,7 @@ Tracks:
     tracks_path: base-club-piano-mashup-001-organ-mix
     tracks_time: '149'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:55'
     tracks_deleted: '0'
   Tracks_18:
     tracks_title: 'Missing U'
@@ -1740,7 +1740,7 @@ Tracks:
     tracks_path: even-whiter-vinyl-missing-u-1
     tracks_time: '151'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:55'
     tracks_deleted: '0'
   Tracks_19:
     tracks_title: 'The Story'
@@ -1749,7 +1749,7 @@ Tracks:
     tracks_path: tony-soprano-the-story
     tracks_time: '153'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:55'
     tracks_deleted: '0'
   Tracks_20:
     tracks_title: Sarasota
@@ -1758,7 +1758,7 @@ Tracks:
     tracks_path: mark-krupp-sarasota
     tracks_time: '155'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:55'
     tracks_deleted: '0'
   Tracks_21:
     tracks_title: 'I Dont Wanna (Original Bassline Mix)'
@@ -1767,7 +1767,7 @@ Tracks:
     tracks_path: koczkodan-i-dont-wanna-original-bassline-mix
     tracks_time: '157'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:55'
     tracks_deleted: '0'
   Tracks_22:
     tracks_title: Koczkodan
@@ -1776,7 +1776,7 @@ Tracks:
     tracks_path: czarny-mustafa-koczkodan
     tracks_time: '159'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:55'
     tracks_deleted: '0'
   Tracks_23:
     tracks_title: 'Dub You Left Me'
@@ -1785,7 +1785,7 @@ Tracks:
     tracks_path: czarny-mustafa-dub-you-left-me
     tracks_time: '161'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:55'
     tracks_deleted: '0'
   Tracks_24:
     tracks_title: 'Return Of The Aceed (Acid House Mix)'
@@ -1794,7 +1794,7 @@ Tracks:
     tracks_path: etam-otam-return-of-the-aceed-acid-house-mix
     tracks_time: '163'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:55'
     tracks_deleted: '0'
   Tracks_25:
     tracks_title: 'Why You Left Me'
@@ -1803,7 +1803,7 @@ Tracks:
     tracks_path: martino-b-why-you-left-me
     tracks_time: '165'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:55'
     tracks_deleted: '0'
   Tracks_26:
     tracks_title: 'Rockin & Groovin'
@@ -1812,7 +1812,7 @@ Tracks:
     tracks_path: aaaaaaaa-rockin-groovin
     tracks_time: '167'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:55'
     tracks_deleted: '0'
   Tracks_27:
     tracks_title: 'My Desire (Original Mix)'
@@ -1821,7 +1821,7 @@ Tracks:
     tracks_path: cj-reign-my-desire-original-mix
     tracks_time: '169'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:55'
     tracks_deleted: '0'
   Tracks_28:
     tracks_title: 'Smasher Washer'
@@ -1830,7 +1830,7 @@ Tracks:
     tracks_path: essex-smasher-washer
     tracks_time: '171'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:55'
     tracks_deleted: '0'
   Tracks_29:
     tracks_title: 'Feel Da Bass'
@@ -1839,7 +1839,7 @@ Tracks:
     tracks_path: surang-feel-da-bass
     tracks_time: '173'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:55'
     tracks_deleted: '0'
   Tracks_30:
     tracks_title: 'Point Of View'
@@ -1848,7 +1848,7 @@ Tracks:
     tracks_path: jackie-chan-point-of-view
     tracks_time: '175'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:55'
     tracks_deleted: '0'
   Tracks_31:
     tracks_title: 'Believe (Original Mix)'
@@ -1857,7 +1857,7 @@ Tracks:
     tracks_path: greg-sin-key-believe-original-mix
     tracks_time: '177'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:55'
     tracks_deleted: '0'
   Tracks_32:
     tracks_title: 'The Wah Wah Groove'
@@ -1866,7 +1866,7 @@ Tracks:
     tracks_path: project-jack-sparrow-the-wah-wah-groove
     tracks_time: '179'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:55'
     tracks_deleted: '0'
   Tracks_33:
     tracks_title: 'Suddenly Down There'
@@ -1875,61 +1875,61 @@ Tracks:
     tracks_path: zapp-suddenly-down-there
     tracks_time: '181'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:55'
     tracks_deleted: '0'
   Tracks_34:
-    tracks_title: asdasdasd
+    tracks_title: Asdasdasd
     tracks_artist: asdadasd
     profiles_id: Profiles_2
     tracks_path: asdadasd-asdasdasd
     tracks_time: '1'
     tracks_accepted: '0'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:55'
     tracks_deleted: '1'
   Tracks_35:
-    tracks_title: asdasdasd
+    tracks_title: Asdasdasd
     tracks_artist: asdadasd
     profiles_id: Profiles_2
     tracks_path: asdadasd-asdasdasd-1
     tracks_time: '1'
     tracks_accepted: '0'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:55'
     tracks_deleted: '0'
   Tracks_36:
-    tracks_title: kafafffff
+    tracks_title: Kafafffff
     tracks_artist: vddgdd
     profiles_id: Profiles_2
     tracks_path: vddgdd-kafafffff
     tracks_time: '1'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:55'
     tracks_deleted: '0'
   Tracks_37:
-    tracks_title: tytul1
+    tracks_title: Tytul1
     tracks_artist: artysta1
     profiles_id: Profiles_2
     tracks_path: artysta1-tytul1
     tracks_time: '345'
     tracks_accepted: '0'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:55'
     tracks_deleted: '0'
   Tracks_38:
-    tracks_title: tytul2
+    tracks_title: Tytul2
     tracks_artist: artist1
     profiles_id: Profiles_2
     tracks_path: artist1-tytul2
     tracks_time: '3224'
     tracks_accepted: '0'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:55'
     tracks_deleted: '1'
   Tracks_39:
-    tracks_title: adddees
+    tracks_title: Adddees
     tracks_artist: modul
     profiles_id: Profiles_2
     tracks_path: modul-adddees
     tracks_time: '4124'
     tracks_accepted: '1'
-    tracks_date: '2011-04-06 20:29:12'
+    tracks_date: '2011-05-09 23:56:55'
     tracks_deleted: '0'
   Tracks_40:
     tracks_title: 'Hit And Run (Silicon Organ Mix)'
@@ -1938,7 +1938,7 @@ Tracks:
     tracks_path: modul-hit-and-run-silicon-organ-mix
     tracks_time: '323'
     tracks_accepted: '1'
-    tracks_date: '2011-04-20 00:00:04'
+    tracks_date: '2011-05-09 23:56:55'
     tracks_deleted: '1'
 ProfilesBaskets:
   ProfilesBaskets_1:
@@ -1974,16 +1974,16 @@ ProfilesUrls:
   ProfilesUrls_4:
     profiles_id: Profiles_2
     profiles_urls_url: 'http://www.demotywatory.pl'
-  ProfilesUrls_6:
+  ProfilesUrls_5:
     profiles_id: Profiles_2
     profiles_urls_url: 'http://wykop.pl'
-  ProfilesUrls_7:
+  ProfilesUrls_6:
     profiles_id: Profiles_7
     profiles_urls_url: 'http://www.wp.pl'
-  ProfilesUrls_9:
+  ProfilesUrls_7:
     profiles_id: Profiles_12
     profiles_urls_url: 'http://wykop.pl'
-  ProfilesUrls_10:
+  ProfilesUrls_8:
     profiles_id: Profiles_12
     profiles_urls_url: 'http://dwadwa.pl'
 ProfilesViewed:
@@ -2057,14 +2057,18 @@ ProfilesViewed:
     profiles_id: Profiles_2
     profiles_viewed_ip_address: 127.0.0.1
     profiles_viewed_date: '2011-05-08 00:46:15'
-  ProfilesViewed_20:
+  ProfilesViewed_19:
     profiles_id: Profiles_15
     profiles_viewed_ip_address: 127.0.0.1
     profiles_viewed_date: '2011-05-08 22:05:00'
-  ProfilesViewed_21:
+  ProfilesViewed_20:
     profiles_id: Profiles_4
     profiles_viewed_ip_address: 127.0.0.1
     profiles_viewed_date: '2011-05-09 11:50:11'
+  ProfilesViewed_21:
+    profiles_id: Profiles_2
+    profiles_viewed_ip_address: 127.0.0.1
+    profiles_viewed_date: '2011-05-10 00:50:34'
 ProfilesWishlists:
   ProfilesWishlists_1:
     profiles_id: Profiles_3
@@ -2158,91 +2162,183 @@ Texts:
     texts_help: ''
   Texts_7:
     texts_name: Genre-list-main-text
-    texts_value: ''
-    texts_help: ''
+    texts_value: '                        Here are the latest <span class="blue">__GENRESNAME__ </span> tracks that have been uploaded through producers on <a href="#" class="underline">Smashintracks.com</a> Check this out!'
+    texts_help: '__GENRESNAME__ - nazwa gatunku'
   Texts_8:
     texts_name: New-tracks-main-text
-    texts_value: ''
+    texts_value: "<p>Here are the latest <span class=\"blue\">tunes</span> on <a href=\"#\" class=\"underline\">Smashintracks.com</a> that have been uploaded <br />\r\n                        through producers FROM all genres. Check this out!</p>"
     texts_help: ''
   Texts_9:
     texts_name: Terms-main-text
-    texts_value: ''
+    texts_value: "                        <p>Aliquam vulputate vulputate pulvinar. Suspendisse sit amet pretium lorem. Quisque eget odio nisl. Phasellus vel orci ante, in convallis nisl. Maecenas sagittis velit at nibh convallis sed ornare nisi auctor. Cras rhoncus, diam eu congue ultrices, urna ipsum laoreet est, ac accumsan velit lectus sed quam. Vivamus ut lectus et enim cursus lobortis eu ac nulla. Aenean pharetra ullamcorper urna id dapibus. Nullam tempus, quam et elementum tincidunt, ante erat porttitor urna, id dictum nisl erat a neque. Proin id condimentum ante. Maecenas ut suscipit augue. Suspendisse dui risus, sollicitudin at viverra sed, bibendum sit amet eros. Proin commodo eros eu libero aliquet non vehicula metus venenatis.<br /><br /></p>\r\n                        <p>Nullam tincidunt risus ac ipsum semper faucibus. Donec accumsan sagittis urna vitae fringilla. Quisque luctus consectetur fringilla. Nunc volutpat, nisi eu dignissim iaculis, orci est vehicula quam, sed aliquam mi est sed felis. Nulla pretium nunc odio. Aenean dictum eleifend tortor, vel suscipit est tempor consequat. Proin non lorem risus. Cras dignissim fermentum magna vel suscipit. Pellentesque nec est quis dolor ornare fringilla. Suspendisse potenti. Phasellus a cursus nisi.</p>"
     texts_help: ''
   Texts_10:
     texts_name: Search-main-text
-    texts_value: ''
-    texts_help: ''
+    texts_value: '<p>Here''s a hand picked selection of smashing tracks personally recommended by <a href="#" class="underline">Smashintracks.com</a> in this week.</p>'
+    texts_help: '__KEYWORD__ - szukane słowo'
   Texts_11:
     texts_name: Search-No-Results
-    texts_value: ''
-    texts_help: ''
+    texts_value: '<p>Sorry, we couldn''t find any tracks matching <strong>__KEYWORD__</strong></p>'
+    texts_help: '__KEYWORD__ - szukane słowo'
   Texts_12:
-    texts_name: Artists-main-text
-    texts_value: ''
+    texts_name: Artists-30-most-popular-main-text
+    texts_value: "<p>Sed vitae tellus dui, <span class=\"blue\">non condimentum</span> purus. Sed vitae tellus dui, non <br />\r\n                        condimentum purus. See also other 'CHARTS'.</p>"
     texts_help: ''
   Texts_13:
     texts_name: Koszyk-main-text
-    texts_value: ''
+    texts_value: "<p>Gdy dokonasz zaplaty dostaniesz <span class=\"blue\">unikalne linki</span> gotowe do sciagniecia trackow <br />\r\n                        ktore zakupiles. Mozesz <span class=\"blue\">sciagnac 3 razy kazdy track</span>. Linki beda dzialaly <span class=\"blue\">24 godziny.</span></p>"
     texts_help: ''
   Texts_14:
     texts_name: Koszyk-Order-Complete-main-text
-    texts_value: ''
+    texts_value: "<p>Do zakupu trackow uzyles system <a href=\"#\" class=\"underline\">Paypal.com</a><br />\r\n                        Ponizej masz szczegóły transakcji...</p>"
     texts_help: ''
   Texts_15:
     texts_name: Koszyk-download-main-text
-    texts_value: ''
+    texts_value: '<p>Ponizej tracki ktore kupiles <span class="blue">gotowe do sciagniecia.</span> Mozesz je sciagnac 3 razy, linki do nich beda dzialaly 24.</p>'
+    texts_help: ''
+  Texts_16:
+    texts_name: ZALOGOWANY-Home-welcome-text
+    texts_value: '<p>Witaj w panelu uzytkownika <a href="http://smashintracks.com/" class="underline">Smashintracks.com</a> ...</p>'
     texts_help: ''
   Texts_17:
-    texts_name: ZALOGOWANY-Home-welcome-text
-    texts_value: ''
-    texts_help: ''
-  Texts_18:
     texts_name: ZALOGOWANY-Home-Twoich-trackow
-    texts_value: ''
-    texts_help: ''
-  Texts_19:
+    texts_value: '<p>Twoich trackow na tej stronie: &nbsp;  <strong>__ILOSC__</strong></p>'
+    texts_help: '__ILOSC__ - ilość'
+  Texts_18:
     texts_name: ZALOGOWANY-Home-twoich-trackow-w-wishlist
-    texts_value: ''
-    texts_help: ''
-  Texts_20:
+    texts_value: '<p>Twoich trackow w innych ‘Wishlist’: &nbsp;<strong>__ILOSC__</strong></p>'
+    texts_help: '__ILOSC__ - ilość'
+  Texts_19:
     texts_name: ZALOGOWANY-Home-twoja-wishlist-zawiera
-    texts_value: ''
+    texts_value: '<p>Twoja ‘Wishlist’ zawiera trackow: &nbsp;<strong>__ILOSC__</strong></p>'
+    texts_help: '__ILOSC__ - ilość'
+  Texts_20:
+    texts_name: ZALOGOWANY-Home-upload-track
+    texts_value: '<p><span>Uploaduj swoje tracki na <a href="http://smashintracks.com/" class="underline">Smashintracks.com</a> i zacznij od tego momentu na nich zarabiac!</span></p>'
     texts_help: ''
   Texts_21:
-    texts_name: ZALOGOWANY-Home-upload-track
-    texts_value: ''
+    texts_name: ZALOGOWANY-Home-my-tracks
+    texts_value: '<p><span>Jesli wrzuciles jakies tracki tutaj mozesz zobaczyc ile razy je kupiono, przesluchano, dodano do wishlist...</span></p>'
     texts_help: ''
   Texts_22:
-    texts_name: ZALOGOWANY-Home-my-tracks
-    texts_value: ''
+    texts_name: ZALOGOWANY-Home-my-downloads
+    texts_value: '<p><span>Jesli kupowales jakies tracki na <a href="http://smashintracks.com/" class="underline">Smashintracks.com</a> tutaj zobaczysz pelna historie swoich zakupow...</span></p>'
     texts_help: ''
   Texts_23:
-    texts_name: ZALOGOWANY-Home-my-downloads
-    texts_value: ''
+    texts_name: ZALOGOWANY-Home-my-wishlist
+    texts_value: '<p><span>Jesli masz liste trackow ktore ci sie spodobaly, w tym miejscu mozesz je przesluchac, kupic lub skasowac...</span></p>'
     texts_help: ''
   Texts_24:
-    texts_name: ZALOGOWANY-Home-my-wishlist
-    texts_value: ''
+    texts_name: ZALOGOWANY-Home-my-profile
+    texts_value: '<p><span>Tutaj mozesz zedytowac swoje dane takie jak zmiana hasla, maila, profil artysty, fota etc...</span></p>'
     texts_help: ''
   Texts_25:
-    texts_name: ZALOGOWANY-Home-my-profile
-    texts_value: ''
+    texts_name: ZALOGOWANY-My-sales-main-text
+    texts_value: '<p>Jesli sprzedajesz tracki na <a href="#" class="underline">Smashintracks.com</a> tutaj mozesz obejrzec jak sie sprzedaja, ile juz zarobiles oraz wyplacic pieniadze.</p>'
     texts_help: ''
   Texts_26:
-    texts_name: ZALOGOWANY-My-sales-main-text
-    texts_value: ''
-    texts_help: ''
-  Texts_27:
     texts_name: ZALOGOWANY-My-sales-Minimalna-kwota-wyplaty
-    texts_value: ''
-    texts_help: ''
-  Texts_28:
+    texts_value: '<p>Minimalna kwota wyplaty to <strong>__KWOTA__</strong></p>'
+    texts_help: '__KWOTA__ - kwota'
+  Texts_27:
     texts_name: Charts-Last-3-months-main-text
     texts_value: "                        <p>Here are the list with <span class=\"blue\">30</span> bestsellers in this week on <a href=\"http://smashintracks.com/\" class=\"underline\">Smashintracks.com</a><br />\r\n                        See also other ‘CHARTS’.</p>"
     texts_help: ''
-  Texts_29:
+  Texts_28:
     texts_name: Charts-All-time-main-text
     texts_value: "                        <p>Here are the list with <span class=\"blue\">30</span> bestsellers in this week on <a href=\"http://smashintracks.com/\" class=\"underline\">Smashintracks.com</a><br />\r\n                        See also other ‘CHARTS’.</p>"
+    texts_help: ''
+  Texts_29:
+    texts_name: Artists-all-main-text
+    texts_value: "<p>Sed vitae tellus dui, <span class=\"blue\">non condimentum</span> purus. Sed vitae tellus dui, non <br />\r\n                        condimentum purus. See also other 'CHARTS'.</p>"
+    texts_help: ''
+  Texts_30:
+    texts_name: Koszyk-Order-Oczekiwanie-main-text
+    texts_value: '<p><strong>Transakcja jest w trakcie realizacji.</strong> Zaczekaj parę chwil i nie zamykaj tej strony. Za moment otrzymasz tutaj link do zakupionych  przez ciebie tracków...</p>'
+    texts_help: ''
+  Texts_31:
+    texts_name: ZALOGOWANY-Home-Odwiedzin-Twojego
+    texts_value: '<p>Odwiedziny twojego profilu: &nbsp; <strong>__ILOSC__</strong></p>'
+    texts_help: '__ILOSC__ - ilość'
+  Texts_32:
+    texts_name: ZALOGOWANY-Home-my-sales
+    texts_value: '<p><span>Jesli sprzedajesz tracki na <a href="http://smashintracks.com/" class="underline">Smashintracks.com</a> tutaj mozesz obejrzec jak sie sprzedaja i ile juz zarobiles...</span></p>'
+    texts_help: ''
+  Texts_33:
+    texts_name: Zmiana-hasla-main-text
+    texts_value: '<p>Please select a clever new password below.</p>'
+    texts_help: ''
+  Texts_34:
+    texts_name: Kontakt-main-text
+    texts_value: "<p>Jesli chcesz skontaktowac sie z nami skorzystaj z formularza ponizej.<br />\r\n                            Jesli masz problem z realizacja kupionych trackow nie zapomnij o <span class=\"blue\">kodzie zakupu</span>.</p>"
+    texts_help: ''
+  Texts_35:
+    texts_name: Kontakt-message-send
+    texts_value: '<p>Your message has been send.</p>'
+    texts_help: ''
+  Texts_36:
+    texts_name: ZALOGOWANY-Wyplata-pieniedzy-zgloszenie-wysla
+    texts_value: '<p><strong>Zgloszenie wyplaty zostalo pomyslnie wyslane. Twoje pieniadze w przeciagu <span class="blue">2-3 dni roboczych</span> powinny<br /> znalezc sie, na podanym przez ciebie koncie <span class="blue">PAYPAL</span>.</strong></p>'
+    texts_help: ''
+  Texts_37:
+    texts_name: ZALOGOWANY-Wyplata-pieniedzy-main-text
+    texts_value: "<div class=\"bw-div1\">\r\n                        Your current balance available to spend or withdraw is...\r\n                    </div>\r\n                    <div id=\"bw3-div1\">\r\n                        Your balance:    <strong>__BALANCE__</strong>\r\n                    </div>\r\n                    <div id=\"bw3-div2\">\r\n                        If you would like your money paying to you via <span class=\"blue\">PayPal</span> you will need a minimum ballance of <span class=\"blue\">£10.00</span> first.\r\n                    </div>"
+    texts_help: '__BALANCE__ - stan konta'
+  Texts_38:
+    texts_name: ZALOGOWANY-Wyplata-pieniedzy-spend-it-on
+    texts_value: "<p>You can spend what you have earned instantly on <a href=\"#\" class=\"underline\">Smashintracks.com</a><br /><br />\r\n\r\n                        When goto the checkout click <span class=\"blue\">Pay with money earned on <a href=\"#\" class=\"underline\">Smashintracks.com</a></span><br />\r\n                        and what you spend on tunes will be deducted from your earnings.</p>"
+    texts_help: ''
+  Texts_39:
+    texts_name: ZALOGOWANY-Wyplata-pieniedzy-your-paypal
+    texts_value: '<p>Click the link bellow and we will send you your earnings on <span class="blue">your PayPal</span> account.</p>'
+    texts_help: ''
+  Texts_40:
+    texts_name: ZALOGOWANY-Wyplata-pieniedzy-sorry
+    texts_value: '<p>Sorry but the minimum withrawal limit is <strong>£10</strong></p>'
+    texts_help: ''
+  Texts_41:
+    texts_name: ZALOGOWANY-Upload-Track-main-text
+    texts_value: "<p>W tym miejscu mozesz uploadowac swoje tracki. Limit wynosi <span class=\"blue\">__LIMIT__ tracki w ciagu dnia.</span><br />\r\n                                W przeciagu <span class=\"blue\">24 godzin</span> od wyslania track zostanie <span class=\"blue\">zaakceptowany i dodany do sklepu.</span><br />\r\n                                Milej zabawy.</p>"
+    texts_help: '__LIMIT__ - limit'
+  Texts_42:
+    texts_name: ZALOGOWANY-Upload-Track-sukces
+    texts_value: '<p>Twoj track zostal pomyslnie zuploadowany. W przeciagu 24 godzin od wyslania track zostanie zaakceptowany i dodany do sklepu. Kliknij button <strong>OK</strong> aby zamknąć to okno.</p>'
+    texts_help: ''
+  Texts_43:
+    texts_name: ZALOGOWANY-Upload-Track-limit
+    texts_value: '<p><strong>Niestety ale dzisiaj wykorzystales juz caly dostepny limit uploadowanych trackow <span class="blue">(__LIMIT__ na dobe)</span>. Zapraszamy za kilkanascie godzin.</strong></p>'
+    texts_help: '__LIMIT__ - limit'
+  Texts_44:
+    texts_name: ZALOGOWANY-My-Tracks-All
+    texts_value: "<p>W tej sekcji mozesz zobaczyc jak czesto sa przesluchiwane twoje tracki, <br />\r\n                        kupowane oraz dodawane do innych 'wishlist'.</p>"
+    texts_help: ''
+  Texts_45:
+    texts_name: ZALOGOWANY-My-Tracks-Most-Popular
+    texts_value: "<p>W tej sekcji mozesz zobaczyc jak czesto sa przesluchiwane twoje tracki, <br />\r\n                        kupowane oraz dodawane do innych 'wishlist'.</p>"
+    texts_help: ''
+  Texts_46:
+    texts_name: ZALOGOWANY-My-Tracks-in-wishlists
+    texts_value: "<p>W tej sekcji mozesz zobaczyc jak czesto sa przesluchiwane twoje tracki, <br />\r\n                        kupowane oraz dodawane do innych 'wishlist'.</p>"
+    texts_help: ''
+  Texts_47:
+    texts_name: ZALOGOWANY-My-downloads-main-text
+    texts_value: "<p>Tutaj obejrzysz historie swoich zakupow. Jesli kupiles tracki w przeciagu 24 godzin\r\n                        w tym miejscu znajdziesz linki do ich pobrania.</p>"
+    texts_help: ''
+  Texts_48:
+    texts_name: ZALOGOWANY-My-Wishlist-last-added
+    texts_value: '<p>W tym miejscu widzisz swoja liste <span class="blue">‘Wishlist’</span>. Dzieki niej mozesz zachowywac w pamieci swojego profilu tracki ktore chcialbys kupic w przyszlosci etc.</p>'
+    texts_help: ''
+  Texts_49:
+    texts_name: ZALOGOWANY-My-Wishlist-by-artist
+    texts_value: '<p>W tym miejscu widzisz swoja liste <span class="blue">‘Wishlist’</span>. Dzieki niej mozesz zachowywac w pamieci swojego profilu tracki ktore chcialbys kupic w przyszlosci etc.</p>'
+    texts_help: ''
+  Texts_50:
+    texts_name: ZALOGOWANY-My-Profile-main-text
+    texts_value: "<p>Jesli sprzedajesz tracki na <span class=\"blue\">SmashinTracks.com</span> warto zaktualizowac swoj profil\r\n                                o <span class=\"blue\">informacje o sobie, zdjecie/logo</span> - beda one widoczne przez wszystkich\r\n                                odwiedzajacych twoj profil.</p>"
+    texts_help: ''
+  Texts_51:
+    texts_name: ZALOGOWANY-My-Profile-main-settings
+    texts_value: '<p>Tutaj mozesz zmienic swoje podstawowe dane takie jak <span class="blue">artist name, e-mail, haslo.</span></p>'
     texts_help: ''
 TracksGenres:
   TracksGenres_1:
@@ -2695,53 +2791,53 @@ TracksPlayed:
     tracks_played_ip_address: 127.0.0.1
     tracks_played_date: '2011-05-08 21:49:58'
 TracksRecommends:
-  TracksRecommends_2:
+  TracksRecommends_1:
     tracks_id: Tracks_2
-    tracks_recommends_order: '3'
+    tracks_recommends_order: '1'
     tracks_recommends_active: '1'
-  TracksRecommends_3:
+  TracksRecommends_2:
     tracks_id: Tracks_3
     tracks_recommends_order: '2'
     tracks_recommends_active: '1'
-  TracksRecommends_5:
+  TracksRecommends_3:
     tracks_id: Tracks_19
+    tracks_recommends_order: '3'
+    tracks_recommends_active: '1'
+  TracksRecommends_4:
+    tracks_id: Tracks_5
+    tracks_recommends_order: '4'
+    tracks_recommends_active: '1'
+  TracksRecommends_5:
+    tracks_id: Tracks_33
     tracks_recommends_order: '5'
     tracks_recommends_active: '1'
   TracksRecommends_6:
-    tracks_id: Tracks_5
+    tracks_id: Tracks_10
     tracks_recommends_order: '6'
     tracks_recommends_active: '1'
   TracksRecommends_7:
-    tracks_id: Tracks_33
+    tracks_id: Tracks_16
     tracks_recommends_order: '7'
     tracks_recommends_active: '1'
   TracksRecommends_8:
-    tracks_id: Tracks_10
+    tracks_id: Tracks_17
     tracks_recommends_order: '8'
     tracks_recommends_active: '1'
   TracksRecommends_9:
-    tracks_id: Tracks_16
+    tracks_id: Tracks_29
     tracks_recommends_order: '9'
     tracks_recommends_active: '1'
   TracksRecommends_10:
-    tracks_id: Tracks_17
-    tracks_recommends_order: '11'
-    tracks_recommends_active: '1'
-  TracksRecommends_11:
-    tracks_id: Tracks_29
-    tracks_recommends_order: '10'
-    tracks_recommends_active: '1'
-  TracksRecommends_12:
     tracks_id: Tracks_32
-    tracks_recommends_order: '12'
+    tracks_recommends_order: '10'
     tracks_recommends_active: '0'
-  TracksRecommends_14:
+  TracksRecommends_11:
     tracks_id: Tracks_27
-    tracks_recommends_order: '13'
+    tracks_recommends_order: '11'
     tracks_recommends_active: '0'
-  TracksRecommends_15:
+  TracksRecommends_12:
     tracks_id: Tracks_40
-    tracks_recommends_order: '15'
+    tracks_recommends_order: '12'
     tracks_recommends_active: '1'
 Transactions:
   Transactions_1:
@@ -3106,17 +3202,23 @@ Transactions:
     transactions_date: '2011-05-01 13:01:46'
     transactions_done: '0'
     profiles_id: Profiles_30
-  Transactions_120:
+  Transactions_86:
     transactions_date: '2011-04-19 23:24:29'
     transactions_done: '0'
-  Transactions_121:
+  Transactions_87:
     transactions_date: '2011-05-03 23:03:37'
     transactions_done: '0'
     profiles_id: Profiles_1
-  Transactions_122:
+  Transactions_88:
     transactions_date: '2011-05-08 17:17:31'
     transactions_done: '0'
     profiles_id: Profiles_2
+  Transactions_115:
+    transactions_date: '2011-05-10 00:06:50'
+    transactions_done: '0'
+  Transactions_116:
+    transactions_date: '2011-05-10 01:02:25'
+    transactions_done: '0'
 TransactionsTracks:
   TransactionsTracks_1:
     transactions_id: Transactions_2
