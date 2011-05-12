@@ -12,6 +12,6 @@ class faqActions extends sfActions
 {
  
   public function executeShow(sfWebRequest $request) {
-      $this->faq = TextsFaqPeer::doSelect(new Criteria());
+      $this->faq = TextsFaqPeer::getTexts();
   }
 }

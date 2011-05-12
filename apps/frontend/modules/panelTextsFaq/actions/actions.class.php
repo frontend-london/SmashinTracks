@@ -17,16 +17,24 @@ class panelTextsFaqActions extends sfActions
   */
   public function executeShow(sfWebRequest $request)
   {
-    $texts = TextsFaqPeer::getTexts();
-
-    $text_edit_error = false;
-
+    
     if($request->getParameter('subsection')=='text-edit') {
         $active_text = $this->getRoute()->getObject();
     } else {
         $active_text = null;
     }
     $form = new TextsFaqForm($active_text);
+    if ($request->isMethod('post') && $request->hasParameter('texts'))
+    {
+        $form->bind($request->getParameter('texts'));
+        if ($form->isValid())
+        {
+            $form->save();
+        }
+    }
+
+    $texts = TextsFaqPeer::getTexts();
+
     $this->form = $form;
     $this->active_text = $active_text;
     $this->texts = $texts;

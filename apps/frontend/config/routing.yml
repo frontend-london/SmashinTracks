@@ -480,7 +480,7 @@ panel_texts:
   param: { module: panelTexts, action: show, section: panel-texts }
 
 panel_texts_edit:
-  url:     /panel/texts/edit/:texts_faq_id
+  url:     /panel/texts/edit/:texts_name
   class:   sfPropelRoute
   options: { model: Texts, type: object }
   param: { module: panelTexts, action: edit, section: panel-texts }
@@ -497,7 +497,7 @@ panel_texts_faq_edit:
   options: { model: TextsFaq, type: object }
   param: { module: panelTextsFaq, action: show, section: panel-texts, subsection: text-edit }
   requirements:
-    sf_method: [get]
+    sf_method: [get,post]
 
 panel_texts_faq_delete:
   url:     /panel/texts/faq/delete/:texts_faq_id

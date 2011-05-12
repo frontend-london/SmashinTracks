@@ -14,7 +14,7 @@
 <? end_slot(); ?>
                 <div class="box-silver" id="box-edycjatekstow2">
                     <div class="bs-inner">
-                        <form action="<?if($active_text):?><?=url_for('panel_texts_edit', $active_text)?><?else:?><?=url_for('panel_texts')?><?endif?>" method="POST" id="form_textsfaq" name="form_textsfaq" enctype="multipart/form-data">
+                        <form action="<?if($active_text):?><?=url_for('panel_texts_faq_edit', $active_text)?><?else:?><?=url_for('panel_texts_faq')?><?endif?>" method="POST" id="form_textsfaq" name="form_textsfaq" enctype="multipart/form-data">
                             <img src="images/texts/edycja-faq.gif" alt="Edycja FAQ" id="be3-img1" />
                             <div id="be3-div1">
                                     <strong>Tutaj zedytujesz tresc sekcji FAQ, dodasz nowe zapytania oraz odpowiedzi na nie, wyedytujesz istniejace, ustawisz kolejnosc pytan lub skasujesz zbedne.</strong>
@@ -59,7 +59,7 @@
                                     <?endif;?>
                                     <a href="<?=url_for('panel_texts_faq_delete', $text)?>" class="track-bin2"></a>
                                     <div class="be3q-title"><?=$text->getTextsFaqQuestion()?></div>
-                                    <div class="be3q-content"><?=$text->getTextsFaqAnswer()?></div>
+                                    <div class="be3q-content"><?=html_entity_decode($text->getTextsFaqAnswer());?></div>
                                     <a href="<?=url_for('panel_texts_faq_edit', $text)?>" class="track-edit">EDIT</a>
                                     <div class="clear"></div>
                                 </div>
@@ -75,7 +75,7 @@
                                 <div class="button-save">
                                     <div class="button-left"></div>
                                     <div class="button-right"></div>
-                                    <a href="form_textsfaq  javascript: document.form_textsfaq.submit();">SAVE</a>
+                                    <a href="javascript: document.form_textsfaq.submit();">SAVE</a>
                                 </div>
                                 <div class="clear"></div>
                             </div>

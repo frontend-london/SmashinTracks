@@ -18,4 +18,12 @@
  */
 class TextsFaq extends BaseTextsFaq {
 
+    public function save(PropelPDO $con = null) {
+        if($this->isNew()) {
+            $max = TextsFaqPeer::getMaxTextsFaqOrder();
+            $this->setTextsFaqOrder($max+1);
+        }
+        return parent::save($con);
+    }
+
 } // TextsFaq

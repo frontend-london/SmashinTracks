@@ -36,4 +36,18 @@ class TextsFaqPeer extends BaseTextsFaqPeer {
         return self::doSelectOne($criteria);
     }
 
+    public static function getMaxTextsFaqOrder($criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria();
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+        $criteria->addSelectColumn('MAX('.self::TEXTS_FAQ_ORDER.')');
+        $smtm = self::doSelectStmt($criteria);
+        $row = $smtm->fetch(PDO::FETCH_NUM);
+        return $row[0];
+    }
+
 } // TextsFaqPeer
