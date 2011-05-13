@@ -110,6 +110,10 @@ function isInBasket(id) {
     return result;
 }
 
+function isProfile() {
+    if($('#profile-name').text().length) return 1; else return 0;
+}
+
 $(window).load (
 	function() {
 
@@ -309,11 +313,39 @@ $(window).load (
                         $("div#bb-splash").hide();
 //                        $("div#bb-items").show();
                     } , 500); // delays x ms
-
-
-
-
 		});
+                
+		$("a.track-star").click(function(event){
+                    event.preventDefault();
+                    var src = $(this).attr('href');
+                    var id = src.substr(src.lastIndexOf("/")+1);
+                    if(isProfile()) {
+                        if($(this).hasClass('ts-active')) {
+                            $.get(src, function(data) {
+                                //alert(data);
+                            });
+                            
+                            $.each($('div.tracknum-'+id+' a.track-star'),function() {
+                                $(this).attr('href','/members/my-wishlist/remove/'+id);
+                                $(this).removeClass('ts-active');                                
+                            });
+                            
+                        } else {
+                            $.get(src, function(data) {
+                                //alert(data);
+                            });
+                            
+                            $.each($('div.tracknum-'+id+' a.track-star'),function() {
+                                $(this).attr('href','/members/my-wishlist/add/'+id);
+                                $(this).addClass('ts-active');          
+                            });
+                        }
+                    } else {
+                        $("div#bm5-container-loginbox").fadeIn(); // okno logowania
+                    }
+                    
+                
+                });
 
 
 

@@ -36,7 +36,7 @@
                                     <a href="<?=url_for('track', $track)?>" class="bbi-name"><?=$track->getTracksTitleShorted();?></a>
                                 </div>
                             <?else:?>
-                                <div class="track">
+                                <div class="track tracknum-<?=$track->getTracksId()?>">
 <?/* FLASH PLAYER */?>
                                     <?if($isAdmin || $track->isTrackActive()):?>
                                         <a href="mp3/<?=$track->getTracksPath(); ?>.mp3" class="track-player<?if($charts):?> tp-num tp-num-<?=$charts_num?><?elseif($track->isTrackNew()):?> tp-new<?endif;?>">

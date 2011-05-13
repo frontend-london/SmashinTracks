@@ -8,7 +8,7 @@
                                 <li<?if($sf_request->getParameter('section')=='panel-texts'):?> class="active"<?endif;?>><a href="<?=url_for('panel_texts')?>">TEKSTY</a></li>
                                 <li class="last <?if($sf_request->getParameter('section')=='panel-payments'):?> active<?endif;?>"><a href="<?=url_for('panel_payments')?>">WYPŁATY</a></li>
                             <?else:?>
-                                <li id="submenu-hi">Hi, <a href="<?=url_for('profile', $profile)?>"><strong><?=$profile->getProfilesName()?></strong></a></li>
+                                <li id="submenu-hi">Hi, <a href="<?=url_for('profile', $profile)?>" id="profile-name"><strong><?=$profile->getProfilesName()?></strong></a></li>
                                 <li<?if($sf_request->getParameter('section')=='members'):?> class="active"<?endif;?>><a href="<?=url_for('members')?>">HOME</a></li>
                                 <li<?if($sf_request->getParameter('section')=='my-sales'):?> class="active"<?endif;?>><a href="<?=url_for('members_my-sales')?>">MY SALES</a></li>
                                 <li<?if($sf_request->getParameter('section')=='upload-track'):?> class="active"<?endif;?>><a href="<?=url_for('members_upload-track')?>">UPLOAD TRACK</a></li>

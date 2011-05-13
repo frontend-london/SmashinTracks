@@ -83,6 +83,7 @@ class membersActions extends sfActions
   public function executeMyWishlistAdd(sfWebRequest $request) {
     $track = $this->getRoute()->getObject();
     $oUser = $this->getUser();
+    $isAjax = $request->isXmlHttpRequest();
 
     if($oUser->hasAttribute('wishlist')) {
         $wishlist = $oUser->getAttribute('wishlist');
@@ -92,13 +93,20 @@ class membersActions extends sfActions
     }
     $wishlist->addTrack($track->getTracksId());
     $oUser->setAttribute('wishlist',$wishlist);
-    $this->redirect('members_my-wishlist');
+    
+    if($isAjax) {
+        $this->setLayout(false);
+        return sfView::NONE;
+    } else {
+        $this->redirect('members_my-wishlist');
+    }
   }
 
   public function executeMyWishlistRemove(sfWebRequest $request) {
     $subsection = $this->getRequestParameter('subsection');
     $track = $this->getRoute()->getObject();
     $oUser = $this->getUser();
+    $isAjax = $request->isXmlHttpRequest();
     if($oUser->hasAttribute('wishlist')) {
         $wishlist = $oUser->getAttribute('wishlist');
         $wishlist->setProfile(ProfilesPeer::getCurrentProfileId());
@@ -107,11 +115,16 @@ class membersActions extends sfActions
     }
     $wishlist->removeTrack($track->getTracksId());
     $oUser->setAttribute('wishlist',$wishlist);
-    if($subsection=='last_added') {
-        $this->redirect('members_my-wishlist');
-    } else { // By Artists
-        $this->redirect('members_my-wishlist_by_artist');
+    
+    if($isAjax) {
+      $this->setLayout(false);
+      return sfView::NONE;
+    } elseif($subsection=='by_artist') {
+      $this->redirect('members_my-wishlist_by_artist');
+    } else {
+      $this->redirect('members_my-wishlist');
     }
+
   }
   
 }

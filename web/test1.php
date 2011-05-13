@@ -36,8 +36,8 @@
                 <div id="header">
                     <a href="/" id="logo">SmashinTracks.com - Tracks you won't find anywhere else</a>
                                 <div id="banner-top">
-                            <a href="http://www.wykop.pl" target="_blank">
-                    <img src="images/banners/5106xB60THlLsdCh5i11vD9vEHd4Ol3b.jpg" alt="" />
+                            <a href="http://www.demotywatory.pl" target="_blank">
+                    <img src="images/banners/23Twif6IV15EyridgB17wrhAKh174bFN.jpg" alt="" />
                 </a>
                     </div>
                                             <ul id="mainmenu">
@@ -53,8 +53,15 @@
                         </form>
                     </div>
                                         <ul id="submenu">
-                                                    <li class="last right"><a href="/register">Register</a></li>
-                            <li class="right"><a href="/login" id="a-loginbox">Login</a></li>
+                                                                                    <li id="submenu-hi">Hi, <a href="/profile/anna-barbara" id="profile-name"><strong>Anna Barbara</strong></a></li>
+                                <li><a href="/members">HOME</a></li>
+                                <li><a href="/members/my-sales">MY SALES</a></li>
+                                <li><a href="/members/upload-track">UPLOAD TRACK</a></li>
+                                <li><a href="/members/my-tracks">MY TRACKS</a></li>
+                                <li><a href="/members/my-downloads">MY DOWNLOADS</a></li>
+                                <li><a href="/members/my-wishlist">MY WISHLIST</a></li>
+                                <li class="last"><a href="/members/my-profile">MY PROFILE</a></li>
+                                                        <li class="last right"><a href="/sign-out">SIGN OUT</a></li>
                                             </ul>                </div>
                 <div id="leftside">
                     <ul id="leftmenu">
@@ -93,7 +100,7 @@
     </ul>
                 </div>
                 <div id="centerside-fb">
-
+                    
                 <div id="mainpage-top">
                                         <h1><span class="blue">Smashintracks.com</span> specialise in unique and unsigned music producers.</h1><br />
                     <p><strong>Featuring Music you will not find anywhere else!</strong></p><br />
@@ -107,7 +114,7 @@
                         <div id="br-div1"><p>Here's a hand picked selection of smashing tracks personally recommended by <a class="underline" href="#">Smashintracks.com</a> in this week.</p></div>
                         <div id="br-tracks">
 
-                                                                                                                                                        <div class="track">
+                                                                                                                                                        <div class="track tracknum-2">
                                                                             <a href="mp3/even-whiter-vinyl-missing-u.mp3" class="track-player tp-new">
                                             <span class="fp_src" title="mp3/even-whiter-vinyl-missing-u.mp3"></span><span class="fp_ico" title="images/profiles/small/modul.jpg"></span><span class="fp_artist" title="EVEN WHITER VINYL"></span><span class="fp_address" title="/basket/add/2"></span><span class="fp_title" title="Missing U"></span><span class="fp_prize" title="£0.02"></span><span class="fp_add_wishlist" title="/members/my-wishlist/add/2"></span><span class="fp_remove_wishlist" title="/members/my-wishlist/remove/2"></span><span class="fp_item_id" title="2"></span><img src="images/icons/player-off.png" style="background-image:url('images/profiles/small/modul.jpg');" alt="" />
                                         </a>
@@ -125,13 +132,13 @@
                                                                         <div class="track-row2">
                                                                                     <div class="track-name"><a href="/track/even-whiter-vinyl-missing-u">Missing U</a></div>
                                                                                 <div class="track-time">3:04</div>
-                                                                                                                                    <a href="/members/my-wishlist/add/2" class="track-star"></a>
+                                                                                                                                    <a href="/members/my-wishlist/remove/2" class="track-star ts-active"></a>
                                                                                                                             <div class="track-added">Added: 2011-05-09</div>
                                         <div class="clear"></div>
                                     </div>
                                     <div class="clear"></div>
                                 </div>
-                                                                                                                                                                                                                    <div class="track">
+<div class="track tracknum-3">
                                                                             <a href="mp3/martino-b-rudeboyz.mp3" class="track-player tp-new">
                                             <span class="fp_src" title="mp3/martino-b-rudeboyz.mp3"></span><span class="fp_ico" title="images/profiles/small/martino-b.jpg"></span><span class="fp_artist" title="MARTINO B"></span><span class="fp_address" title="/basket/add/3"></span><span class="fp_title" title="Rudeboyz "></span><span class="fp_prize" title="£0.02"></span><span class="fp_add_wishlist" title="/members/my-wishlist/add/3"></span><span class="fp_remove_wishlist" title="/members/my-wishlist/remove/3"></span><span class="fp_item_id" title="3"></span><img src="images/icons/player-off.png" style="background-image:url('images/profiles/small/martino-b.jpg');" alt="" />
                                         </a>
@@ -155,7 +162,79 @@
                                     </div>
                                     <div class="clear"></div>
                                 </div>
-                                                                                                                                                                                                                    <div class="track">
+<div class="track tracknum-3">
+                                                                            <a href="mp3/martino-b-rudeboyz.mp3" class="track-player tp-new">
+                                            <span class="fp_src" title="mp3/martino-b-rudeboyz.mp3"></span><span class="fp_ico" title="images/profiles/small/martino-b.jpg"></span><span class="fp_artist" title="MARTINO B"></span><span class="fp_address" title="/basket/add/3"></span><span class="fp_title" title="Rudeboyz "></span><span class="fp_prize" title="£0.02"></span><span class="fp_add_wishlist" title="/members/my-wishlist/add/3"></span><span class="fp_remove_wishlist" title="/members/my-wishlist/remove/3"></span><span class="fp_item_id" title="3"></span><img src="images/icons/player-off.png" style="background-image:url('images/profiles/small/martino-b.jpg');" alt="" />
+                                        </a>
+                                                                        <div class="track-row1">
+                                                                                    <div class="track-artist"><a href="/profile/martino-b">MARTINO B</a></div>
+                                                                                <div class="track-brand">
+                                            <a href="/genre/hardcore">Hardcore</a>, <a href="/genre/electro-house">Electro House</a>, <a href="/genre/minimal">Minimal</a>                                        </div>
+                                                                                <div class="clear"></div>
+                                    </div>
+                                                                            <a href="/basket/add/3" class="track-right track-add-basket">
+                                            <span class="track-cart"></span>
+                                            <span class="track-buy">BUY NOW</span>
+                                            <span class="track-prize">£0.02</span>
+                                        </a>
+                                                                        <div class="track-row2">
+                                                                                    <div class="track-name"><a href="/track/martino-b-rudeboyz">Rudeboyz </a></div>
+                                                                                <div class="track-time">1:23</div>
+                                                                                                                                    <a href="/members/my-wishlist/add/3" class="track-star"></a>
+                                                                                                                            <div class="track-added">Added: 2011-05-09</div>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+<div class="track tracknum-3">
+                                                                            <a href="mp3/martino-b-rudeboyz.mp3" class="track-player tp-new">
+                                            <span class="fp_src" title="mp3/martino-b-rudeboyz.mp3"></span><span class="fp_ico" title="images/profiles/small/martino-b.jpg"></span><span class="fp_artist" title="MARTINO B"></span><span class="fp_address" title="/basket/add/3"></span><span class="fp_title" title="Rudeboyz "></span><span class="fp_prize" title="£0.02"></span><span class="fp_add_wishlist" title="/members/my-wishlist/add/3"></span><span class="fp_remove_wishlist" title="/members/my-wishlist/remove/3"></span><span class="fp_item_id" title="3"></span><img src="images/icons/player-off.png" style="background-image:url('images/profiles/small/martino-b.jpg');" alt="" />
+                                        </a>
+                                                                        <div class="track-row1">
+                                                                                    <div class="track-artist"><a href="/profile/martino-b">MARTINO B</a></div>
+                                                                                <div class="track-brand">
+                                            <a href="/genre/hardcore">Hardcore</a>, <a href="/genre/electro-house">Electro House</a>, <a href="/genre/minimal">Minimal</a>                                        </div>
+                                                                                <div class="clear"></div>
+                                    </div>
+                                                                            <a href="/basket/add/3" class="track-right track-add-basket">
+                                            <span class="track-cart"></span>
+                                            <span class="track-buy">BUY NOW</span>
+                                            <span class="track-prize">£0.02</span>
+                                        </a>
+                                                                        <div class="track-row2">
+                                                                                    <div class="track-name"><a href="/track/martino-b-rudeboyz">Rudeboyz </a></div>
+                                                                                <div class="track-time">1:23</div>
+                                                                                                                                    <a href="/members/my-wishlist/add/3" class="track-star"></a>
+                                                                                                                            <div class="track-added">Added: 2011-05-09</div>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+<div class="track tracknum-3">
+                                                                            <a href="mp3/martino-b-rudeboyz.mp3" class="track-player tp-new">
+                                            <span class="fp_src" title="mp3/martino-b-rudeboyz.mp3"></span><span class="fp_ico" title="images/profiles/small/martino-b.jpg"></span><span class="fp_artist" title="MARTINO B"></span><span class="fp_address" title="/basket/add/3"></span><span class="fp_title" title="Rudeboyz "></span><span class="fp_prize" title="£0.02"></span><span class="fp_add_wishlist" title="/members/my-wishlist/add/3"></span><span class="fp_remove_wishlist" title="/members/my-wishlist/remove/3"></span><span class="fp_item_id" title="3"></span><img src="images/icons/player-off.png" style="background-image:url('images/profiles/small/martino-b.jpg');" alt="" />
+                                        </a>
+                                                                        <div class="track-row1">
+                                                                                    <div class="track-artist"><a href="/profile/martino-b">MARTINO B</a></div>
+                                                                                <div class="track-brand">
+                                            <a href="/genre/hardcore">Hardcore</a>, <a href="/genre/electro-house">Electro House</a>, <a href="/genre/minimal">Minimal</a>                                        </div>
+                                                                                <div class="clear"></div>
+                                    </div>
+                                                                            <a href="/basket/add/3" class="track-right track-add-basket">
+                                            <span class="track-cart"></span>
+                                            <span class="track-buy">BUY NOW</span>
+                                            <span class="track-prize">£0.02</span>
+                                        </a>
+                                                                        <div class="track-row2">
+                                                                                    <div class="track-name"><a href="/track/martino-b-rudeboyz">Rudeboyz </a></div>
+                                                                                <div class="track-time">1:23</div>
+                                                                                                                                    <a href="/members/my-wishlist/add/3" class="track-star"></a>
+                                                                                                                            <div class="track-added">Added: 2011-05-09</div>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                                                                                                                                                                                                    <div class="track tracknum-19">
                                                                             <a href="mp3/tony-soprano-the-story.mp3" class="track-player tp-new">
                                             <span class="fp_src" title="mp3/tony-soprano-the-story.mp3"></span><span class="fp_ico" title="images/icons/default_profile.png"></span><span class="fp_artist" title="TONY SOPRANO"></span><span class="fp_address" title="/basket/add/19"></span><span class="fp_title" title="The Story"></span><span class="fp_prize" title="£0.02"></span><span class="fp_add_wishlist" title="/members/my-wishlist/add/19"></span><span class="fp_remove_wishlist" title="/members/my-wishlist/remove/19"></span><span class="fp_item_id" title="19"></span><img src="images/icons/player-off.png" style="background-image:url('images/icons/default_profile.png');" alt="" />
                                         </a>
@@ -173,13 +252,13 @@
                                                                         <div class="track-row2">
                                                                                     <div class="track-name"><a href="/track/tony-soprano-the-story">The Story</a></div>
                                                                                 <div class="track-time">1:53</div>
-                                                                                                                                    <a href="/members/my-wishlist/add/19" class="track-star"></a>
+                                                                                                                                    <a href="/members/my-wishlist/remove/19" class="track-star ts-active"></a>
                                                                                                                             <div class="track-added">Added: 2011-05-09</div>
                                         <div class="clear"></div>
                                     </div>
                                     <div class="clear"></div>
                                 </div>
-                                                                                                                                                                                                                    <div class="track">
+                                                                                                                                                                                                                    <div class="track tracknum-5">
                                                                             <a href="mp3/aaaaaaaaa-lodz-city.mp3" class="track-player tp-new">
                                             <span class="fp_src" title="mp3/aaaaaaaaa-lodz-city.mp3"></span><span class="fp_ico" title="images/icons/default_profile.png"></span><span class="fp_artist" title="AAAAAAAAA"></span><span class="fp_address" title="/basket/add/5"></span><span class="fp_title" title="Lodz City"></span><span class="fp_prize" title="£0.02"></span><span class="fp_add_wishlist" title="/members/my-wishlist/add/5"></span><span class="fp_remove_wishlist" title="/members/my-wishlist/remove/5"></span><span class="fp_item_id" title="5"></span><img src="images/icons/player-off.png" style="background-image:url('images/icons/default_profile.png');" alt="" />
                                         </a>
@@ -203,7 +282,7 @@
                                     </div>
                                     <div class="clear"></div>
                                 </div>
-                                                                                                                                                                                                                    <div class="track">
+                                                                                                                                                                                                                    <div class="track tracknum-33">
                                                                             <a href="mp3/zapp-suddenly-down-there.mp3" class="track-player tp-new">
                                             <span class="fp_src" title="mp3/zapp-suddenly-down-there.mp3"></span><span class="fp_ico" title="images/icons/default_profile.png"></span><span class="fp_artist" title="ZAPP"></span><span class="fp_address" title="/basket/add/33"></span><span class="fp_title" title="Suddenly Down There"></span><span class="fp_prize" title="£0.02"></span><span class="fp_add_wishlist" title="/members/my-wishlist/add/33"></span><span class="fp_remove_wishlist" title="/members/my-wishlist/remove/33"></span><span class="fp_item_id" title="33"></span><img src="images/icons/player-off.png" style="background-image:url('images/icons/default_profile.png');" alt="" />
                                         </a>
@@ -228,7 +307,7 @@
                                     <div class="clear"></div>
                                 </div>
                                                                                                                                                             <div id="br-hidden">
-                                                                                                                            <div class="track">
+                                                                                                                            <div class="track tracknum-16">
                                                                             <a href="mp3/dr-organ-colours.mp3" class="track-player tp-new">
                                             <span class="fp_src" title="mp3/dr-organ-colours.mp3"></span><span class="fp_ico" title="images/icons/default_profile.png"></span><span class="fp_artist" title="DR ORGAN"></span><span class="fp_address" title="/basket/add/16"></span><span class="fp_title" title="Colours"></span><span class="fp_prize" title="£0.02"></span><span class="fp_add_wishlist" title="/members/my-wishlist/add/16"></span><span class="fp_remove_wishlist" title="/members/my-wishlist/remove/16"></span><span class="fp_item_id" title="16"></span><img src="images/icons/player-off.png" style="background-image:url('images/icons/default_profile.png');" alt="" />
                                         </a>
@@ -252,7 +331,7 @@
                                     </div>
                                     <div class="clear"></div>
                                 </div>
-                                                                                                                                                                                                                    <div class="track">
+                                                                                                                                                                                                                    <div class="track tracknum-17">
                                                                             <a href="mp3/base-club-piano-mashup-001-organ-mix.mp3" class="track-player tp-new">
                                             <span class="fp_src" title="mp3/base-club-piano-mashup-001-organ-mix.mp3"></span><span class="fp_ico" title="images/icons/default_profile.png"></span><span class="fp_artist" title="BASE CLUB"></span><span class="fp_address" title="/basket/add/17"></span><span class="fp_title" title="Piano Mashup 001 (Organ Mix)"></span><span class="fp_prize" title="£0.02"></span><span class="fp_add_wishlist" title="/members/my-wishlist/add/17"></span><span class="fp_remove_wishlist" title="/members/my-wishlist/remove/17"></span><span class="fp_item_id" title="17"></span><img src="images/icons/player-off.png" style="background-image:url('images/icons/default_profile.png');" alt="" />
                                         </a>
@@ -276,7 +355,7 @@
                                     </div>
                                     <div class="clear"></div>
                                 </div>
-                                                                                                                                                                                                                    <div class="track">
+                                                                                                                                                                                                                    <div class="track tracknum-29">
                                                                             <a href="mp3/surang-feel-da-bass.mp3" class="track-player tp-new">
                                             <span class="fp_src" title="mp3/surang-feel-da-bass.mp3"></span><span class="fp_ico" title="images/profiles/small/surang2.jpg"></span><span class="fp_artist" title="SURANG"></span><span class="fp_address" title="/basket/add/29"></span><span class="fp_title" title="Feel Da Bass"></span><span class="fp_prize" title="£0.02"></span><span class="fp_add_wishlist" title="/members/my-wishlist/add/29"></span><span class="fp_remove_wishlist" title="/members/my-wishlist/remove/29"></span><span class="fp_item_id" title="29"></span><img src="images/icons/player-off.png" style="background-image:url('images/profiles/small/surang2.jpg');" alt="" />
                                         </a>
@@ -301,9 +380,9 @@
                                     <div class="clear"></div>
                                 </div>
                                                                                                                                                     </div>
-
+                                                        
                             <div class="clear"></div>
-
+                            
                         </div>
                         <a href="#" class="arrow-bottom-big" id="bs-arrow"></a>
                     </div>
@@ -313,11 +392,11 @@
                     <img src="images/texts/new-tracks.gif" alt="New Tracks" />
                     <div class="bw-div1">
                         <p>Here are the latest <span class="blue">10 tunes</span> on <a href="#" class="underline">Smashintracks.com</a><br />
-                        Click the button 'FULL LIST' if you want see list of new tracks from latest months.</p>                    </div>
-
+                        Click the button 'FULL LIST' if you want see list of new tracks from latest months.</p>                    </div>                
+                    
                         <div class="bw-tracks">
 
-                                                                                                                        <div class="track">
+                                                                                                                        <div class="track tracknum-39">
                                                                             <a href="mp3/modul-adddees.mp3" class="track-player tp-new">
                                             <span class="fp_src" title="mp3/modul-adddees.mp3"></span><span class="fp_ico" title="images/profiles/small/modul.jpg"></span><span class="fp_artist" title="MODUL"></span><span class="fp_address" title="/basket/add/39"></span><span class="fp_title" title="Adddees"></span><span class="fp_prize" title="£0.02"></span><span class="fp_add_wishlist" title="/members/my-wishlist/add/39"></span><span class="fp_remove_wishlist" title="/members/my-wishlist/remove/39"></span><span class="fp_item_id" title="39"></span><img src="images/icons/player-off.png" style="background-image:url('images/profiles/small/modul.jpg');" alt="" />
                                         </a>
@@ -335,13 +414,13 @@
                                                                         <div class="track-row2">
                                                                                     <div class="track-name"><a href="/track/modul-adddees">Adddees</a></div>
                                                                                 <div class="track-time">41:24</div>
-                                                                                                                                    <a href="/members/my-wishlist/add/39" class="track-star"></a>
+                                                                                                                                    <a href="/members/my-wishlist/remove/39" class="track-star ts-active"></a>
                                                                                                                             <div class="track-added">Added: 2011-05-09</div>
                                         <div class="clear"></div>
                                     </div>
                                     <div class="clear"></div>
                                 </div>
-                                                                                                                                                                                    <div class="track">
+                                                                                                                                                                                    <div class="track tracknum-36">
                                                                             <a href="mp3/vddgdd-kafafffff.mp3" class="track-player tp-new">
                                             <span class="fp_src" title="mp3/vddgdd-kafafffff.mp3"></span><span class="fp_ico" title="images/profiles/small/modul.jpg"></span><span class="fp_artist" title="VDDGDD"></span><span class="fp_address" title="/basket/add/36"></span><span class="fp_title" title="Kafafffff"></span><span class="fp_prize" title="£0.02"></span><span class="fp_add_wishlist" title="/members/my-wishlist/add/36"></span><span class="fp_remove_wishlist" title="/members/my-wishlist/remove/36"></span><span class="fp_item_id" title="36"></span><img src="images/icons/player-off.png" style="background-image:url('images/profiles/small/modul.jpg');" alt="" />
                                         </a>
@@ -365,7 +444,7 @@
                                     </div>
                                     <div class="clear"></div>
                                 </div>
-                                                                                                                                                                                    <div class="track">
+                                                                                                                                                                                    <div class="track tracknum-33">
                                                                             <a href="mp3/zapp-suddenly-down-there.mp3" class="track-player tp-new">
                                             <span class="fp_src" title="mp3/zapp-suddenly-down-there.mp3"></span><span class="fp_ico" title="images/icons/default_profile.png"></span><span class="fp_artist" title="ZAPP"></span><span class="fp_address" title="/basket/add/33"></span><span class="fp_title" title="Suddenly Down There"></span><span class="fp_prize" title="£0.02"></span><span class="fp_add_wishlist" title="/members/my-wishlist/add/33"></span><span class="fp_remove_wishlist" title="/members/my-wishlist/remove/33"></span><span class="fp_item_id" title="33"></span><img src="images/icons/player-off.png" style="background-image:url('images/icons/default_profile.png');" alt="" />
                                         </a>
@@ -389,7 +468,7 @@
                                     </div>
                                     <div class="clear"></div>
                                 </div>
-                                                                                                                                                                                    <div class="track">
+                                                                                                                                                                                    <div class="track tracknum-32">
                                                                             <a href="mp3/project-jack-sparrow-the-wah-wah-groove.mp3" class="track-player tp-new">
                                             <span class="fp_src" title="mp3/project-jack-sparrow-the-wah-wah-groove.mp3"></span><span class="fp_ico" title="images/profiles/small/project-jack-sparrow.jpg"></span><span class="fp_artist" title="PROJECT JACK SPARROW"></span><span class="fp_address" title="/basket/add/32"></span><span class="fp_title" title="The Wah Wah Groove"></span><span class="fp_prize" title="£0.02"></span><span class="fp_add_wishlist" title="/members/my-wishlist/add/32"></span><span class="fp_remove_wishlist" title="/members/my-wishlist/remove/32"></span><span class="fp_item_id" title="32"></span><img src="images/icons/player-off.png" style="background-image:url('images/profiles/small/project-jack-sparrow.jpg');" alt="" />
                                         </a>
@@ -413,7 +492,7 @@
                                     </div>
                                     <div class="clear"></div>
                                 </div>
-                                                                                                                                                                                    <div class="track">
+                                                                                                                                                                                    <div class="track tracknum-30">
                                                                             <a href="mp3/jackie-chan-point-of-view.mp3" class="track-player tp-new">
                                             <span class="fp_src" title="mp3/jackie-chan-point-of-view.mp3"></span><span class="fp_ico" title="images/icons/default_profile.png"></span><span class="fp_artist" title="JACKIE CHAN"></span><span class="fp_address" title="/basket/add/30"></span><span class="fp_title" title="Point Of View"></span><span class="fp_prize" title="£0.02"></span><span class="fp_add_wishlist" title="/members/my-wishlist/add/30"></span><span class="fp_remove_wishlist" title="/members/my-wishlist/remove/30"></span><span class="fp_item_id" title="30"></span><img src="images/icons/player-off.png" style="background-image:url('images/icons/default_profile.png');" alt="" />
                                         </a>
@@ -437,7 +516,7 @@
                                     </div>
                                     <div class="clear"></div>
                                 </div>
-                                                                                                                                                                                    <div class="track">
+                                                                                                                                                                                    <div class="track tracknum-29">
                                                                             <a href="mp3/surang-feel-da-bass.mp3" class="track-player tp-new">
                                             <span class="fp_src" title="mp3/surang-feel-da-bass.mp3"></span><span class="fp_ico" title="images/profiles/small/surang2.jpg"></span><span class="fp_artist" title="SURANG"></span><span class="fp_address" title="/basket/add/29"></span><span class="fp_title" title="Feel Da Bass"></span><span class="fp_prize" title="£0.02"></span><span class="fp_add_wishlist" title="/members/my-wishlist/add/29"></span><span class="fp_remove_wishlist" title="/members/my-wishlist/remove/29"></span><span class="fp_item_id" title="29"></span><img src="images/icons/player-off.png" style="background-image:url('images/profiles/small/surang2.jpg');" alt="" />
                                         </a>
@@ -461,7 +540,7 @@
                                     </div>
                                     <div class="clear"></div>
                                 </div>
-                                                                                                                                                                                    <div class="track">
+                                                                                                                                                                                    <div class="track tracknum-28">
                                                                             <a href="mp3/essex-smasher-washer.mp3" class="track-player tp-new">
                                             <span class="fp_src" title="mp3/essex-smasher-washer.mp3"></span><span class="fp_ico" title="images/profiles/small/essex.jpg"></span><span class="fp_artist" title="ESSEX"></span><span class="fp_address" title="/basket/add/28"></span><span class="fp_title" title="Smasher Washer"></span><span class="fp_prize" title="£0.02"></span><span class="fp_add_wishlist" title="/members/my-wishlist/add/28"></span><span class="fp_remove_wishlist" title="/members/my-wishlist/remove/28"></span><span class="fp_item_id" title="28"></span><img src="images/icons/player-off.png" style="background-image:url('images/profiles/small/essex.jpg');" alt="" />
                                         </a>
@@ -485,7 +564,7 @@
                                     </div>
                                     <div class="clear"></div>
                                 </div>
-                                                                                                                                                                                    <div class="track">
+                                                                                                                                                                                    <div class="track tracknum-27">
                                                                             <a href="mp3/cj-reign-my-desire-original-mix.mp3" class="track-player tp-new">
                                             <span class="fp_src" title="mp3/cj-reign-my-desire-original-mix.mp3"></span><span class="fp_ico" title="images/profiles/small/cj-reign.jpg"></span><span class="fp_artist" title="CJ REIGN"></span><span class="fp_address" title="/basket/add/27"></span><span class="fp_title" title="My Desire (Original Mix)"></span><span class="fp_prize" title="£0.02"></span><span class="fp_add_wishlist" title="/members/my-wishlist/add/27"></span><span class="fp_remove_wishlist" title="/members/my-wishlist/remove/27"></span><span class="fp_item_id" title="27"></span><img src="images/icons/player-off.png" style="background-image:url('images/profiles/small/cj-reign.jpg');" alt="" />
                                         </a>
@@ -509,40 +588,31 @@
                                     </div>
                                     <div class="clear"></div>
                                 </div>
-<div class="track">
-    <a href="mp3/aaaaaaaa-rockin-groovin.mp3" class="track-player tp-new">
-        <span class="fp_src" title="mp3/aaaaaaaa-rockin-groovin.mp3"></span>
-        <span class="fp_ico" title="images/icons/default_profile.png"></span>
-        <span class="fp_artist" title="AAAAAAAA"></span>
-        <span class="fp_address" title="/basket/add/26"></span>
-        <span class="fp_title" title="Rockin &amp; Groovin"></span>
-        <span class="fp_prize" title="£0.02"></span>
-        <span class="fp_add_wishlist" title="/members/my-wishlist/add/26"></span>
-        <span class="fp_remove_wishlist" title="/members/my-wishlist/remove/26"></span>
-        <span class="fp_item_id" title="26"></span>
-        <img src="images/icons/player-off.png" style="background-image:url('images/icons/default_profile.png');" alt="" />
-    </a>
-    <div class="track-row1">
-        <div class="track-artist"><a href="/profile/aaaaaaa">AAAAAAAA</a></div>
-        <div class="track-brand">
-        <a href="/genre/hard-house">Hard House</a>, <a href="/genre/4x4-bassline">4x4 Bassline</a>, <a href="/genre/hardcore">Hardcore</a>                                        </div>
-        <div class="clear"></div>
-    </div>
-    <a href="/basket/add/26" class="track-right track-add-basket">
-        <span class="track-cart"></span>
-        <span class="track-buy">BUY NOW</span>
-        <span class="track-prize">£0.02</span>
-    </a>
-    <div class="track-row2">
-        <div class="track-name"><a href="/track/aaaaaaaa-rockin-groovin">Rockin &amp; Groovin</a></div>
-        <div class="track-time">1:67</div>
-        <a href="/members/my-wishlist/add/26" class="track-star"></a>
-        <div class="track-added">Added: 2011-05-09</div>
-        <div class="clear"></div>
-    </div>
-    <div class="clear"></div>
-</div>
-                                                                                                                                                                                    <div class="track">
+                                                                                                                                                                                    <div class="track tracknum-26">
+                                                                            <a href="mp3/aaaaaaaa-rockin-groovin.mp3" class="track-player tp-new">
+                                            <span class="fp_src" title="mp3/aaaaaaaa-rockin-groovin.mp3"></span><span class="fp_ico" title="images/icons/default_profile.png"></span><span class="fp_artist" title="AAAAAAAA"></span><span class="fp_address" title="/basket/add/26"></span><span class="fp_title" title="Rockin &amp; Groovin"></span><span class="fp_prize" title="£0.02"></span><span class="fp_add_wishlist" title="/members/my-wishlist/add/26"></span><span class="fp_remove_wishlist" title="/members/my-wishlist/remove/26"></span><span class="fp_item_id" title="26"></span><img src="images/icons/player-off.png" style="background-image:url('images/icons/default_profile.png');" alt="" />
+                                        </a>
+                                                                        <div class="track-row1">
+                                                                                    <div class="track-artist"><a href="/profile/aaaaaaa">AAAAAAAA</a></div>
+                                                                                <div class="track-brand">
+                                            <a href="/genre/hard-house">Hard House</a>, <a href="/genre/4x4-bassline">4x4 Bassline</a>, <a href="/genre/hardcore">Hardcore</a>                                        </div>
+                                                                                <div class="clear"></div>
+                                    </div>
+                                                                            <a href="/basket/add/26" class="track-right track-add-basket">
+                                            <span class="track-cart"></span>
+                                            <span class="track-buy">BUY NOW</span>
+                                            <span class="track-prize">£0.02</span>
+                                        </a>
+                                                                        <div class="track-row2">
+                                                                                    <div class="track-name"><a href="/track/aaaaaaaa-rockin-groovin">Rockin &amp; Groovin</a></div>
+                                                                                <div class="track-time">1:67</div>
+                                                                                                                                    <a href="/members/my-wishlist/add/26" class="track-star"></a>
+                                                                                                                            <div class="track-added">Added: 2011-05-09</div>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                                                                                                                                                                    <div class="track tracknum-25">
                                                                             <a href="mp3/martino-b-why-you-left-me.mp3" class="track-player tp-new">
                                             <span class="fp_src" title="mp3/martino-b-why-you-left-me.mp3"></span><span class="fp_ico" title="images/profiles/small/martino-b.jpg"></span><span class="fp_artist" title="MARTINO B"></span><span class="fp_address" title="/basket/add/25"></span><span class="fp_title" title="Why You Left Me"></span><span class="fp_prize" title="£0.02"></span><span class="fp_add_wishlist" title="/members/my-wishlist/add/25"></span><span class="fp_remove_wishlist" title="/members/my-wishlist/remove/25"></span><span class="fp_item_id" title="25"></span><img src="images/icons/player-off.png" style="background-image:url('images/profiles/small/martino-b.jpg');" alt="" />
                                         </a>
@@ -566,10 +636,10 @@
                                     </div>
                                     <div class="clear"></div>
                                 </div>
-
+                                                                                                                    
                             <div class="clear"></div>
-
-                        </div>
+                            
+                        </div>                
                         <div class="bw-div2">
                             <div class="bw-div2-text">
                                 <strong>New tracks in:</strong>
@@ -581,20 +651,20 @@
                             </div>
                             <div class="clear"></div>
                         </div>
-                </div>
-
+                </div>  
+                
                 <div class="box-white">
                     <img src="images/texts/bestsellers-tracks.gif" alt="Bestsellers Tracks" />
                     <div class="bw-div1">
                         <p>Here are <span class="blue">10 most popular tracks</span> on <a href="#" class="underline">Smashintracks.com</a> from latest week.<br />
-                        Click the button 'FULL LIST' if you want see lists of new more charts.</p>                    </div>
-
+                        Click the button 'FULL LIST' if you want see lists of new more charts.</p>                    </div>                
+                    
                         <div class="bw-tracks">
 
-
+                                                        
                             <div class="clear"></div>
-
-                        </div>
+                            
+                        </div>                
                         <div class="bw-div2">
                             <div class="bw-div2-text">
                                 <strong>See also:</strong>  <a href="#">CHARTS</a>, <a href="#">TOP ARTISTS</a>, <a href="#">NEW TRACKS</a>
@@ -612,72 +682,27 @@
                     <div id="bf-paypal">
                         <a href="http://paypal.com" target="_blank"><img src="images/icons/paypal.gif" alt="PayPal" /></a>
                     </div>
-
-
+                                            <div id="bf-addthis">
+                            <!-- AddThis Button BEGIN -->
+                            <a class="addthis_button" href="http://www.addthis.com/bookmark.php?v=250&amp;username=modul"><img src="http://s7.addthis.com/static/btn/v2/lg-share-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a>
+                            <!-- AddThis Button END -->
+                        </div>
+                                                                <div id="bf-facebook">
+                            <iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fplatform&amp;width=531&amp;colorscheme=light&amp;show_faces=true&amp;stream=false&amp;header=false&amp;height=254" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:531px; height:254px;" allowTransparency="true"></iframe>
+                        </div>
                                         <div class="clear"></div>
                 </div>                                   </div>
                 <div id="rightside">
                         <div id="box-basket">
         <div class="box-silver2">
             <div class="bs2-inner">
-                <a href="/basket"><img src="images/texts/your-basket.gif" alt="Your Basket" id="bb-img1" /></a>
-
-                            <div id="bb-items">
-
-                                <div id="bb-splash">
-                                    <h3>Adding to Basket..</h3>
-                                </div>
-
-                                <!--<div class="bb-item">
-                                    <a href="/basket/remove/33" class="bbi-usun">Usuń</a>
-                                    <a href="mp3/zapp-suddenly-down-there.mp3" class="bbi-icon">
-                                        <span class="fp_src" title="mp3/zapp-suddenly-down-there.mp3"></span><span class="fp_ico" title="images/icons/default_profile.png"></span><span class="fp_artist" title="ZAPP"></span><span class="fp_address" title="/basket/add/33"></span><span class="fp_title" title="Suddenly Down There"></span><span class="fp_prize" title="£0.02"></span><span class="fp_add_wishlist" title="/members/my-wishlist/add/33"></span><span class="fp_remove_wishlist" title="/members/my-wishlist/remove/33"></span><span class="fp_item_id" title="33"></span><img src="images/icons/player-off.png" style="background-image:url('images/icons/default_profile.png');" alt="" />
-                                    </a>
-                                    <a href="/profile/zapp" class="bbi-artist">ZAPP</a>
-                                    <a href="/track/zapp-suddenly-down-there" class="bbi-name">Suddenly Down There</a>
-                                </div>
-                                                                                                                                            <div class="bb-item">
-                                    <a href="/basket/remove/28" class="bbi-usun">Usuń</a>
-                                    <a href="mp3/essex-smasher-washer.mp3" class="bbi-icon">
-                                        <span class="fp_src" title="mp3/essex-smasher-washer.mp3"></span><span class="fp_ico" title="images/profiles/small/essex.jpg"></span><span class="fp_artist" title="ESSEX"></span><span class="fp_address" title="/basket/add/28"></span><span class="fp_title" title="Smasher Washer"></span><span class="fp_prize" title="£0.02"></span><span class="fp_add_wishlist" title="/members/my-wishlist/add/28"></span><span class="fp_remove_wishlist" title="/members/my-wishlist/remove/28"></span><span class="fp_item_id" title="28"></span><img src="images/icons/player-off.png" style="background-image:url('images/profiles/small/essex.jpg');" alt="" />
-                                    </a>
-                                    <a href="/profile/essex" class="bbi-artist">ESSEX</a>
-                                    <a href="/track/essex-smasher-washer" class="bbi-name">Smasher Washer</a>
-                                </div>
-                                                                                                                                            <div class="bb-item">
-                                    <a href="/basket/remove/19" class="bbi-usun">Usuń</a>
-                                    <a href="mp3/tony-soprano-the-story.mp3" class="bbi-icon">
-                                        <span class="fp_src" title="mp3/tony-soprano-the-story.mp3"></span><span class="fp_ico" title="images/icons/default_profile.png"></span><span class="fp_artist" title="TONY SOPRANO"></span><span class="fp_address" title="/basket/add/19"></span><span class="fp_title" title="The Story"></span><span class="fp_prize" title="£0.02"></span><span class="fp_add_wishlist" title="/members/my-wishlist/add/19"></span><span class="fp_remove_wishlist" title="/members/my-wishlist/remove/19"></span><span class="fp_item_id" title="19"></span><img src="images/icons/player-off.png" style="background-image:url('images/icons/default_profile.png');" alt="" />
-                                    </a>
-                                    <a href="/profile/tony-soprano" class="bbi-artist">TONY SOPRANO</a>
-                                    <a href="/track/tony-soprano-the-story" class="bbi-name">The Story</a>
-                                </div>
-                                <div class="bb-item">
-                                    <a href="/basket/remove/2" class="bbi-usun">Usuń</a>
-                                    <a href="mp3/even-whiter-vinyl-missing-u.mp3" class="bbi-icon">
-                                        <span class="fp_src" title="mp3/even-whiter-vinyl-missing-u.mp3"></span><span class="fp_ico" title="images/profiles/small/modul.jpg"></span><span class="fp_artist" title="EVEN WHITER VINYL"></span><span class="fp_address" title="/basket/add/2"></span><span class="fp_title" title="Missing U"></span><span class="fp_prize" title="£0.02"></span><span class="fp_add_wishlist" title="/members/my-wishlist/add/2"></span><span class="fp_remove_wishlist" title="/members/my-wishlist/remove/2"></span><span class="fp_item_id" title="2"></span><img src="images/icons/player-off.png" style="background-image:url('images/profiles/small/modul.jpg');" alt="" />
-                                    </a>
-                                    <a href="/profile/modul" class="bbi-artist">EVEN WHITER VINYL</a>
-                                    <a href="/track/even-whiter-vinyl-missing-u" class="bbi-name">Missing U</a>
-                                </div>
-                                <div class="bb-item">
-                                    <a href="/basket/remove/2" class="bbi-usun">Usuń</a>
-                                    <a href="mp3/even-whiter-vinyl-missing-u.mp3" class="bbi-icon">
-                                        <span class="fp_src" title="mp3/even-whiter-vinyl-missing-u.mp3"></span><span class="fp_ico" title="images/profiles/small/modul.jpg"></span><span class="fp_artist" title="EVEN WHITER VINYL"></span><span class="fp_address" title="/basket/add/2"></span><span class="fp_title" title="Missing U"></span><span class="fp_prize" title="£0.02"></span><span class="fp_add_wishlist" title="/members/my-wishlist/add/2"></span><span class="fp_remove_wishlist" title="/members/my-wishlist/remove/2"></span><span class="fp_item_id" title="2"></span><img src="images/icons/player-off.png" style="background-image:url('images/profiles/small/modul.jpg');" alt="" />
-                                    </a>
-                                    <a href="/profile/modul" class="bbi-artist">EVEN WHITER VINYL</a>
-                                    <a href="/track/even-whiter-vinyl-missing-u" class="bbi-name">Missing U</a>
-                                </div>
-                                <div class="bb-item">
-                                    <a href="/basket/remove/2" class="bbi-usun">Usuń</a>
-                                    <a href="mp3/even-whiter-vinyl-missing-u.mp3" class="bbi-icon">
-                                        <span class="fp_src" title="mp3/even-whiter-vinyl-missing-u.mp3"></span><span class="fp_ico" title="images/profiles/small/modul.jpg"></span><span class="fp_artist" title="EVEN WHITER VINYL"></span><span class="fp_address" title="/basket/add/2"></span><span class="fp_title" title="Missing U"></span><span class="fp_prize" title="£0.02"></span><span class="fp_add_wishlist" title="/members/my-wishlist/add/2"></span><span class="fp_remove_wishlist" title="/members/my-wishlist/remove/2"></span><span class="fp_item_id" title="2"></span><img src="images/icons/player-off.png" style="background-image:url('images/profiles/small/modul.jpg');" alt="" />
-                                    </a>
-                                    <a href="/profile/modul" class="bbi-artist">EVEN WHITER VINYL</a>
-                                    <a href="/track/even-whiter-vinyl-missing-u" class="bbi-name">Missing U</a>
-                                </div>-->
-                            </div>
-                            <div id="bb-empty">Your basket is empty...</div>
+                <a href="/basket"><img src="images/texts/your-basket.gif" alt="Your Basket" id="bb-img1" /></a>                
+                <div id="bb-items">
+                    <div id="bb-splash">
+                        <h3>Adding to Basket..</h3>
+                    </div>
+                                    </div>
+                <div id="bb-empty">Your basket is empty...</div>
             </div>
             <div class="bs2-bgr-bottom"></div>
         </div>
@@ -696,29 +721,29 @@
                             <a href="http://www.wp.pl" target="_blank">
                     <img src="images/banners/13bEobxbpkpB2Hen8S.jpg" alt="" />
                 </a>
-
+                        
         </div>
             <div class="banner-side">
                             <a href="http://odf.pl" target="_blank">
                     <img src="images/banners/37LgY5Miiu2HlwWZKB.jpg" alt="" />
                 </a>
-
+                        
         </div>
             <div class="banner-side">
                             <a href="http://www.wp.pl" target="_blank">
                     <img src="images/banners/539d9q6rhTwUzz7hxw.jpg" alt="" />
                 </a>
-
+                        
         </div>
             <div class="banner-side">
                             <a href="http://www.wp.pl" target="_blank">
                     <img src="images/banners/59cMkyGkSzIap8sj1O.jpg" alt="" />
                 </a>
-
+                        
         </div>
             <div class="banner-side">
                             <img src="images/banners/4ETr5i5c2lwQ2iWLIOmzX9BTzriLMoqj.jpg" alt="" />
-
+                        
         </div>
                     </div>
                 <div class="clear"></div>
@@ -768,7 +793,7 @@
                                             <input type="checkbox" name="login[remember_me]" id="login_remember_me" /> <label for="login_remember_me">Remember me</label>                                        </label>
                                     </div>
                                                                         <div id="lb-div6">
-                                        <input type="hidden" name="login[_csrf_token]" value="658b104c52a0b9d6ad959e9b1cb373e7" id="login__csrf_token" />                                        <div class="button-silver-cancel">
+                                        <input type="hidden" name="login[_csrf_token]" value="28ebfd5462a2c02a3b3374dbdcc822de" id="login__csrf_token" />                                        <div class="button-silver-cancel">
                                             <div class="button-silver-left"></div>
                                             <div class="button-silver-right"></div>
                                             <a href="#" id="a-loginbox-close">Cancel</a>
