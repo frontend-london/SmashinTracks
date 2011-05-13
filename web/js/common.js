@@ -80,6 +80,36 @@ function loginBoxPassword() {
     });
 }
 
+function playTrack(element) {
+    fp_src=$(".fp_src",element).attr('title');
+    fp_ico=$(".fp_ico",element).attr('title');
+    fp_artist=$(".fp_artist",element).attr('title');
+    fp_address=$(".fp_address",element).attr('title');
+    fp_title=$(".fp_title",element).attr('title');
+    fp_prize=$(".fp_prize",element).attr('title');
+    fp_item_id=$(".fp_item_id",element).attr('title');
+    fp_add_wishlist=$(".fp_add_wishlist",element).attr('title');
+    fp_remove_wishlist=$(".fp_remove_wishlist",element).attr('title');
+
+    $.get('/ajax/track-played/'+fp_item_id);
+
+    $('div#mp3player').css('height', '102px');
+
+    document.getElementById('smashinPlayer').playSample(fp_src,fp_ico,fp_artist,fp_address,fp_add_wishlist,fp_remove_wishlist,fp_title,fp_prize);
+}
+
+function isInBasket(id) {
+    var result = 0;
+    $.each($('div.bb-item'),function() {
+        track_id = $(".fp_item_id",this).attr('title');
+        if(track_id==id) {
+            result = 1;
+            return false;
+        }
+    });
+    return result;
+}
+
 $(window).load (
 	function() {
 
@@ -207,28 +237,78 @@ $(window).load (
 
 		$("a.track-player").click(function(event){
                     event.preventDefault();
-
-                    
-                    fp_src=$(".fp_src",this).attr('title');
-                    fp_ico=$(".fp_ico",this).attr('title');
-                    fp_artist=$(".fp_artist",this).attr('title');
-                    fp_address=$(".fp_address",this).attr('title');
-                    fp_title=$(".fp_title",this).attr('title');
-                    fp_prize=$(".fp_prize",this).attr('title');
-                    fp_item_id=$(".fp_item_id",this).attr('title');
-                    fp_add_wishlist=$(".fp_add_wishlist",this).attr('title');
-                    fp_remove_wishlist=$(".fp_remove_wishlist",this).attr('title');
-
-                    $.get('/ajax/track-played/'+fp_item_id);
-
-                    $('div#mp3player').css('height', '102px');
-
-                     //$('div#mp3player').show(1, function() {});
-                        document.getElementById('smashinPlayer').playSample(fp_src,fp_ico,fp_artist,fp_address,fp_add_wishlist,fp_remove_wishlist,fp_title,fp_prize);
-                        
-                      
-                    
+                    playTrack(this);
 		});
+
+                $("a.bbi-icon").live('click', function(event) {
+                    event.preventDefault();
+                    playTrack(this);
+                });
+
+                $("a.bbi-usun").live('click', function(event) {
+                    event.preventDefault();
+                    item = $(this).parent();
+                    track_prize = $(".fp_prize",item).attr('title').substr(1); // substr w celu obciecia waluty
+                    basket_prize_currency = $("#bb-prize span").text();
+                    basket_prize = basket_prize_currency.substr(1);
+                    currency = basket_prize_currency.substr(0,1);
+                    new_basket_prize = (basket_prize*1-track_prize*1).toFixed(2);
+                    item.remove();
+                    $('#bb-prize span').text(currency + new_basket_prize);
+                    if(basket_prize == track_prize) {
+                        $("div#bb-empty").show();
+                        $("div#bb-prize-checkout").hide();
+                    }
+                    
+                });
+                
+		$("a.track-add-basket").click(function(event){
+                    event.preventDefault();
+
+                    track = $(this).parent();
+                    track_player = $('.track-player', track);                    
+                    track_id = $(".fp_item_id",track_player).attr('title');
+
+//                    $("div#bb-items").hide();
+                    $("div.bb-item").css('visibility', 'hidden');
+                    $("div#bb-splash").show();
+                    $("div#bb-prize-checkout").show();
+                    $("div#bb-empty").hide();
+
+
+
+                    
+                    if(!isInBasket(track_id)) {
+                        track_player_inner = track_player.html();
+                        track_src = $(".fp_src",track_player).attr('title');
+                        track_artist = $(".fp_artist",track_player).attr('title');
+                        track_artist_src = $('.track-artist a', track).attr('href');
+                        track_title = $(".fp_title",track_player).attr('title');
+                        track_title_src = $('.track-name a', track).attr('href');
+                        track_prize = $(".fp_prize",track_player).attr('title').substr(1); // substr w celu obciecia waluty
+                        basket_prize_currency = $("#bb-prize span").text();
+                        basket_prize = basket_prize_currency.substr(1); 
+                        currency = basket_prize_currency.substr(0,1);
+                        new_basket_prize = (basket_prize*1+track_prize*1).toFixed(2);
+
+                        var new_item = $('<div class="bb-item" style="visibility:hidden;"><a href="/basket/remove/'+track_id+'" class="bbi-usun">Usuń</a><a href="'+track_src+'" class="bbi-icon">'+track_player_inner+'</a><a href="'+track_artist_src+'" class="bbi-artist">'+track_artist+'</a><a href="'+track_title_src+'" class="bbi-name">'+track_title+'</a></div>');//.hide();
+                        $('#bb-items').prepend(new_item);
+                        $('#bb-prize span').text(currency + new_basket_prize);
+//                        new_item.slideDown('normal');
+                    }
+
+                    setTimeout(function() {
+                        $("div.bb-item").css('visibility', 'visible');
+                        $("div#bb-splash").hide();
+//                        $("div#bb-items").show();
+                    } , 500); // delays x ms
+
+
+
+
+		});
+
+
 
 		$("a#mp-close").click(function(event){
                     event.preventDefault();

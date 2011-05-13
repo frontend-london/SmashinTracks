@@ -18,14 +18,34 @@
             <div class="bs2-bgr-bottom"></div>
         </div>
     </div>
-<?else:?>
+<?elseif(!$isBasket):?>
     <div id="box-basket">
         <div class="box-silver2">
             <div class="bs2-inner">
-                <a href="<?=url_for('basket')?>"><img src="images/texts/your-basket.gif" alt="Your Basket" id="bb-img1" /></a>
-                <div id="bb-empty">Your basket is empty...</div>
+                <a href="<?=url_for('basket')?>"><img src="images/texts/your-basket.gif" alt="Your Basket" id="bb-img1" /></a>                
+                <div id="bb-items">
+                    <div id="bb-splash">
+                        <h3>Adding to Basket..</h3>
+                    </div>
+                    <?if(!$emptyBasket):?>
+                        <?foreach ($tracks as $track):?>
+                            <?php include_component('metadata', 'record', array('track' => $track, 'basket_box' => true)) ?>
+                        <?endforeach;?>
+                    <?endif;?>
+                </div>
+                <div id="bb-empty"<?if(!$emptyBasket):?> style="display:none;"<?endif;?>>Your basket is empty...</div>
             </div>
             <div class="bs2-bgr-bottom"></div>
         </div>
+        <div id="bb-prize-checkout"<?if($emptyBasket):?> style="display:none;"<?endif?>>
+            <div id="bb-prize"><span><?=$basketPrize;?></span> GBP</div>
+            <div class="button-checkout" id="bb-checkout">
+                <div class="button-left"></div>
+                <div class="button-right"></div>
+                <a href="<?=url_for('basket')?>">CHECK OUT</a>
+            </div>
+        </div>
+        <div class="clear"></div>
     </div>
+
 <?endif;?>

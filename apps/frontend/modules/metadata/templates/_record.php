@@ -1,8 +1,9 @@
 <?
     if(!isset($admin_icons)) $admin_icons = false;
+    if(!isset($basket)) $basket = false;
+    if(!isset($basket_box)) $basket_box = false;
     if(!isset($charts)) $charts = false;
     if(!isset($charts_num)) $charts_num = false;
-    if(!isset($basket)) $basket = false;
     if(!isset($download)) $download = false;
     if(!isset($edit_track)) $edit_track = false;
     if(!isset($my_tracks)) $my_tracks = false;
@@ -25,6 +26,16 @@
 
 
 ?>
+                            <?if($basket_box):?>
+                                <div class="bb-item">
+                                    <a href="<?=url_for('basket_remove', $track)?>" class="bbi-usun">Usuń</a>
+                                    <a href="mp3/<?=$track->getTracksPath(); ?>.mp3" class="bbi-icon">
+                                        <span class="fp_src" title="mp3/<?=$track->getTracksPath(); ?>.mp3"></span><span class="fp_ico" title="<?=$track->getProfiles()->getProfilesPhotoPath();?>"></span><span class="fp_artist" title="<?=$track->getTracksArtistUppercase(); ?>"></span><span class="fp_address" title="<?if($isAdmin):?><?='mp3/download/?id='.$track->getTracksId().'&admin=1&pass='.sfConfig::get('app_fullmp3_admin_access_pass')?><?else:?><?=url_for('basket_add', $track)?><?endif;?>"></span><span class="fp_title" title="<?=$track->getTracksTitle(); ?>"></span><span class="fp_prize" title="<?=Smashin::generate_prize(sfConfig::get('app_default_prize'))?>"></span><span class="fp_add_wishlist" title="<?=url_for('members_my-wishlist_add', $track)?>"></span><span class="fp_remove_wishlist" title="<?=url_for('members_my-wishlist_remove', $track)?>"></span><span class="fp_item_id" title="<?=$track->getTracksId();?>"></span><img src="images/icons/player-off.png" style="background-image:url('<?=$track->getProfiles()->getProfilesPhotoPath();?>');" alt="" />
+                                    </a>
+                                    <a href="<?=url_for('profile', $track->getProfiles())?>" class="bbi-artist"><?=$track->getTracksArtistUppercase(); ?></a>
+                                    <a href="<?=url_for('track', $track)?>" class="bbi-name"><?=$track->getTracksTitleShorted();?></a>
+                                </div>
+                            <?else:?>
                                 <div class="track">
 <?/* FLASH PLAYER */?>
                                     <?if($isAdmin || $track->isTrackActive()):?>
@@ -122,7 +133,7 @@
                                                 <a href="mp3/<?=$track->getTracksPath(); ?>.mp3" class="track-prev">PREV</a>
                                         </div>
                                     <?elseif($track->isTrackActive()):?>
-                                        <a href="<?=url_for('basket_add', $track)?>" class="track-right">
+                                        <a href="<?=url_for('basket_add', $track)?>" class="track-right track-add-basket">
                                             <span class="track-cart"></span>
                                             <span class="track-buy">BUY NOW</span>
                                             <span class="track-prize"><?=Smashin::generate_prize(sfConfig::get('app_default_prize'))?></span>
@@ -202,3 +213,4 @@
                                         </div>
                                     </div>
                                 <?endif;?>
+                            <?endif;?>

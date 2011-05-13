@@ -1364,9 +1364,9 @@ div.box-silver2 div.bs2-bgr-bottom {
 
 div#box-basket { }
 div#box-basket img#bb-img1 { padding-left:12px; padding-top:19px;}
-div#box-basket div#bb-prize { font-size:19px; color:#3e3e3e; font-weight:bold; float:right; margin-top:8px; margin-right:1px;}
+div#box-basket div#bb-prize { font-size:19px; color:#3e3e3e; font-weight:bold; float:right; margin-top:8px; margin-right:1px; text-align: right; width: 160px;}
 div#box-basket div#bb-checkout { float:right; margin-top:7px;}
-div#box-basket div#bb-empty { font-size:15px; padding-left:15px; padding-top:12px; padding-bottom:15px;}
+div#box-basket div#bb-empty { font-size:15px; padding-left:15px; padding-top:12px; padding-bottom:15px; }
 
 div#box-basket dl#bb-dl1 { font-size:15px; line-height:21px; font-weight:bold; width:166px; margin-left:12px; padding-top:23px; border:solid #cecece; border-width:0px 0px 1px 0px; padding-bottom:4px;}
 div#box-basket dl#bb-dl1 dt { clear:left; float:left;}
@@ -1376,11 +1376,16 @@ div#box-basket dl#bb-dl2 { font-size:12px; line-height:17px; font-weight:bold; w
 div#box-basket dl#bb-dl2 dt { float: left; clear:left}
 div#box-basket dl#bb-dl2 dd { color:#00b9e1; float:right;}
 
-div#bb-items { margin-top:12px; max-height:156px; overflow:auto; margin-right:3px;}
+div#bb-splash { margin-top:15px; height:100%; max-height: 170px; display:none; position: absolute; top: 0px; left: 0px; width: 100%; text-align: center;  }
+div#bb-splash h3 {  position: absolute; top: 50%; width: 100%;  }
+
+div#bb-items { margin-top:12px; max-height:156px; overflow:auto; margin-right:3px; display:block;}
+div.bb-item { /*visibility: hidden;*/}
 div.bb-item { position:relative; background:#e9e9e9; padding-left:21px; padding-top:3px; margin-left:5px; margin-right:2px; margin-bottom:2px; padding-bottom:4px; padding-right:15px;}
 div.bb-item:hover { background:#f8f8f8;}
 div.bb-item a.bbi-usun { display:block; text-indent:-9999px; background:url(../images/icons/bbi-usun.gif) no-repeat; width:11px; height:11px; position:absolute; top:3px; right:3px; }
 div.bb-item a.bbi-icon { display:block; text-indent:-9999px; background:url(../images/icons/bbi-icon.gif) no-repeat; width:13px; height:17px; position:absolute; top:50%; left:6px; margin-top:-8px; }
+div.bb-item a.bbi-icon span, div.bb-item a.bbi-icon img { display: none;}
 div.bb-item a.bbi-artist { font-size:10px; color:#3e3e3e; display:block; line-height:12px;}
 div.bb-item a.bbi-artist:hover { color:#00b9e1; text-decoration:none;}
 div.bb-item a.bbi-name { font-size:10px; color:#3e3e3e; font-weight:bold; display:block; line-height:12px;}

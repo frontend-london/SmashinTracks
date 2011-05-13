@@ -43,6 +43,7 @@ class basketActions extends sfActions
     $transaction->setTransactionsDate('now');
     $transaction->setProfilesId(ProfilesPeer::getCurrentProfileId()); // id lub null
     $transaction->save();
+
     $oUser->setAttribute('transaction_id',$transaction->getTransactionsId());
     $this->transaction = $transaction;
     $this->tracks = TracksPeer::getBasketTracks($basket);
@@ -84,6 +85,7 @@ class basketActions extends sfActions
       if($transaction->getTransactionsDone()) {
         $tx = $request->getParameter('tx');
         if($transaction->getTransactionsPaypalTxnid()!=$tx) $this->forward404(); // zabezpieczenie przed nieuprawnionym dostępem
+
         $this->transaction = $transaction;
         return sfView::SUCCESS;
       } else {

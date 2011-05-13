@@ -41,12 +41,29 @@
 
     public function executeBasketsales(sfWebRequest $request)
     {
-      $this->isAdmin = ProfilesPeer::isAdminProfile();
-      $this->day_tracks = TransactionsPeer::getTracksSoldTodayAmount();
-      $this->day_profit = TransactionsPeer::getTracksSoldTodayProfit();
 
-      $this->month_tracks = TransactionsPeer::getTracksSoldThisMonthAmount();
-      $this->month_profit = TransactionsPeer::getTracksSoldThisMonthProfit();
+      $isBasket = ($request->getParameter('section')=='basket');
+      $isAdmin = ProfilesPeer::isAdminProfile();
+      if($isAdmin) {
+          $this->day_tracks = TransactionsPeer::getTracksSoldTodayAmount();
+          $this->day_profit = TransactionsPeer::getTracksSoldTodayProfit();
+          $this->month_tracks = TransactionsPeer::getTracksSoldThisMonthAmount();
+          $this->month_profit = TransactionsPeer::getTracksSoldThisMonthProfit();
+      } elseif(!$isBasket) { // nie pokazuje boxa z koszykiem jeśli jest się w koszyku
+          $oUser = $this->getUser();
+          if($oUser->hasAttribute('basket')) {
+            $basket = $oUser->getAttribute('basket');
+            $basket->setProfile(ProfilesPeer::getCurrentProfileId());
+          } else {
+            $basket = new Basket(ProfilesPeer::getCurrentProfileId());
+          }
+          $tracks = TracksPeer::getBasketTracks($basket);
+          $this->emptyBasket = (sizeof($tracks)==0);
+          $this->basketPrize = Smashin::generate_prize(sizeof($tracks)*sfConfig::get('app_default_prize'));
+          $this->tracks = $tracks;
+      }
+      $this->isAdmin = $isAdmin;
+      $this->isBasket = $isBasket;
     }
 
     public function executeLoginbox(sfWebRequest $request)
