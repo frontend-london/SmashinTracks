@@ -54,6 +54,7 @@ class basketActions extends sfActions
   public function executeAdd(sfWebRequest $request) {
     $track = $this->getRoute()->getObject();
     $oUser = $this->getUser();
+    $isAjax = $request->isXmlHttpRequest();
 
     if($oUser->hasAttribute('basket')) {
         $basket = $oUser->getAttribute('basket');
@@ -63,12 +64,20 @@ class basketActions extends sfActions
     }
     $basket->addTrack($track->getTracksId());
     $oUser->setAttribute('basket',$basket);
-    $this->redirect('basket');
+
+    if($isAjax) {
+        $this->setLayout(false);
+        return sfView::NONE;
+    } else {
+        $this->redirect('basket');
+    }
   }
 
   public function executeRemove(sfWebRequest $request) {
     $track = $this->getRoute()->getObject();
     $oUser = $this->getUser();
+    $isAjax = $request->isXmlHttpRequest();
+
     if($oUser->hasAttribute('basket')) {
         $basket = $oUser->getAttribute('basket');
         $basket->setProfile(ProfilesPeer::getCurrentProfileId());
@@ -77,7 +86,13 @@ class basketActions extends sfActions
     }
     $basket->removeTrack($track->getTracksId());
     $oUser->setAttribute('basket',$basket);
-    $this->redirect('basket');
+
+    if($isAjax) {
+        $this->setLayout(false);
+        return sfView::NONE;
+    } else {
+        $this->redirect('basket');
+    }
   }
 
   public function executePayPalCheckout(sfWebRequest $request) {

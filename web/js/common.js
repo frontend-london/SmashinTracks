@@ -101,8 +101,8 @@ function playTrack(element) {
 function isInBasket(id) {
     var result = 0;
     $.each($('div.bb-item'),function() {
-        track_id = $(".fp_item_id",this).attr('title');
-        if(track_id==id) {
+        basket_track_id = $(".fp_item_id",this).attr('title');
+        if(basket_track_id==id) {
             result = 1;
             return false;
         }
@@ -254,6 +254,11 @@ $(window).load (
                     currency = basket_prize_currency.substr(0,1);
                     new_basket_prize = (basket_prize*1-track_prize*1).toFixed(2);
                     item.remove();
+                    remove_src = $(this).attr('href');
+                    $.get(remove_src, function(data) {
+//                          alert(data);
+                    });
+
                     $('#bb-prize span').text(currency + new_basket_prize);
                     if(basket_prize == track_prize) {
                         $("div#bb-empty").show();
@@ -275,9 +280,6 @@ $(window).load (
                     $("div#bb-prize-checkout").show();
                     $("div#bb-empty").hide();
 
-
-
-                    
                     if(!isInBasket(track_id)) {
                         track_player_inner = track_player.html();
                         track_src = $(".fp_src",track_player).attr('title');
@@ -287,9 +289,14 @@ $(window).load (
                         track_title_src = $('.track-name a', track).attr('href');
                         track_prize = $(".fp_prize",track_player).attr('title').substr(1); // substr w celu obciecia waluty
                         basket_prize_currency = $("#bb-prize span").text();
-                        basket_prize = basket_prize_currency.substr(1); 
+                        basket_prize = basket_prize_currency.substr(1);
                         currency = basket_prize_currency.substr(0,1);
                         new_basket_prize = (basket_prize*1+track_prize*1).toFixed(2);
+
+                        add_src = $(this).attr('href');
+                        $.get(add_src, function(data) {
+//                          alert(data);
+                        });
 
                         var new_item = $('<div class="bb-item" style="visibility:hidden;"><a href="/basket/remove/'+track_id+'" class="bbi-usun">Usuń</a><a href="'+track_src+'" class="bbi-icon">'+track_player_inner+'</a><a href="'+track_artist_src+'" class="bbi-artist">'+track_artist+'</a><a href="'+track_title_src+'" class="bbi-name">'+track_title+'</a></div>');//.hide();
                         $('#bb-items').prepend(new_item);
