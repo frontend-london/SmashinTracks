@@ -30,8 +30,10 @@ class TracksRecommends extends BaseTracksRecommends {
 	}
         
         public function save(PropelPDO $con = null) {
-            $max = TracksRecommendsPeer::getMaxTracksRecommendsOrder();
-            $this->setTracksRecommendsOrder($max+1);
+            if($this->isNew()) {		
+                $max = TracksRecommendsPeer::getMaxTracksRecommendsOrder();
+                $this->setTracksRecommendsOrder($max+1);
+	    }
             return parent::save($con);
         }
 

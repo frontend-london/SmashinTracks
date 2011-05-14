@@ -28,7 +28,6 @@ class panelRecommendsActions extends sfActions
       $tracks_recommends->save();
       $second_tracks_recommends->save();
       $this->redirect('panel_recommends');
-
   }
 
   public function executeDelete(sfWebRequest $request)
