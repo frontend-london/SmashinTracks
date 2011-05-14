@@ -114,26 +114,24 @@ function isProfile() {
     if($('#profile-name').text().length) return 1; else return 0;
 }
 
-$(window).load (
-	function() {
+function addToBasket(id) {
+    alert('test');
+}
 
-		if($('div#secure a')) {
-			$.each	(
-				$('div#secure a'),
-				function() {
-					ad = "europe";
-					res = "anaccent";
-					start = "mai" ;
-					hash = "#";
-					colon = ":";
-					qqq = String.fromCharCode(64);
-					$(this).text(ad + res + qqq + "ym" + "ail.c" +"om");
-					$(this).attr('href', start + "lto" + colon + ad + res + qqq + "ym" + "ail.c" +"om");
-				}
-			);
-		};
-		
-		if($('a[rel*=hover] img')) {
+/*$(window).load (
+	function() {
+	}
+);*/
+
+$(document).ready
+(
+	function()
+	{
+		$('a').focus(function() {
+		  this.blur();
+		});
+                
+                if($('a[rel*=hover] img')) {
 			$.each	(
 				$('a[rel*=hover] img'),
 				function() {
@@ -155,8 +153,17 @@ $(window).load (
 				}
 			);
 		}
-		
-		if($('input.inputBlur')) {
+
+		$("#bf1-questions").accordion({
+			active: 0,
+			collapsible: true,
+			autoHeight: false,
+			header: '.bf1d-title',
+			animated: 'easeslide'
+		});
+                
+                
+                if($('input.inputBlur')) {
 			$.each	(
 				$('input.inputBlur'),
 				function() {
@@ -182,21 +189,6 @@ $(window).load (
 			);
 		}
 
-		$("div#product-images-th a").click(function(event){
-			event.preventDefault();
-			//alt = $(this).children().attr('alt');
-			src = $(this).children().attr('src');
-			src1 = src.replace('_m', '');
-                        src2 = src.replace('_m', '_b');
-			
-			//$("div#rightimage img").hide();
-			$("div#product-imagebig img").attr('src', src1);
-                        $("div#product-imagebig a").attr('href', src2);
-			//$("div#rightimage img").show();
-			//$("p#gallery-p1 span").html(alt);
-		});
-		
-		
 		$("div.category-box").mouseenter(function(event){
 			$(this).addClass('cb-shadow');
                         $("div.category-box-inner", this).addClass('cbi-shadow');
@@ -427,25 +419,12 @@ $(window).load (
                         $('#form_upload_track').submit();
                     });
 		});
-
-	}
-);
-
-$(document).ready
-(
-	function()
-	{
-		$('a').focus(function() {
-		  this.blur();
+                
+                $("a#a-basket-test").click(function(event){
+                    event.preventDefault();
+                    addToBasket(2);
 		});
-
-		$("#bf1-questions").accordion({
-			active: 0,
-			collapsible: true,
-			autoHeight: false,
-			header: '.bf1d-title',
-			animated: 'easeslide'
-		});
+                
 	}
 )
 	
