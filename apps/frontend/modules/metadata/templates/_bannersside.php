@@ -1,7 +1,7 @@
     <?foreach($banners as $banner):?>
         <div class="banner-side">
             <?if($banner->getBannersUrl()!=''):?>
-                <a href="<?=$banner->getBannersUrl()?>" target="_blank">
+                <a href="<?=$banner->getBannersUrl()?>">
                     <img src="images/banners/<?=$banner->getBannersPath()?>.jpg" alt="" />
                 </a>
             <?else:?>

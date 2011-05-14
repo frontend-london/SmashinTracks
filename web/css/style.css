@@ -568,6 +568,7 @@ div#box-mysales div#bm2-div3 div.button-withdraw a { text-transform:none; }
 
 div.bm3-left { float:left; width: 120px; font-size:13px; line-height:25px; font-weight:bold; text-align:right; padding-right:13px;}
 div.bm3-right { float:left; width: 399px;}
+div.bm3-both { width:532px; font-size:13px; line-height:25px; font-weight:bold; }
 div.bm3-right div.button-add, div.bm3-right div.button-save, div.bm3-right div.button-ok, div.bm3-right div.button-send, div.bm3-right div.button-edit, div.bm3-right div.button-delete { float:left; margin-left:23px;}
 div.bm3-right input.input-290px, div.bm3-right input.input-399px, div.bm3-right input.input-79px, div.bm3-right input.input-349px { float:left; font-size:12px;}
 div.bm3-right textarea { width:100%}

@@ -326,17 +326,17 @@ $(window).load (
                             });
                             
                             $.each($('div.tracknum-'+id+' a.track-star'),function() {
-                                $(this).attr('href','/members/my-wishlist/remove/'+id);
+                                $(this).attr('href','/members/my-wishlist/add/'+id);
                                 $(this).removeClass('ts-active');                                
                             });
                             
                         } else {
                             $.get(src, function(data) {
                                 //alert(data);
-                            });
+                            });                            
                             
                             $.each($('div.tracknum-'+id+' a.track-star'),function() {
-                                $(this).attr('href','/members/my-wishlist/add/'+id);
+                                $(this).attr('href','/members/my-wishlist/remove/'+id);
                                 $(this).addClass('ts-active');          
                             });
                         }
