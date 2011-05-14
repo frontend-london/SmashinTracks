@@ -114,14 +114,88 @@ function isProfile() {
     if($('#profile-name').text().length) return 1; else return 0;
 }
 
-function addToBasket(id) {
-    alert('test');
+function addToBasketById(id) {
+    var track;
+    track = $('div.tracknum-'+id);
+    addToBasket(track);
 }
 
-/*$(window).load (
-	function() {
-	}
-);*/
+function addToBasket(track) {
+    track_player = $('.track-player', track);                    
+    track_id = $(".fp_item_id",track_player).attr('title');
+
+//                    $("div#bb-items").hide();
+    $("div.bb-item").css('visibility', 'hidden');
+    $("div#bb-splash").show();
+    $("div#bb-prize-checkout").show();
+    $("div#bb-empty").hide();
+
+    if(!isInBasket(track_id)) {
+        track_player_inner = track_player.html();
+        track_src = $(".fp_src",track_player).attr('title');
+        track_artist = $(".fp_artist",track_player).attr('title');
+        track_artist_src = $('.track-artist a', track).attr('href');
+        track_title = $(".fp_title",track_player).attr('title');
+        track_title_src = $('.track-name a', track).attr('href');
+        track_prize = $(".fp_prize",track_player).attr('title').substr(1); // substr w celu obciecia waluty
+        basket_prize_currency = $("#bb-prize span").text();
+        basket_prize = basket_prize_currency.substr(1);
+        currency = basket_prize_currency.substr(0,1);
+        new_basket_prize = (basket_prize*1+track_prize*1).toFixed(2);
+
+        add_src = $('.track-add-basket', track).attr('href'); //$(this).attr('href');
+        $.get(add_src, function(data) {
+//                          alert(data);
+        });
+
+        var new_item = $('<div class="bb-item" style="visibility:hidden;"><a href="/basket/remove/'+track_id+'" class="bbi-usun">Usuń</a><a href="'+track_src+'" class="bbi-icon">'+track_player_inner+'</a><a href="'+track_artist_src+'" class="bbi-artist">'+track_artist+'</a><a href="'+track_title_src+'" class="bbi-name">'+track_title+'</a></div>');//.hide();
+        $('#bb-items').prepend(new_item);
+        $('#bb-prize span').text(currency + new_basket_prize);
+//                        new_item.slideDown('normal');
+    }
+
+    setTimeout(function() {
+        $("div.bb-item").css('visibility', 'visible');
+        $("div#bb-splash").hide();
+//                        $("div#bb-items").show();
+    } , 500); // delays x ms    
+}
+
+function addToWishlistById(id) {
+    var track;
+    track = $('div.tracknum-'+id);
+    addToWishlist(track);
+}
+
+function addToWishlist(track) {
+    var track_star = $('.track-star', track);
+    var src = track_star.attr('href');
+    var id = src.substr(src.lastIndexOf("/")+1);
+    if(isProfile()) {
+        if(track_star.hasClass('ts-active')) {
+            $.get(src, function(data) {
+                //alert(data);
+            });
+            
+            $.each($('div.tracknum-'+id+' a.track-star'),function() {
+                $(this).attr('href','/members/my-wishlist/add/'+id);
+                $(this).removeClass('ts-active');                                
+            });
+            
+        } else {
+            $.get(src, function(data) {
+                //alert(data);
+            });                            
+            
+            $.each($('div.tracknum-'+id+' a.track-star'),function() {
+                $(this).attr('href','/members/my-wishlist/remove/'+id);
+                $(this).addClass('ts-active');          
+            });
+        }
+    } else {
+        $("div#bm5-container-loginbox").fadeIn(); // okno logowania
+    }
+}
 
 $(document).ready
 (
@@ -265,76 +339,16 @@ $(document).ready
                 
 		$("a.track-add-basket").click(function(event){
                     event.preventDefault();
-
+                    var track;
                     track = $(this).parent();
-                    track_player = $('.track-player', track);                    
-                    track_id = $(".fp_item_id",track_player).attr('title');
-
-//                    $("div#bb-items").hide();
-                    $("div.bb-item").css('visibility', 'hidden');
-                    $("div#bb-splash").show();
-                    $("div#bb-prize-checkout").show();
-                    $("div#bb-empty").hide();
-
-                    if(!isInBasket(track_id)) {
-                        track_player_inner = track_player.html();
-                        track_src = $(".fp_src",track_player).attr('title');
-                        track_artist = $(".fp_artist",track_player).attr('title');
-                        track_artist_src = $('.track-artist a', track).attr('href');
-                        track_title = $(".fp_title",track_player).attr('title');
-                        track_title_src = $('.track-name a', track).attr('href');
-                        track_prize = $(".fp_prize",track_player).attr('title').substr(1); // substr w celu obciecia waluty
-                        basket_prize_currency = $("#bb-prize span").text();
-                        basket_prize = basket_prize_currency.substr(1);
-                        currency = basket_prize_currency.substr(0,1);
-                        new_basket_prize = (basket_prize*1+track_prize*1).toFixed(2);
-
-                        add_src = $(this).attr('href');
-                        $.get(add_src, function(data) {
-//                          alert(data);
-                        });
-
-                        var new_item = $('<div class="bb-item" style="visibility:hidden;"><a href="/basket/remove/'+track_id+'" class="bbi-usun">Usuń</a><a href="'+track_src+'" class="bbi-icon">'+track_player_inner+'</a><a href="'+track_artist_src+'" class="bbi-artist">'+track_artist+'</a><a href="'+track_title_src+'" class="bbi-name">'+track_title+'</a></div>');//.hide();
-                        $('#bb-items').prepend(new_item);
-                        $('#bb-prize span').text(currency + new_basket_prize);
-//                        new_item.slideDown('normal');
-                    }
-
-                    setTimeout(function() {
-                        $("div.bb-item").css('visibility', 'visible');
-                        $("div#bb-splash").hide();
-//                        $("div#bb-items").show();
-                    } , 500); // delays x ms
+                    addToBasket(track);
 		});
                 
 		$("a.track-star").click(function(event){
                     event.preventDefault();
-                    var src = $(this).attr('href');
-                    var id = src.substr(src.lastIndexOf("/")+1);
-                    if(isProfile()) {
-                        if($(this).hasClass('ts-active')) {
-                            $.get(src, function(data) {
-                                //alert(data);
-                            });
-                            
-                            $.each($('div.tracknum-'+id+' a.track-star'),function() {
-                                $(this).attr('href','/members/my-wishlist/add/'+id);
-                                $(this).removeClass('ts-active');                                
-                            });
-                            
-                        } else {
-                            $.get(src, function(data) {
-                                //alert(data);
-                            });                            
-                            
-                            $.each($('div.tracknum-'+id+' a.track-star'),function() {
-                                $(this).attr('href','/members/my-wishlist/remove/'+id);
-                                $(this).addClass('ts-active');          
-                            });
-                        }
-                    } else {
-                        $("div#bm5-container-loginbox").fadeIn(); // okno logowania
-                    }
+                    track = $(this).parent().parent();
+                    addToWishlist(track);
+                    
                     
                 
                 });
@@ -419,12 +433,7 @@ $(document).ready
                         $('#form_upload_track').submit();
                     });
 		});
-                
-                $("a#a-basket-test").click(function(event){
-                    event.preventDefault();
-                    addToBasket(2);
-		});
-                
+              
 	}
 )
 	
