@@ -28,6 +28,8 @@ all:
     error_404_action: showErrorPage
     login_module: login
     login_action: show
+    secure_module: metadata
+    secure_action: showErrorPage
 
   .settings:
     # Form security secret (CSRF protection)

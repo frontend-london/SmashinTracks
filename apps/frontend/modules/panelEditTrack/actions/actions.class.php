@@ -15,17 +15,7 @@ class panelEditTrackActions extends sfActions
   *
   * @param sfRequest $request A request object
   */
-  public function executeShow(sfWebRequest $request)
-//  {
-//    $track = $this->getRoute()->getObject();
-//    if(0) $track = new Tracks();
-////    $track->getTracksTimeFormatted();
-//    $form = new TracksForm($track);//$track
-//    $this->form = $form;
-//    $this->track = $track;
-//  }
-
-  {
+  public function executeShow(sfWebRequest $request) {
       $track = $this->getRoute()->getObject();
       if(0) $track = new Tracks();
       $form = new TracksForm($track);
