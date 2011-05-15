@@ -32,6 +32,7 @@
                         <?php endif; ?>
                         <div id="by2-div4">
                             <?php echo $form->renderHiddenFields() ?>
+                            <input type="submit" class="input-submit" />
                             <div class="button-withdrawmoney">
                                 <div class="button-left"></div>
                                 <div class="button-right"></div>

@@ -167,6 +167,7 @@
 
                             <div id="bm3-div8">
                                 <?php echo $form->renderHiddenFields() ?>
+                                <input type="submit" class="input-submit" />
                                 <div class="button-red-delete" id="bm3-div8-div1">
                                     <div class="button-red-left"></div>
                                     <div class="button-red-right"></div>

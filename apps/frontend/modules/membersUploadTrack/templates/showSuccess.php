@@ -139,6 +139,7 @@
                             <?php endif; ?>
                             <div id="bu-div12">
                                 <?php echo $form->renderHiddenFields() ?>
+                                <input type="submit" class="input-submit" />
                                 <div class="button-upload">
                                     <div class="button-left"></div>
                                     <div class="button-right"></div>

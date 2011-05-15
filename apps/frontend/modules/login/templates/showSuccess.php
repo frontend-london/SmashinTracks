@@ -39,8 +39,9 @@
                                     <?php echo $form->renderGlobalErrors() ?>
                                 </div>
                             <?php endif; ?>
-                            <div id="bl-div4">
+                            <div id="bl-div4">                           
                                 <?php echo $form->renderHiddenFields() ?>
+                                <input type="submit" class="input-submit" />
                                 <div class="button-silver-back">
                                     <div class="button-silver-left"></div>
                                     <div class="button-silver-right"></div>

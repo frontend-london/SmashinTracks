@@ -16,6 +16,7 @@
                             Invalid email address
                         </div>
                         <div id="lb-div11">
+                            <input type="submit" class="input-submit" />                        
                             <div class="button-silver-cancel">
                                 <div class="button-silver-left"></div>
                                 <div class="button-silver-right"></div>

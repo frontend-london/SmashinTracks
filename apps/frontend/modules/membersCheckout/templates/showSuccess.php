@@ -19,6 +19,7 @@
                         </div>
                         <?php echo $form['password']->render(array('class' => 'input-290px'.(($form['password']->hasError() || $form->hasGlobalErrors())?' input-err':''), 'id' => 'input-bw-div7')) ?>
                         <?php echo $form->renderHiddenFields() ?>
+                        <input type="submit" class="input-submit" />
                         <div class="button-paynow" id="bw-paynow">
                             <div class="button-left"></div>
                             <div class="button-right"></div>

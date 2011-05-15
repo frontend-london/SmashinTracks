@@ -50,6 +50,7 @@
                             <?php endif; ?>
                             <div id="bd-div6">
                                 <?php echo $form->renderHiddenFields() ?>
+                                <input type="submit" class="input-submit" />
                                 <div class="button-ok">
                                     <div class="button-left"></div>
                                     <div class="button-right"></div>

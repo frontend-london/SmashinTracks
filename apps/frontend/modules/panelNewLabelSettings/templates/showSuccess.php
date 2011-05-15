@@ -19,6 +19,7 @@
                                 <div class="clear"></div>
                             </div>
                             <div id="bu2-div3">
+                                <input type="submit" class="input-submit" />
                                 <div class="button-zapisz">
                                     <div class="button-left"></div>
                                     <div class="button-right"></div>

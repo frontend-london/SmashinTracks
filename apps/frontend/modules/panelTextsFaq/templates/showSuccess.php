@@ -67,6 +67,7 @@
 
                             <div id="be3-div6">
                                 <?php echo $form->renderHiddenFields() ?>
+                                <input type="submit" class="input-submit" />
                                 <div class="button-silver-back">
                                     <div class="button-silver-left"></div>
                                     <div class="button-silver-right"></div>

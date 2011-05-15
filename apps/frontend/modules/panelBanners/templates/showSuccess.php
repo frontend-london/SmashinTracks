@@ -59,6 +59,7 @@
                             <?endforeach;?>
                             <div id="bb2-div5">
                                 <input type="hidden" name="form_banners_top_send" value="1" />
+                                <input type="submit" class="input-submit" />
                                 <div class="button-save">
                                     <div class="button-left"></div>
                                     <div class="button-right"></div>
@@ -131,6 +132,7 @@
                             <?$counter++; endforeach;?>
                             <div id="bb2-div7">
                                 <input type="hidden" name="form_banners_side_send" value="1" />
+                                <input type="submit" class="input-submit" />
                                 <div class="button-save">
                                     <div class="button-left"></div>
                                     <div class="button-right"></div>

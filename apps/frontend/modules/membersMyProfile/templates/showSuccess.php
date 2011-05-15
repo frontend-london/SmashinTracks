@@ -101,7 +101,7 @@
                                                     $options = array('class' => 'input-290px'.(($form['profiles_url_edit']->hasError())?' input-err':''));
                                                     if(!$form['profiles_url_edit']->hasError()) $options = array_merge($options, array('value' => $url->getProfilesUrlsUrl()));
                                                     echo $form['profiles_url_edit']->render($options);
-                                                ?>
+                                                ?>                                   
                                                 <div class="button-ok">
                                                     <div class="button-left"></div>
                                                     <div class="button-right"></div>
@@ -139,7 +139,8 @@
                                 <div class="bm3-left"><?php echo $form['profiles_password']->renderLabel('Your password:') ?></div>
                                 <div class="bm3-right">
                                     <?php echo $form['profiles_password']->render(array('class' => 'input-290px'.(($form['profiles_password']->hasError())?' input-err':''))) ?>
-                                    <?php echo $form->renderHiddenFields() ?>
+                                    <?php echo $form->renderHiddenFields() ?>     
+                                    <input type="submit" class="input-submit" />         
                                     <div class="button-save">
                                         <div class="button-left"></div>
                                         <div class="button-right"></div>
@@ -217,6 +218,7 @@
                             <div class="bm3-right">
                                 <?php echo $form2['profiles_new_password_confirm']->render(array('class' => 'input-290px'.($form2['profiles_new_password_confirm']->hasError()?' input-err':''))) ?>
                                 <?php echo $form2->renderHiddenFields() ?>
+                                <input type="submit" class="input-submit" />
                                 <div class="button-save">
                                     <div class="button-left"></div>
                                     <div class="button-right"></div>

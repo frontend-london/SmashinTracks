@@ -42,6 +42,7 @@
                                     <?php endif; ?>
                                     <div id="lb-div6">
                                         <?php echo $form->renderHiddenFields() ?>
+                                        <input type="submit" class="input-submit" />
                                         <div class="button-silver-cancel">
                                             <div class="button-silver-left"></div>
                                             <div class="button-silver-right"></div>

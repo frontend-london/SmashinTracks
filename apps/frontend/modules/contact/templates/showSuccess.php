@@ -43,6 +43,7 @@
                             </div>
                         <?php endif; ?>
                         <div id="bc2-div5">
+                            <input type="submit" class="input-submit" />
                             <div class="bm3-left"><?php echo $form['email']->renderLabel('Your email:') ?></div>
                             <div class="bm3-right">
                                 <?php echo $form['email']->render(array('class' => 'input-290px'.($form['email']->hasError()?' input-err':''))) ?>

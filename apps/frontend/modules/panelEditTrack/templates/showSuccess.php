@@ -131,6 +131,7 @@
                             <?php endif; ?>
                             <div id="be-div11">
                                 <?php echo $form->renderHiddenFields() ?>
+                                <input type="submit" class="input-submit" />
                                 <div class="button-zapisz">
                                     <div class="button-left"></div>
                                     <div class="button-right"></div>

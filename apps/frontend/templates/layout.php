@@ -31,7 +31,7 @@
                     <div id="search-top">
                         <form name="form_search" action="<?=url_for('search');?>" method="get">
                             <input type="text" id="st-text" name="k" value="<? if($sf_request->getParameter('section')=='search') echo $sf_request->getParameter('k')?>" />
-                            <input type="submit" id="st-submit-fake" value="Search" />
+                            <input type="submit" class="input-submit" />
                             <a href="javascript: document.form_search.submit();" id="st-submit">Search</a>
                         </form>
                     </div>

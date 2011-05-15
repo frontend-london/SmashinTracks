@@ -30,6 +30,7 @@
                             <?php endif; ?>
                             <?php echo $form->renderHiddenFields() ?>
                             <div id="bc-div4">
+                                <input type="submit" class="input-submit" />
                                 <div class="button-submit">
                                     <div class="button-left"></div>
                                     <div class="button-right"></div>
