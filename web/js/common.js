@@ -271,7 +271,7 @@ $(document).ready
 				}
 			);
 		}
-
+/*
 		$("div.category-box").mouseenter(function(event){
 			$(this).addClass('cb-shadow');
                         $("div.category-box-inner", this).addClass('cbi-shadow');
@@ -285,7 +285,7 @@ $(document).ready
                         $("div.category-box-inner", this).removeClass('cbi-shadow');
 			$(this).removeClass('cb-shadow');
 		});		
-		
+*/		
 		$("div.bookmark").mouseenter(function(event){
 			$(this).prev().addClass('bookmark-nobgr-right');
 		});				
@@ -300,21 +300,22 @@ $(document).ready
 			createSelectDropDown('bu-select-genre3');
 			hideUnusedSelectDropDowns();			
 		}
-
-		$('a#bw-a2').click(function(event){ /* ST-Artists-anim.html - ALL ARTIST */
+/*
+		$('a#bw-a2').click(function(event){ // ST-Artists-anim.html - ALL ARTIST 
 			event.preventDefault();
 			$('div#bw-div12').empty();
 		});
-
-		$("a.track-player").mouseenter(function(event){
+*/
+		
+                $("a.track-player").live('mouseenter', function(event) {
                     $("img", this).attr("src", 'images/icons/player-on.png');
 		});
 
-		$("a.track-player").mouseleave(function(event){
+                $("a.track-player").live('mouseleave', function(event) {
                     $("img", this).attr("src", 'images/icons/player-off.png');
 		});
 
-		$("a.track-player").click(function(event){
+                $("a.track-player").live('click', function(event) {
                     event.preventDefault();
                     playTrack(this);
 		});
@@ -346,25 +347,26 @@ $(document).ready
                     
                 });
                 
-		$("a.track-add-basket").click(function(event){
+                $("a.track-add-basket").live('click', function(event) {
                     event.preventDefault();
                     var track;
                     track = $(this).parent();
                     addToBasket(track);
 		});
                 
-		$("a.track-star").click(function(event){
+                $("a.track-star").live('click', function(event) {
                     event.preventDefault();
                     track = $(this).parent().parent();
                     addToWishlist(track);
                 });
-
+/*
 		$("a#mp-close").click(function(event){
                     event.preventDefault();
                     closeMp3Player();
 		});
-
-		$("a#bs-arrow").click(function(event){
+*/
+		//$("a#bs-arrow").click(function(event){
+                $("a#bs-arrow").live('click', function(event) {
                     event.preventDefault();
                     $("div#br-hidden").slideToggle();
                     $(this).toggleClass('arrow-bottom-big');
@@ -438,7 +440,7 @@ $(document).ready
                     });
 		});
                 
-                $("a.ajax-centerside").click(function(event){
+                $("a.ajax-centerside").live('click', function(event) {
                     event.preventDefault();
                     var content = $('#centerside-inner');
                     content.html('');
@@ -450,6 +452,13 @@ $(document).ready
                         loader.hide();
                         content.html(data);
                     });
+                    
+                    if(src.substr(0,7)=='/genre/') {
+                        var genre_name = src.substr(7);
+                        //alert(genre_name);
+                        $('ul#leftmenu li').removeClass('active');
+                        $('a#genre-'+genre_name).parent().addClass('active');
+                    }
 		});                
               
 	}

@@ -53,7 +53,7 @@
                                             <div class="track-artist"><?=$track->getTracksArtistUppercase(); ?></div>
                                         <?endif;?>
                                         <div class="track-brand">
-                                            <?$counter=0; foreach($track->getTracksGenressJoinGenres() as $trackgenre):?><?if($counter>0):?>, <?endif;?><a href="<?=url_for('genre', $trackgenre->getGenres())?>"><?echo $trackgenre->getGenres()->getGenresName();?></a><?$counter++; endforeach;?>
+                                            <?$counter=0; foreach($track->getTracksGenressJoinGenres() as $trackgenre):?><?if($counter>0):?>, <?endif;?><a class="ajax-centerside" href="<?=url_for('genre', $trackgenre->getGenres())?>"><?echo $trackgenre->getGenres()->getGenresName();?></a><?$counter++; endforeach;?>
                                         </div>
                                         <?if($charts && $track->isTrackNew()):?><div class="track-new"></div><?endif;?>
                                         <div class="clear"></div>
