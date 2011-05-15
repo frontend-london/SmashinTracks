@@ -1,6 +1,22 @@
+=========================================================
+<<<  SMASHINTRACKS.COM  >>>   DO NOT REPLY   <<<  SMASHINTRACKS.COM  >>>
+ =========================================================
+
+Hello, 
 Welcome to SmashinTracks.com
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris cursus lobortis odio at malesuada. Aenean adipiscing neque eu augue faucibus sit amet aliquet lacus aliquam. Vestibulum eleifend scelerisque interdum. Suspendisse laoreet dignissim mauris, id lacinia mi consectetur eu. Proin nibh turpis, suscipit vel fermentum id, auctor aliquam dui. Sed dapibus augue ut leo iaculis blandit. Ut consectetur, lorem vel iaculis lacinia, risus nulla consectetur nisi, sit amet fringilla ligula purus vel libero. Nunc quis lorem in ante commodo tempus ut vel quam. Duis ac orci ante. Donec sit amet eros turpis, nec tristique massa. Maecenas id tellus urna.
+SmashinTracks.com is the best place where you may buy and sell your own music, 
+exclusive remixes and up to date unreleased tracks. 
 
----
-www.smashintracks.com
+Buying process runs with few clicks, payments are integrated with Paypal system. 
+
+All tracks available on SmashinTracks.com service are 320 kbps only.
+You only have to register in order to sell your tracks.
+ Register, Upload & Sell.
+
+Regards,
+
+=========================================================
+
+SMASHINTRACKS.COM
+http://www.smashintracks.com
