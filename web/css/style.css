@@ -583,7 +583,7 @@ div.bm3-both { width:532px; font-size:13px; line-height:25px; font-weight:bold; 
 div.bm3-right div.button-add, div.bm3-right div.button-save, div.bm3-right div.button-ok, div.bm3-right div.button-send, div.bm3-right div.button-edit, div.bm3-right div.button-delete { float:left; margin-left:23px;}
 div.bm3-right input.input-290px, div.bm3-right input.input-399px, div.bm3-right input.input-79px, div.bm3-right input.input-349px { float:left; font-size:12px;}
 div.bm3-right textarea { width:100%}
-div.div-error-message { font-size:11px; line-height:14px; color:#ff0101; padding-top:13px; padding-left:137px; margin-bottom:-5px;}
+div.div-error-message { font-size:11px; line-height:14px; color:#ff0101; padding-top:13px; padding-left:137px; margin-bottom:-5px; max-width: 410px;}
 
 div#box-myprofile {}
 div#box-myprofile div.bs-inner { padding-bottom:34px;}
