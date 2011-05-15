@@ -1,3 +1,5 @@
+var playerObject;
+
 function validateEmail(email) {
    var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
    return (reg.test(email) != false);
@@ -124,14 +126,19 @@ function isInBasket(id) {
 }
 
 function addToBasketById(id) {
-    var track;
-    track = $('div.tracknum-'+id);
-    addToBasket(track);
+    if(playerObject==null) {
+        var track;
+        track = $('div.tracknum-'+id);
+        addToBasket(track);            
+    } else {
+        addToBasket(playerObject);
+    }
+    
 }
 
 function addToBasket(track) {
     track_player = $('.track-player', track);                    
-    track_id = $(".fp_item_id",track_player).attr('title');
+    track_id = $(".fp_item_id",track).attr('title');
 
 //                    $("div#bb-items").hide();
     $("div.bb-item").css('visibility', 'hidden');
@@ -140,27 +147,43 @@ function addToBasket(track) {
     $("div#bb-empty").hide();
 
     if(!isInBasket(track_id)) {
-        track_player_inner = track_player.html();
-        track_src = $(".fp_src",track_player).attr('title');
-        track_artist = $(".fp_artist",track_player).attr('title');
-        track_artist_src = $('.track-artist a', track).attr('href');
-        track_title = $(".fp_title",track_player).attr('title');
-        track_title_src = $('.track-name a', track).attr('href');
-        track_prize = $(".fp_prize",track_player).attr('title').substr(1); // substr w celu obciecia waluty
-        basket_prize_currency = $("#bb-prize span").text();
-        basket_prize = basket_prize_currency.substr(1);
-        currency = basket_prize_currency.substr(0,1);
-        new_basket_prize = (basket_prize*1+track_prize*1).toFixed(2);
-
-        add_src = $('.track-add-basket', track).attr('href'); //$(this).attr('href');
-        $.get(add_src, function(data) {
-//                          alert(data);
-        });
-
-        var new_item = $('<div class="bb-item" style="visibility:hidden;"><a href="/basket/remove/'+track_id+'" class="bbi-usun">Usuń</a><a href="'+track_src+'" class="bbi-icon">'+track_player_inner+'</a><a href="'+track_artist_src+'" class="bbi-artist">'+track_artist+'</a><a href="'+track_title_src+'" class="bbi-name">'+track_title+'</a></div>');//.hide();
-        $('#bb-items').prepend(new_item);
-        $('#bb-prize span').text(currency + new_basket_prize);
-//                        new_item.slideDown('normal');
+        if(track_player.html()==null) {
+            track.css('visibility', 'hidden');
+            track_prize = $(".fp_prize",track).attr('title').substr(1); // substr w celu obciecia waluty
+            basket_prize_currency = $("#bb-prize span").text();
+            basket_prize = basket_prize_currency.substr(1);
+            currency = basket_prize_currency.substr(0,1);
+            new_basket_prize = (basket_prize*1+track_prize*1).toFixed(2);
+            add_src = $('.fp_address', track).attr('title');
+            
+            $.get(add_src, function(data) {
+            //                  alert(data); // uwaga: zawiesza flasha (w Operze)
+            });
+            $('#bb-items').prepend(track);
+            $('#bb-prize span').text(currency + new_basket_prize);
+        } else {
+            track_player_inner = track_player.html();
+            track_src = $(".fp_src",track_player).attr('title');
+            track_artist = $(".fp_artist",track_player).attr('title');
+            track_artist_src = $('.track-artist a', track).attr('href');
+            track_title = $(".fp_title",track_player).attr('title');
+            track_title_src = $('.track-name a', track).attr('href');
+            track_prize = $(".fp_prize",track_player).attr('title').substr(1); // substr w celu obciecia waluty
+            basket_prize_currency = $("#bb-prize span").text();
+            basket_prize = basket_prize_currency.substr(1);
+            currency = basket_prize_currency.substr(0,1);
+            new_basket_prize = (basket_prize*1+track_prize*1).toFixed(2);
+    
+            add_src = $('.track-add-basket', track).attr('href'); //$(this).attr('href');
+            $.get(add_src, function(data) {
+    //                          alert(data);
+            });
+    
+            var new_item = $('<div class="bb-item" style="visibility:hidden;"><a href="/basket/remove/'+track_id+'" class="bbi-usun">Usuń</a><a href="'+track_src+'" class="bbi-icon ajax-centerside">'+track_player_inner+'</a><a href="'+track_artist_src+'" class="bbi-artist ajax-centerside">'+track_artist+'</a><a href="'+track_title_src+'" class="bbi-name ajax-centerside">'+track_title+'</a></div>');//.hide();
+            $('#bb-items').prepend(new_item);
+            $('#bb-prize span').text(currency + new_basket_prize);
+    //                        new_item.slideDown('normal');            
+        }
     }
 
     setTimeout(function() {
@@ -321,11 +344,13 @@ $(document).ready
 
                 $("a.track-player").live('click', function(event) {
                     event.preventDefault();
+                    playerObject = $(this).parent();
                     playTrack(this);
 		});
 
                 $("a.bbi-icon").live('click', function(event) {
                     event.preventDefault();
+                    playerObject = $(this).parent();
                     playTrack(this);
                 });
 

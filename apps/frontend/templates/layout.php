@@ -64,7 +64,7 @@
                 <li class="<?if($sf_request->getParameter('section')=='contact'):?>active <?endif;?>last"><a class="ajax-centerside" id="footermenu-contact" href="<?=url_for('contact')?>">CONTACT</a></li>
             </ul>
             <a href="#" id="footerlogo">Smashintracks.com - Tracks you won't find anywhere else</a>
-            <div id="footer-copyright">&copy; 2010  <a href="#">Smashintracks.com</a></div>
+            <div id="footer-copyright">&copy; 2011  <a href="#">Smashintracks.com</a></div>
         </div>
     </div>
     <? if(has_slot('box-message')) include_slot('box-message'); else include_component('metadata', 'loginbox');  ?>
