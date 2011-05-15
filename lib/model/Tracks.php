@@ -144,7 +144,13 @@ class Tracks extends BaseTracks {
             $criteria->setLimit(1);
             $criteria->setOffset($number-1); // bo liczy od 0 a nie od 1
             $genres = $this->getTracksGenress($criteria);
-            return $genres[0];//->getGenres();
+			if(empty($genres)) {
+				$tracks_genres = new TracksGenres();
+				$tracks_genres->setTracks($this);
+				return $tracks_genres;
+			} else {
+				return $genres[0];
+			}
         }
 
 
