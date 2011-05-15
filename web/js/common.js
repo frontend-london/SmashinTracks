@@ -1,48 +1,5 @@
 var playerObject;
 
-
-
-            //$.address.state('/').init(function() {
-            //
-            //    // Initializes the plugin
-            //    $('.ajax-centerside').address();
-            //    
-            //}).change(function(event) {
-            //
-            //    // Selects the proper navigation link
-            //    $('.ajax-centerside').each(function() {
-            //        if ($(this).attr('href') == ($.address.state() + event.path)) {
-            //            $(this).addClass('selected').focus();
-            //        } else {
-            //            $(this).removeClass('selected');
-            //        }
-            //    });
-            //
-            //    // Handles response
-            //    var handler = function(data) {
-            //        $('title').html($('title', data).html());
-            //        $('.content').html($('.content', data).html());
-            //        $('.page').show();
-            //        $.address.title(/>([^<]*)<\/title/.exec(data)[1]);
-            //    };
-            //
-            //    // Loads the page content and inserts it into the content area
-            //    $.ajax({
-            //        url: $.address.state() + event.path,
-            //        error: function(XMLHttpRequest, textStatus, errorThrown) {
-            //            handler(XMLHttpRequest.responseText);
-            //        },
-            //        success: function(data, textStatus, XMLHttpRequest) {
-            //            handler(data);
-            //        }
-            //    });
-            //});
-
-            // Hides the tabs during initialization
-            //document.write('<style type="text/css"> .page { display: none; } </style>');
-
-
-
 function validateEmail(email) {
    var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
    return (reg.test(email) != false);
@@ -311,6 +268,7 @@ $(document).ready
                     });
                     
                     $('ul#leftmenu li').removeClass('active');
+                    $('ul#leftmenu-nopadding li').removeClass('active');
                     $('ul#mainmenu li').removeClass('active');
                     $('ul#submenu li').removeClass('active');
                     $('ul#footermenu li').removeClass('active');
