@@ -1,5 +1,48 @@
 var playerObject;
 
+
+
+            //$.address.state('/').init(function() {
+            //
+            //    // Initializes the plugin
+            //    $('.ajax-centerside').address();
+            //    
+            //}).change(function(event) {
+            //
+            //    // Selects the proper navigation link
+            //    $('.ajax-centerside').each(function() {
+            //        if ($(this).attr('href') == ($.address.state() + event.path)) {
+            //            $(this).addClass('selected').focus();
+            //        } else {
+            //            $(this).removeClass('selected');
+            //        }
+            //    });
+            //
+            //    // Handles response
+            //    var handler = function(data) {
+            //        $('title').html($('title', data).html());
+            //        $('.content').html($('.content', data).html());
+            //        $('.page').show();
+            //        $.address.title(/>([^<]*)<\/title/.exec(data)[1]);
+            //    };
+            //
+            //    // Loads the page content and inserts it into the content area
+            //    $.ajax({
+            //        url: $.address.state() + event.path,
+            //        error: function(XMLHttpRequest, textStatus, errorThrown) {
+            //            handler(XMLHttpRequest.responseText);
+            //        },
+            //        success: function(data, textStatus, XMLHttpRequest) {
+            //            handler(data);
+            //        }
+            //    });
+            //});
+
+            // Hides the tabs during initialization
+            //document.write('<style type="text/css"> .page { display: none; } </style>');
+
+
+
 function validateEmail(email) {
    var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
    return (reg.test(email) != false);
@@ -35,6 +78,7 @@ function loginBoxClose(reset, box) {
         event.preventDefault();
         $('#form_forget_password').submit();
     });
+
 
 
 
@@ -243,9 +287,85 @@ $(document).ready
 (
 	function()
 	{
+            
 		$('a').focus(function() {
 		  this.blur();
 		});
+                
+                var recentHash = "";
+                var recentHashChange = false;
+                
+                function openAjaxCenterside(src) {
+                    var content = $('#centerside-inner');
+                    content.html('');
+                    var loader = $('#centerside-ajax-loader');
+                    loader.show();        
+                    
+                    $.get(src, function(data) {
+                        loader.hide();
+                        content.html(data);
+                        
+                        if(src=='/faq') {
+                            activateFaq();
+                        }
+                    });
+                    
+                    $('ul#leftmenu li').removeClass('active');
+                    $('ul#mainmenu li').removeClass('active');
+                    $('ul#submenu li').removeClass('active');
+                    $('ul#footermenu li').removeClass('active');
+                    
+                    recentHashChange = true;
+                    window.location.hash = src;
+                    recentHash = '#'+src;
+                    recentHashChange = false;
+            
+                    if(src.substr(0,7)=='/genre/') {
+                        var genre_name = src.substr(7);
+                        //alert(genre_name);
+                        $('a#genre-'+genre_name).parent().addClass('active');
+                    } else if(src.substr(0,9)=='/profile/') {
+                        $('a#mainmenu-artists').parent().addClass('active');
+                        $('a#footermenu-artists').parent().addClass('active');
+                    } else if(src=='/charts') {
+                        $('a#mainmenu-charts').parent().addClass('active');
+                        $('a#footermenu-charts').parent().addClass('active');
+                    } else if(src=='/artists') {
+                        $('a#mainmenu-artists').parent().addClass('active');
+                        $('a#footermenu-artists').parent().addClass('active');
+                    } else if(src=='/faq') {
+                        $('a#mainmenu-faq').parent().addClass('active');
+                        $('a#footermenu-faq').parent().addClass('active');
+                    } else if(src=='/terms-and-conditions') {
+                        $('a#footermenu-terms').parent().addClass('active');
+                    } else if(src=='/contact') {
+                        $('a#footermenu-contact').parent().addClass('active');
+                    } else if(src=='/') {
+                        $('a#mainmenu-home').parent().addClass('active');
+                        $('a#footermenu-home').parent().addClass('active');
+                    }        
+                    
+                }
+                
+                
+                function initialiseStateFromURL() {
+                    if (window.location.hash==recentHash) {
+                      return; // Nothing's changed since last polled.
+                    } else if(recentHashChange) {
+                        return; // w trakcie zmiany adresu
+                    }
+                    
+                    recentHash = window.location.hash;
+                 
+                    // URL has changed, update the UI accordingly.
+                    var src = recentHash.substring(2);
+                    openAjaxCenterside('/'+src)
+                }   
+               
+                  
+                  initialiseStateFromURL();
+                  setInterval(initialiseStateFromURL, 1000); // na podstawie http://ajaxpatterns.org/Unique_URLs
+                  
                 
                 if($('a[rel*=hover] img')) {
 			$.each	(
@@ -471,50 +591,9 @@ $(document).ready
                 
                 $("a.ajax-centerside").live('click', function(event) {
                     event.preventDefault();
-                    var content = $('#centerside-inner');
-                    content.html('');
-                    var loader = $('#centerside-ajax-loader');
-                    loader.show();
                     var src = $(this).attr('href');
-                    $.get(src, function(data) {
-//                        alert(data);
-                        loader.hide();
-                        content.html(data);
-                        
-                        if(src=='/faq') {
-                            activateFaq();
-                        }
-                    });
-                    
-                    $('ul#leftmenu li').removeClass('active');
-                    $('ul#mainmenu li').removeClass('active');
-                    $('ul#submenu li').removeClass('active');
-                    $('ul#footermenu li').removeClass('active');
-
-                    if(src.substr(0,7)=='/genre/') {
-                        var genre_name = src.substr(7);
-                        //alert(genre_name);
-                        $('a#genre-'+genre_name).parent().addClass('active');
-                    } else if(src.substr(0,9)=='/profile/') {
-                        $('a#mainmenu-artists').parent().addClass('active');
-                        $('a#footermenu-artists').parent().addClass('active');
-                    } else if(src=='/charts') {
-                        $('a#mainmenu-charts').parent().addClass('active');
-                        $('a#footermenu-charts').parent().addClass('active');
-                    } else if(src=='/artists') {
-                        $('a#mainmenu-artists').parent().addClass('active');
-                        $('a#footermenu-artists').parent().addClass('active');
-                    } else if(src=='/faq') {
-                        $('a#mainmenu-faq').parent().addClass('active');
-                        $('a#footermenu-faq').parent().addClass('active');
-                    } else if(src=='/terms-and-conditions') {
-                        $('a#footermenu-terms').parent().addClass('active');
-                    } else if(src=='/contact') {
-                        $('a#footermenu-contact').parent().addClass('active');
-                    } else if(src=='/') {
-                        $('a#mainmenu-home').parent().addClass('active');
-                        $('a#footermenu-home').parent().addClass('active');
-                    }
+                    //alert(src);
+                    openAjaxCenterside(src);
 		});                
               
 	}
