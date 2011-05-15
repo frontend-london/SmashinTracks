@@ -43,12 +43,12 @@
                         <div class="bw-div2">
                             <div class="bw-div2-text">
                                 <strong>New tracks in:</strong>
-                                <?$counter=0; foreach($newtracks_genres as $genre):?><?if($counter>0):?>, <?endif;?><a href="<?=url_for('genre', $genre)?>"><?echo $genre->getGenresName();?></a><?$counter++; endforeach;?>
+                                <?$counter=0; foreach($newtracks_genres as $genre):?><?if($counter>0):?>, <?endif;?><a class="ajax-centerside" href="<?=url_for('genre', $genre)?>"><?echo $genre->getGenresName();?></a><?$counter++; endforeach;?>
                             </div>
                             <div class="button-fulllist bw-div2-button">
                                 <div class="button-left"></div>
                                 <div class="button-right"></div>
-                                <a href="<?=url_for('new-tracks')?>">Full List</a>
+                                <a class="ajax-centerside" href="<?=url_for('new-tracks')?>">Full List</a>
                             </div>
                             <div class="clear"></div>
                         </div>
@@ -71,12 +71,12 @@
                         </div>                
                         <div class="bw-div2">
                             <div class="bw-div2-text">
-                                <strong>See also:</strong>  <a href="#">CHARTS</a>, <a href="#">TOP ARTISTS</a>, <a href="#">NEW TRACKS</a>
+                                <strong>See also:</strong> <a class="ajax-centerside" href="<?=url_for('artists')?>">TOP ARTISTS</a>, <a class="ajax-centerside" href="<?=url_for('new-tracks')?>">NEW TRACKS</a>
                             </div>
                             <div class="button-fulllist bw-div2-button">
                                 <div class="button-left"></div>
                                 <div class="button-right"></div>
-                                <a href="#">Full List</a>
+                                <a class="ajax-centerside" href="<?=url_for('charts')?>">Full List</a>
                             </div>
                             <div class="clear"></div>
                         </div>

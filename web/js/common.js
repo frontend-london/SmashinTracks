@@ -206,6 +206,16 @@ function addToWishlist(track) {
     }
 }
 
+function activateFaq() {
+    $("#bf1-questions").accordion({
+            active: 0,
+            collapsible: true,
+            autoHeight: false,
+            header: '.bf1d-title',
+            animated: 'easeslide'
+    });
+}
+
 $(document).ready
 (
 	function()
@@ -237,13 +247,7 @@ $(document).ready
 			);
 		}
 
-		$("#bf1-questions").accordion({
-			active: 0,
-			collapsible: true,
-			autoHeight: false,
-			header: '.bf1d-title',
-			animated: 'easeslide'
-		});
+		activateFaq();
                 
                 
                 if($('input.inputBlur')) {
@@ -451,6 +455,10 @@ $(document).ready
 //                        alert(data);
                         loader.hide();
                         content.html(data);
+                        
+                        if(src=='/faq') {
+                            activateFaq();
+                        }
                     });
                     
                     $('ul#leftmenu li').removeClass('active');
