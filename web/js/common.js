@@ -455,6 +455,7 @@ $(document).ready
                     
                     $('ul#leftmenu li').removeClass('active');
                     $('ul#mainmenu li').removeClass('active');
+                    $('ul#submenu li').removeClass('active');
                     $('ul#footermenu li').removeClass('active');
 
                     if(src.substr(0,7)=='/genre/') {
@@ -464,6 +465,22 @@ $(document).ready
                     } else if(src.substr(0,9)=='/profile/') {
                         $('a#mainmenu-artists').parent().addClass('active');
                         $('a#footermenu-artists').parent().addClass('active');
+                    } else if(src=='/charts') {
+                        $('a#mainmenu-charts').parent().addClass('active');
+                        $('a#footermenu-charts').parent().addClass('active');
+                    } else if(src=='/artists') {
+                        $('a#mainmenu-artists').parent().addClass('active');
+                        $('a#footermenu-artists').parent().addClass('active');
+                    } else if(src=='/faq') {
+                        $('a#mainmenu-faq').parent().addClass('active');
+                        $('a#footermenu-faq').parent().addClass('active');
+                    } else if(src=='/terms-and-conditions') {
+                        $('a#footermenu-terms').parent().addClass('active');
+                    } else if(src=='/contact') {
+                        $('a#footermenu-contact').parent().addClass('active');
+                    } else if(src=='/') {
+                        $('a#mainmenu-home').parent().addClass('active');
+                        $('a#footermenu-home').parent().addClass('active');
                     }
 		});                
               

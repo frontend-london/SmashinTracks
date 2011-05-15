@@ -25,9 +25,9 @@
                                         </div>
                                     <?else:?>
                                         <div class="track-row1">
-                                            <div class="track-artist bold"><a href="<?=url_for('profile', $artist)?>"><?=$artist->getProfilesName()?></a></div>
+                                            <div class="track-artist bold"><a class="ajax-centerside" href="<?=url_for('profile', $artist)?>"><?=$artist->getProfilesName()?></a></div>
                                             <div class="track-artist-num">(<?=$artist->countTrackss()?>)</div>
-                                            <div class="track-brand"><?$counter=0; foreach($artist->getProfilesGenres() as $artist_genre):?><?if($counter>0):?>, <?endif;?><a href="<?=url_for('genre', $artist_genre)?>"><?=$artist_genre->getGenresName();?></a><?$counter++; endforeach;?></div>
+                                            <div class="track-brand"><?$counter=0; foreach($artist->getProfilesGenres() as $artist_genre):?><?if($counter>0):?>, <?endif;?><a class="ajax-centerside" href="<?=url_for('genre', $artist_genre)?>"><?=$artist_genre->getGenresName();?></a><?$counter++; endforeach;?></div>
                                             <div class="clear"></div>
                                         </div>
                                     <?endif;?>
@@ -47,7 +47,7 @@
                                             <div class="track-payment">Wypłata nr: <strong>#<?=$withdraw->getWithdrawsId()?></strong></div>
                                         </div>
                                     <?else:?>
-                                        <a href="<?=url_for('profile', $artist)?>" class="track-check">CHECK</a>
+                                        <a class="ajax-centerside track-check" href="<?=url_for('profile', $artist)?>">CHECK</a>
                                     <?endif;?>
 <?/* TRACK ROW 2 */?>
                                     <?if($panel_blocked):?>

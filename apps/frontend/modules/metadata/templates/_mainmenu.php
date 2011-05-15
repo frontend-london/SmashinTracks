@@ -6,9 +6,9 @@
                             <li<?if($sf_request->getParameter('section')=='panel-banners'):?> class="active"<?endif;?>><a href="<?=url_for('panel_banners')?>">Banery</a></li>
                             <li><a href="#">Mailing</a></li>
                         <?else:?>
-                            <li<?if($sf_request->getParameter('section')=='home'):?> class="active"<?endif;?>><a id="mainmenu-home" href="<?=url_for('homepage')?>">Home</a></li>
-                            <li<?if($sf_request->getParameter('section')=='charts'):?> class="active"<?endif;?>><a id="mainmenu-charts" href="<?=url_for('charts')?>">Charts</a></li>
-                            <li<?if($sf_request->getParameter('section')=='artists'):?> class="active"<?endif;?>><a id="mainmenu-artists" href="<?=url_for('artists')?>">Artists</a></li>
-                            <li<?if($sf_request->getParameter('section')=='faq'):?> class="active"<?endif;?>><a id="mainmenu-faq" href="<?=url_for('faq')?>">Faq</a></li>
+                            <li<?if($sf_request->getParameter('section')=='home'):?> class="active"<?endif;?>><a class="ajax-centerside" id="mainmenu-home" href="<?=url_for('homepage')?>">Home</a></li>
+                            <li<?if($sf_request->getParameter('section')=='charts'):?> class="active"<?endif;?>><a class="ajax-centerside" id="mainmenu-charts" href="<?=url_for('charts')?>">Charts</a></li>
+                            <li<?if($sf_request->getParameter('section')=='artists'):?> class="active"<?endif;?>><a class="ajax-centerside" id="mainmenu-artists" href="<?=url_for('artists')?>">Artists</a></li>
+                            <li<?if($sf_request->getParameter('section')=='faq'):?> class="active"<?endif;?>><a class="ajax-centerside" id="mainmenu-faq" href="<?=url_for('faq')?>">Faq</a></li>
                         <?endif;?>
                     </ul>
