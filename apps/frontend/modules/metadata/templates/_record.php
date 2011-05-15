@@ -32,8 +32,8 @@
                                     <a href="mp3/<?=$track->getTracksPath(); ?>.mp3" class="bbi-icon">
                                         <span class="fp_src" title="mp3/<?=$track->getTracksPath(); ?>.mp3"></span><span class="fp_ico" title="<?=$track->getProfiles()->getProfilesPhotoPath();?>"></span><span class="fp_artist" title="<?=$track->getTracksArtistUppercase(); ?>"></span><span class="fp_address" title="<?if($isAdmin):?><?='mp3/download/?id='.$track->getTracksId().'&admin=1&pass='.sfConfig::get('app_fullmp3_admin_access_pass')?><?else:?><?=url_for('basket_add', $track)?><?endif;?>"></span><span class="fp_title" title="<?=$track->getTracksTitle(); ?>"></span><span class="fp_prize" title="<?=Smashin::generate_prize(sfConfig::get('app_default_prize'))?>"></span><span class="fp_add_wishlist" title="<?=url_for('members_my-wishlist_add', $track)?>"></span><span class="fp_remove_wishlist" title="<?=url_for('members_my-wishlist_remove', $track)?>"></span><span class="fp_item_id" title="<?=$track->getTracksId();?>"></span><img src="images/icons/player-off.png" style="background-image:url('<?=$track->getProfiles()->getProfilesPhotoPath();?>');" alt="" />
                                     </a>
-                                    <a href="<?=url_for('profile', $track->getProfiles())?>" class="bbi-artist"><?=$track->getTracksArtistUppercase(); ?></a>
-                                    <a href="<?=url_for('track', $track)?>" class="bbi-name"><?=$track->getTracksTitleShorted();?></a>
+                                    <a href="<?=url_for('profile', $track->getProfiles())?>" class="ajax-centerside bbi-artist"><?=$track->getTracksArtistUppercase(); ?></a>
+                                    <a href="<?=url_for('track', $track)?>" class="ajax-centerside bbi-name"><?=$track->getTracksTitleShorted();?></a>
                                 </div>
                             <?else:?>
                                 <div class="track tracknum-<?=$track->getTracksId()?>">
@@ -48,7 +48,7 @@
 <?/* TRACK ROW 1 */?>
                                     <div class="track-row1">
                                         <?if($track->getProfiles()->isActive()):?>
-                                            <div class="track-artist"><a href="<?=url_for('profile', $track->getProfiles())?>"><?=$track->getTracksArtistUppercase(); ?></a></div>
+                                            <div class="track-artist"><a class="ajax-centerside" href="<?=url_for('profile', $track->getProfiles())?>"><?=$track->getTracksArtistUppercase(); ?></a></div>
                                         <?else:?>
                                             <div class="track-artist"><?=$track->getTracksArtistUppercase(); ?></div>
                                         <?endif;?>
@@ -142,7 +142,7 @@
 <?/* TRACK ROW 2 */?>
                                     <div class="track-row2">
                                         <?if($isAdmin || $track->isTrackActive()):?>
-                                            <div class="track-name"><a href="<?=url_for('track', $track)?>"><?=$track->getTracksTitleShorted(); ?></a></div>
+                                            <div class="track-name"><a class="ajax-centerside" href="<?=url_for('track', $track)?>"><?=$track->getTracksTitleShorted(); ?></a></div>
                                         <?else:?>
                                             <div class="track-name"><?=$track->getTracksTitleShorted(); ?></div>
                                         <?endif;?>

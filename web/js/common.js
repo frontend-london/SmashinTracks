@@ -453,11 +453,17 @@ $(document).ready
                         content.html(data);
                     });
                     
+                    $('ul#leftmenu li').removeClass('active');
+                    $('ul#mainmenu li').removeClass('active');
+                    $('ul#footermenu li').removeClass('active');
+
                     if(src.substr(0,7)=='/genre/') {
                         var genre_name = src.substr(7);
                         //alert(genre_name);
-                        $('ul#leftmenu li').removeClass('active');
                         $('a#genre-'+genre_name).parent().addClass('active');
+                    } else if(src.substr(0,9)=='/profile/') {
+                        $('a#mainmenu-artists').parent().addClass('active');
+                        $('a#footermenu-artists').parent().addClass('active');
                     }
 		});                
               

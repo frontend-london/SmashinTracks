@@ -56,12 +56,12 @@
         <div class="clear"></div>
         <div id="footer">
             <ul id="footermenu">
-                <li<?if($sf_request->getParameter('section')=='home'):?> class="active"<?endif;?>><a href="<?="http://{$_SERVER['SERVER_NAME']}{$sf_request->getRelativeUrlRoot()}/"?>">HOME</a></li>
-                <li<?if($sf_request->getParameter('section')=='charts'):?> class="active"<?endif;?>><a href="<?=url_for('charts')?>">CHARTS</a></li>
-                <li<?if($sf_request->getParameter('section')=='artists'):?> class="active"<?endif;?>><a href="<?=url_for('artists')?>">ARTIST</a></li>
-                <li<?if($sf_request->getParameter('section')=='faq'):?> class="active"<?endif;?>><a href="<?=url_for('faq')?>">FAQ</a></li>
-                <li<?if($sf_request->getParameter('section')=='terms'):?> class="active"<?endif;?>><a href="<?=url_for('terms')?>">TERMS &amp; CONDITIONS</a></li>
-                <li class="<?if($sf_request->getParameter('section')=='contact'):?>active <?endif;?>last"><a href="<?=url_for('contact')?>">CONTACT</a></li>
+                <li<?if($sf_request->getParameter('section')=='home'):?> class="active"<?endif;?>><a id="footermenu-home" href="<?="http://{$_SERVER['SERVER_NAME']}{$sf_request->getRelativeUrlRoot()}/"?>">HOME</a></li>
+                <li<?if($sf_request->getParameter('section')=='charts'):?> class="active"<?endif;?>><a id="footermenu-charts" href="<?=url_for('charts')?>">CHARTS</a></li>
+                <li<?if($sf_request->getParameter('section')=='artists'):?> class="active"<?endif;?>><a id="footermenu-artists" href="<?=url_for('artists')?>">ARTISTS</a></li>
+                <li<?if($sf_request->getParameter('section')=='faq'):?> class="active"<?endif;?>><a id="footermenu-faq" href="<?=url_for('faq')?>">FAQ</a></li>
+                <li<?if($sf_request->getParameter('section')=='terms'):?> class="active"<?endif;?>><a id="footermenu-terms" href="<?=url_for('terms')?>">TERMS &amp; CONDITIONS</a></li>
+                <li class="<?if($sf_request->getParameter('section')=='contact'):?>active <?endif;?>last"><a id="footermenu-contact" href="<?=url_for('contact')?>">CONTACT</a></li>
             </ul>
             <a href="#" id="footerlogo">Smashintracks.com - Tracks you won't find anywhere else</a>
             <div id="footer-copyright">&copy; 2010  <a href="#">Smashintracks.com</a></div>
