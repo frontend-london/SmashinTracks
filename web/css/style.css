@@ -449,6 +449,10 @@ div#centerside-fb {
 	padding-bottom:325px; /* box-footer */
 }
 
+div#centerside-inner {}
+
+div#centerside-ajax-loader { width: 100%; height: 100px; background: url('../images/icons/loader.gif') no-repeat center; display: none;}
+
 div#mainpage-top {
 	padding: 0px 22px 54px 22px;
 }
@@ -456,6 +460,10 @@ div#mainpage-top {
 div#mainpage-top p {
 	font-size:15px;
 	line-height:14px;	
+}
+
+div#mainpage-fb-padding {
+    padding-bottom:273px;
 }
 
 div#artistpage-top, div#artistpage-top-nocontent { padding: 0px 22px 8px 18px; }

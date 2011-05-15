@@ -3,6 +3,7 @@ Options +FollowSymLinks +ExecCGI
 php_value arg_separator.output "&"
 php_flag short_open_tag on
 php_flag magic_quotes_gpc off
+php_flag magic_quotes_runtime Off
 
 <IfModule mod_rewrite.c>
   RewriteEngine On

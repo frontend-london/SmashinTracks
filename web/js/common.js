@@ -7,6 +7,14 @@ function closeMp3Player() {
     $('div#mp3player').css('height', '1px');
 }
 
+function isProfile() {
+    if($('#profile-name').text().length || $('#admin-name').text().length) return 1; else return 0;
+}
+
+function isAdmin() {
+    if($('#admin-name').text().length) return 1; else return 0;
+}
+
 function loginBoxClose(reset, box) {
     $("a#a-loginbox-close").click(function(event){
         event.preventDefault();
@@ -94,8 +102,13 @@ function playTrack(element) {
     $.get('/ajax/track-played/'+fp_item_id);
 
     $('div#mp3player').css('height', '102px');
-
-    document.getElementById('smashinPlayer').playSample(fp_src,fp_ico,fp_artist,fp_address,fp_add_wishlist,fp_remove_wishlist,fp_title,fp_prize);
+    
+    if(isAdmin()) {
+        document.getElementById('smashinPlayer').playSample(fp_src,fp_ico,fp_artist,fp_address,fp_add_wishlist,fp_remove_wishlist,fp_title,fp_prize);    
+    } else {
+        document.getElementById('smashinPlayer').playSample(fp_src,fp_ico,fp_artist,fp_address,fp_add_wishlist,fp_remove_wishlist,fp_title,fp_prize,fp_item_id);    
+    }
+    
 }
 
 function isInBasket(id) {
@@ -108,10 +121,6 @@ function isInBasket(id) {
         }
     });
     return result;
-}
-
-function isProfile() {
-    if($('#profile-name').text().length) return 1; else return 0;
 }
 
 function addToBasketById(id) {
@@ -348,12 +357,7 @@ $(document).ready
                     event.preventDefault();
                     track = $(this).parent().parent();
                     addToWishlist(track);
-                    
-                    
-                
                 });
-
-
 
 		$("a#mp-close").click(function(event){
                     event.preventDefault();
@@ -433,6 +437,20 @@ $(document).ready
                         $('#form_upload_track').submit();
                     });
 		});
+                
+                $("a.ajax-centerside").click(function(event){
+                    event.preventDefault();
+                    var content = $('#centerside-inner');
+                    content.html('');
+                    var loader = $('#centerside-ajax-loader');
+                    loader.show();
+                    var src = $(this).attr('href');
+                    $.get(src, function(data) {
+//                        alert(data);
+                        loader.hide();
+                        content.html(data);
+                    });
+		});                
               
 	}
 )

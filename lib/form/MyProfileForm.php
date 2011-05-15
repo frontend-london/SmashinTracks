@@ -47,10 +47,6 @@ class MyProfileForm extends BaseForm
       'profiles_url_edit_action' => new sfValidatorBoolean(array('required' => false)),
       'profiles_url_edit_id' => new sfValidatorInteger(array('required' => false)),
       'profiles_password' => new sfValidatorString(array('required' => false)),
-
-
-
-
     ));
 
     $this->validatorSchema->setPostValidator(new sfValidatorCallback(

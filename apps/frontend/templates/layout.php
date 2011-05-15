@@ -40,8 +40,11 @@
                 <div id="leftside">
                     <?php include_component('metadata', 'menuleft') ?>
                 </div>
-                <div id="centerside<?if($sf_request->getParameter('facebook')):?>-fb<?endif;?>">
-                    <?php echo $sf_content ?>
+                <div id="centerside<?if($sf_request->getParameter('facebookss')):?>-fb<?endif;?>">
+                    <div id="centerside-ajax-loader"></div>
+                    <div id="centerside-inner">
+                        <?php echo $sf_content ?>
+                    </div>
                 </div>
                 <div id="rightside">
                     <?php include_component('metadata', 'basketsales') ?>

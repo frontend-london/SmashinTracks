@@ -1,7 +1,7 @@
                     <ul id="submenu">
                         <?if($isProfile):?>
                             <?if($isAdmin):?>
-                                <li id="submenu-hi">Hi, <strong>Admin</strong></li>
+                                <li id="submenu-hi">Hi, <span id="admin-name"><strong>Admin</strong></span></li>
                                 <li<?if($sf_request->getParameter('section')=='panel-genres'):?> class="active"<?endif;?>><a href="<?=url_for('panel_genres')?>">DODAJ/EDYTUJ GATUNKI</a></li>
                                 <li<?if($sf_request->getParameter('section')=='panel-new-label-settings'):?> class="active"<?endif;?>><a href="<?=url_for('panel_new-label-settings')?>">USTAWIENIA ETYKIETY 'NEW'</a></li>
                                 <li<?if($sf_request->getParameter('section')=='panel-transactions-history'):?> class="active"<?endif;?>><a href="<?=url_for('panel_transactions-history')?>">HISTORIA SPRZEDAŻY</a></li>

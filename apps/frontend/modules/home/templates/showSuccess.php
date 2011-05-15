@@ -1,4 +1,4 @@
-
+            <div id="mainpage-fb-padding">
                 <div id="mainpage-top">
                     <?=TextsPeer::getTextValue('Home-niezalogowany-welcome-text')?>
                 </div>
@@ -83,4 +83,5 @@
                 </div>
 
                 <?php include_partial('metadata/footer', array('facebook' => true)) ?>
-            
+
+            </div>
