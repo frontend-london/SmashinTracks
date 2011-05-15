@@ -107,19 +107,26 @@ function mail_download_links($to, $num_cart_items, $track_name, $transactions_tr
       <title>Your Tracks from Smashintracks.com:</title>
     </head>
     <body>
-    <strong>Hello,</strong><br /><br />
-    Your Tracks from Smashintracks.com: <br /><br />';
+    ========================================================================<br />
+    <<<  SMASHINTRACKS.COM  >>>   DO NOT REPLY   <<<  SMASHINTRACKS.COM  >>><br />
+     ========================================================================<br />
+    <br />
+    Hello,<br />
+    Thank you for purchasing tracks from SmashinTracks.com<br />
+    <br />
+    To download your purchases, please click the following url (or copy and paste into your browser):<br />
+    <br />';
     for($i=1;$i<=$num_cart_items;$i++) {
-        $message.= $i.' <a href="'.SERVER_ADDRESS."/mp3/download/{$transactions_tracks_id[$i]}/{$transactions_tracks_path[$i]}\">{$track_name[$i]}</a><br />";
+        //$message.= $i.' <a href="'.SERVER_ADDRESS."/mp3/download/{$transactions_tracks_id[$i]}/{$transactions_tracks_path[$i]}\">{$track_name[$i]}</a><br />";
+        $message.= "{$track_name[$i]}<br /><a href=\"".SERVER_ADDRESS."/mp3/download/{$transactions_tracks_id[$i]}/{$transactions_tracks_path[$i]}\">".SERVER_ADDRESS."/mp3/download/{$transactions_tracks_id[$i]}/{$transactions_tracks_path[$i]}</a><br /><br />\n";
     }
     $message.= '<br />
-    Invoice no. '.$invoice.'<br />
-    You can download them 3 times each in 24 hours. <br />
-    Full list: <a href="'.SERVER_ADDRESS.'/order/'.$transactions_id.$transactions_path.'">'.SERVER_ADDRESS.'/order/'.$transactions_id.$transactions_path.'</a><br /><br />
-    We wish you a great day. <br />
-    <strong>Smashintracks.com Team</strong><br /><br />
-    <a href="'.SERVER_ADDRESS.'">www.smashintracks.com</a><br /><br />
-    <a href="'.SERVER_ADDRESS.'"><img style="float: left;" src="http://smashintracks.com/images/logo_email.jpg" alt="" width="200" height="32" /></a><br />
+    Regards,<br />
+    <br />
+    ========================================================================<br />
+    <br />
+    <a href="'.SERVER_ADDRESS.'">SMASHINTRACKS.COM</a><br />
+    <a href="'.SERVER_ADDRESS.'">http://www.smashintracks.com</a><br />
     </body>
     </html>';
     $headers  = 'MIME-Version: 1.0' . "\r\n";
