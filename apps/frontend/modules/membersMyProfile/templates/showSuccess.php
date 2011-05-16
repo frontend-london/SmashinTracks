@@ -52,7 +52,7 @@
                                     <img src="images/profiles/big/<?=$profile->getProfilesPath();?>.jpg" alt="<?=$profile->getProfilesName();?>" width="121" height="121" />
                                     <label>
                                         <?php echo $form['profiles_photo_delete']->render() ?>
-                                        <span><?php echo $form['profiles_photo_delete']->renderLabel('Zaznacz aby usunac <br />aktualne foto') ?></span>
+                                        <span><?php echo $form['profiles_photo_delete']->renderLabel('Tick to delete<br /> current photo') ?></span>
                                     </label>
                                     <div class="clear"></div>
                                 </div>
@@ -61,7 +61,7 @@
                                 <div class="bm3-left"><?php echo $form['profiles_text']->renderLabel('Profil text:') ?></div>
                                 <div class="bm3-right">
                                     <?php echo $form['profiles_text']->render() ?>
-                                    <div id="bm3-div3-div1">Pozostało <span id="charcount_target_id"></span> znaków</div>
+                                    <div id="bm3-div3-div1">Still remains <span id="charcount_target_id"></span> characters</div>
                                 </div>
                                 <div class="clear"></div>
                             </div>
@@ -133,7 +133,7 @@
                                 <?php endif; ?>
                             <?endforeach;?>
                             <div id="bm3-div4">
-                                    Aby zachowac zmiany wpisz swoje haslo i kliknij Save...
+                                    Enter your password to save changes and slick Save …
                             </div>
                             <div id="bm3-div5">
                                 <div class="bm3-left"><?php echo $form['profiles_password']->renderLabel('Your password:') ?></div>

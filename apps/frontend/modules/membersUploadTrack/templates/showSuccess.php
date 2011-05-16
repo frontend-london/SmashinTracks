@@ -6,7 +6,7 @@
                                 <?=Smashin::generate_injected_text(TextsPeer::getTextValue('ZALOGOWANY-Upload-Track-main-text'), array('__LIMIT__' => sfConfig::get('app_max_upload_day_limit')))?>
                             </div>
                             <div id="bu-div2">
-                                <div class="bm3-left"><?php echo $form['tracks_title']->renderLabel('Tytul tracka:') ?></div>
+                                <div class="bm3-left"><?php echo $form['tracks_title']->renderLabel('Title track:') ?></div>
                                 <div class="bm3-right">
                                     <?php echo $form['tracks_title']->render(array('class' => 'input-399px'.(($form['tracks_title']->hasError())?' input-err':''))) ?>
                                 </div>
@@ -18,7 +18,7 @@
                                 </div>
                             <?php endif; ?>
                             <div id="bu-div3">
-                                <div class="bm3-left"><?php echo $form['tracks_artist']->renderLabel('Artysta/alias:') ?></div>
+                                <div class="bm3-left"><?php echo $form['tracks_artist']->renderLabel('Artist/Alias:') ?></div>
                                 <div class="bm3-right">
                                     <?php echo $form['tracks_artist']->render(array('class' => 'input-399px'.(($form['tracks_artist']->hasError())?' input-err':''))) ?>
                                 </div>
@@ -43,7 +43,7 @@
                                 <div class="clear"></div>
                             </div>
                             <div id="bu-div5">
-                                Maxymalnie 120 sekund w jakosci 128kbps! (max <?=sfConfig::get('app_maxsize_track_preview')/1048576?> MB)
+                                Maximum 120 seconds 128kbps mp3 (max <?=sfConfig::get('app_maxsize_track_preview')/1048576?> MB)
                             </div>
                             <?php if ($form['tracks_preview']->hasError()): ?>
                                 <div class="div-error-message">
@@ -64,7 +64,7 @@
                                 <div class="clear"></div>
                             </div>
                             <div id="bu-div7">
-                                Akceptujemy tylko mp3 w formacie 320kbps (max <?=sfConfig::get('app_maxsize_full_track')/1048576?> MB)
+                                Accepts only 320kbps mp3 (max <?=sfConfig::get('app_maxsize_full_track')/1048576?> MB)
                             </div>
                             <?php if ($form['full_track']->hasError()): ?>
                                 <div class="div-error-message">

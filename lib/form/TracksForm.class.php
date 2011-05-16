@@ -27,9 +27,9 @@ class TracksForm extends BaseTracksForm
       'tracks_preview'        => new sfWidgetFormInputFile(),
       'full_track'            => new sfWidgetFormInputFile(),
       'tracks_time_regex'     => new sfWidgetFormInputText(),
-      'genre_1'               => new sfWidgetFormSelect(array('choices' => array_combine(array_merge(array(''), GenresPeer::getGenresNames()), array_merge(array('-- wybierz gatunek --'), GenresPeer::getGenresNames())))),
-      'genre_2'               => new sfWidgetFormSelect(array('choices' => array_combine(array_merge(array(''), GenresPeer::getGenresNames()), array_merge(array('-- wybierz gatunek --'), GenresPeer::getGenresNames())))),
-      'genre_3'               => new sfWidgetFormSelect(array('choices' => array_combine(array_merge(array(''), GenresPeer::getGenresNames()), array_merge(array('-- wybierz gatunek --'), GenresPeer::getGenresNames())))),
+      'genre_1'               => new sfWidgetFormSelect(array('choices' => array_combine(array_merge(array(''), GenresPeer::getGenresNames()), array_merge(array('-- choose genre --'), GenresPeer::getGenresNames())))),
+      'genre_2'               => new sfWidgetFormSelect(array('choices' => array_combine(array_merge(array(''), GenresPeer::getGenresNames()), array_merge(array('-- choose genre --'), GenresPeer::getGenresNames())))),
+      'genre_3'               => new sfWidgetFormSelect(array('choices' => array_combine(array_merge(array(''), GenresPeer::getGenresNames()), array_merge(array('-- choose genre --'), GenresPeer::getGenresNames())))),
       'terms'                 => new sfWidgetFormInputCheckbox(),
     ));
 
