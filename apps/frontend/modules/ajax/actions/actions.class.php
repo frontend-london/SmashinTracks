@@ -29,7 +29,7 @@ class ajaxActions extends sfActions
       $email = $request->getParameter('forget_password_email');
       $email = Smashin::PHP_slashes($email);
       $profile = ProfilesPeer::getProfileByEmail($email);
-      if(is_object($profile)) {
+      if(is_object($profile) && $profile->isActive()) {
             $password_url = Smashin::generate_random_pass(32);
             $profile->setProfilesPasswordUrl($password_url);
             $profile->save();

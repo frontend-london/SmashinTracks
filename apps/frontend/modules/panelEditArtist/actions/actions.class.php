@@ -74,12 +74,12 @@ class panelEditArtistActions extends sfActions
                     $filename_target_small = sfConfig::get('sf_images_profiles_small_dir').DIRECTORY_SEPARATOR.$profile->getProfilesPath().'.jpg';
                     $file->save($filename_upload);
 
-                    $thumbnail_big = new sfThumbnail(220, 220);
+                    $thumbnail_big = new sfThumbnail(220, 220, true, true, 100);
                     $thumbnail_big->loadFile($filename_upload);
                     $thumbnail_big->save($filename_target_big, 'image/jpeg');
                     unset($thumbnail_big);
 
-                    $thumbnail_small = new sfThumbnail(40, 40, false);
+                    $thumbnail_small = new sfThumbnail(40, 40, false, true, 100);
                     $thumbnail_small->loadFile($filename_upload);
                     $thumbnail_small->save($filename_target_small, 'image/jpeg');
                     unset($thumbnail_small);

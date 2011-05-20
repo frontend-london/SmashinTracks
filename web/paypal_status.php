@@ -3,14 +3,14 @@
 define('ADMIN_PROFILE', 1);
 define('TRACK_PRIZE_HALF', 1); // 700
 define('TRACK_PRIZE', 2); // 1400
-define('SERVER_ADDRESS', 'http://modul.ayz.pl');
+define('SERVER_ADDRESS', 'http://smashintracks.com');
 
 //DB connect creds and email
-$notify_email =  "modul008@gmail.com"; //email address to which debug emails are sent to
+$notify_email =  "m.matuszewski@gmail.com"; //email address to which debug emails are sent to
 $DB_Server = "localhost"; //your MySQL Server
-$DB_Username = "modul_smashin"; //your MySQL User Name
-$DB_Password = "19aY2w2cuKWknxvSfV"; //your MySQL Password
-$DB_DBName = "modul_smashin"; //your MySQL Database Name
+$DB_Username = "martino_stracks"; //your MySQL User Name
+$DB_Password = "tiPrbOUl"; //your MySQL Password
+$DB_DBName = "martino_stracks"; //your MySQL Database Name
 
 /*
  * CONTENT

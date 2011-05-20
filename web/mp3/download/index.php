@@ -5,7 +5,7 @@
     $DB_Password = "19aY2w2cuKWknxvSfV"; //your MySQL Password
     $DB_DBName = "modul_smashin"; //your MySQL Database Name
 
-    define('TRACK_NEW_PERIOD', 1); // czas na ściągnięcie w dniach
+    define('TRACK_NEW_PERIOD', 7); // czas na ściągnięcie w dniach
     define('ADMIN_ACCESS_PASS', '13Ucgn7o0P7X12EJQuP5TFPf2JXxAtEXfovU'); // czas na ściągnięcie w dniach
 /*
     $DB_Server = "localhost"; //your MySQL Server

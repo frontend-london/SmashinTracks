@@ -18,6 +18,8 @@ class changePasswordActions extends sfActions
   public function executeShow(sfWebRequest $request)
   {
     $profile = $this->getRoute()->getObject();
+    
+    $this->forward404Unless($profile->isActive()); // tylko aktywne konta
 
     $form = new ChangePasswordForm();
 

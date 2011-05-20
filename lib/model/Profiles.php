@@ -82,7 +82,12 @@ class Profiles extends BaseProfiles {
         }
 
         public function getProfilesNameFirstLetter() {
-            return substr($this->getProfilesName(), 0, 1);
+            if(ord(substr($this->getProfilesName(), 0, 1))<128) { // kodowanie UTF8 dla niestandardowych liter zabiera 2 znaki na znak
+                return substr($this->getProfilesName(), 0, 1);    
+            } else {
+                return substr($this->getProfilesName(), 0, 2);    
+            }
+            
         }
 
         public function getProfilesTextShorted() {
@@ -278,7 +283,7 @@ class Profiles extends BaseProfiles {
              */
             $transaction_criteria = new Criteria();
             $transaction_criteria->add(TransactionsPeer::TRANSACTIONS_DONE, true);
-            $transaction_objects = $this->getTransactionss();
+            $transaction_objects = $this->getTransactionss($transaction_criteria);
             foreach($transaction_objects as $tr) {
                 $nr = ' -';
                 $date = $tr->getTransactionsDate('d-m-Y');
@@ -323,7 +328,7 @@ class Profiles extends BaseProfiles {
                 while(!empty($transactions[$sort_date])) $sort_date++;
                 $details = 'Withdrawal to PayPal #'.$wd->getWithdrawsId();
                 $details_url = '';
-                $prize = $wd->getWithdrawsSaldoValue();
+                $prize = -$wd->getWithdrawsSaldoValue();
                 $amount = $prize;
                 $amount_string = Smashin::generate_prize($prize/100);
                 $saldo = '';

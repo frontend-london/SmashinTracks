@@ -43,6 +43,23 @@ class ProfilesPeer extends BaseProfilesPeer {
         $criteria->add(self::PROFILES_BLOCKED, false);
         return self::getProfilesAscending($criteria);
     }
+    
+    public static function getActiveProfilesWithTracksAscending($criteria = null) {
+        if ($criteria === null) {
+                $criteria = new Criteria(self::DATABASE_NAME);
+        }
+        elseif ($criteria instanceof Criteria)
+        {
+                $criteria = clone $criteria;
+        }
+        //$criteria->add(self::PROFILES_BLOCKED, false);
+        //$criteria->addJoin(self::PROFILES_ID, TracksPeer::PROFILES_ID);
+        //$criteria->addJoin
+        //$criteria = TracksPeer::addActiveTracksCriteria($criteria);
+        //$criteria->add('COUNT('.TracksPeer::TRACKS_ID.')', Criteria::GREATER_THAN, 0);
+        //DescendingOrderByColumn('COUNT('.TracksPeer::TRACKS_ID.')'); // sortowanie po ilości tracków sprzedanych
+        return self::getActiveProfilesAscending($criteria);        
+    }
 
     public static function getBlockedProfilesAscending($criteria = null) {
         if ($criteria === null) {

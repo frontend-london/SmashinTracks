@@ -108,7 +108,10 @@
                                     </ul>
                                 </td>
                                 <td>
-
+                                    <strong>14. ST-Register</strong><br />
+                                    <ul>
+                                    	<li><span>- welcome text</span>  <a href="<?=url_for('panel_texts_edit', array('texts_name' => 'Register-welcome-text'))?>" class="track-edit">EDIT</a></li>
+                                    </ul>
                                 </td>
                             </tr>
                         </table>

@@ -1,8 +1,8 @@
                 <div class="box-white" id="box-top">
                     <img src="images/texts/members-checkout.gif" alt="Members Checkout" />
                     <div class="bw-div1">
-                        Do zakupu trackow uzyles pieniedzy zarobionych na <a href="http://smashintracks.com/" class="underline">SmashinTracks.com</a><br />
-                        Ponizej masz szczegóły transakcji...
+                        You have used Smashintracks payment for your purchase.<br />
+                        Transactions details below…
                     </div>
                     <div class="bw-div6">
                         <dl>

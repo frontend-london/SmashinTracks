@@ -223,5 +223,12 @@ class Smashin
      public static function generate_injected_text($text, $translation) {
          return strtr($text, $translation);
      }
+     
+     public static function is_in_alphabet($letter) {
+        $letters = range('A','Z');
+        $nums = array('0','1','2','3','4','5','6','7','8','9');
+        $alphabet = array_merge($letters, $nums);
+        return in_array($letter, $alphabet, true);
+     }
 }
 ?>

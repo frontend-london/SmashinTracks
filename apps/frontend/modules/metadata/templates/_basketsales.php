@@ -18,8 +18,8 @@
             <div class="bs2-bgr-bottom"></div>
         </div>
     </div>
-<?elseif(!$isBasket):?>
-    <div id="box-basket">
+<?else:?>
+    <div id="box-basket"<?if($isBasket):?> style="display:none"<?endif;?>>
         <div class="box-silver2">
             <div class="bs2-inner">
                 <a href="<?=url_for('basket')?>"><img src="images/texts/your-basket.gif" alt="Your Basket" id="bb-img1" /></a>                

@@ -78,7 +78,8 @@ class panelBannersActions extends sfActions
             $banner->setBannersType(1);
             $banner->save();
             $filename_upload = sfConfig::get('sf_images_banners_dir').DIRECTORY_SEPARATOR.$path.'.jpg';
-            $thumbnail = new sfThumbnail(460, 70, false);
+            $thumbnail = new sfThumbnail(460, 70, false, true, 100);
+            $thumbnail_big->quality(100);
             $thumbnail->loadFile($file['tmp_name']);
             $thumbnail->save($filename_upload, 'image/jpeg');
             unset($thumbnail);
@@ -105,7 +106,7 @@ class panelBannersActions extends sfActions
             $banner->setBannersType(2);
             $banner->save();
             $filename_upload = sfConfig::get('sf_images_banners_dir').DIRECTORY_SEPARATOR.$path.'.jpg';
-            $thumbnail = new sfThumbnail(192, 123, false);
+            $thumbnail = new sfThumbnail(192, 123, false, true, 100);
             $thumbnail->loadFile($file['tmp_name']);
             $thumbnail->save($filename_upload, 'image/jpeg');
             unset($thumbnail);

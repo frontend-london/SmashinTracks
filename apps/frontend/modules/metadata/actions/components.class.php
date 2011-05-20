@@ -49,7 +49,7 @@
           $this->day_profit = TransactionsPeer::getTracksSoldTodayProfit();
           $this->month_tracks = TransactionsPeer::getTracksSoldThisMonthAmount();
           $this->month_profit = TransactionsPeer::getTracksSoldThisMonthProfit();
-      } elseif(!$isBasket) { // nie pokazuje boxa z koszykiem jeśli jest się w koszyku
+      } else { 
           $oUser = $this->getUser();
           if($oUser->hasAttribute('basket')) {
             $basket = $oUser->getAttribute('basket');

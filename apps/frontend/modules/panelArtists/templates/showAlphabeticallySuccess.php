@@ -29,14 +29,17 @@
                         <? $previous_letter = '';
                           foreach ($artists as $artist):
                             $letter=strtoupper($artist->getProfilesNameFirstLetter());?>
-                            <?if($letter != $previous_letter):?>
-                                <div class="letter" id="letter-<?=strtolower($letter);?>"><?=$letter?></div>
-                            <?endif; $previous_letter = $letter;?>
+                            <?if(Smashin::is_in_alphabet($letter)):?>
+                                <?if($letter != $previous_letter):?>
+                                    <div class="letter" id="letter-<?=strtolower($letter);?>"><?=$letter?></div>
+                                <?endif; $previous_letter = $letter;?>                            
+                            <?elseif($previous_letter!='OTHER'):?>
+                                <div class="letter" id="letter-other">OTHER</div>
+                            <?$previous_letter = 'OTHER'; endif;?>
+
                                 
                             <?php include_partial('artists/record', array('artist' => $artist, 'panel' => true)) ?>
-                            
                         <?endforeach;?>
-
                         <div class="clear"></div>
                     </div>
                 </div>

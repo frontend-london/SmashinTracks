@@ -30,11 +30,6 @@ class basketActions extends sfActions
         $transaction_id = $oUser->getAttribute('transaction_id');
         $transaction = TransactionsPeer::getTransactionById($transaction_id);
         if($transaction->getTransactionsDone()) {
-            foreach ($transaction->getTransactionsTrackssJoinTracks() as $transaction_track) {
-                $track = $transaction_track->getTracks();
-                $basket->removeTrack($track->getTracksId());
-            }
-            $oUser->setAttribute('basket',$basket);
             $transaction = new Transactions();
         }
     } else {
@@ -96,12 +91,35 @@ class basketActions extends sfActions
   }
 
   public function executePayPalCheckout(sfWebRequest $request) {
+
       $transaction = $this->getRoute()->getObject();
       if($transaction->getTransactionsDone()) {
         $tx = $request->getParameter('tx');
         if($transaction->getTransactionsPaypalTxnid()!=$tx) $this->forward404(); // zabezpieczenie przed nieuprawnionym dostępem
-
+        
+        $oUser = $this->getUser();
+        if($oUser->hasAttribute('basket')) {
+            $basket = $oUser->getAttribute('basket');
+            $basket->setProfile(ProfilesPeer::getCurrentProfileId());
+        } else {
+            $basket = new Basket(ProfilesPeer::getCurrentProfileId());
+        }
+        
+        foreach ($transaction->getTransactionsTrackssJoinTracks() as $transaction_track) {
+            $track = $transaction_track->getTracks();
+            $basket->removeTrack($track->getTracksId());
+        }
+        $oUser->setAttribute('basket',$basket);
+        $transaction_new = new Transactions();
+        
+        $transaction_new->setTransactionsDate('now');
+        $transaction_new->setProfilesId(ProfilesPeer::getCurrentProfileId()); // id lub null
+        $transaction_new->save();
+        
+        $oUser->setAttribute('transaction_id',$transaction_new->getTransactionsId());
+       
         $this->transaction = $transaction;
+        
         return sfView::SUCCESS;
       } else {
         return sfView::ERROR;

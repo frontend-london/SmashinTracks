@@ -27,6 +27,6 @@ class artistsActions extends sfActions
 
   public function executeShowAll(sfWebRequest $request)
   {
-    $this->artists = ProfilesPeer::getProfilesAscending();
+    $this->artists = ProfilesPeer::getActiveProfilesWithTracksAscending();
   }
 }

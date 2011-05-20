@@ -44,7 +44,7 @@ class panelGenresActions extends sfActions
             $file = $form->getValue('genres_photo');
             if(is_object($file)) {
                 $filename_upload = sfConfig::get('sf_images_genres_dir').DIRECTORY_SEPARATOR.$genre->getGenresPath().'.gif';
-                $thumbnail = new sfThumbnail(250, 20);
+                $thumbnail = new sfThumbnail(250, 20, true, true, 100);
                 $thumbnail->loadFile($file->getTempName());
                 $thumbnail->save($filename_upload, 'image/gif');
                 unset($thumbnail);

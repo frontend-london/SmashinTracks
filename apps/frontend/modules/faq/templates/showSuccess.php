@@ -10,7 +10,7 @@
                                     <?=$counter?>. <?=$question->getTextsFaqQuestion()?>
                                 </div>
                                 <div class="bf1d-answer<?if($counter==1):?> bf1d-answer-active<?endif?>">
-                                    <?=$question->getTextsFaqAnswer()?>
+                                    <?=html_entity_decode($question->getTextsFaqAnswer())?>
                                 </div>
                             </div>
                         <?$counter++; endforeach;?>

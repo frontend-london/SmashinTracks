@@ -68,7 +68,7 @@ class TracksForm extends BaseTracksForm
     $field_name = 'tracks_preview';
     $this->validatorSchema[$field_name] = new sfValidatorFile(array(
                                               'max_size' => sfConfig::get('app_maxsize_track_preview'),
-                                              'mime_types' => array('audio/mpeg'),
+                                              'mime_types' => array('audio/mpeg', 'audio/mpeg3', 'audio/x-mp3', 'video/mp4'),
                                               'required' => true,
                                           ), array('required' => "$field can not be empty."));
 
@@ -80,7 +80,7 @@ class TracksForm extends BaseTracksForm
     $field_name = 'full_track';
     $this->validatorSchema[$field_name] = new sfValidatorFile(array(
                                               'max_size' => sfConfig::get('app_maxsize_full_track'),
-                                              'mime_types' => array('audio/mpeg'),
+                                              'mime_types' => array('audio/mpeg', 'audio/mpeg3', 'audio/x-mp3', 'video/mp4'),
                                               'required' => true,
                                           ), array('required' => "$field can not be empty."));
 

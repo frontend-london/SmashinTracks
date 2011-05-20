@@ -26,7 +26,7 @@
                                     <?else:?>
                                         <div class="track-row1">
                                             <div class="track-artist bold"><a class="ajax-centerside" href="<?=url_for('profile', $artist)?>"><?=$artist->getProfilesName()?></a></div>
-                                            <div class="track-artist-num">(<?=$artist->countTrackss()?>)</div>
+                                            <div class="track-artist-num">(<?=$artist->countTrackssActive()?>)</div>
                                             <div class="track-brand"><?$counter=0; foreach($artist->getProfilesGenres() as $artist_genre):?><?if($counter>0):?>, <?endif;?><a class="ajax-centerside" href="<?=url_for('genre', $artist_genre)?>"><?=$artist_genre->getGenresName();?></a><?$counter++; endforeach;?></div>
                                             <div class="clear"></div>
                                         </div>

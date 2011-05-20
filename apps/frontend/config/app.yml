@@ -14,11 +14,11 @@ all:
   # domyślna waluta
   default_prize_currency: £
   # domyślna cena, w £. Zmień również define('TRACK_PRIZE', 140); i define('TRACK_PRIZE_HALF', 70); w web/paypal_status.php 1.40
-  default_prize: 0.02
+  default_prize: 1.40
   # minimalna wartość wypłaty w £
   min_withdraw: 10
   # okres w dniach kiedy można ściągnąć kupiony track - zmień również web/mp3/download/index.php - define('TRACK_NEW_PERIOD', 1);
-  track_download_period: 1
+  track_download_period: 7
   # lista tracków na stronie - do stronicowania
   max_tracks_on_list: 30
   # lista transakcji na stronie My Sales - do stronicowania

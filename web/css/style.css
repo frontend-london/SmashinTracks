@@ -977,32 +977,44 @@ a.tp-num-30 { background-position:0px -1160px;}
 div.letter { background-image:url(../images/texts/alphabet.gif); background-repeat: no-repeat; height:25px; width:42px; margin-left:14px; margin-bottom:20px; margin-top:19px; text-indent:-9999px;}
 
 
-div#letter-a { background-position: 0px 0px; margin-top:0px; }
-div#letter-b { background-position: 0px -25px; }
-div#letter-c { background-position: 0px -50px; }
-div#letter-d { background-position: 0px -75px; }
-div#letter-e { background-position: 0px -100px; }
-div#letter-f { background-position: 0px -125px; }
-div#letter-g { background-position: 0px -150px; }
-div#letter-h { background-position: 0px -175px; }
-div#letter-i { background-position: 0px -200px; }
-div#letter-j { background-position: 0px -225px; }
-div#letter-k { background-position: 0px -250px; }
-div#letter-l { background-position: 0px -275px; }
-div#letter-m { background-position: 0px -300px; }
-div#letter-n { background-position: 0px -325px; }
-div#letter-o { background-position: 0px -350px; }
-div#letter-p { background-position: 0px -375px; }
-div#letter-q { background-position: 0px -400px; }
-div#letter-r { background-position: 0px -425px; }
-div#letter-s { background-position: 0px -450px; }
-div#letter-t { background-position: 0px -475px; }
-div#letter-u { background-position: 0px -500px; }
-div#letter-v { background-position: 0px -525px; }
-div#letter-w { background-position: 0px -550px; }
-div#letter-x { background-position: 0px -575px; }
-div#letter-y { background-position: 0px -600px; }
-div#letter-z { background-position: 0px -625px; }
+div#letter-1 { background-position: 0px 0px; }
+div#letter-2 { background-position: 0px -25px; }
+div#letter-3 { background-position: 0px -50px; }
+div#letter-4 { background-position: 0px -75px; }
+div#letter-5 { background-position: 0px -100px; }
+div#letter-6 { background-position: 0px -125px; }
+div#letter-7 { background-position: 0px -150px; }
+div#letter-8 { background-position: 0px -175px; }
+div#letter-9 { background-position: 0px -200px; }
+div#letter-0 { background-position: 0px -225px; }
+div#letter-a { background-position: 0px -250px; }
+div#letter-b { background-position: 0px -275px; }
+div#letter-c { background-position: 0px -300px; }
+div#letter-d { background-position: 0px -325px; }
+div#letter-e { background-position: 0px -350px; }
+div#letter-f { background-position: 0px -375px; }
+div#letter-g { background-position: 0px -400px; }
+div#letter-h { background-position: 0px -425px; }
+div#letter-i { background-position: 0px -450px; }
+div#letter-j { background-position: 0px -475px; }
+div#letter-k { background-position: 0px -500px; }
+div#letter-l { background-position: 0px -525px; }
+div#letter-m { background-position: 0px -550px; }
+div#letter-n { background-position: 0px -575px; }
+div#letter-o { background-position: 0px -600px; }
+div#letter-p { background-position: 0px -625px; }
+div#letter-q { background-position: 0px -650px; }
+div#letter-r { background-position: 0px -675px; }
+div#letter-s { background-position: 0px -700px; }
+div#letter-t { background-position: 0px -725px; }
+div#letter-u { background-position: 0px -750px; }
+div#letter-v { background-position: 0px -775px; }
+div#letter-w { background-position: 0px -800px; }
+div#letter-x { background-position: 0px -825px; }
+div#letter-y { background-position: 0px -850px; }
+div#letter-z { background-position: 0px -875px; }
+div#letter-other { background-position: 0px -900px;  width: 99px;}
+
 
 div.track-row1 { width:386px; height:21px; float:left;}
 div.track-artist { font-size:14px; float:left; padding-top:2px;}
@@ -1277,14 +1289,14 @@ div.bookmark-nobgr-right div.bookmark-bgr-right { background:none;}
 div.bookmark-active div.bookmark-bgr-right, div.bookmark:hover div.bookmark-bgr-right { background:url(../images/bookmarks/active-right.gif) no-repeat;}
 
 div#zalogowany-boxes { margin-top:19px; padding-bottom:13px; border: solid #cecece; border-width:0px 0px 1px 0px;}
-div.box-zalogowany { padding-bottom:11px; padding-top:26px; border:solid #e4e4e4; float:left; height:124px; }
+div.box-zalogowany { padding-bottom:11px; padding-top:26px; border:solid #e4e4e4; float:left; height:124px; position: relative; }
 div.box-zalogowany img { height:21px; margin-bottom:10px;}
 div.box-zalogowany span { line-height:17px; font-weight:bold; display:block; padding-bottom:16px;}
 div.bz-left { width:256px; margin-left:16px; padding-right:12px; border-width:0px 1px 1px 0px;}
 div.bz-right { width:249px; padding-left:17px; border-width:0px 0px 1px 0px;}
 div.box-zalogowany.bz-c1 { padding-top:8px;}
 div.box-zalogowany.bz-c3 { padding-bottom:9px; border-bottom-width:0px;}
-div.box-zalogowany div.button-check { float:right; }
+div.box-zalogowany div.button-check { position: absolute; right: 10px; bottom: 10px; }
 
 table#table-mydownloads { margin-left:-17px; text-align:center; margin-top:20px; }
 table#table-mydownloads th { height:30px; line-height:30px; font-size:13px; color:#fff; background:#00b9e1; font-weight:bold;}
@@ -1335,7 +1347,7 @@ div#box-welcome div.button-membershomepage { margin:25px auto; }
 div#box-faq { padding-top:0px;}
 div#box-faq div#bf1-questions { width:534px; padding-top:11px;}
 div#box-faq div#bf1-questions div.bf1d-question { background:#f0f0f0; margin-bottom:6px; }
-div#box-faq div#bf1-questions div.bf1d-question div.bf1d-title { font-size:13px; font-weight:bold; line-height:26px; padding-left:7px;}
+div#box-faq div#bf1-questions div.bf1d-question div.bf1d-title { font-size:13px; font-weight:bold; line-height:20px; padding-left:7px; padding-top: 3px; padding-bottom: 3px;}
 div#box-faq div#bf1-questions div.bf1d-question div.bf1d-title:hover { cursor:pointer; }
 div#box-faq div#bf1-questions div.bf1d-question div.bf1d-answer { display:none; font-size:11px; line-height:17px; padding-left:24px; padding-bottom:10px;}
 div#box-faq div#bf1-questions div.bf1d-question div.bf1d-answer-active { display:block;}
@@ -1347,7 +1359,8 @@ div#box-faq .ui-state-active { color:#00b9e1;}
 
 div#rightside {
 	float:left;
-	width:192px;	
+	width:192px;
+	padding-bottom: 20px;
 }
 
 

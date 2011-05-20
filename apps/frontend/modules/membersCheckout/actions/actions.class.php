@@ -31,12 +31,13 @@ class membersCheckoutActions extends sfActions
     $this->profile_balance = $profile->getProfilesBalanceText();
     $this->basket_prize = Smashin::generate_prize(count($tracks)*sfConfig::get('app_default_prize'));
     $this->new_balance = Smashin::generate_prize($profile->getProfilesBalanceReal()-(count($tracks)*sfConfig::get('app_default_prize')));
+    $this->new_balance_prize = $profile->getProfilesBalanceReal()-(count($tracks)*sfConfig::get('app_default_prize'));
 
 
 
     $form = new MembersCheckoutForm();
 
-    if ($request->isMethod('post') && $request->hasParameter('checkout'))
+    if ($this->new_balance_prize >0 && $request->isMethod('post') && $request->hasParameter('checkout'))
     {
         $form->bind($request->getParameter('checkout'));
         if ($form->isValid())
@@ -66,6 +67,8 @@ class membersCheckoutActions extends sfActions
                 $transaction_track->setTracks($track);
                 $transaction_track->setTransactionsTracksPath(Smashin::generate_random_pass(32));
                 $transaction_track->save();
+                
+                $basket->removeTrack($track->getTracksId());
 
                 /* kupujący */
                 $transactions_saldo[1] = new TransactionsSaldo();
@@ -101,12 +104,20 @@ class membersCheckoutActions extends sfActions
 
             $profile->save();
             $admin_profile->save();
+            
+            $transaction_new = new Transactions();
+            $transaction_new->setTransactionsDate('now');
+            $transaction_new->setProfilesId(ProfilesPeer::getCurrentProfileId()); // id lub null
+            $transaction_new->save();
 
             $oUser->setFlash('order_complete', true);
+            $oUser->setFlash('transaction_id', $transaction->getTransactionsId());
             $oUser->setFlash('profile_balance', $this->profile_balance);
             $oUser->setFlash('basket_prize', $this->basket_prize);
             $oUser->setFlash('new_balance', $this->new_balance);
-
+            $oUser->setAttribute('basket',$basket);
+            $oUser->setAttribute('transaction_id',$transaction_new->getTransactionsId());
+            
             $this->redirect('members_checkout_complete');
         }
     }
@@ -117,17 +128,17 @@ class membersCheckoutActions extends sfActions
 
   public function executeComplete(sfWebRequest $request)
   {
-
     $oUser = $this->getUser();
 
     $order_complete = $oUser->getFlash('order_complete', false); // powinno przyjąć true
+    
+    $transaction_id = $oUser->getFlash('transaction_id', false); // powinno przyjąć wartość transaction_id
 
     $this->getLogger()->alert('Order complete '.(int)$order_complete);
 
-    $this->getLogger()->alert('transaction_id get'.$oUser->getAttribute('transaction_id'));
+    $this->getLogger()->alert('transaction_id get'.$transaction_id);
 
-    if($oUser->hasAttribute('transaction_id')) {
-        $transaction_id = $oUser->getAttribute('transaction_id');
+    if($transaction_id) {
         $transaction = TransactionsPeer::getTransactionById($transaction_id);
         if(!$transaction->getTransactionsDone()) $order_complete = false;
     } else {
@@ -143,6 +154,7 @@ class membersCheckoutActions extends sfActions
 
         /* NIE ZMIENIA STRONY PO NACISNIECIU F5: */
         $oUser->setFlash('order_complete', true);
+        $oUser->setFlash('transaction_id', $transaction_id);
         $oUser->setFlash('profile_balance', $this->profile_balance);
         $oUser->setFlash('basket_prize', $this->basket_prize);
         $oUser->setFlash('new_balance', $this->new_balance);
