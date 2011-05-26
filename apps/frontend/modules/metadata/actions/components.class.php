@@ -10,6 +10,8 @@
       $this->isAdmin = ProfilesPeer::isAdminProfile();
       $this->tracks_amount = TracksPeer::countActiveTracks();
       $this->profiles_amount = ProfilesPeer::countActiveProfiles();
+      $this->profiles_with_tracks_amount = ProfilesPeer::countActiveProfilesWithTracks();
+      $this->profiles_without_tracks_amount = ProfilesPeer::countActiveProfilesWithoutTracks();
     }
 
     public function executeMainmenu(sfWebRequest $request)

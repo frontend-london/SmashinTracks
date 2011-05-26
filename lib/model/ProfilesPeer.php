@@ -52,12 +52,9 @@ class ProfilesPeer extends BaseProfilesPeer {
         {
                 $criteria = clone $criteria;
         }
-        //$criteria->add(self::PROFILES_BLOCKED, false);
-        //$criteria->addJoin(self::PROFILES_ID, TracksPeer::PROFILES_ID);
-        //$criteria->addJoin
-        //$criteria = TracksPeer::addActiveTracksCriteria($criteria);
-        //$criteria->add('COUNT('.TracksPeer::TRACKS_ID.')', Criteria::GREATER_THAN, 0);
-        //DescendingOrderByColumn('COUNT('.TracksPeer::TRACKS_ID.')'); // sortowanie po ilości tracków sprzedanych
+        
+        $criteria->addJoin(self::PROFILES_ID, TracksPeer::PROFILES_ID);
+        $criteria->addGroupByColumn(self::PROFILES_ID);
         return self::getActiveProfilesAscending($criteria);        
     }
 
@@ -157,6 +154,26 @@ class ProfilesPeer extends BaseProfilesPeer {
         $criteria->add(self::PROFILES_BLOCKED, false);
         $criteria->add(self::PROFILES_DELETED, false);
         return self::doCount($criteria);
+    }
+    
+    public static function countActiveProfilesWithTracks() {
+        $sql = 'SELECT COUNT(*) FROM `profiles` WHERE profiles.PROFILES_BLOCKED=false AND profiles.PROFILES_DELETED=false AND (select count(*) from tracks where tracks.profiles_id = profiles.profiles_id)>0';
+
+        $connection = Propel::getConnection();
+        $statement = $connection->prepare($sql);
+        $statement->execute();
+        $row = $statement->fetch();
+        return $row[0];
+    }
+    
+    public static function countActiveProfilesWithoutTracks() {
+        $sql = 'SELECT COUNT(*) FROM `profiles` WHERE profiles.PROFILES_BLOCKED=false AND profiles.PROFILES_DELETED=false AND (select count(*) from tracks where tracks.profiles_id = profiles.profiles_id)=0';
+
+        $connection = Propel::getConnection();
+        $statement = $connection->prepare($sql);
+        $statement->execute();
+        $row = $statement->fetch();
+        return $row[0];
     }
 
     public static function getProfileByEmail($profiles_email, $criteria = null) {

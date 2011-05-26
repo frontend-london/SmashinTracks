@@ -6,7 +6,9 @@
 <?if($isAdmin):?>
     <dl id="leftmenu-summary">
         <dt>Tracków:</dt> <dd><?=$tracks_amount?></dd>
-        <dt>Artystow:</dt> <dd><?=$profiles_amount?></dd>
+        <dt>Artystow:</dt> <dd><?=$profiles_with_tracks_amount?></dd>
+        <dt>Zarejestrowanych:</dt> <dd><?=$profiles_without_tracks_amount?></dd>
+        <dt>Wszystkich:</dt> <dd><?=$profiles_amount?></dd>
     </dl>
     <div class="clear"></div>
 <?endif;?>

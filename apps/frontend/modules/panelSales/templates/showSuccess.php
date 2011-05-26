@@ -32,7 +32,7 @@
                     <table id="table-transactions" cellpadding="0" cellspacing="0">
                         <thead>
                             <tr>
-                                <th class="tt-col1">No.</th>  <th class="tt-col2">Date</th>  <th class="tt-col3">Details</th> <th class="tt-col4">Amount</th> <th class="tt-col5">Saldo</th>
+                                <th class="tt-col1">No.</th>  <th class="tt-col2">Date</th>  <th class="tt-col3">Details</th> <th class="tt-col4">Cost</th> <th class="tt-col5">Balance</th>
                             </tr>
                         </thead>
                         <tbody>

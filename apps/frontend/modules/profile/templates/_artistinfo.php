@@ -25,6 +25,11 @@
                                     <div class="button-right"></div>
                                     <a href="<?=url_for('panel_edit-artist', $profile)?>">EDYTUJ</a>
                                 </div>
+                                <div class="button-sprzedaz" id="at-sprzedaz">
+                                    <div class="button-left"></div>
+                                    <div class="button-right"></div>
+                                    <a href="<?=url_for('panel_sales', $profile)?>">SPRZEDAŻ</a>
+                                </div>                                
                             <?endif;?>
                         </div>
                     <?else:?>

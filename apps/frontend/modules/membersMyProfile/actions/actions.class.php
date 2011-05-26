@@ -71,7 +71,6 @@ class membersMyProfileActions extends sfActions
                     $file->save($filename_upload);
 
                     $thumbnail_big = new sfThumbnail(220, 220, true, true, 100);
-                    $thumbnail_big->quality(100);
                     $thumbnail_big->loadFile($filename_upload);
                     $thumbnail_big->save($filename_target_big, 'image/jpeg');
                     unset($thumbnail_big);

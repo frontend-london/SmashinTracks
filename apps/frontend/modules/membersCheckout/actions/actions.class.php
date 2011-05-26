@@ -37,7 +37,7 @@ class membersCheckoutActions extends sfActions
 
     $form = new MembersCheckoutForm();
 
-    if ($this->new_balance_prize >0 && $request->isMethod('post') && $request->hasParameter('checkout'))
+    if ($this->new_balance_prize >=0 && $request->isMethod('post') && $request->hasParameter('checkout'))
     {
         $form->bind($request->getParameter('checkout'));
         if ($form->isValid())
