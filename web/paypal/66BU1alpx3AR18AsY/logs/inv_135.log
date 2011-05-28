@@ -1,0 +1,65 @@
+------------------------------------------------------------------------
+19-05-2011 06:12:59 - INVOICE 135 - TXNID - 75940314UT844372G
+POST: Array
+(
+    [mc_gross] => 1.40
+    [invoice] => 135
+    [protection_eligibility] => Ineligible
+    [address_status] => unconfirmed
+    [item_number1] => 135 19-3
+    [payer_id] => WBF5ESZ6QX5MY
+    [tax] => 0.00
+    [address_street] => Spoleczna 8/31
+    [payment_date] => 09:12:53 May 19, 2011 PDT
+    [payment_status] => Completed
+    [charset] => windows-1250
+    [address_zip] => 93-313
+    [mc_shipping] => 0.00
+    [mc_handling] => 0.00
+    [first_name] => Marcin
+    [mc_fee] => 0.24
+    [address_country_code] => PL
+    [address_name] => Marcin Matuszewski
+    [notify_version] => 3.1
+    [custom] => 
+    [payer_status] => verified
+    [business] => office@smashintracks.com
+    [address_country] => Poland
+    [num_cart_items] => 1
+    [mc_handling1] => 0.00
+    [address_city] => Lodz
+    [verify_sign] => AbVpE46Hdzh6d29Gu3X3iR8qqXBgAm0Tg0qwnnVcrkyLftlnrAYT.ui7
+    [payer_email] => marti_no@o2.pl
+    [mc_shipping1] => 0.00
+    [txn_id] => 75940314UT844372G
+    [payment_type] => instant
+    [last_name] => Matuszewski
+    [address_state] => 
+    [item_name1] => MP3 Download: Back Again - Base Club
+    [receiver_email] => office@smashintracks.com
+    [payment_fee] => 
+    [quantity1] => 1
+    [receiver_id] => Y8BY2HNCNHJJN
+    [txn_type] => cart
+    [mc_gross_1] => 1.40
+    [mc_currency] => GBP
+    [residence_country] => PL
+    [transaction_subject] => Shopping Cart
+    [payment_gross] => 
+    [ipn_track_id] => jqDUKtq6y8c-PMbe.p5qqQ
+)
+
+IPN VERIFIED START - line 272
+Res: VERIFIED - line 273
+Req: VERIFIED - line 274
+txn_type = cart - line 306
+INSERT SUCCESS: insert into paypal_payment_info(paymentstatus,buyer_email,firstname,lastname,street,city,state,zipcode,country,mc_gross,mc_fee,memo,paymenttype,paymentdate,txnid,pendingreason,reasoncode,tax,datecreation) values ('Completed','marti_no@o2.pl','Marcin','Matuszewski','Spoleczna 8/31','Lodz','','93-313','Poland','1.40','0.24','','instant','09:12:53 May 19, 2011 PDT','75940314UT844372G','','','0.00','20110519') - rows: 1 - line 310
+UPDATE SUCCESS: UPDATE `transactions` SET `transactions_paymethod` = '1', `transactions_paypal_txnid` = '75940314UT844372G', `transactions_date` =  NOW(), `transactions_done` = '1' WHERE `transactions`.`transactions_id` = '135' LIMIT 1 - rows: 1 -  line 330
+INSERT SUCCESS: insert into paypal_cart_info(txnid,itemnumber,itemname,os0,on0,os1,on1,quantity,invoice,custom) values ('75940314UT844372G','135 19-3','MP3 Download: Back Again - Base Club','','','','','1','135','') - rows: 1 - line 365
+INSERT SUCCESS: INSERT INTO `transactions_tracks` (`transactions_tracks_id`, `transactions_id`, `tracks_id`, `transactions_tracks_path`) VALUES (NULL, '135', '19', '8uYuBB47pEzH37O6ScAuvROgcbQlvA1k'); - rows: 1 - line 387
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '19', '3', '70'); - rows: 1 - line 397
+UPDATE SUCCESS: UPDATE `profiles` SET `profiles_balance` = `profiles_balance` + '70'  WHERE `profiles_id` = '3' LIMIT 1; - rows: 1 - line 402
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '19', '1', '70'); - rows: 1 - line 411
+UPDATE SUCCESS: UPDATE `profiles` SET `profiles_balance` = `profiles_balance` + '70'  WHERE `profiles_id` = '1' LIMIT 1; - rows: 1 - line 416
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '19', '7', '-140'); - rows: 1 - line 428
+IPN VERIFIED END - line 452

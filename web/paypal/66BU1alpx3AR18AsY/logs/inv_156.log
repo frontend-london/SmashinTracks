@@ -1,0 +1,65 @@
+------------------------------------------------------------------------
+20-05-2011 06:55:49 - INVOICE 156 - TXNID - 86B274771K8565815
+POST: Array
+(
+    [mc_gross] => 1.40
+    [invoice] => 156
+    [protection_eligibility] => Ineligible
+    [address_status] => unconfirmed
+    [item_number1] => 156 20-7
+    [payer_id] => WBF5ESZ6QX5MY
+    [tax] => 0.00
+    [address_street] => Spoleczna 8/31
+    [payment_date] => 09:55:49 May 20, 2011 PDT
+    [payment_status] => Completed
+    [charset] => windows-1250
+    [address_zip] => 93-313
+    [mc_shipping] => 0.00
+    [mc_handling] => 0.00
+    [first_name] => Marcin
+    [mc_fee] => 0.24
+    [address_country_code] => PL
+    [address_name] => Marcin Matuszewski
+    [notify_version] => 3.1
+    [custom] => 
+    [payer_status] => verified
+    [business] => office@smashintracks.com
+    [address_country] => Poland
+    [num_cart_items] => 1
+    [mc_handling1] => 0.00
+    [address_city] => Lodz
+    [verify_sign] => Aa8SOJxvSzbLNb6pReN1.SgeWcPxACv736LTj0hlEZy8V46teJe.Libf
+    [payer_email] => marti_no@o2.pl
+    [mc_shipping1] => 0.00
+    [txn_id] => 86B274771K8565815
+    [payment_type] => instant
+    [last_name] => Matuszewski
+    [address_state] => 
+    [item_name1] => MP3 Download: Kickin The Beat (Jack Sparrow Project Organ Mix) - Martino B
+    [receiver_email] => office@smashintracks.com
+    [payment_fee] => 
+    [quantity1] => 1
+    [receiver_id] => Y8BY2HNCNHJJN
+    [txn_type] => cart
+    [mc_gross_1] => 1.40
+    [mc_currency] => GBP
+    [residence_country] => PL
+    [transaction_subject] => Shopping Cart
+    [payment_gross] => 
+    [ipn_track_id] => SiJkJ9b.mCvw1RYkqecjCQ
+)
+
+IPN VERIFIED START - line 272
+Res: VERIFIED - line 273
+Req: VERIFIED - line 274
+txn_type = cart - line 306
+INSERT SUCCESS: insert into paypal_payment_info(paymentstatus,buyer_email,firstname,lastname,street,city,state,zipcode,country,mc_gross,mc_fee,memo,paymenttype,paymentdate,txnid,pendingreason,reasoncode,tax,datecreation) values ('Completed','marti_no@o2.pl','Marcin','Matuszewski','Spoleczna 8/31','Lodz','','93-313','Poland','1.40','0.24','','instant','09:55:49 May 20, 2011 PDT','86B274771K8565815','','','0.00','20110520') - rows: 1 - line 310
+UPDATE SUCCESS: UPDATE `transactions` SET `transactions_paymethod` = '1', `transactions_paypal_txnid` = '86B274771K8565815', `transactions_date` =  NOW(), `transactions_done` = '1', `transactions_path` = '4HKmgKq1qBP8kjPkx5pQjXXZnsuwiS88' WHERE `transactions`.`transactions_id` = '156' LIMIT 1 - rows: 1 -  line 330
+INSERT SUCCESS: insert into paypal_cart_info(txnid,itemnumber,itemname,os0,on0,os1,on1,quantity,invoice,custom) values ('86B274771K8565815','156 20-7','MP3 Download: Kickin The Beat (Jack Sparrow Project Organ Mix) - Martino B','','','','','1','156','') - rows: 1 - line 353
+INSERT SUCCESS: INSERT INTO `transactions_tracks` (`transactions_tracks_id`, `transactions_id`, `tracks_id`, `transactions_tracks_path`) VALUES (NULL, '156', '20', '7TvQolRewrnhaCRXIHy2oVccOWZ6yiFi'); - rows: 1 - line 375
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '38', '7', '70'); - rows: 1 - line 385
+UPDATE SUCCESS: UPDATE `profiles` SET `profiles_balance` = `profiles_balance` + '70'  WHERE `profiles_id` = '7' LIMIT 1; - rows: 1 - line 390
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '38', '1', '70'); - rows: 1 - line 399
+UPDATE SUCCESS: UPDATE `profiles` SET `profiles_balance` = `profiles_balance` + '70'  WHERE `profiles_id` = '1' LIMIT 1; - rows: 1 - line 404
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '38', NULL, '-140'); - rows: 1 - line 416
+IPN VERIFIED END - line 440

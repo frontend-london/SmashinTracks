@@ -1,0 +1,122 @@
+------------------------------------------------------------------------
+28-05-2011 04:38:01 - INVOICE 176 - TXNID - 65B63522FY641913R
+POST: Array
+(
+    [mc_gross] => 1.40
+    [invoice] => 176
+    [protection_eligibility] => Ineligible
+    [address_status] => unconfirmed
+    [item_number1] => 176 19-3
+    [payer_id] => WBF5ESZ6QX5MY
+    [tax] => 0.00
+    [address_street] => Spoleczna 8/31
+    [payment_date] => 07:37:59 May 28, 2011 PDT
+    [payment_status] => Completed
+    [charset] => windows-1250
+    [address_zip] => 93-313
+    [mc_shipping] => 0.00
+    [mc_handling] => 0.00
+    [first_name] => Marcin
+    [mc_fee] => 0.24
+    [address_country_code] => PL
+    [address_name] => Marcin Matuszewski
+    [notify_version] => 3.1
+    [custom] => 
+    [payer_status] => verified
+    [business] => office@smashintracks.com
+    [address_country] => Poland
+    [num_cart_items] => 1
+    [mc_handling1] => 0.00
+    [address_city] => Lodz
+    [verify_sign] => A.CSYz4u5IILQm5wM0J0JbJiIcEuA4bbtEgRpFqsp4EGRgEpXGNZuq-R
+    [payer_email] => marti_no@o2.pl
+    [mc_shipping1] => 0.00
+    [txn_id] => 65B63522FY641913R
+    [payment_type] => instant
+    [last_name] => Matuszewski
+    [address_state] => 
+    [item_name1] => MP3 Download: Back Again - Base Club
+    [receiver_email] => office@smashintracks.com
+    [payment_fee] => 
+    [quantity1] => 1
+    [receiver_id] => Y8BY2HNCNHJJN
+    [txn_type] => cart
+    [mc_gross_1] => 1.40
+    [mc_currency] => GBP
+    [residence_country] => PL
+    [transaction_subject] => Shopping Cart
+    [payment_gross] => 
+    [ipn_track_id] => drLPsgAHRyUZbptJUqWtpA
+)
+
+IPN VERIFIED START - line 274
+Res: VERIFIED - line 275
+Req: VERIFIED - line 276
+txn_type = cart - line 308
+INSERT SUCCESS: insert into paypal_payment_info(paymentstatus,buyer_email,firstname,lastname,street,city,state,zipcode,country,mc_gross,mc_fee,memo,paymenttype,paymentdate,txnid,pendingreason,reasoncode,tax,datecreation) values ('Completed','marti_no@o2.pl','Marcin','Matuszewski','Spoleczna 8/31','Lodz','','93-313','Poland','1.40','0.24','','instant','07:37:59 May 28, 2011 PDT','65B63522FY641913R','','','0.00','20110528') - rows: 1 - line 312
+UPDATE SUCCESS: UPDATE `transactions` SET `transactions_paymethod` = '1', `transactions_paypal_txnid` = '65B63522FY641913R', `transactions_date` =  NOW(), `transactions_done` = '1', `transactions_path` = '8IMFV4Rm52R3cpbKoBEZ6e9GJMYGIHf7' WHERE `transactions`.`transactions_id` = '176' LIMIT 1 - rows: 1 -  line 332
+INSERT SUCCESS: insert into paypal_cart_info(txnid,itemnumber,itemname,os0,on0,os1,on1,quantity,invoice,custom) values ('65B63522FY641913R','176 19-3','MP3 Download: Back Again - Base Club','','','','','1','176','') - rows: 1 - line 355
+INSERT SUCCESS: INSERT INTO `transactions_tracks` (`transactions_tracks_id`, `transactions_id`, `tracks_id`, `transactions_tracks_path`) VALUES (NULL, '176', '19', '52N56prBrJET8qnx22X8hgO13xHMFxTp'); - rows: 1 - line 377
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '41', '3', '70'); - rows: 1 - line 387
+UPDATE SUCCESS: UPDATE `profiles` SET `profiles_balance` = `profiles_balance` + '70'  WHERE `profiles_id` = '3' LIMIT 1; - rows: 1 - line 392
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '41', '1', '70'); - rows: 1 - line 401
+UPDATE SUCCESS: UPDATE `profiles` SET `profiles_balance` = `profiles_balance` + '70'  WHERE `profiles_id` = '1' LIMIT 1; - rows: 1 - line 406
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '41', NULL, '-140'); - rows: 1 - line 418
+IPN VERIFIED END - line 442
+
+
+------------------------------------------------------------------------
+28-05-2011 04:51:09 - INVOICE 176 - TXNID - 1Y9533211V1969614
+POST: Array
+(
+    [mc_gross] => -1.40
+    [invoice] => 176
+    [protection_eligibility] => Ineligible
+    [item_number1] => 176 19-3
+    [payer_id] => WBF5ESZ6QX5MY
+    [address_street] => Spoleczna 8/31
+    [payment_date] => 07:51:05 May 28, 2011 PDT
+    [payment_status] => Refunded
+    [charset] => windows-1250
+    [address_zip] => 93-313
+    [mc_shipping] => 0.00
+    [mc_handling] => 0.00
+    [first_name] => Marcin
+    [mc_fee] => -0.24
+    [address_country_code] => PL
+    [address_name] => Marcin Matuszewski
+    [notify_version] => 3.1
+    [reason_code] => refund
+    [custom] => 
+    [business] => office@smashintracks.com
+    [address_country] => Poland
+    [mc_handling1] => 0.00
+    [address_city] => Lodz
+    [verify_sign] => AqBqA1nSf.CEBj1d5rbDP.LO-woKAh3cOlkplk8yZGLmkkmXCNuwtfeq
+    [payer_email] => marti_no@o2.pl
+    [mc_shipping1] => 0.00
+    [parent_txn_id] => 65B63522FY641913R
+    [txn_id] => 1Y9533211V1969614
+    [payment_type] => instant
+    [last_name] => Matuszewski
+    [address_state] => 
+    [item_name1] => MP3 Download: Back Again - Base Club
+    [receiver_email] => office@smashintracks.com
+    [payment_fee] => 
+    [quantity1] => 1
+    [receiver_id] => Y8BY2HNCNHJJN
+    [mc_gross_1] => 1.40
+    [mc_currency] => GBP
+    [residence_country] => PL
+    [transaction_subject] => Shopping Cart
+    [payment_gross] => 
+    [ipn_track_id] => Ik3BIzYQ2E0XHyPoMNRZtw
+)
+
+IPN VERIFIED START - line 274
+Res: VERIFIED - line 275
+Req: VERIFIED - line 276
+ERROR = TRUE - BAD AMOUNT. Should be: 0.00	Is:-1.40	prize - 0	prize_string - 0.00	mc_gross - -1.40 - line 301
+txn_type != cart =  - line 431
+INSERT SUCCESS: insert into paypal_payment_info(paymentstatus,buyer_email,firstname,lastname,street,city,state,zipcode,country,mc_gross,mc_fee,itemnumber,itemname,os0,on0,os1,on1,quantity,memo,paymenttype,paymentdate,txnid,pendingreason,reasoncode,tax,datecreation) values ('Refunded','marti_no@o2.pl','Marcin','Matuszewski','Spoleczna 8/31','Lodz','','93-313','Poland','-1.40','-0.24','','','','','','','','','instant','07:51:05 May 28, 2011 PDT','1Y9533211V1969614','','refund','','20110528') - rows: 1 - line 439
+IPN VERIFIED END - line 442

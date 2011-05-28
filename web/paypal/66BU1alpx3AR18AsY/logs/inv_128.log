@@ -1,0 +1,118 @@
+------------------------------------------------------------------------
+18-05-2011 10:27:32 - INVOICE 128 - TXNID - 5F389764TW6790930
+POST: Array
+(
+    [mc_gross] => 1.40
+    [invoice] => 128
+    [protection_eligibility] => Ineligible
+    [address_status] => unconfirmed
+    [item_number1] => 128 17-16
+    [payer_id] => WBF5ESZ6QX5MY
+    [tax] => 0.00
+    [address_street] => Spoleczna 8/31
+    [payment_date] => 13:27:23 May 18, 2011 PDT
+    [payment_status] => Completed
+    [charset] => windows-1250
+    [address_zip] => 93-313
+    [mc_shipping] => 0.00
+    [mc_handling] => 0.00
+    [first_name] => Marcin
+    [mc_fee] => 0.24
+    [address_country_code] => PL
+    [address_name] => Marcin Matuszewski
+    [notify_version] => 3.1
+    [custom] => 
+    [payer_status] => verified
+    [business] => office@smashintracks.com
+    [address_country] => Poland
+    [num_cart_items] => 1
+    [mc_handling1] => 0.00
+    [address_city] => Lodz
+    [verify_sign] => A6uskHlHx8jEdcObzAA47yK1YhpxAKYjxzk5xGoLKYvwLNztgapoD-4r
+    [payer_email] => marti_no@o2.pl
+    [mc_shipping1] => 0.00
+    [txn_id] => 5F389764TW6790930
+    [payment_type] => instant
+    [last_name] => Matuszewski
+    [address_state] => 
+    [item_name1] => MP3 Download: Parisian Backstreet - Authysm
+    [receiver_email] => office@smashintracks.com
+    [payment_fee] => 
+    [quantity1] => 1
+    [receiver_id] => Y8BY2HNCNHJJN
+    [txn_type] => cart
+    [mc_gross_1] => 1.40
+    [mc_currency] => GBP
+    [residence_country] => PL
+    [transaction_subject] => Shopping Cart
+    [payment_gross] => 
+    [ipn_track_id] => SMaCgu8PoHhmsbxZynqLYw
+)
+
+IPN VERIFIED START - line 272
+Res: VERIFIED - line 273
+Req: VERIFIED - line 274
+ERROR = TRUE - BAD AMOUNT. Should be: 0.02	Is:1.40	prize - 0.02	prize_string - 0.02	mc_gross - 1.40 - line 299
+txn_type = cart - line 306
+INSERT SUCCESS: insert into paypal_payment_info(paymentstatus,buyer_email,firstname,lastname,street,city,state,zipcode,country,mc_gross,mc_fee,memo,paymenttype,paymentdate,txnid,pendingreason,reasoncode,tax,datecreation) values ('Completed','marti_no@o2.pl','Marcin','Matuszewski','Spoleczna 8/31','Lodz','','93-313','Poland','1.40','0.24','','instant','13:27:23 May 18, 2011 PDT','5F389764TW6790930','','','0.00','20110518') - rows: 1 - line 310
+SELECT & UPDATE `transactions` SKIPPED (error = true) - line 349
+INSERT SUCCESS: insert into paypal_cart_info(txnid,itemnumber,itemname,os0,on0,os1,on1,quantity,invoice,custom) values ('5F389764TW6790930','128 17-16','MP3 Download: Parisian Backstreet - Authysm','','','','','1','128','') - rows: 1 - line 365
+SELECT & UPDATE `transactions_tracks` & `transactions_saldo` SKIPPED (error = true) - line 436
+IPN VERIFIED END - line 452
+
+
+------------------------------------------------------------------------
+19-05-2011 11:40:59 - INVOICE 128 - TXNID - 72V36775NE496884Y
+POST: Array
+(
+    [mc_gross] => -1.40
+    [invoice] => 128
+    [protection_eligibility] => Ineligible
+    [item_number1] => 128 17-16
+    [payer_id] => WBF5ESZ6QX5MY
+    [address_street] => Spoleczna 8/31
+    [payment_date] => 02:40:53 May 19, 2011 PDT
+    [payment_status] => Refunded
+    [charset] => windows-1250
+    [address_zip] => 93-313
+    [mc_shipping] => 0.00
+    [mc_handling] => 0.00
+    [first_name] => Marcin
+    [mc_fee] => -0.24
+    [address_country_code] => PL
+    [address_name] => Marcin Matuszewski
+    [notify_version] => 3.1
+    [reason_code] => refund
+    [custom] => 
+    [business] => office@smashintracks.com
+    [address_country] => Poland
+    [mc_handling1] => 0.00
+    [address_city] => Lodz
+    [verify_sign] => ALKy1VlP4TTkO-p7z.xyaShsSLyKAQXqJrRKiMe7OqOkcNGyiejZ5p.Z
+    [payer_email] => marti_no@o2.pl
+    [mc_shipping1] => 0.00
+    [parent_txn_id] => 5F389764TW6790930
+    [txn_id] => 72V36775NE496884Y
+    [payment_type] => instant
+    [last_name] => Matuszewski
+    [address_state] => 
+    [item_name1] => MP3 Download: Parisian Backstreet - Authysm
+    [receiver_email] => office@smashintracks.com
+    [payment_fee] => 
+    [quantity1] => 1
+    [receiver_id] => Y8BY2HNCNHJJN
+    [mc_gross_1] => 1.40
+    [mc_currency] => GBP
+    [residence_country] => PL
+    [transaction_subject] => Shopping Cart
+    [payment_gross] => 
+    [ipn_track_id] => LM7wLuR6Wq9QBttU3Kz7Vw
+)
+
+IPN VERIFIED START - line 272
+Res: VERIFIED - line 273
+Req: VERIFIED - line 274
+ERROR = TRUE - BAD AMOUNT. Should be: 0.00	Is:-1.40	prize - 0	prize_string - 0.00	mc_gross - -1.40 - line 299
+txn_type != cart =  - line 441
+INSERT SUCCESS: insert into paypal_payment_info(paymentstatus,buyer_email,firstname,lastname,street,city,state,zipcode,country,mc_gross,mc_fee,itemnumber,itemname,os0,on0,os1,on1,quantity,memo,paymenttype,paymentdate,txnid,pendingreason,reasoncode,tax,datecreation) values ('Refunded','marti_no@o2.pl','Marcin','Matuszewski','Spoleczna 8/31','Lodz','','93-313','Poland','-1.40','-0.24','','','','','','','','','instant','02:40:53 May 19, 2011 PDT','72V36775NE496884Y','','refund','','20110519') - rows: 1 - line 449
+IPN VERIFIED END - line 452

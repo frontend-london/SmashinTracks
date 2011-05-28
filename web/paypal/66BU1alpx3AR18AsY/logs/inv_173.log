@@ -1,0 +1,55 @@
+------------------------------------------------------------------------
+28-05-2011 04:37:25 - INVOICE 173 - TXNID - 1SE460377K154973G
+POST: Array
+(
+    [mc_gross] => -1.40
+    [invoice] => 173
+    [protection_eligibility] => Ineligible
+    [item_number1] => 173 62-3
+    [payer_id] => LC6RTT6Y93GJL
+    [address_street] => 268 Spring st.
+    [payment_date] => 07:37:21 May 28, 2011 PDT
+    [payment_status] => Refunded
+    [charset] => windows-1250
+    [address_zip] => 10950
+    [mc_shipping] => 0.00
+    [mc_handling] => 0.00
+    [first_name] => Daniela
+    [mc_fee] => -0.25
+    [address_country_code] => US
+    [address_name] => Daniela Matuszewska
+    [notify_version] => 3.1
+    [reason_code] => refund
+    [custom] => 
+    [business] => office@smashintracks.com
+    [address_country] => United States
+    [mc_handling1] => 0.00
+    [address_city] => Monroe
+    [verify_sign] => AKwUpvimaCAfmfJ-.PhckWeGqTcrAkgIje-xo9qyqKrDlyqLItnFTIlb
+    [payer_email] => daniela_matuszewska@interia.eu
+    [mc_shipping1] => 0.00
+    [parent_txn_id] => 5P475716Y94015048
+    [txn_id] => 1SE460377K154973G
+    [payment_type] => instant
+    [last_name] => Matuszewska
+    [address_state] => NY
+    [item_name1] => MP3 Download: Lodz City (Base Club Touch) - Martino B
+    [receiver_email] => office@smashintracks.com
+    [payment_fee] => 
+    [quantity1] => 1
+    [receiver_id] => Y8BY2HNCNHJJN
+    [mc_gross_1] => 1.40
+    [mc_currency] => GBP
+    [residence_country] => US
+    [transaction_subject] => Shopping Cart
+    [payment_gross] => 
+    [ipn_track_id] => ZreSumwLa42bdagIDWzZUQ
+)
+
+IPN VERIFIED START - line 274
+Res: VERIFIED - line 275
+Req: VERIFIED - line 276
+ERROR = TRUE - BAD AMOUNT. Should be: 0.00	Is:-1.40	prize - 0	prize_string - 0.00	mc_gross - -1.40 - line 301
+txn_type != cart =  - line 431
+INSERT SUCCESS: insert into paypal_payment_info(paymentstatus,buyer_email,firstname,lastname,street,city,state,zipcode,country,mc_gross,mc_fee,itemnumber,itemname,os0,on0,os1,on1,quantity,memo,paymenttype,paymentdate,txnid,pendingreason,reasoncode,tax,datecreation) values ('Refunded','daniela_matuszewska@interia.eu','Daniela','Matuszewska','268 Spring st.','Monroe','NY','10950','United States','-1.40','-0.25','','','','','','','','','instant','07:37:21 May 28, 2011 PDT','1SE460377K154973G','','refund','','20110528') - rows: 1 - line 439
+IPN VERIFIED END - line 442

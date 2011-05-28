@@ -1,0 +1,156 @@
+------------------------------------------------------------------------
+20-05-2011 01:59:43 - INVOICE 144 - TXNID - 5X8068733B9652932
+POST: Array
+(
+    [invoice] => 144
+    [first_name] => Marcin
+    [mc_shipping] => 0.00
+    [mc_currency] => GBP
+    [payer_status] => verified
+    [payment_fee] => 
+    [address_status] => unconfirmed
+    [payment_gross] => 
+    [address_zip] => 93-313
+    [address_country_code] => PL
+    [mc_handling] => 0.00
+    [txn_type] => cart
+    [num_cart_items] => 8
+    [verify_sign] => ADnQGez5FnwXphHIh4Ab55-1nu-kAo3dvHUcazPFT2qZ0nN3GhfQOnT3
+    [payer_id] => WBF5ESZ6QX5MY
+    [charset] => windows-1250
+    [receiver_id] => Y8BY2HNCNHJJN
+    [mc_handling1] => 0.00
+    [mc_handling2] => 0.00
+    [mc_handling3] => 0.00
+    [mc_handling4] => 0.00
+    [mc_handling5] => 0.00
+    [tax] => 0.00
+    [item_name1] => MP3 Download: Rudeboyz - Base Club
+    [mc_handling6] => 0.00
+    [mc_handling7] => 0.00
+    [item_name2] => MP3 Download: Back Again - Base Club
+    [mc_handling8] => 0.00
+    [item_name3] => MP3 Download: Feel It - Base Club
+    [item_name4] => MP3 Download: Respect - Base Club
+    [payment_type] => instant
+    [item_name5] => MP3 Download: Dancin Together - Base Club
+    [item_name6] => MP3 Download: Are U Ready To Fly - Base Club
+    [item_name7] => MP3 Download: Piano Mash 001 (Base Club Old Skool Rave Edit Mix) - Urban Impulz
+    [item_name8] => MP3 Download: Unity - Base Club
+    [address_street] => Spoleczna 8/31
+    [mc_shipping1] => 0.00
+    [mc_shipping2] => 0.00
+    [mc_shipping3] => 0.00
+    [txn_id] => 5X8068733B9652932
+    [mc_shipping4] => 0.00
+    [mc_shipping5] => 0.00
+    [mc_shipping6] => 0.00
+    [mc_shipping7] => 0.00
+    [mc_shipping8] => 0.00
+    [mc_gross_1] => 1.40
+    [quantity1] => 1
+    [mc_gross_2] => 1.40
+    [quantity2] => 1
+    [item_number1] => 144 21-3
+    [protection_eligibility] => Ineligible
+    [mc_gross_3] => 1.40
+    [quantity3] => 1
+    [item_number2] => 144 19-3
+    [mc_gross_4] => 1.40
+    [quantity4] => 1
+    [item_number3] => 144 15-3
+    [custom] => 
+    [mc_gross_5] => 1.40
+    [quantity5] => 1
+    [item_number4] => 144 12-3
+    [mc_gross_6] => 1.40
+    [quantity6] => 1
+    [item_number5] => 144 11-3
+    [mc_gross_7] => 1.40
+    [quantity7] => 1
+    [item_number6] => 144 3-3
+    [mc_gross_8] => 1.40
+    [quantity8] => 1
+    [business] => office@smashintracks.com
+    [item_number7] => 144 1-3
+    [item_number8] => 144 2-3
+    [residence_country] => PL
+    [last_name] => Matuszewski
+    [address_state] => 
+    [payer_email] => marti_no@o2.pl
+    [address_city] => Lodz
+    [payment_status] => Completed
+    [payment_date] => 04:59:27 May 20, 2011 PDT
+    [transaction_subject] => Shopping Cart
+    [receiver_email] => office@smashintracks.com
+    [mc_fee] => 0.52
+    [notify_version] => 3.1
+    [address_country] => Poland
+    [mc_gross] => 11.20
+    [address_name] => Marcin Matuszewski
+    [ipn_track_id] => OPKqRJw4yk6.R0qopp0uZA
+)
+
+IPN VERIFIED START - line 272
+Res: VERIFIED - line 273
+Req: VERIFIED - line 274
+txn_type = cart - line 306
+INSERT SUCCESS: insert into paypal_payment_info(paymentstatus,buyer_email,firstname,lastname,street,city,state,zipcode,country,mc_gross,mc_fee,memo,paymenttype,paymentdate,txnid,pendingreason,reasoncode,tax,datecreation) values ('Completed','marti_no@o2.pl','Marcin','Matuszewski','Spoleczna 8/31','Lodz','','93-313','Poland','11.20','0.52','','instant','04:59:27 May 20, 2011 PDT','5X8068733B9652932','','','0.00','20110520') - rows: 1 - line 310
+UPDATE SUCCESS: UPDATE `transactions` SET `transactions_paymethod` = '1', `transactions_paypal_txnid` = '5X8068733B9652932', `transactions_date` =  NOW(), `transactions_done` = '1' WHERE `transactions`.`transactions_id` = '144' LIMIT 1 - rows: 1 -  line 330
+INSERT SUCCESS: insert into paypal_cart_info(txnid,itemnumber,itemname,os0,on0,os1,on1,quantity,invoice,custom) values ('5X8068733B9652932','144 21-3','MP3 Download: Rudeboyz - Base Club','','','','','1','144','') - rows: 1 - line 365
+INSERT SUCCESS: INSERT INTO `transactions_tracks` (`transactions_tracks_id`, `transactions_id`, `tracks_id`, `transactions_tracks_path`) VALUES (NULL, '144', '21', '3aJyhFQ8hgAbUwWU6iMzwzAqnFo4tvDE'); - rows: 1 - line 387
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '20', '3', '70'); - rows: 1 - line 397
+UPDATE SUCCESS: UPDATE `profiles` SET `profiles_balance` = `profiles_balance` + '70'  WHERE `profiles_id` = '3' LIMIT 1; - rows: 1 - line 402
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '20', '1', '70'); - rows: 1 - line 411
+UPDATE SUCCESS: UPDATE `profiles` SET `profiles_balance` = `profiles_balance` + '70'  WHERE `profiles_id` = '1' LIMIT 1; - rows: 1 - line 416
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '20', '7', '-140'); - rows: 1 - line 428
+INSERT SUCCESS: insert into paypal_cart_info(txnid,itemnumber,itemname,os0,on0,os1,on1,quantity,invoice,custom) values ('5X8068733B9652932','144 19-3','MP3 Download: Back Again - Base Club','','','','','1','144','') - rows: 1 - line 365
+INSERT SUCCESS: INSERT INTO `transactions_tracks` (`transactions_tracks_id`, `transactions_id`, `tracks_id`, `transactions_tracks_path`) VALUES (NULL, '144', '19', '5WCCmcLUJV5oScJYKfXGfi6SxvXqrl5M'); - rows: 1 - line 387
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '21', '3', '70'); - rows: 1 - line 397
+UPDATE SUCCESS: UPDATE `profiles` SET `profiles_balance` = `profiles_balance` + '70'  WHERE `profiles_id` = '3' LIMIT 1; - rows: 1 - line 402
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '21', '1', '70'); - rows: 1 - line 411
+UPDATE SUCCESS: UPDATE `profiles` SET `profiles_balance` = `profiles_balance` + '70'  WHERE `profiles_id` = '1' LIMIT 1; - rows: 1 - line 416
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '21', '7', '-140'); - rows: 1 - line 428
+INSERT SUCCESS: insert into paypal_cart_info(txnid,itemnumber,itemname,os0,on0,os1,on1,quantity,invoice,custom) values ('5X8068733B9652932','144 15-3','MP3 Download: Feel It - Base Club','','','','','1','144','') - rows: 1 - line 365
+INSERT SUCCESS: INSERT INTO `transactions_tracks` (`transactions_tracks_id`, `transactions_id`, `tracks_id`, `transactions_tracks_path`) VALUES (NULL, '144', '15', '2HZ4uvZDQe2tHLRb1zsghz9fuhWlSb8k'); - rows: 1 - line 387
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '22', '3', '70'); - rows: 1 - line 397
+UPDATE SUCCESS: UPDATE `profiles` SET `profiles_balance` = `profiles_balance` + '70'  WHERE `profiles_id` = '3' LIMIT 1; - rows: 1 - line 402
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '22', '1', '70'); - rows: 1 - line 411
+UPDATE SUCCESS: UPDATE `profiles` SET `profiles_balance` = `profiles_balance` + '70'  WHERE `profiles_id` = '1' LIMIT 1; - rows: 1 - line 416
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '22', '7', '-140'); - rows: 1 - line 428
+INSERT SUCCESS: insert into paypal_cart_info(txnid,itemnumber,itemname,os0,on0,os1,on1,quantity,invoice,custom) values ('5X8068733B9652932','144 12-3','MP3 Download: Respect - Base Club','','','','','1','144','') - rows: 1 - line 365
+INSERT SUCCESS: INSERT INTO `transactions_tracks` (`transactions_tracks_id`, `transactions_id`, `tracks_id`, `transactions_tracks_path`) VALUES (NULL, '144', '12', '8hpmcO0333xKOOvQOn76mGlhyHTQsbBk'); - rows: 1 - line 387
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '23', '3', '70'); - rows: 1 - line 397
+UPDATE SUCCESS: UPDATE `profiles` SET `profiles_balance` = `profiles_balance` + '70'  WHERE `profiles_id` = '3' LIMIT 1; - rows: 1 - line 402
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '23', '1', '70'); - rows: 1 - line 411
+UPDATE SUCCESS: UPDATE `profiles` SET `profiles_balance` = `profiles_balance` + '70'  WHERE `profiles_id` = '1' LIMIT 1; - rows: 1 - line 416
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '23', '7', '-140'); - rows: 1 - line 428
+INSERT SUCCESS: insert into paypal_cart_info(txnid,itemnumber,itemname,os0,on0,os1,on1,quantity,invoice,custom) values ('5X8068733B9652932','144 11-3','MP3 Download: Dancin Together - Base Club','','','','','1','144','') - rows: 1 - line 365
+INSERT SUCCESS: INSERT INTO `transactions_tracks` (`transactions_tracks_id`, `transactions_id`, `tracks_id`, `transactions_tracks_path`) VALUES (NULL, '144', '11', '31XvPYzTbwn0LjQkWXqJob1msUDl5PWO'); - rows: 1 - line 387
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '24', '3', '70'); - rows: 1 - line 397
+UPDATE SUCCESS: UPDATE `profiles` SET `profiles_balance` = `profiles_balance` + '70'  WHERE `profiles_id` = '3' LIMIT 1; - rows: 1 - line 402
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '24', '1', '70'); - rows: 1 - line 411
+UPDATE SUCCESS: UPDATE `profiles` SET `profiles_balance` = `profiles_balance` + '70'  WHERE `profiles_id` = '1' LIMIT 1; - rows: 1 - line 416
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '24', '7', '-140'); - rows: 1 - line 428
+INSERT SUCCESS: insert into paypal_cart_info(txnid,itemnumber,itemname,os0,on0,os1,on1,quantity,invoice,custom) values ('5X8068733B9652932','144 3-3','MP3 Download: Are U Ready To Fly - Base Club','','','','','1','144','') - rows: 1 - line 365
+INSERT SUCCESS: INSERT INTO `transactions_tracks` (`transactions_tracks_id`, `transactions_id`, `tracks_id`, `transactions_tracks_path`) VALUES (NULL, '144', '3', '44KqcKJEH6FcpgNMEDg3ohqhC3THTzgt'); - rows: 1 - line 387
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '25', '3', '70'); - rows: 1 - line 397
+UPDATE SUCCESS: UPDATE `profiles` SET `profiles_balance` = `profiles_balance` + '70'  WHERE `profiles_id` = '3' LIMIT 1; - rows: 1 - line 402
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '25', '1', '70'); - rows: 1 - line 411
+UPDATE SUCCESS: UPDATE `profiles` SET `profiles_balance` = `profiles_balance` + '70'  WHERE `profiles_id` = '1' LIMIT 1; - rows: 1 - line 416
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '25', '7', '-140'); - rows: 1 - line 428
+INSERT SUCCESS: insert into paypal_cart_info(txnid,itemnumber,itemname,os0,on0,os1,on1,quantity,invoice,custom) values ('5X8068733B9652932','144 1-3','MP3 Download: Piano Mash 001 (Base Club Old Skool Rave Edit Mix) - Urban Impulz','','','','','1','144','') - rows: 1 - line 365
+INSERT SUCCESS: INSERT INTO `transactions_tracks` (`transactions_tracks_id`, `transactions_id`, `tracks_id`, `transactions_tracks_path`) VALUES (NULL, '144', '1', '01kgL3vc9AFzrcM5p28ekzMw2pEWpvQt'); - rows: 1 - line 387
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '26', '3', '70'); - rows: 1 - line 397
+UPDATE SUCCESS: UPDATE `profiles` SET `profiles_balance` = `profiles_balance` + '70'  WHERE `profiles_id` = '3' LIMIT 1; - rows: 1 - line 402
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '26', '1', '70'); - rows: 1 - line 411
+UPDATE SUCCESS: UPDATE `profiles` SET `profiles_balance` = `profiles_balance` + '70'  WHERE `profiles_id` = '1' LIMIT 1; - rows: 1 - line 416
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '26', '7', '-140'); - rows: 1 - line 428
+INSERT SUCCESS: insert into paypal_cart_info(txnid,itemnumber,itemname,os0,on0,os1,on1,quantity,invoice,custom) values ('5X8068733B9652932','144 2-3','MP3 Download: Unity - Base Club','','','','','1','144','') - rows: 1 - line 365
+INSERT SUCCESS: INSERT INTO `transactions_tracks` (`transactions_tracks_id`, `transactions_id`, `tracks_id`, `transactions_tracks_path`) VALUES (NULL, '144', '2', '9AZHDVuNg9MXljdblmFWlcToRiKHdkAZ'); - rows: 1 - line 387
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '27', '3', '70'); - rows: 1 - line 397
+UPDATE SUCCESS: UPDATE `profiles` SET `profiles_balance` = `profiles_balance` + '70'  WHERE `profiles_id` = '3' LIMIT 1; - rows: 1 - line 402
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '27', '1', '70'); - rows: 1 - line 411
+UPDATE SUCCESS: UPDATE `profiles` SET `profiles_balance` = `profiles_balance` + '70'  WHERE `profiles_id` = '1' LIMIT 1; - rows: 1 - line 416
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '27', '7', '-140'); - rows: 1 - line 428
+IPN VERIFIED END - line 452

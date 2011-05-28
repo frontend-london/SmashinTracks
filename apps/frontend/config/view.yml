@@ -14,7 +14,7 @@ default:
 
   stylesheets:    [style.css]
 
-  javascripts:    [jquery/jquery.js, jquery/jquery-ui-1.8.7.custom.min.js, jquery/jquery.select_drop_down.js, jquery/jquery.form.js, swfobject/swfobject.js, common.js, http://s7.addthis.com/js/250/addthis_widget.js#username=modul, addthis_config.js]
+  javascripts:    [jquery/jquery.js, jquery/jquery-ui-1.8.7.custom.min.js, jquery/jquery.select_drop_down.js, jquery/jquery.form.js, swfobject/swfobject.js, common.js, http://s7.addthis.com/js/250/addthis_widget.js#username=modul, addthis_config.js, google-analytics.js]
 
   has_layout:     true
   layout:         layout

@@ -1,12 +1,12 @@
 <?php
 
 define('ADMIN_PROFILE', 1);
-define('TRACK_PRIZE_HALF', 1); // 700
-define('TRACK_PRIZE', 2); // 1400
+define('TRACK_PRIZE_HALF', 70); // 700
+define('TRACK_PRIZE', 140); // 140
 define('SERVER_ADDRESS', 'http://smashintracks.com');
 
 //DB connect creds and email
-$notify_email =  "m.matuszewski@gmail.com"; //email address to which debug emails are sent to
+$notify_email =  "modul008@gmail.com, m.matuszewski@gmail.com"; //email address to which debug emails are sent to
 $DB_Server = "localhost"; //your MySQL Server
 $DB_Username = "martino_stracks"; //your MySQL User Name
 $DB_Password = "tiPrbOUl"; //your MySQL Password
@@ -98,8 +98,8 @@ function mail_attachment_text($mailto, $from_mail, $from_name, $subject, $messag
     mail($mailto, $subject_iso, "", $header_iso);
 }
 
-function mail_download_links($to, $num_cart_items, $track_name, $transactions_tracks_id, $transactions_tracks_path, $transactions_id, $transactions_path = null, $invoice) {
-    $to  = 'modul008@gmail.com, '.$to;
+function mail_download_links($payer_email, $num_cart_items, $track_name, $transactions_tracks_id, $transactions_tracks_path, $transactions_id, $transactions_path = null, $invoice) {
+	global $notify_email;
     $subject = 'Your Tracks from Smashintracks.com';
     if(!empty($transactions_path)) $transactions_path = '/'.$transactions_path;
     $message = '<html>
@@ -133,10 +133,12 @@ function mail_download_links($to, $num_cart_items, $track_name, $transactions_tr
     $headers .= 'Content-type: text/html; charset=iso-8859-2' . "\r\n";
     $headers .= 'From: SmashinTracks.com <office@smashintracks.com>' . "\r\n";
     $message_iso = iconv("UTF-8", "ISO-8859-2", $message);
-    mail($to, $subject, $message_iso, $headers);
+    mail($payer_email, $subject, $message_iso, $headers);
+    mail($notify_email, $subject, $message_iso, $headers);
 }
 
 function mail_info($invoice, $num_cart_items, $track_name, $mc_gross, $payer_email, $txn_id) {
+	global $notify_email;
     $mail_content = "Transakcja pomyślnie zakończona. \nFaktura nr $invoice.\n\n Tracks: \n";
     for ($i = 1; $i <= $num_cart_items; $i++) {
         $mail_content.= $i.". ".$track_name[$i]."\n";
@@ -148,7 +150,7 @@ function mail_info($invoice, $num_cart_items, $track_name, $mc_gross, $payer_ema
     $mail_subject = "SmashinTracks.com - Transakcja Pomyślnie Zakończona";
     $attachment_name = 'inv_'.$invoice.'_log.txt';
     $attachment_content = "------------------------------------------------------------------------\n".date('d-m-Y h:i:s')." - INVOICE $invoice - TXNID - $txn_id\nPOST: ".print_r($_POST, true);
-    mail_attachment_text("modul008@gmail.com, m.matuszewski@gmail.com", $mail_address, $mail_name, $mail_subject, $mail_content, $attachment_name, $attachment_content);
+    mail_attachment_text($notify_email, $mail_address, $mail_name, $mail_subject, $mail_content, $attachment_name, $attachment_content);
 }
 
 
@@ -330,18 +332,6 @@ if (!$fp) {
                             addToLog("UPDATE SUCCESS: $sql3 - rows: ".mysql_affected_rows()." -  line ".__LINE__);
                         }
 
-
-                        /*
-                         * DOKOŃCZYĆ
-                        $sql4 = "UPDATE `profiles` SET `profiles_balance` = '1', `transactions_paypal_txnid` = '$txn_id', `transactions_date` =  NOW(), `transactions_done` = '1' WHERE `transactions`.`transactions_id` = '$invoice' LIMIT 1";
-                        $result3 = mysql_query($sql4);
-                        if(!$result3) {
-                            addToLog("UPDATE FAILED - $sql4 - line ".__LINE__);
-                        } else {
-                            addToLog("UPDATE SUCCESS: $sql4 - rows: ".mysql_affected_rows()." -  line ".__LINE__);
-                        }
-                         *
-                         */
                     } else {
                       addToLog("SELECT FAILED - $sql2 - line ".__LINE__);
                     }
@@ -478,10 +468,10 @@ if (!$fp) {
         } //else {mail($notify_email, "END ELSE REACHED", "END ELSE REACHED $res");}
     }
     fclose ($fp);
-    saveLog();
     if($transaction_success) {
         mail_info($invoice, $num_cart_items, $track_name, $mc_gross, $payer_email, $txn_id);
-        mail_download_links($to, $num_cart_items, $track_name, $transactions_tracks_id, $transactions_tracks_path, $invoice, $transactions_path, $invoice);
+        mail_download_links($payer_email, $num_cart_items, $track_name, $transactions_tracks_id, $transactions_tracks_path, $invoice, $transactions_path, $invoice);
     }
+	saveLog();
 }
 ?>

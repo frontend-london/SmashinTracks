@@ -238,22 +238,22 @@ class Profiles extends BaseProfiles {
         }
 
         public function setProfilesPath($v)
-	{
-		if ($v !== null) {
-			$v = (string) $v;
-		}
+        {
+            if ($v !== null) {
+                $v = (string) $v;
+            }
+    
+            $big_old = sfConfig::get('sf_images_profiles_big_dir').DIRECTORY_SEPARATOR.$this->profiles_path.'.jpg';
+            if (($this->profiles_path !== $v) && file_exists($big_old)) {
+                $big_new = sfConfig::get('sf_images_profiles_big_dir').DIRECTORY_SEPARATOR.$v.'.jpg';
+                $small_old = sfConfig::get('sf_images_profiles_small_dir').DIRECTORY_SEPARATOR.$this->profiles_path.'.jpg';
+                $small_new = sfConfig::get('sf_images_profiles_small_dir').DIRECTORY_SEPARATOR.$v.'.jpg';
+                rename($big_old, $big_new);
+                rename($small_old, $small_new);
+            }
 
-                $big_old = sfConfig::get('sf_images_profiles_big_dir').DIRECTORY_SEPARATOR.$this->profiles_path.'.jpg';
-		if (($this->profiles_path !== $v) && file_exists($big_old)) {
-                    $big_new = sfConfig::get('sf_images_profiles_big_dir').DIRECTORY_SEPARATOR.$v.'.jpg';
-                    $small_old = sfConfig::get('sf_images_profiles_small_dir').DIRECTORY_SEPARATOR.$this->profiles_path.'.jpg';
-                    $small_new = sfConfig::get('sf_images_profiles_small_dir').DIRECTORY_SEPARATOR.$v.'.jpg';
-                    rename($big_old, $big_new);
-                    rename($small_old, $small_new);
-		}
-
-		return parent::setProfilesPath($v);
-	}
+            return parent::setProfilesPath($v);
+        }
 
         public function setProfilesPassword($v)
 	{

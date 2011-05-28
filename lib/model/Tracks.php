@@ -97,6 +97,28 @@ class Tracks extends BaseTracks {
         
             return parent::save($con);
         }
+		
+		public function setTracksPath($v)
+		{
+				if ($v !== null) {
+						$v = (string) $v;
+				}
+			
+				$preview = sfConfig::get('sf_upload_tracks_preview_dir').DIRECTORY_SEPARATOR.$this->tracks_path.'.mp3';
+				if (($this->tracks_path !== $v) && file_exists($preview)) {
+					$preview_new = sfConfig::get('sf_upload_tracks_preview_dir').DIRECTORY_SEPARATOR.$v.'.mp3';
+					rename($preview, $preview_new);
+				}
+				
+				$full = sfConfig::get('sf_upload_full_track_dir').DIRECTORY_SEPARATOR.$this->tracks_path.'.mp3';
+				if (($this->tracks_path !== $v) && file_exists($full)) {
+					$full_new = sfConfig::get('sf_upload_full_track_dir').DIRECTORY_SEPARATOR.$v.'.mp3';
+					rename($full, $full_new);
+				}
+	
+				return parent::setTracksPath($v);
+		} // setTracksPath()
+
 
         public function addStats() {
             $ip_address = $_SERVER['REMOTE_ADDR'];

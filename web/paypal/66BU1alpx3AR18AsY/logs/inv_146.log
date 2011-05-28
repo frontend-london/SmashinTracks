@@ -1,0 +1,78 @@
+------------------------------------------------------------------------
+20-05-2011 02:29:55 - INVOICE 146 - TXNID - 9C632653SR408343T
+POST: Array
+(
+    [mc_gross] => 2.80
+    [invoice] => 146
+    [protection_eligibility] => Ineligible
+    [address_status] => unconfirmed
+    [item_number1] => 146 5-5
+    [tax] => 0.00
+    [item_number2] => 146 6-5
+    [payer_id] => WBF5ESZ6QX5MY
+    [address_street] => Spoleczna 8/31
+    [payment_date] => 05:29:52 May 20, 2011 PDT
+    [payment_status] => Completed
+    [charset] => windows-1250
+    [address_zip] => 93-313
+    [mc_shipping] => 0.00
+    [mc_handling] => 0.00
+    [first_name] => Marcin
+    [mc_fee] => 0.28
+    [address_country_code] => PL
+    [address_name] => Marcin Matuszewski
+    [notify_version] => 3.1
+    [custom] => 
+    [payer_status] => verified
+    [business] => office@smashintracks.com
+    [address_country] => Poland
+    [num_cart_items] => 2
+    [mc_handling1] => 0.00
+    [mc_handling2] => 0.00
+    [address_city] => Lodz
+    [verify_sign] => An5ns1Kso7MWUdW4ErQKJJJ4qi4-AtxfzPa6akco9NThdt920-3rtiEw
+    [payer_email] => marti_no@o2.pl
+    [mc_shipping1] => 0.00
+    [mc_shipping2] => 0.00
+    [txn_id] => 9C632653SR408343T
+    [payment_type] => instant
+    [last_name] => Matuszewski
+    [address_state] => 
+    [item_name1] => MP3 Download: Madogz - Pussy Marijuana (Bassline Stomper VIP Mix) - Madogz
+    [receiver_email] => office@smashintracks.com
+    [item_name2] => MP3 Download: We No Speak Americano - Madogz
+    [payment_fee] => 
+    [quantity1] => 1
+    [quantity2] => 1
+    [receiver_id] => Y8BY2HNCNHJJN
+    [txn_type] => cart
+    [mc_gross_1] => 1.40
+    [mc_currency] => GBP
+    [mc_gross_2] => 1.40
+    [residence_country] => PL
+    [transaction_subject] => Shopping Cart
+    [payment_gross] => 
+    [ipn_track_id] => XMwKSLNo-dmbfpa.1QpVVg
+)
+
+IPN VERIFIED START - line 272
+Res: VERIFIED - line 273
+Req: VERIFIED - line 274
+txn_type = cart - line 306
+INSERT SUCCESS: insert into paypal_payment_info(paymentstatus,buyer_email,firstname,lastname,street,city,state,zipcode,country,mc_gross,mc_fee,memo,paymenttype,paymentdate,txnid,pendingreason,reasoncode,tax,datecreation) values ('Completed','marti_no@o2.pl','Marcin','Matuszewski','Spoleczna 8/31','Lodz','','93-313','Poland','2.80','0.28','','instant','05:29:52 May 20, 2011 PDT','9C632653SR408343T','','','0.00','20110520') - rows: 1 - line 310
+UPDATE SUCCESS: UPDATE `transactions` SET `transactions_paymethod` = '1', `transactions_paypal_txnid` = '9C632653SR408343T', `transactions_date` =  NOW(), `transactions_done` = '1' WHERE `transactions`.`transactions_id` = '146' LIMIT 1 - rows: 1 -  line 330
+INSERT SUCCESS: insert into paypal_cart_info(txnid,itemnumber,itemname,os0,on0,os1,on1,quantity,invoice,custom) values ('9C632653SR408343T','146 5-5','MP3 Download: Madogz - Pussy Marijuana (Bassline Stomper VIP Mix) - Madogz','','','','','1','146','') - rows: 1 - line 365
+INSERT SUCCESS: INSERT INTO `transactions_tracks` (`transactions_tracks_id`, `transactions_id`, `tracks_id`, `transactions_tracks_path`) VALUES (NULL, '146', '5', '6vzweD6cYyOqnCPikJAo5jX7yTXN9wIl'); - rows: 1 - line 387
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '34', '5', '70'); - rows: 1 - line 397
+UPDATE SUCCESS: UPDATE `profiles` SET `profiles_balance` = `profiles_balance` + '70'  WHERE `profiles_id` = '5' LIMIT 1; - rows: 1 - line 402
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '34', '1', '70'); - rows: 1 - line 411
+UPDATE SUCCESS: UPDATE `profiles` SET `profiles_balance` = `profiles_balance` + '70'  WHERE `profiles_id` = '1' LIMIT 1; - rows: 1 - line 416
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '34', '6', '-140'); - rows: 1 - line 428
+INSERT SUCCESS: insert into paypal_cart_info(txnid,itemnumber,itemname,os0,on0,os1,on1,quantity,invoice,custom) values ('9C632653SR408343T','146 6-5','MP3 Download: We No Speak Americano - Madogz','','','','','1','146','') - rows: 1 - line 365
+INSERT SUCCESS: INSERT INTO `transactions_tracks` (`transactions_tracks_id`, `transactions_id`, `tracks_id`, `transactions_tracks_path`) VALUES (NULL, '146', '6', '8IiWWp85nWvajLJUfTIkDprCJPZTMsFE'); - rows: 1 - line 387
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '35', '5', '70'); - rows: 1 - line 397
+UPDATE SUCCESS: UPDATE `profiles` SET `profiles_balance` = `profiles_balance` + '70'  WHERE `profiles_id` = '5' LIMIT 1; - rows: 1 - line 402
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '35', '1', '70'); - rows: 1 - line 411
+UPDATE SUCCESS: UPDATE `profiles` SET `profiles_balance` = `profiles_balance` + '70'  WHERE `profiles_id` = '1' LIMIT 1; - rows: 1 - line 416
+INSERT SUCCESS: INSERT INTO `transactions_saldo` (`transactions_saldo_id`, `transactions_tracks_id`, `profiles_id`, `transactions_saldo_value`) VALUES (NULL, '35', '6', '-140'); - rows: 1 - line 428
+IPN VERIFIED END - line 452

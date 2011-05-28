@@ -10,7 +10,7 @@
         <?php include_stylesheets() ?>
         <?php include_javascripts() ?>
         <?php include_component('metadata', 'flashplayer') ?>
-        <? include_slot('head-after'); ?>
+        <? include_slot('head-after'); ?>            
 </head>
 <body>
     <div id="all">

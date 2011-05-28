@@ -52,7 +52,7 @@ class ProfilesPeer extends BaseProfilesPeer {
         {
                 $criteria = clone $criteria;
         }
-        
+        $criteria = TracksPeer::addActiveTracksCriteria();
         $criteria->addJoin(self::PROFILES_ID, TracksPeer::PROFILES_ID);
         $criteria->addGroupByColumn(self::PROFILES_ID);
         return self::getActiveProfilesAscending($criteria);        
@@ -157,7 +157,7 @@ class ProfilesPeer extends BaseProfilesPeer {
     }
     
     public static function countActiveProfilesWithTracks() {
-        $sql = 'SELECT COUNT(*) FROM `profiles` WHERE profiles.PROFILES_BLOCKED=false AND profiles.PROFILES_DELETED=false AND (select count(*) from tracks where tracks.profiles_id = profiles.profiles_id)>0';
+        $sql = 'SELECT COUNT(*) FROM `profiles` WHERE profiles.PROFILES_BLOCKED=false AND profiles.PROFILES_DELETED=false AND (select count(*) from tracks where tracks.tracks_accepted = 1 and tracks.tracks_deleted = 0 and tracks.profiles_id = profiles.profiles_id)>0';
 
         $connection = Propel::getConnection();
         $statement = $connection->prepare($sql);
@@ -167,7 +167,7 @@ class ProfilesPeer extends BaseProfilesPeer {
     }
     
     public static function countActiveProfilesWithoutTracks() {
-        $sql = 'SELECT COUNT(*) FROM `profiles` WHERE profiles.PROFILES_BLOCKED=false AND profiles.PROFILES_DELETED=false AND (select count(*) from tracks where tracks.profiles_id = profiles.profiles_id)=0';
+        $sql = 'SELECT COUNT(*) FROM `profiles` WHERE profiles.PROFILES_BLOCKED=false AND profiles.PROFILES_DELETED=false AND (select count(*) from tracks where tracks.tracks_accepted = 1 and tracks.tracks_deleted = 0 and tracks.profiles_id = profiles.profiles_id)=0';
 
         $connection = Propel::getConnection();
         $statement = $connection->prepare($sql);
