@@ -1,3 +1,10 @@
+                <? slot('head-facebook'); ?>
+                    <?if($profile->getProfilesPhoto()):?>
+                        <meta property="og:image" content="images/profiles/big/<?=$profile->getProfilesPath(); ?>.jpg" />
+                    <?endif;?>
+                    <meta property="og:type" content="musician" />
+                <? end_slot(); ?>
+
                 <?php include_partial('profile/artistinfo', array('profile' => $profile, 'profile_page' => true, 'isAdmin' => $isAdmin)) ?>
 
                 <div class="box-white" id="box-mymusic">

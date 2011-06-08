@@ -165,6 +165,11 @@ foreach ($_POST as $key => $value) {
 $value = urlencode(stripslashes($value));
 $req .= "&$key=$value";
 }
+
+foreach ($_POST as $key => &$val) $val = filter_input(INPUT_POST, $key, FILTER_SANITIZE_MAGIC_QUOTES); // strip slashes na wszystkich zmiennych POST
+
+
+
 // post back to PayPal system to validate
 $header = "POST /cgi-bin/webscr HTTP/1.0\r\n";
 $header .= "Content-Type: application/x-www-form-urlencoded\r\n";

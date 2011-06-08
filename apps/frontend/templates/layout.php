@@ -7,10 +7,12 @@
         <?php include_metas() ?>
         <?php include_title() ?>
         <link rel="shortcut icon" href="favicon.ico" />
+		<meta property="og:site_name" content="SmashinTracks.com" />		
+		<? include_slot('head-facebook'); ?>
         <?php include_stylesheets() ?>
         <?php include_javascripts() ?>
         <?php include_component('metadata', 'flashplayer') ?>
-        <? include_slot('head-after'); ?>            
+        <? include_slot('head-after'); ?>
 </head>
 <body>
     <div id="all">

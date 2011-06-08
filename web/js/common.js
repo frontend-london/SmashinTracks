@@ -240,6 +240,16 @@ function activateFaq() {
     });
 }
 
+function resetAddThis(){
+ var addthis_location = window.location.toString();//'http://www.wp.pl';
+ addthis_location = addthis_location.replace('#/', '');
+ //var addthis_title = document.title.toString().replace("'", "\\'");
+ $("#bf-addthis .addthis_button").each(function(){
+    //$(this).attr("onMouseOver", "return addthis_open(this, '', '"+addthis_location+"', '"+addthis_title+"');");
+    $(this).attr("onMouseOver", "return addthis_open(this, '', '"+addthis_location+"');");
+ });
+}
+
 $(document).ready
 (
 	function()
@@ -265,6 +275,7 @@ $(document).ready
                         if(src=='/faq') {
                             activateFaq();
                         }
+                        resetAddThis();
                     });
                     
                     $('ul#leftmenu li').removeClass('active');
@@ -350,7 +361,6 @@ $(document).ready
 		}
 
 		activateFaq();
-                
                 
                 if($('input.inputBlur')) {
 			$.each	(
