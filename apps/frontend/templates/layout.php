@@ -7,6 +7,7 @@
         <?php include_metas() ?>
         <?php include_title() ?>
         <link rel="shortcut icon" href="favicon.ico" />
+		<meta property="og:image" content="http://<?=$_SERVER['SERVER_NAME'].$sf_request->getRelativeUrlRoot()?>/images/icons/smashin-tracks.gif" />
 		<meta property="og:site_name" content="SmashinTracks.com" />		
 		<? include_slot('head-facebook'); ?>
         <?php include_stylesheets() ?>

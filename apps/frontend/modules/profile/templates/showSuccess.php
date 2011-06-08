@@ -1,6 +1,6 @@
                 <? slot('head-facebook'); ?>
                     <?if($profile->getProfilesPhoto()):?>
-                        <meta property="og:image" content="images/profiles/big/<?=$profile->getProfilesPath(); ?>.jpg" />
+                        <meta property="og:image" content="http://<?=$_SERVER['SERVER_NAME'].$sf_request->getRelativeUrlRoot()?>/images/profiles/big/<?=$profile->getProfilesPath(); ?>.jpg" />
                     <?endif;?>
                     <meta property="og:type" content="musician" />
                 <? end_slot(); ?>

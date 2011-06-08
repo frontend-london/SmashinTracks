@@ -1,7 +1,7 @@
                 <? slot('head-facebook'); ?>
-                    <meta property="og:image" content="images/profiles/big/<?=$profile->getProfilesPath(); ?>.jpg" />
+                    <meta property="og:image" content="http://<?=$_SERVER['SERVER_NAME'].$sf_request->getRelativeUrlRoot()?>/images/profiles/big/<?=$profile->getProfilesPath(); ?>.jpg" />
                     <meta property="og:type" content="song" />
-                    <meta property="og:audio" content="mp3/<?=$track->getTracksPath(); ?>.mp3" />
+                    <meta property="og:audio" content="http://<?=$_SERVER['SERVER_NAME'].$sf_request->getRelativeUrlRoot()?>/mp3/<?=$track->getTracksPath(); ?>.mp3" />
                     <meta property="og:audio:title" content="<?=$track->getTracksTitle()?>" />
                     <meta property="og:audio:artist" content="<?=$profile->getProfilesName()?>" />
                     <meta property="og:audio:type" content="application/mp3" />        
