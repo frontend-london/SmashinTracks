@@ -114,6 +114,7 @@ class TracksPeer extends BaseTracksPeer {
         }
         $criteria->addGroupByColumn(TracksPeer::TRACKS_ID);
         $criteria->addDescendingOrderByColumn('COUNT('.TracksPeer::TRACKS_ID.')'); // sortowanie po ilości tracków sprzedanych
+        $criteria->addDescendingOrderByColumn(TracksPeer::TRACKS_DATE); // w przypadku gdy ilość  sprzedanych tracków jest taka sama
         $criteria->setLimit($amount);
         $tracks = TracksPeer::doSelect($criteria);
         return $tracks;
