@@ -79,7 +79,6 @@ class panelBannersActions extends sfActions
             $banner->save();
             $filename_upload = sfConfig::get('sf_images_banners_dir').DIRECTORY_SEPARATOR.$path.'.jpg';
             $thumbnail = new sfThumbnail(460, 70, false, true, 100);
-            $thumbnail_big->quality(100);
             $thumbnail->loadFile($file['tmp_name']);
             $thumbnail->save($filename_upload, 'image/jpeg');
             unset($thumbnail);
