@@ -241,8 +241,11 @@ function activateFaq() {
 }
 
 function resetAddThis(){
+ var base_href = $('head base').attr('href');
  var addthis_location = window.location.toString();//'http://www.wp.pl';
- addthis_location = addthis_location.replace('#/', '');
+ var pos = addthis_location.indexOf('#/');
+ addthis_location = addthis_location.substr(pos+2)
+ addthis_location = base_href+addthis_location;
  //var addthis_title = document.title.toString().replace("'", "\\'");
  $("#bf-addthis .addthis_button").each(function(){
     //$(this).attr("onMouseOver", "return addthis_open(this, '', '"+addthis_location+"', '"+addthis_title+"');");
