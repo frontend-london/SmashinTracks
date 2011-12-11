@@ -1,5 +1,8 @@
                 <? slot('head-facebook'); ?>
                     <meta property="og:image" content="http://<?=$_SERVER['SERVER_NAME'].$sf_request->getRelativeUrlRoot()?>/images/profiles/big/<?=$profile->getProfilesPath(); ?>.jpg" />
+                    <meta property="og:title" content="<?=$profile->getProfilesName()?> | Download MP3 | SmashinTracks.com" />
+                    <meta property="og:description" content="<?=$profile->getProfilesName()?> - <?=$track->getTracksTitle()?> | Download MP3 | SmashinTracks.com" />
+                    <meta name="medium" content="audio" />
                     <meta property="og:type" content="song" />
                     <meta property="og:audio" content="http://<?=$_SERVER['SERVER_NAME'].$sf_request->getRelativeUrlRoot()?>/mp3/<?=$track->getTracksPath(); ?>.mp3" />
                     <meta property="og:audio:title" content="<?=$track->getTracksTitle()?>" />

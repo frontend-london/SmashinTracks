@@ -230,5 +230,29 @@ class Smashin
         $alphabet = array_merge($letters, $nums);
         return in_array($letter, $alphabet, true);
      }
+
+     public static function facebook_publish_url($link, $source) {
+            $app_id = "227810547292287";
+            $app_secret = "8e85f978744deb9d17b9a52d5afce4f9";
+            $access_token = 'AAADPMUaZCWH8BAKTtGjEUGfJLcZBMgPJFneYuZBsNAPHv6pumLT3d7h9peyXZB5lIEp0IeHIFizoe1ZBsTrrT6ZCPkRxkYR4X0ZAan6WWsbj7NC2RqYFD7X';
+            $profile_id = '214164275274674';
+            $params = array(
+             'appId' => $app_id,
+             'secret' => $app_secret,
+             'cookie' => true
+            );
+
+            $facebook = new Facebook($params);
+            $facebook->setAccessToken($access_token);
+
+            $status = $facebook->api('/'.$profile_id.'/feed', 'POST', array(
+                'link' => $link,
+                'source' => $source
+//                'message    ' => $url
+            ));
+
+            return 1;
+
+    }
 }
 ?>

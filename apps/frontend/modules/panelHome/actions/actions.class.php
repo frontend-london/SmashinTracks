@@ -17,6 +17,12 @@ class panelHomeActions extends sfActions
     $track->setTracksAccepted(true);
     $track->setTracksDate(time());
     $track->save();
+    $track->getTracksPath();
+    
+    $facebook_link = $this->generateUrl('track', $track, true);
+    $facebook_source = $this->getController()->genUrl('http://smashintracks.com/mp3/'.$track->getTracksPath().'.mp3', true);
+    Smashin::facebook_publish_url($facebook_link, $facebook_source);
+
     $this->redirect('panel_home');
   }
 

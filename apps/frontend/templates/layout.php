@@ -7,9 +7,12 @@
         <?php include_metas() ?>
         <?php include_title() ?>
         <link rel="shortcut icon" href="favicon.ico" />
-		<meta property="og:image" content="http://<?=$_SERVER['SERVER_NAME'].$sf_request->getRelativeUrlRoot()?>/images/icons/smashin-tracks.gif" />
-		<meta property="og:site_name" content="SmashinTracks.com" />		
-		<? include_slot('head-facebook'); ?>
+        <meta property="og:site_name" content="SmashinTracks.com" />
+        <? if(!include_slot('head-facebook')): ?>
+            <meta property="og:image" content="http://<?=$_SERVER['SERVER_NAME'].$sf_request->getRelativeUrlRoot()?>/images/icons/smashin-tracks.gif" />
+            <meta property="og:title" content="SmashinTracks.com" />
+            <meta property="og:description" content="SmashinTracks.com - Tracks you won't find anywhere else" />
+        <? endif;?>
         <?php include_stylesheets() ?>
         <?php include_javascripts() ?>
         <?php include_component('metadata', 'flashplayer') ?>
@@ -20,8 +23,8 @@
         <div id="mp3player">
             <div id="mp3player-inner">
                 <div id="noFlash">
-                    <font>Do poprawnego wyświetlenia strony, wymagana jest wtyczka Flash Player'a w wersji 10.0 lub wyższej.</font><br/>
-                    <a href="http://www.macromedia.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" target="_self"><font class="link">możesz ją sciągnąć TUTAJ.</font></a>
+                    <font>To properly display the page you need Flash Player version 10.0 or higher.</font><br/>
+                    <a href="http://www.macromedia.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" target="_self"><font class="link">you can download it HERE.</font></a>
                 </div>
             </div>
         </div>
@@ -64,7 +67,8 @@
                 <li<?if($sf_request->getParameter('section')=='artists'):?> class="active"<?endif;?>><a class="ajax-centerside" id="footermenu-artists" href="<?=url_for('artists')?>">ARTISTS</a></li>
                 <li<?if($sf_request->getParameter('section')=='faq'):?> class="active"<?endif;?>><a class="ajax-centerside" id="footermenu-faq" href="<?=url_for('faq')?>">FAQ</a></li>
                 <li<?if($sf_request->getParameter('section')=='terms'):?> class="active"<?endif;?>><a class="ajax-centerside" id="footermenu-terms" href="<?=url_for('terms')?>">TERMS &amp; CONDITIONS</a></li>
-                <li class="<?if($sf_request->getParameter('section')=='contact'):?>active <?endif;?>last"><a class="ajax-centerside" id="footermenu-contact" href="<?=url_for('contact')?>">CONTACT</a></li>
+                <li class="<?if($sf_request->getParameter('section')=='contact'):?>active <?endif;?>"><a class="ajax-centerside" id="footermenu-contact" href="<?=url_for('contact')?>">CONTACT</a></li>
+                <li class="last"><a href="http://blog.smashintracks.com" target="_blank">BLOG</a></li>
             </ul>
             <a href="#" id="footerlogo">Smashintracks.com - Tracks you won't find anywhere else</a>
             <div id="footer-copyright">&copy; 2011  <a href="#">Smashintracks.com</a></div>
