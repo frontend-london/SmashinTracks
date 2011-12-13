@@ -12,7 +12,7 @@
 
                 <div class="box-silver" id="box-trackinfo">
                     <div class="bs-inner">
-                        <h1><?=$profile->getProfilesName()?> - <?=$track->getTracksTitle()?></h1><br />
+                        <h1><?=$track->getTracksArtist()?> -  <?=$track->getTracksTitle()?></h1><br />
                         <div id="bt-tracks">
                             <?php include_component('metadata', 'record', array('track' => $track, 'admin_icons' => $isAdmin, 'no_icon_wishlist' => $isAdmin)) ?>
                             <div class="clear"></div>
