@@ -5,7 +5,7 @@
  *
  * @package    smashintracks
  * @subpackage filter
- * @author     Your name here
+ * @author     Piotr Kołodziejczyk
  */
 abstract class BaseProfilesViewedFormFilter extends BaseFormFilterPropel
 {

@@ -109,7 +109,7 @@ class GenresPeer extends BaseGenresPeer {
             $criteria->setOffset($half);
             return self::getGenres($criteria);
         }
-
+        
 
 
 } // GenresPeer

@@ -98,26 +98,25 @@ class Tracks extends BaseTracks {
             return parent::save($con);
         }
 		
-		public function setTracksPath($v)
-		{
-				if ($v !== null) {
-						$v = (string) $v;
-				}
-			
-				$preview = sfConfig::get('sf_upload_tracks_preview_dir').DIRECTORY_SEPARATOR.$this->tracks_path.'.mp3';
-				if (($this->tracks_path !== $v) && file_exists($preview)) {
-					$preview_new = sfConfig::get('sf_upload_tracks_preview_dir').DIRECTORY_SEPARATOR.$v.'.mp3';
-					rename($preview, $preview_new);
-				}
-				
-				$full = sfConfig::get('sf_upload_full_track_dir').DIRECTORY_SEPARATOR.$this->tracks_path.'.mp3';
-				if (($this->tracks_path !== $v) && file_exists($full)) {
-					$full_new = sfConfig::get('sf_upload_full_track_dir').DIRECTORY_SEPARATOR.$v.'.mp3';
-					rename($full, $full_new);
-				}
-	
-				return parent::setTracksPath($v);
-		} // setTracksPath()
+        public function setTracksPath($v) {
+                        if ($v !== null) {
+                                        $v = (string) $v;
+                        }
+
+                        $preview = sfConfig::get('sf_upload_tracks_preview_dir').DIRECTORY_SEPARATOR.$this->tracks_path.'.mp3';
+                        if (($this->tracks_path !== $v) && file_exists($preview)) {
+                                $preview_new = sfConfig::get('sf_upload_tracks_preview_dir').DIRECTORY_SEPARATOR.$v.'.mp3';
+                                rename($preview, $preview_new);
+                        }
+
+                        $full = sfConfig::get('sf_upload_full_track_dir').DIRECTORY_SEPARATOR.$this->tracks_path.'.mp3';
+                        if (($this->tracks_path !== $v) && file_exists($full)) {
+                                $full_new = sfConfig::get('sf_upload_full_track_dir').DIRECTORY_SEPARATOR.$v.'.mp3';
+                                rename($full, $full_new);
+                        }
+
+                        return parent::setTracksPath($v);
+        } // setTracksPath()
 
 
         public function addStats() {
@@ -136,6 +135,39 @@ class Tracks extends BaseTracks {
                 $played->save();
             }
         }
+        
+        public function addVote($profile_id = false) {
+            
+            if($profile_id) {
+                $criteria = new Criteria();
+                $criteria->add(TracksVotesPeer::TRACKS_ID, $this->getTracksId());
+                $criteria->add(TracksVotesPeer::PROFILES_ID, $profile_id);
+                $amount = TracksVotesPeer::doCount($criteria);
+                if(!$amount) {
+                    $vote = new TracksVotes();
+                    $vote->setProfilesId($profile_id);
+                    $vote->setTracks($this);
+                    $vote->save();
+                }                
+            }
+        }
+        
+        public function hasVoted($profile_id = false) {
+            if($profile_id) {
+                $criteria = new Criteria();
+                $criteria->add(TracksVotesPeer::TRACKS_ID, $this->getTracksId());
+                $criteria->add(TracksVotesPeer::PROFILES_ID, $profile_id);
+                $amount = TracksVotesPeer::doCount($criteria);
+                return $amount;
+            } else return false;
+        }
+        
+        public function getVotesCount() {
+            $criteria = new Criteria();
+            $criteria->add(TracksVotesPeer::TRACKS_ID, $this->getTracksId());
+            $amount = TracksVotesPeer::doCount($criteria);            
+            return TracksVotesPeer::doCount($criteria);
+        }
 
         public function setTracksTitle($v)
 	{
@@ -143,7 +175,6 @@ class Tracks extends BaseTracks {
 			$v = (string) $v;
                         $v = Smashin::capitalizeWords($v, ' -(.,'); // z dużych liter każde słowo
 		}
-
 
 		return parent::setTracksTitle($v);
 	} // setTracksTitle()

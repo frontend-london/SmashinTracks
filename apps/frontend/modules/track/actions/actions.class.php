@@ -30,4 +30,26 @@ class trackActions extends sfActions
     $this->track = $track;
     $this->isAdmin = $isAdmin;
   }
+  
+  public function executeVote(sfWebRequest $request)
+  {
+    $track = $this->getRoute()->getObject();
+      
+    $track->addVote(ProfilesPeer::getCurrentProfileId());        
+    $isAjax = $request->isXmlHttpRequest();
+
+      
+    if($isAjax) {
+        $this->setLayout(false);
+        echo $track->getVotesCount();
+        return sfView::NONE;
+    } else {
+        $this->redirect('track', $track);
+    }      
+      
+      
+      
+      
+      
+  }  
 }

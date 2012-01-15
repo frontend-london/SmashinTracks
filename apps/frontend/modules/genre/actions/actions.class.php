@@ -17,12 +17,28 @@ class genreActions extends sfActions
   */ 
   public function executeShow(sfWebRequest $request)
   {
+    $subsection = $this->getRequestParameter('subsection');      
+    $this->subsection = $subsection;
     $this->genres = $this->getRoute()->getObject();
     $this->seeAlsoGenres = GenresPeer::getRandomGenres($this->genres);
     $pager = new sfPropelPager('Tracks',sfConfig::get('app_max_tracks_on_list'));
-    $pager->setCriteria($this->genres->getActiveTracksCriteriaOrderByDate());
+    $pager->setPeerCountMethod('getTracksIdGroupCount');
+    if($subsection=='all_tracks') {
+        $pager->setCriteria($this->genres->getActiveTracksCriteriaOrderByDate());    
+        $route_name = 'genre';
+    } elseif($subsection=='bestsellers') {
+        $pager->setCriteria($this->genres->getActiveTracksCriteriaOrderBySale());
+        $route_name = 'genre_bestsellers';
+    } else { // best_rated
+        $pager->setCriteria($this->genres->getActiveTracksCriteriaOrderByRate());    
+        //$pager->setCriteria($this->genres->getActiveTracksCriteriaOrderByDate());    
+        $route_name = 'genre_best-rated';
+    }
+    
+    
     $pager->setPage($request->getParameter('page', 1)); // 1 = domyślna wartość
     $pager->init();
     $this->pager = $pager;
+    $this->route_name = $route_name;
   }  
 }

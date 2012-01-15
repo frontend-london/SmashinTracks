@@ -174,5 +174,11 @@ class TracksPeer extends BaseTracksPeer {
         $criteria->add(self::TRACKS_TITLE, $where, Criteria::CUSTOM);
         return $criteria;
     }
+    
+    public static function getTracksIdGroupCount($c) {
+        $copy = clone $c;
+        $copy->addGroupByColumn(self::TRACKS_ID);
+        return self::doCount($copy);
+    }
 
 } // TracksPeer

@@ -1,5 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="http://www.facebook.com/2008/fbml">
 <head>
         <base href="<?="http://{$_SERVER['SERVER_NAME']}{$sf_request->getRelativeUrlRoot()}/"?>" />
         <? include_slot('head-before'); ?>
@@ -13,6 +15,7 @@
             <meta property="og:title" content="SmashinTracks.com" />
             <meta property="og:description" content="SmashinTracks.com - Tracks you won't find anywhere else" />
         <? endif;?>
+        <meta property="fb:admins" content="100002401987361"/> 
         <?php include_stylesheets() ?>
         <?php include_javascripts() ?>
         <?php include_component('metadata', 'flashplayer') ?>
@@ -48,6 +51,7 @@
                 </div>
                 <div id="centerside<?if($sf_request->getParameter('facebookss')):?>-fb<?endif;?>">
                     <div id="centerside-ajax-loader"></div>
+                    <div id="fb-root"></div>
                     <div id="centerside-inner">
                         <?php echo $sf_content ?>
                     </div>

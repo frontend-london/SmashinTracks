@@ -425,6 +425,34 @@ CREATE TABLE `tracks_recommends`
 )Type=InnoDB;
 
 #-----------------------------------------------------------------------------
+#-- tracks_votes
+#-----------------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `tracks_votes`;
+
+
+CREATE TABLE `tracks_votes`
+(
+	`tracks_votes_id` INTEGER(11)  NOT NULL,
+	`tracks_id` INTEGER(11)  NOT NULL,
+	`profiles_id` INTEGER(11)  NOT NULL,
+	`tracks_votes_date` DATETIME  NOT NULL,
+	PRIMARY KEY (`tracks_votes_id`),
+	KEY `tracks_votes_FK_1`(`tracks_id`),
+	KEY `tracks_votes_FK_2`(`profiles_id`),
+	CONSTRAINT `tracks_votes_FK_1`
+		FOREIGN KEY (`tracks_id`)
+		REFERENCES `tracks` (`tracks_id`)
+		ON UPDATE RESTRICT
+		ON DELETE RESTRICT,
+	CONSTRAINT `tracks_votes_FK_2`
+		FOREIGN KEY (`profiles_id`)
+		REFERENCES `profiles` (`profiles_id`)
+		ON UPDATE RESTRICT
+		ON DELETE RESTRICT
+)Type=InnoDB;
+
+#-----------------------------------------------------------------------------
 #-- transactions
 #-----------------------------------------------------------------------------
 

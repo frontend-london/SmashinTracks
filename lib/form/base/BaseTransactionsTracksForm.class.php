@@ -7,7 +7,7 @@
  *
  * @package    smashintracks
  * @subpackage form
- * @author     Your name here
+ * @author     Piotr Kołodziejczyk
  */
 abstract class BaseTransactionsTracksForm extends BaseFormPropel
 {

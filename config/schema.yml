@@ -185,6 +185,13 @@ propel:
     tracks_recommends_order: { phpName: TracksRecommendsOrder, type: INTEGER, size: '11', required: true }
     tracks_recommends_active: { phpName: TracksRecommendsActive, type: TINYINT, size: '1', required: true, defaultValue: '0' }
     _indexes: { fk_tr_tracks_id: [tracks_id], tracks_recommends_WHERE_ORDER: [tracks_recommends_active, tracks_recommends_order] }
+  tracks_votes:
+    _attributes: { phpName: TracksVotes }
+    tracks_votes_id: { phpName: TracksVotesId, type: INTEGER, size: '11', primaryKey: true, required: true }
+    tracks_id: { phpName: TracksId, type: INTEGER, size: '11', required: true, foreignTable: tracks, foreignReference: tracks_id, onDelete: RESTRICT, onUpdate: RESTRICT }
+    profiles_id: { phpName: ProfilesId, type: INTEGER, size: '11', required: true, foreignTable: profiles, foreignReference: profiles_id, onDelete: RESTRICT, onUpdate: RESTRICT }
+    tracks_votes_date: { phpName: TracksVotesDate, type: TIMESTAMP, required: true }
+    _indexes: { tracks_votes_FK_1: [tracks_id], tracks_votes_FK_2: [profiles_id] }
   transactions:
     _attributes: { phpName: Transactions }
     transactions_id: { phpName: TransactionsId, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }

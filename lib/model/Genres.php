@@ -67,6 +67,37 @@ class Genres extends BaseGenres {
         return $this->getActiveTracksCriteria($criteria);
     }
     
+    public function getActiveTracksCriteriaOrderBySale($period = null, $amount = 30) {        
+        $criteria = new Criteria();
+        $criteria->addJoin(TracksPeer::TRACKS_ID, TracksGenresPeer::TRACKS_ID);
+        $criteria->addJoin(TracksPeer::TRACKS_ID, TransactionsTracksPeer::TRACKS_ID);
+        $criteria->addJoin(TransactionsTracksPeer::TRANSACTIONS_ID, TransactionsPeer::TRANSACTIONS_ID);
+        $criteria->add(TransactionsPeer::TRANSACTIONS_DONE, TRUE);
+//        $criteria = TracksPeer::addActiveTracksCriteria($criteria);
+        if($period!=null) {
+            $criteria->addJoin(TransactionsTracksPeer::TRANSACTIONS_ID, TransactionsPeer::TRANSACTIONS_ID);
+            $criteria->add(TransactionsPeer::TRANSACTIONS_DATE, time() - 86400 * $period, Criteria::GREATER_THAN);
+        }
+        $criteria->addGroupByColumn(TracksPeer::TRACKS_ID);
+        $criteria->addDescendingOrderByColumn('COUNT('.TracksPeer::TRACKS_ID.')'); // sortowanie po ilości tracków sprzedanych
+        $criteria->addDescendingOrderByColumn(TracksPeer::TRACKS_DATE); // w przypadku gdy ilość  sprzedanych tracków jest taka sama
+        $criteria->setLimit($amount);
+//        $tracks = TracksPeer::doSelect($criteria);
+//        return $tracks;        
+        return $this->getActiveTracksCriteria($criteria);
+        
+    }    
+    
+    public function getActiveTracksCriteriaOrderByRate() {
+        $criteria = new Criteria();
+        $criteria->addJoin(TracksPeer::TRACKS_ID, TracksVotesPeer::TRACKS_ID);
+        $criteria->addDescendingOrderByColumn('COUNT('.TracksVotesPeer::TRACKS_ID.')');
+        $criteria->addGroupByColumn(TracksPeer::TRACKS_ID);
+        return $this->getActiveTracksCriteria($criteria);
+//        $criteria->addDescendingOrderByColumn('COUNT(');
+//        return $this->getActiveTracksCriteria($criteria);
+    }    
+    
     /*
      * Generuje unikalny URL
      */

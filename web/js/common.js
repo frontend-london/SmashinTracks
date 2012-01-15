@@ -265,6 +265,8 @@ $(document).ready
                 var recentHash = "";
                 var recentHashChange = false;
                 
+                facebook_refresh();
+                
                 function openAjaxCenterside(src) {
                     var content = $('#centerside-inner');
                     content.html('');
@@ -277,8 +279,12 @@ $(document).ready
                         
                         if(src=='/faq') {
                             activateFaq();
-                        }
+                        } else if(src.substr(0,7)=='/track/') {
+                            FB.XFBML.parse(); // facebook like button i komentarze
+                        } 
+                        
                         resetAddThis();
+                        
                     });
                     
                     $('ul#leftmenu li').removeClass('active');
@@ -566,7 +572,28 @@ $(document).ready
                     var src = $(this).attr('href');
                     //alert(src);
                     openAjaxCenterside(src);
-		});                
+		});     
+                
+                $("a.vt-star").live('click', function(event) {
+                    event.preventDefault();
+                    element = $(this);
+                    if(isProfile()) {
+                        vote_src = $(this).attr('href');
+                        $.get(vote_src, function(data) {
+                            $('div.vt-status span').html(data);
+                            $('.vt-text').html('You have voted for this track');
+                            $(element).attr('href', '');
+                            $(element).addClass('vt-star2');
+                            $(element).removeClass('vt-star');                          
+                        });                                        
+                    } else {
+                        $("div#bm5-container-loginbox").fadeIn(); // okno logowania
+                    }
+                });
+                
+                $(".vt-star2").live('click', function(event) {
+                    event.preventDefault();
+                });
               
 	}
 )

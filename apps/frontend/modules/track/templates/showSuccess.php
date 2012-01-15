@@ -9,7 +9,7 @@
                     <meta property="og:audio:artist" content="<?=$profile->getProfilesName()?>" />
                     <meta property="og:audio:type" content="application/mp3" />        
                 <? end_slot(); ?>
-
+                
                 <div class="box-silver" id="box-trackinfo">
                     <div class="bs-inner">
                         <h1><?=$track->getTracksArtist()?> -  <?=$track->getTracksTitle()?></h1><br />
@@ -17,6 +17,29 @@
                             <?php include_component('metadata', 'record', array('track' => $track, 'admin_icons' => $isAdmin, 'no_icon_wishlist' => $isAdmin)) ?>
                             <div class="clear"></div>
                         </div>
+                        
+                        <div class="fb-like-outer">
+                            <div class="fb-like" data-href="<?=url_for('track', $track, true)?>" data-send="false" data-width="533" data-show-faces="false" data-font="tahoma"></div>
+                        </div>
+                        
+                        <div class="fb-comments-outer">
+                            <div class="fb-comments" data-href="<?=url_for('track', $track, true)?>" data-num-posts="2" data-width="533"></div>
+                            <div class="fb-comments-bottom"></div>
+                        </div>                        
+                        
+                        <div class="vote-track">
+                            <?if($track->hasVoted(ProfilesPeer::getCurrentProfileId())):?>
+                                <div class="vt-text">You have voted for this track</div>
+                                <span class="vt-star2"></span>
+                            <?else:?>
+                                <div class="vt-text">Vote for this track:</div>
+                                <a href="<?=url_for('vote_track', $track, true)?>" class="vt-star"></a>
+                            <?endif?>
+                            <div class="vt-rating"></div>
+                            <div class="vt-status">Rating <span><?=$track->getVotesCount()?></span> stars</div>
+                            <div class="clear"></div>
+                        </div>
+                        
                     </div>
                     <div class="bs-bgr-bottom"></div>
                 </div>

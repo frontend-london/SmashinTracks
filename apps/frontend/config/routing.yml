@@ -89,7 +89,23 @@ genre:
   url:     /genre/:genres_path
   class:   sfPropelRoute
   options: { model: Genres, type: object }
-  param:   { module: genre, action: show, section: home }
+  param:   { module: genre, action: show, section: home, subsection: all_tracks }
+  requirements:
+    sf_method: [get]
+    
+genre_bestsellers:
+  url:     /genre/bestsellers/:genres_path
+  class:   sfPropelRoute
+  options: { model: Genres, type: object }
+  param:   { module: genre, action: show, section: home, subsection: bestsellers }
+  requirements:
+    sf_method: [get]
+    
+genre_best-rated:
+  url:     /genre/best-rated/:genres_path
+  class:   sfPropelRoute
+  options: { model: Genres, type: object }
+  param:   { module: genre, action: show, section: home, subsection: best_rated }
   requirements:
     sf_method: [get]
 
@@ -555,6 +571,14 @@ track:
   param:   { module: track, action: show, section: charts }
   requirements:
     sf_method: [get]
+    
+vote_track:
+  url:     /track/vote/:tracks_path
+  class:   sfPropelRoute
+  options: { model: Tracks, type: object }
+  param:   { module: track, action: vote, section: charts }
+  requirements:
+    sf_method: [get]    
 
 # default rules
 homepage:
