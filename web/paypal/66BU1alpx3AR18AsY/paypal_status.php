@@ -12,6 +12,8 @@ $DB_Username = "martino_stracks"; //your MySQL User Name
 $DB_Password = "tiPrbOUl"; //your MySQL Password
 $DB_DBName = "martino_stracks"; //your MySQL Database Name
 
+set_time_limit(600); // 600 sekund = 10 minut
+
 /*
  * CONTENT
  */
@@ -476,6 +478,7 @@ if (!$fp) {
     if($transaction_success) {
         mail_info($invoice, $num_cart_items, $track_name, $mc_gross, $payer_email, $txn_id);
         mail_download_links($payer_email, $num_cart_items, $track_name, $transactions_tracks_id, $transactions_tracks_path, $invoice, $transactions_path, $invoice);
+        include('../../notify/30RorgH84wNT4X72Mn/instantly.php'); // wywolanie wyslania powiadomien
     }
 	saveLog();
 }

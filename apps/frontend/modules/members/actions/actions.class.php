@@ -24,6 +24,23 @@ class membersActions extends sfActions
   public function executeMySales(sfWebRequest $request) {
     $profile = ProfilesPeer::getCurrentProfile();
     $transactions = $profile->getAllTransactions();
+//    echo $profile->getProfilesSalesInformInstantly(); exit();
+    $form = new SalesEmailForm(array('on_sale' => (bool)$profile->getProfilesSalesInformInstantly(), 'daily' => (bool)$profile->getProfilesSalesInformDaily(), 'weekly' => (bool)$profile->getProfilesSalesInformWeekly()));
+    
+    if ($request->isMethod('post')) {
+        $form->bind($request->getParameter('sales_email'));
+        if ($form->isValid()) {
+            $on_sale = $form->getValue('on_sale');
+            $daily = $form->getValue('daily');
+            $weekly = $form->getValue('weekly');
+            
+            $profile->setProfilesSalesInformInstantly($on_sale);
+            $profile->setProfilesSalesInformDaily($daily);
+            $profile->setProfilesSalesInformWeekly($weekly);
+            $profile->save();
+        }
+    }     
+    
     
     $pager = new myArrayPager(null, sfConfig::get('app_max_transactions_on_list'));
     $pager->setResultArray($transactions);
@@ -32,6 +49,7 @@ class membersActions extends sfActions
 
     $this->pager = $pager;
     $this->profile = $profile;
+    $this->form = $form;
 
   }
 

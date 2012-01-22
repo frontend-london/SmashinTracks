@@ -109,6 +109,9 @@ propel:
     profiles_deleted: { phpName: ProfilesDeleted, type: TINYINT, size: '1', required: true, defaultValue: '0' }
     profiles_password_url: { phpName: ProfilesPasswordUrl, type: VARCHAR, size: '32', required: false }
     profiles_newsletter: { phpName: ProfilesNewsletter, type: TINYINT, size: '1', required: true, defaultValue: '0' }
+    profiles_sales_inform_instantly: { phpName: ProfilesSalesInformInstantly, type: TINYINT, size: '1', required: true, defaultValue: '0' }
+    profiles_sales_inform_daily: { phpName: ProfilesSalesInformDaily, type: TINYINT, size: '1', required: true, defaultValue: '0' }
+    profiles_sales_inform_weekly: { phpName: ProfilesSalesInformWeekly, type: TINYINT, size: '1', required: true, defaultValue: '0' }
     _indexes: { profiles_WHERE_ORDER: [profiles_deleted, profiles_blocked, profiles_date] }
     _uniques: { profiles_U_1: [profiles_name], profiles_U_2: [profiles_email], profiles_U_3: [profiles_path] }
   profiles_baskets:
@@ -187,7 +190,7 @@ propel:
     _indexes: { fk_tr_tracks_id: [tracks_id], tracks_recommends_WHERE_ORDER: [tracks_recommends_active, tracks_recommends_order] }
   tracks_votes:
     _attributes: { phpName: TracksVotes }
-    tracks_votes_id: { phpName: TracksVotesId, type: INTEGER, size: '11', primaryKey: true, required: true }
+    tracks_votes_id: { phpName: TracksVotesId, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
     tracks_id: { phpName: TracksId, type: INTEGER, size: '11', required: true, foreignTable: tracks, foreignReference: tracks_id, onDelete: RESTRICT, onUpdate: RESTRICT }
     profiles_id: { phpName: ProfilesId, type: INTEGER, size: '11', required: true, foreignTable: profiles, foreignReference: profiles_id, onDelete: RESTRICT, onUpdate: RESTRICT }
     tracks_votes_date: { phpName: TracksVotesDate, type: TIMESTAMP, required: true }

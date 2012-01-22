@@ -573,6 +573,14 @@ div#box-mysales div#bm2-div3-left { width:295px; float:left; }
 div#box-mysales div#bm2-div3-right { float:right; padding-right:21px;}
 div#box-mysales div#bm2-div4 { float: right;}
 div#box-mysales div#bm2-div5 { font-size:15px; font-weight:bold; float:left; padding-left:16px; padding-top:33px;}
+div#box-mysales div#bm2-div6 {font-size: 10px; width: 533px; margin-top: 20px; padding-top: 11px; border: solid #cecece; border-width: 1px 0px 0px 0px;}
+div#box-mysales div#bm2-div6 p { font-weight: bold; }
+div#box-mysales div#bm2-div6 ul { margin-top: 11px; float: left;}
+div#box-mysales div#bm2-div6 ul li { float: left; margin-right: 26px; line-height: 13px; }
+div#box-mysales div#bm2-div6 ul li.last { margin-right: 0px;}
+div#box-mysales div#bm2-div6 ul li input { float: left;}
+div#box-mysales div#bm2-div6 ul li span { display: block; float: left; padding-left: 6px;}
+div#box-mysales div#bm2-div6 .button-save { float: right; margin-top: 5px;}
 div#box-mysales span#bm2-span1 { color:#cecece; font-weight:normal;}
 div#box-mysales span#bm2-span2 { color:#ababab;}
 div#box-mysales div#bm2-div3 div.button-withdraw a { text-transform:none; }

@@ -28,6 +28,23 @@
                                 </div>
                             </div>
                             <div class="clear"></div>
+                            <form action="<?php echo url_for('members_my-sales') ?>" method="POST" id="form_salesemail" name="form_salesemail">
+                                <div id="bm2-div6">
+                                    <p>If you would like to be informed via email about your track sales choose notice frequency: </p>
+                                    <ul>
+                                        <li><?php echo $form['on_sale']->render() ?> <span><?php echo $form['on_sale']->renderLabel('in the moment of track sale') ?></span></li>
+                                        <li><?php echo $form['daily']->render() ?> <span><?php echo $form['daily']->renderLabel('once a day summary') ?></span></li>
+                                        <li class="last"><?php echo $form['weekly']->render() ?> <span><?php echo $form['weekly']->renderLabel('once a week summary') ?></span></li>
+                                    </ul>
+                                    <?php echo $form->renderHiddenFields() ?>                                    
+                                    <div class="button-save">
+                                        <div class="button-left"></div>
+                                        <div class="button-right"></div>
+                                        <a href="javascript: document.form_salesemail.submit();">SAVE</a>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="clear"></div>
                         </div>
                     </div>
                     <div class="bs-bgr-bottom"></div>
