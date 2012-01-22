@@ -77,8 +77,9 @@
 
 
         }
-        addToLog("Wysłano powiadomienia.");
+        //addToLog("Wysłano powiadomienia.");
     } else {
-        addToLog("Nie wysłano powiadomień - brak chętnych");
+        //addToLog("Nie wysłano powiadomień - brak chętnych");
     }    
     
+    echo 'OK';
