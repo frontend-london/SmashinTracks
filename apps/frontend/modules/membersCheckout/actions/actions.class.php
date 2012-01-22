@@ -118,6 +118,9 @@ class membersCheckoutActions extends sfActions
             $oUser->setAttribute('basket',$basket);
             $oUser->setAttribute('transaction_id',$transaction_new->getTransactionsId());
             
+            $b = new sfWebBrowser();
+            $b->get('http://smashintracks.com/notify/30RorgH84wNT4X72Mn/instantly_inner.php?id='.$transaction_id); // wywolanie powiadomien email
+            
             $this->redirect('members_checkout_complete');
         }
     }

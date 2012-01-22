@@ -1,10 +1,24 @@
 <?php
+    $invoice = $_GET['id'];
+
     if(!isset($invoice)) {
         dieLog('Nieokreślony invoice');
         die();
     }
     
     $notify_email2 =  "notify@smashintracks.com"; //email address to which debug emails are sent to
+    
+    $DB_Server = "localhost"; //your MySQL Server
+    $DB_Username = "martino_stracks"; //your MySQL User Name
+    $DB_Password = "tiPrbOUl"; //your MySQL Password
+    $DB_DBName = "martino_stracks"; //your MySQL Database Name
+    
+    
+    //create MySQL connection
+    $Connect = @mysql_connect($DB_Server, $DB_Username, $DB_Password);
+    
+    //select database
+    $Db = @mysql_select_db($DB_DBName, $Connect);    
     
     
     $artists = array();
