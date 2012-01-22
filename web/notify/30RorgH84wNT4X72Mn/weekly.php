@@ -78,7 +78,7 @@ $week_start = date('Y-m-d', time() - $week);
         
         $content_html.= nl2br($content_text);
         $content_text.="SMASHINTRACKS.COM"; // wersja TXT nie jest wysylana
-        $content_html.='<a href="http://smashnitracks.com">SMASHINTRACKS.COM</a></body></html>';
+        $content_html.='<a href="http://smashintracks.com">SMASHINTRACKS.COM</a></body></html>';
         
         $subject = 'Your Tracks sold on Smashintracks.com last week';
         
