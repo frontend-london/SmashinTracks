@@ -2,7 +2,7 @@
     $invoice = $_GET['id'];
 
     if(!isset($invoice)) {
-        dieLog('Nieokreślony invoice');
+        echo 'Nieokreślony invoice';
         die();
     }
     

@@ -54,7 +54,7 @@ class MyProfileMySettingsForm extends BaseProfilesForm
 
     $field = 'Your name';
     $field_name = 'profiles_name';
-    $this->getValidator($field_name)->addOption('min_length',5);
+    $this->getValidator($field_name)->addOption('min_length',2);
     $this->getValidator($field_name)->addOption('trim',true);
     $this->getValidator($field_name)->setMessage('min_length',"$field is too short (min %min_length% characters).");
     $this->getValidator($field_name)->setMessage('max_length',"$field is too long (max %max_length% characters).");

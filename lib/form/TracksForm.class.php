@@ -47,7 +47,7 @@ class TracksForm extends BaseTracksForm
 
     $field = 'Track title';
     $field_name = 'tracks_title';
-    $this->getValidator($field_name)->addOption('min_length',5);
+    $this->getValidator($field_name)->addOption('min_length',2);
     $this->getValidator($field_name)->addOption('trim',true);
     $this->getValidator($field_name)->setMessage('min_length',"$field is too short (min %min_length% characters).");
     $this->getValidator($field_name)->setMessage('max_length',"$field is too long (max %max_length% characters).");
@@ -56,7 +56,7 @@ class TracksForm extends BaseTracksForm
 
     $field = 'Alias';
     $field_name = 'tracks_artist';
-    $this->getValidator($field_name)->addOption('min_length',5);
+    $this->getValidator($field_name)->addOption('min_length',2);
     $this->getValidator($field_name)->addOption('trim',true);
     $this->getValidator($field_name)->setMessage('min_length',"$field is too short (min %min_length% characters).");
     $this->getValidator($field_name)->setMessage('max_length',"$field is too long (max %max_length% characters).");
