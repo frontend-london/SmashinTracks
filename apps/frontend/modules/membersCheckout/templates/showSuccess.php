@@ -7,7 +7,7 @@
                     <?if($new_balance_prize>=0):?>
                         <div class="bw-div6">
                             <dl>
-                                <dt>Your balance (srodki):</dt>	<dd><?=$profile_balance;?></dd>
+                                <dt>Your balance:</dt>	<dd><?=$profile_balance;?></dd>
                                 <dt>Basket total:</dt>		<dd><?=$basket_prize;?></dd>
                                 <dt>New balance:</dt>		<dd><?=$new_balance?></dd>
                             </dl>

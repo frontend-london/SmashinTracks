@@ -182,6 +182,7 @@ CREATE TABLE `profiles`
 	`profiles_blocked` TINYINT(1) default 0 NOT NULL,
 	`profiles_deleted` TINYINT(1) default 0 NOT NULL,
 	`profiles_password_url` VARCHAR(32),
+        `profiles_register_url` VARCHAR(32),
 	`profiles_newsletter` TINYINT(1) default 0 NOT NULL,
 	PRIMARY KEY (`profiles_id`),
 	UNIQUE KEY `profiles_U_1` (`profiles_name`),

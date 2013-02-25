@@ -73,6 +73,26 @@ class membersActions extends sfActions
     $this->subsection = $subsection;
     $this->in_wishlists = $in_wishlists;
   }
+  
+  public function executeMyTracksRemove(sfWebRequest $request) {
+//      exit();
+    $subsection = $this->getRequestParameter('subsection');
+    $track = $this->getRoute()->getObject();
+    $oUser = $this->getUser();    
+    /*@var $track Tracks */
+    if($track->getProfilesId()==$oUser->getAttribute('profile_id')) {
+        $track->setTracksDeleted(1);
+        $track->save();
+    }
+    
+    if($subsection=='most_popular') {
+      $this->redirect('members_my-tracks_most_popular');
+    } elseif($subsection=='in_wishlists') {
+      $this->redirect('members_my-tracks_in_wishlists');
+    } else {
+      $this->redirect('members_my-tracks');
+    }    
+  }
 
   public function executeMyDownloads(sfWebRequest $request) {
       $profile = ProfilesPeer::getCurrentProfile();

@@ -107,6 +107,7 @@ propel:
     profiles_balance: { phpName: ProfilesBalance, type: INTEGER, size: '11', required: true, defaultValue: '0' }
     profiles_blocked: { phpName: ProfilesBlocked, type: TINYINT, size: '1', required: true, defaultValue: '0' }
     profiles_deleted: { phpName: ProfilesDeleted, type: TINYINT, size: '1', required: true, defaultValue: '0' }
+    profiles_register_url: { phpName: ProfilesRegisterUrl, type: VARCHAR, size: '32', required: false }
     profiles_password_url: { phpName: ProfilesPasswordUrl, type: VARCHAR, size: '32', required: false }
     profiles_newsletter: { phpName: ProfilesNewsletter, type: TINYINT, size: '1', required: true, defaultValue: '0' }
     profiles_sales_inform_instantly: { phpName: ProfilesSalesInformInstantly, type: TINYINT, size: '1', required: true, defaultValue: '0' }

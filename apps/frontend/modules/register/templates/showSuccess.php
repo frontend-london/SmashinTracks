@@ -51,10 +51,8 @@
                                 </div>
                             <?php endif; ?>
                             <div id="br3-div5">
-                                <label>
-                                    <?php echo $form['profiles_newsletter']->render(array('class' => 'input-checkbox')) ?>
-                                    <span><?php echo $form['profiles_newsletter']->renderLabel('Yes, sign me up for all the latest news and info') ?></span>
-                                </label>
+                                <?php echo $form['profiles_newsletter']->render(array('class' => 'input-checkbox')) ?>
+                                <span><?php echo $form['profiles_newsletter']->renderLabel('Yes, sign me up for all the latest news and info') ?></span>
                                 <div class="clear"></div>
                             </div>
                             <?php if ($form['profiles_newsletter']->hasError()): ?>
@@ -62,11 +60,9 @@
                                     <?php echo $form['profiles_newsletter']->renderError() ?>
                                 </div>
                             <?php endif; ?>
-                            <div id="br3-div6">
-                                <label>
-                                    <?php echo $form['profiles_terms']->render(array('class' => 'input-checkbox')) ?>
-                                    <span><?php echo $form['profiles_terms']->renderLabel('I agree to the <a href="'.url_for('terms').'" class="bold blue">Terms &amp; Conditions</a> of<br /> Smashintracks.com ') ?></span>
-                                </label>
+                            <div id="br3-div6">                                
+                                <?php echo $form['profiles_terms']->render(array('class' => 'input-checkbox')) ?>
+                                <span><?php echo $form['profiles_terms']->renderLabel('I agree to the <a href="'.url_for('terms').'" class="bold blue">Terms &amp; Conditions</a> of<br /> Smashintracks.com ') ?></span>                                
                                 <div class="clear"></div>
                             </div>
                             <?php if ($form['profiles_terms']->hasError()): ?>

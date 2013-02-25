@@ -52,7 +52,7 @@ class panelEditArtistActions extends sfActions
                     $url->save();
                 }
             } else {
-                $profile->setProfilesName($form->getValue('profiles_name'));
+                $profile->setProfilesName(ucwords($form->getValue('profiles_name')));
                 $profile->setProfilesText($form->getValue('profiles_text'));
                 $profile->setProfilesEmail($form->getValue('profiles_email'));
 
@@ -115,6 +115,7 @@ class panelEditArtistActions extends sfActions
   {
       $profile = $this->getRoute()->getObject();
       $profile->setProfilesBlocked(true);
+      $profile->setProfilesRegisterUrl(null); // zabezpiecza przed odblokowaniem przez usera
       $profile->save();
       $this->redirect('homepage');
   }

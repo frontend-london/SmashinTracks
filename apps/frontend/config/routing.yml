@@ -165,6 +165,30 @@ members_my-tracks_in_wishlists:
   url:     /members/my-tracks/in-wishlists
   param: { module: members, action: myTracks, section: my-tracks, subsection: in_wishlists }
 
+members_my-tracks_remove:
+  url:     /members/my-tracks/remove/:tracks_id
+  class:   sfPropelRoute
+  options: { model: Tracks, type: object }
+  param: { module: members, action: myTracksRemove, section: my-tracks, subsection: all_tracks }
+  requirements:
+    sf_method: [get]
+
+members_my-tracks_most_popular_remove:
+  url:     /members/my-tracks/most-popular/remove/:tracks_id
+  class:   sfPropelRoute
+  options: { model: Tracks, type: object }
+  param: { module: members, action: myTracksRemove, section: my-tracks, subsection: most_popular }
+  requirements:
+    sf_method: [get]
+
+members_my-tracks_in_wishlists_remove:
+  url:     /members/my-tracks/in-wishlists/remove/:tracks_id
+  class:   sfPropelRoute
+  options: { model: Tracks, type: object }
+  param: { module: members, action: myTracksRemove, section: my-tracks, subsection: in_wishlists }
+  requirements:
+    sf_method: [get]
+
 members_my-wishlist:
   url:     /members/my-wishlist
   param: { module: members, action: myWishlist, section: my-wishlist, subsection: last_added }
@@ -551,6 +575,15 @@ register:
 register_welcome:
   url:     /register/welcome
   param: { module: register, action: welcome, section: register }
+  
+register_confirm:
+  url:     /register/confirm/:profiles_id/:profiles_register_url
+  class:   sfPropelRoute
+  options: { model: Profiles, type: object }
+  param: { module: register, action: confirm, section: register }  
+  requirements:
+    sf_method: [get]
+    second_texts_faq_id: \d+
 
 search:
   url:     /search

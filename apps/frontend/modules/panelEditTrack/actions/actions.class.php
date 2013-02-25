@@ -48,12 +48,16 @@ class panelEditTrackActions extends sfActions
             }
 
             for($i=1;$i<=3;$i++) {
+				$track_genre[$i] = $track->getTracksGenresObject($i);
                 if($form->getValue('genre_'.$i)) {
                     $genre[$i] = GenresPeer::getGenreByName($form->getValue('genre_'.$i));
-                    $track_genre[$i] = $track->getTracksGenresObject($i);
                     $track_genre[$i]->setGenres($genre[$i]);
                     $track_genre[$i]->save();
+				} else {
+                    $track_genre[$i]->delete();
                 }
+				
+                
             }
 
             $upload_track_complete = true;

@@ -41,4 +41,11 @@
                         </div>
                 </div>
 
+                <div id="dialog-confirm" title="Delete track?" style="display: none;">
+                    <p style="line-height: 25px;">
+                        <span class="ui-icon ui-icon-alert" style="float: left; margin: 6px 7px 10px 0;"></span>
+                        Track will be permanently deleted and cannot be recovered. Are you sure?
+                    </p>
+                </div>
+
                 <?php include_partial('metadata/footer', array('share' => false, 'border' => true)) ?>

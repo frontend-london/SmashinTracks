@@ -44,7 +44,7 @@ all:
   # z ilu ostatnich dniach pokazuje bestsellery na głównej
   homepage_bestsellers_period: 7
   # czy wysyłać mejle
-  send_mail: 1
+  send_mail: 0
   # jak długo ma zapamiętać usera opcja remember me, w dniach
   remember_me_period: 14
   # hash do zaszyfrowania opcji rememeber me w cookie, zmiana jego wyloguje wszystkie profile

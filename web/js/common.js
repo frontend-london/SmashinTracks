@@ -180,7 +180,7 @@ function addToBasket(track) {
     //                          alert(data);
             });
     
-            var new_item = $('<div class="bb-item" style="visibility:hidden;"><a href="/basket/remove/'+track_id+'" class="bbi-usun">Usuń</a><a href="'+track_src+'" class="bbi-icon">'+track_player_inner+'</a><a href="'+track_artist_src+'" class="bbi-artist ajax-centerside">'+track_artist+'</a><a href="'+track_title_src+'" class="bbi-name ajax-centerside">'+track_title+'</a></div>');//.hide();
+            var new_item = $('<div class="bb-item" style="visibility:hidden;"><a href="/basket/remove/'+track_id+'" class="bbi-usun">UsuĹ„</a><a href="'+track_src+'" class="bbi-icon">'+track_player_inner+'</a><a href="'+track_artist_src+'" class="bbi-artist ajax-centerside">'+track_artist+'</a><a href="'+track_title_src+'" class="bbi-name ajax-centerside">'+track_title+'</a></div>');//.hide();
             $('#bb-items').prepend(new_item);
             $('#bb-prize span').text(currency + new_basket_prize);
     //                        new_item.slideDown('normal');            
@@ -593,6 +593,28 @@ $(document).ready
                 
                 $(".vt-star2").live('click', function(event) {
                     event.preventDefault();
+                });
+                
+                
+//                alert('kurwa');
+                
+                $(".track-remove2").live('click', function(event) {
+                    event.preventDefault();
+                    var href = $(this).attr('href');
+                    $( "#dialog-confirm" ).dialog({
+                        resizable: false,
+                        height:140,
+                        modal: true,
+                        buttons: {
+                          "Delete": function() {
+                            window.location = href;
+                            $( this ).dialog( "close" );
+                          },
+                          Cancel: function() {
+                            $( this ).dialog( "close" );
+                          }
+                        }
+                    });
                 });
               
 	}

@@ -153,6 +153,14 @@
                                             <?else:?>
                                                 <a href="<?=url_for('members_my-wishlist_by_artist_remove', $track)?>" class="track-bin2"></a>
                                             <?endif;?>
+                                        <?elseif($my_tracks):?>
+                                            <?if($subsection=='most_popular'):?>
+                                                <a href="<?=url_for('members_my-tracks_most_popular_remove', $track)?>" class="track-bin2 track-remove2"></a>
+                                            <?elseif($subsection=='in_wishlists'):?>
+                                                <a href="<?=url_for('members_my-tracks_in_wishlists_remove', $track)?>" class="track-bin2 track-remove2"></a>
+                                            <?else:?>
+                                                <a href="<?=url_for('members_my-tracks_remove', $track)?>" class="track-bin2 track-remove2"></a>
+                                            <?endif;?>
                                         <?elseif($not_accepted):?>
                                             <a href="<?=url_for($not_accepted_url_disapprove, $track)?>" class="track-bin2"></a>
                                         <?elseif($recommends_inactive):?>

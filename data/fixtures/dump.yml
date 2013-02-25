@@ -40621,6 +40621,10 @@ Texts:
     texts_name: Register-welcome-text
     texts_value: "<div id=\"bw2-div1\">\r\n<p><strong>Congratulations on successful Smashintracks.com registration!</strong></p>\r\n<br />\r\n<p><strong>From now on you will rejoice full functionality of this service, inter alia:</strong></p>\r\n<br /><strong> <span class=\"blue\"> - Uploading and selling your own tracks,<br /><br /> - Buying other tracks with earned money on Smashintracks.com,<br /><br /> - Your own tracks popularity stats managing<br /><br /> &nbsp; and much more.</span></strong></div>\r\n<div><strong><span class=\"blue\"><br /></span></strong></div>\r\n<div id=\"bw2-div2\">\r\n<p><strong>Go to your profile HOMEPAGE to find out your administration panel. Do not forget to update your Profile with photo, informations on your music activity, promo urls etc.</strong></p>\r\n</div>"
     texts_help: ''
+  Texts_53:
+    texts_name: Register-confirm-text
+    texts_value: "<div id=\"bw2-div1\">\r\n<p><strong>Congratulations on successful Smashintracks.com registration!</strong></p>\r\n<br />\r\n<p><strong>You will receive email with confirmation link. </strong></p>\r\n</div>\r\n<div><strong><span class=\"blue\"><br /></span></strong></div>"
+    texts_help: ''
 TracksGenres:
   TracksGenres_1:
     tracks_id: Tracks_1

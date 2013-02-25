@@ -1,13 +1,22 @@
                 <? slot('head-facebook'); ?>
+                    <meta property="og:url" content="<?=url_for('track', $track, true)?>" />
                     <meta property="og:image" content="http://<?=$_SERVER['SERVER_NAME'].$sf_request->getRelativeUrlRoot()?>/images/profiles/big/<?=$profile->getProfilesPath(); ?>.jpg" />
                     <meta property="og:title" content="<?=$profile->getProfilesName()?> | Download MP3 | SmashinTracks.com" />
                     <meta property="og:description" content="<?=$profile->getProfilesName()?> - <?=$track->getTracksTitle()?> | Download MP3 | SmashinTracks.com" />
-                    <meta name="medium" content="audio" />
-                    <meta property="og:type" content="song" />
-                    <meta property="og:audio" content="http://<?=$_SERVER['SERVER_NAME'].$sf_request->getRelativeUrlRoot()?>/mp3/<?=$track->getTracksPath(); ?>.mp3" />
-                    <meta property="og:audio:title" content="<?=$track->getTracksTitle()?>" />
-                    <meta property="og:audio:artist" content="<?=$profile->getProfilesName()?>" />
-                    <meta property="og:audio:type" content="application/mp3" />        
+                    <meta name="medium" content="video" />
+                    <meta property="og:type" content="video" />
+                    <meta property="og:video:height" content="93" />
+                    <meta property="og:video:width" content="414" />
+                    <meta property="og:video:type" content="application/x-shockwave-flash" />
+                    <meta property="og:video" content="http://<?=$_SERVER['SERVER_NAME'].$sf_request->getRelativeUrlRoot()?>/swf/fbPlayer/fbPlayer.swf?configUrl=http://<?=$_SERVER['SERVER_NAME'].$sf_request->getRelativeUrlRoot()?>/swf/fbPlayer/<?=$track->getTracksId()?>" />
+                    <?if(0):?>
+                        <!--
+                        <meta property="og:audio" content="http://<?=$_SERVER['SERVER_NAME'].$sf_request->getRelativeUrlRoot()?>/mp3/<?=$track->getTracksPath(); ?>.mp3" />
+                        <meta property="og:audio:title" content="<?=$track->getTracksTitle()?>" />
+                        <meta property="og:audio:artist" content="<?=$profile->getProfilesName()?>" />
+                        <meta property="og:audio:type" content="application/mp3" />        
+                        -->                    
+                    <?endif?>
                 <? end_slot(); ?>
                 
                 <div class="box-silver" id="box-trackinfo">
