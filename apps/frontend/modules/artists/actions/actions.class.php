@@ -22,11 +22,13 @@ class artistsActions extends sfActions
 
   public function executeShow(sfWebRequest $request)
   {
+    $this->ajaxType = $this->getRequestParameter('ajax');
     $this->artists = ProfilesPeer::getMostPopularProfiles();
   }
 
   public function executeShowAll(sfWebRequest $request)
   {
+    $this->ajaxType = $this->getRequestParameter('ajax');
     $this->artists = ProfilesPeer::getActiveProfilesWithTracksAscending();
   }
 }

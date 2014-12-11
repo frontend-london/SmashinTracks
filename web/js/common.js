@@ -286,24 +286,62 @@ $(document).ready
                     }
                     console.log('src', src);
                     
-                    $.get(src, { ajax:'tab'}, function(data) {
+                    var options = { ajax: 'tab' };
+                    $.get(src, options, function(data) {
                         loader.hide();
                         content.append(data);
                         scrollWindow();
                         
-                        if( src.substr(0,7) === '/genre/' ) {
+                        var tabs = [
+                            {
+                                page: '/genre/',
+                                menu_elements: ['bestsellers/', 'best-rated/']
+                            },
+                            {
+                                page: '/charts/',
+                                menu_elements: ['last-3-months', 'all-time']
+                            },
+                            {
+                                page: '/artists',
+                                menu_elements: ['/all']
+                            }
+                        ];
+                        
+                        var menu_elements = [],
+                            page;
+                        
+                        $.each(tabs, function( index, element) {
+                            if( src.substr(0, element.page.length) === element.page ) {
+                                page = element.page;
+                                menu_elements = element.menu_elements;
+                                return;
+                            }
+                        });                        
+
+                        if ( menu_elements.length ) {
                             var $bookmarks = $('#box-top .bookmark');
                             $bookmarks.removeClass('bookmark-active');
-                            var active_element;
-                            if ( src.substr(7,12) === 'bestsellers/' ) {
-                                active_element = $bookmarks.eq(1);
-                            } else if ( src.substr(7,11) === 'best-rated/' ) {
-                                active_element = $bookmarks.eq(2);
-                            } else {
+                            $bookmarks.prevAll().removeClass('bookmark-nobgr-right');   
+                            var active_element,
+                                noborder_element;
+                        
+                            $.each(menu_elements, function(index, element) {
+                                if ( src.substr(page.length, element.length) === element ) {
+                                    noborder_element = $bookmarks.eq(index);
+                                    active_element = $bookmarks.eq(index+1);
+                                    return false;
+                                }
+                            });
+                            if ( ! active_element) {
                                 active_element = $bookmarks.eq(0);
-                            }
+                            };
                             active_element.addClass('bookmark-active');
-                        }
+
+                            if ( noborder_element ) {
+                                noborder_element.addClass('bookmark-nobgr-right');
+                            }
+                            
+                        };
                     });
                     
                     

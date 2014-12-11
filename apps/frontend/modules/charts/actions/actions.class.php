@@ -28,9 +28,8 @@ class chartsActions extends sfActions
   public function executeShow(sfWebRequest $request) {
     $period = $this->getRequestParameter('period');
     $this->subsection = $this->getRequestParameter('subsection');
-    //echo $subsection;
+    $this->ajaxType = $this->getRequestParameter('ajax');
     $this->tracks = TracksPeer::getBestsellersTracks($period, 30);
-    
   }
 
 }

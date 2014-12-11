@@ -1356,6 +1356,7 @@ div#box-welcome div.button-membershomepage, div#box-welcome div.button-homepage 
 
 div#box-faq { padding-top:0px;}
 div#box-faq div#bf1-questions { width:534px; padding-top:11px;}
+div#box-faq div#bf1-questions .ui-icon { display: none; }
 div#box-faq div#bf1-questions div.bf1d-question { background:#f0f0f0; margin-bottom:6px; }
 div#box-faq div#bf1-questions div.bf1d-question div.bf1d-title { font-size:13px; font-weight:bold; line-height:20px; padding-left:7px; padding-top: 3px; padding-bottom: 3px;}
 div#box-faq div#bf1-questions div.bf1d-question div.bf1d-title:hover { cursor:pointer; }
