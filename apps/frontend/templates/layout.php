@@ -50,7 +50,7 @@
                     <?php include_component('metadata', 'menuleft') ?>
                 </div>
                 <div id="centerside<?if($sf_request->getParameter('facebookss')):?>-fb<?endif;?>">
-                    <div id="centerside-ajax-loader"></div>
+                    <div id="centerside-ajax-loader" class="centerside-ajax-loader"></div>
                     <div id="fb-root"></div>
                     <div id="centerside-inner">
                         <?php echo $sf_content ?>

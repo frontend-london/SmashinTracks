@@ -253,6 +253,12 @@ function resetAddThis(){
  });
 }
 
+function scrollWindow() {
+    if($(window).scrollTop() > 300) {
+        $("html, body").animate({ scrollTop: 0 }, "slow");                            
+    }
+}
+
 $(document).ready
 (
 	function()
@@ -267,15 +273,56 @@ $(document).ready
                 
                 facebook_refresh();
                 
+                function openAjaxTab(src) {
+                    var content = $('#tab-content');
+//                    debugger;
+                    content.html('');
+                    var loader = $('#centerside-ajax-loader').clone().removeAttr('id');
+                    content.append(loader);
+                    loader.show();
+                    
+                    if ( src.substr(0,7) == '/admin_') {
+                        src = '/' + src.substr(30);
+                    }
+                    console.log('src', src);
+                    
+                    $.get(src, { ajax:'tab'}, function(data) {
+                        loader.hide();
+                        content.append(data);
+                        scrollWindow();
+                        
+                        if( src.substr(0,7) === '/genre/' ) {
+                            var $bookmarks = $('#box-top .bookmark');
+                            $bookmarks.removeClass('bookmark-active');
+                            var active_element;
+                            if ( src.substr(7,12) === 'bestsellers/' ) {
+                                active_element = $bookmarks.eq(1);
+                            } else if ( src.substr(7,11) === 'best-rated/' ) {
+                                active_element = $bookmarks.eq(2);
+                            } else {
+                                active_element = $bookmarks.eq(0);
+                            }
+                            active_element.addClass('bookmark-active');
+                        }
+                    });
+                    
+                    
+                }
+                
                 function openAjaxCenterside(src) {
                     var content = $('#centerside-inner');
                     content.html('');
                     var loader = $('#centerside-ajax-loader');
-                    loader.show();        
+                    loader.show();
+                    
+                    if ( src.substr(0,7) == '/admin_') {
+                        src = '/' + src.substr(30);
+                    }
                     
                     $.get(src, function(data) {
                         loader.hide();
                         content.html(data);
+                        scrollWindow();
                         
                         if(src=='/faq') {
                             activateFaq();
@@ -567,12 +614,17 @@ $(document).ready
                     });
 		});
                 
+                $("a.ajax-tab").live('click', function(event) {
+                    event.preventDefault();
+                    var src = $(this).attr('href');
+                    openAjaxTab(src);
+		});
+                
                 $("a.ajax-centerside").live('click', function(event) {
                     event.preventDefault();
                     var src = $(this).attr('href');
-                    //alert(src);
                     openAjaxCenterside(src);
-		});     
+		});
                 
                 $("a.vt-star").live('click', function(event) {
                     event.preventDefault();

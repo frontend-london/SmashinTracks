@@ -17,8 +17,10 @@ class genreActions extends sfActions
   */ 
   public function executeShow(sfWebRequest $request)
   {
+    $ajaxType = $this->getRequestParameter('ajax');
     $subsection = $this->getRequestParameter('subsection');      
     $this->subsection = $subsection;
+    $this->ajaxType = $ajaxType;
     $this->genres = $this->getRoute()->getObject();
     $this->seeAlsoGenres = GenresPeer::getRandomGenres($this->genres);
     $pager = new sfPropelPager('Tracks',sfConfig::get('app_max_tracks_on_list'));
