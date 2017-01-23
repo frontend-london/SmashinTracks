@@ -1,5 +1,7 @@
 Options +FollowSymLinks +ExecCGI
 
+AddHandler application/x-httpd-php56 .php .php5 .php4 .php3
+
 php_value arg_separator.output "&"
 php_flag short_open_tag on
 php_flag magic_quotes_gpc off

@@ -16,10 +16,7 @@ class homeActions extends sfActions
   * @param sfRequest $request A request object
   */
   public function executeShow(sfWebRequest $request)
-  {
-    $profile = ProfilesPeer::getProfileByName('CJ Reign');
-    Smashin::signIn($profile);
-      
+  {      
     $this->recommended = TracksRecommendsPeer::getActiveTracksRecommends();
 
     $this->newtracks = TracksPeer::getNewTracks(null, 10);
